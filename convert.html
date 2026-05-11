@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Conversor - TomoConvert Studio</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
 <style>
 :root{
   --pk:#FF4FA3;--yw:#FFD93D;--cy:#00E5FF;
@@ -101,9 +102,7 @@ header{
   display:flex;align-items:center;gap:9px;
   background:rgba(155,89,255,.07);border:1px solid rgba(155,89,255,.15);
   border-radius:9px;padding:9px 12px;margin-top:7px;
-  animation:sli .25s ease;
 }
-@keyframes sli{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
 .fin{flex:1;font-size:10px;font-family:'Space Mono',monospace;word-break:break-all;}
 .fsz{font-size:10px;color:var(--mu);font-family:'Space Mono',monospace;white-space:nowrap;}
 .tag{font-size:10px;padding:2px 9px;border-radius:7px;font-weight:700;white-space:nowrap;}
@@ -111,15 +110,11 @@ header{
 .td{background:rgba(0,229,255,.14);color:var(--cy);}
 .tok{background:rgba(57,255,126,.18);color:var(--gn);}
 .te{background:rgba(255,79,163,.15);color:var(--pk);}
-.t-warn{background:rgba(255,107,53,.15);color:var(--or);}
 .ctrls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px;}
 .sel{
   background:var(--dk3);border:1.5px solid var(--bo);color:var(--tx);
   font-family:'Fredoka',sans-serif;font-size:14px;padding:8px 14px;
   border-radius:10px;cursor:pointer;flex:1;min-width:130px;
-  appearance:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%239B59FF' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;
 }
 .sel:focus{outline:none;border-color:var(--pu);}
 .btn{
@@ -144,6 +139,11 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
   transform:translateX(160%);transition:transform .38s cubic-bezier(.34,1.56,.64,1);max-width:320px;
 }
 #notif.show{transform:translateX(0);}
+#fflog {
+  background: rgba(0,0,0,0.4); border-radius: 8px; padding: 10px; margin-top: 14px;
+  font-family: 'Space Mono', monospace; font-size: 9px; color: var(--gn);
+  max-height: 100px; overflow-y: auto; display: none; word-break: break-all;
+}
 </style>
 </head>
 <body>
@@ -163,55 +163,55 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 </nav>
 
 <section class="pn">
-  <div class="sh" style="background:linear-gradient(135deg,var(--cy),var(--gn));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Universal Converter</div>
-  <div class="ss">// engine p2r3/convert expansiva · offline no navegador</div>
-
-  <div class="cbar">
-    <button class="chip on" data-cat="image">🖼️ Imagem<small>Canvas Offline</small></button>
-    <button class="chip"    data-cat="audio">🎵 Áudio<small>Limitado Offline</small></button>
-    <button class="chip"    data-cat="video">🎬 Vídeo<small>Limitado Offline</small></button>
-    <button class="chip"    data-cat="doc">📄 Doc<small>Limitado Offline</small></button>
-  </div>
+  <div class="sh" style="background:linear-gradient(135deg,var(--cy),var(--gn));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Universal Converter Pro</div>
   
-  <div class="card" id="warn-media" style="display:none; border-color: var(--or); background: rgba(255,107,53,0.05);">
-    <div class="ct" style="color: var(--or);">⚠️ Limitação do Modo "Arquivo Único"</div>
-    <p style="font-size:12px; color:var(--mu); line-height: 1.5;">
-      Para converter Áudio e Vídeo <strong>de verdade</strong>, o p2r3 original usa o <i>FFmpeg.wasm</i> (um motor enorme). <br>
-      Este arquivo é 100% offline e não exige servidor. Portanto, as conversões de mídia abaixo não alteram o codec interno, apenas forçam a mudança da extensão do arquivo (o que pode corromper mídias complexas). Use com ciência!
-    </p>
+  <div class="cbar" style="margin-bottom: 22px; justify-content: center; background: var(--ca); padding: 10px; border-radius: 12px; border: 1px solid var(--bo);">
+    <button class="chip on" id="mode-conv-local" style="flex:1;">⚙️ Engine Local<small>Canvas/FFmpeg (Offline)</small></button>
+    <button class="chip" id="mode-conv-p2r3" style="flex:1;">🌐 p2r3 Oficial<small>Todas as Opções (Requer Internet)</small></button>
   </div>
 
-  <div class="card">
-    <div class="ct">📦 Formatos Suportados <span class="bdg" id="catbdg">IMAGEM</span></div>
-    <div id="fgrid"></div>
-  </div>
-  
-  <div class="card">
-    <div class="dz" id="dz">
-      <input type="file" id="finp" multiple>
-      <span class="dz-ic">☁️</span>
-      <div class="dz-t">Arraste arquivos aqui</div>
-      <div class="dz-s">ou clique para selecionar · processamento 100% local</div>
+  <div id="conv-local-wrap">
+    <div class="cbar">
+      <button class="chip on" data-cat="image">🖼️ Imagem</button>
+      <button class="chip" data-cat="audio">🎵 Áudio</button>
+      <button class="chip" data-cat="video">🎬 Vídeo</button>
     </div>
-    <div id="flist"></div>
-    <div class="ctrls" id="ctrls" style="display:none;">
-      <span style="color:var(--mu);font-size:12px;font-family:'Space Mono',monospace;white-space:nowrap;">Converter para:</span>
-      <select class="sel" id="outfmt"></select>
-      <div style="display:flex;align-items:center;gap:8px;">
-        <span style="font-size:12px;color:var(--mu);">Qualidade:</span>
-        <input type="range" id="qsl" min="0.1" max="1" step="0.05" value="0.92">
-        <span class="rv" id="qval">92%</span>
-      </div>
-      <button class="btn bp" id="cvtbtn">⚡ Iniciar Conversão</button>
-    </div>
-  </div>
-
-  <div id="osec" style="display:none;">
+    
     <div class="card">
-      <div class="ct">✅ Convertidos com Sucesso</div>
-      <div id="olist"></div>
-      <div style="margin-top:13px;"><button class="btn bg" id="dlallbtn">📦 Baixar Todos</button></div>
+      <div class="ct">📦 Formatos Suportados <span class="bdg" id="catbdg">IMAGEM</span></div>
+      <div id="fgrid"></div>
     </div>
+    
+    <div class="card">
+      <div class="dz" id="dz">
+        <input type="file" id="finp" multiple>
+        <span class="dz-ic">☁️</span>
+        <div class="dz-t">Arrasta os ficheiros aqui</div>
+        <div class="dz-s">processamento 100% no cliente</div>
+      </div>
+      <div id="flist"></div>
+      <div class="ctrls" id="ctrls" style="display:none;">
+        <span style="color:var(--mu);font-size:12px;">Converter para:</span>
+        <select class="sel" id="outfmt"></select>
+        <button class="btn bp" id="cvtbtn">⚡ Converter</button>
+      </div>
+      <div id="fflog"></div>
+    </div>
+
+    <div id="osec" style="display:none;">
+      <div class="card">
+        <div class="ct">✅ Convertidos</div>
+        <div id="olist"></div>
+        <div style="margin-top:13px;"><button class="btn bg" id="dlallbtn">📦 Transferir Todos</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="conv-p2r3-wrap" style="display:none; height: 80vh; min-height: 600px; border-radius: 16px; overflow: hidden; border: 1px solid var(--bo); background: #fff; position: relative;">
+    <div style="position: absolute; top:0; left:0; right:0; background: #FFD93D; color: #0A0A12; padding: 8px; text-align: center; font-size: 12px; font-weight: bold; z-index: 10;">
+      Aviso: A carregar o p2r3.github.io completo. Requer internet.
+    </div>
+    <iframe src="https://p2r3.github.io/convert/" style="width:100%; height:100%; border:none; padding-top: 30px;"></iframe>
   </div>
 
 </section>
@@ -220,38 +220,39 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  
+  // ── CONTROLE DAS ABAS DO CONVERSOR ──
+  var btnConvLocal = document.getElementById('mode-conv-local');
+  var btnConvP2r3 = document.getElementById('mode-conv-p2r3');
+  var wrapConvLocal = document.getElementById('conv-local-wrap');
+  var wrapConvP2r3 = document.getElementById('conv-p2r3-wrap');
 
-  // ── P2R3 ENGINE FORMATS (EXPANDED) ──
+  btnConvLocal.addEventListener('click', function() {
+    btnConvLocal.classList.add('on'); btnConvP2r3.classList.remove('on');
+    wrapConvLocal.style.display = 'block'; wrapConvP2r3.style.display = 'none';
+  });
+  
+  btnConvP2r3.addEventListener('click', function() {
+    btnConvP2r3.classList.add('on'); btnConvLocal.classList.remove('on');
+    wrapConvLocal.style.display = 'none'; wrapConvP2r3.style.display = 'block';
+  });
+
+  // ── LÓGICA DO CONVERSOR LOCAL ──
   var FMTS = {
-    image: [
-      {e:'PNG',l:'Lossless'},{e:'JPG',l:'Comprimido'},{e:'JPEG',l:'Fotografia'},{e:'WebP',l:'Web Moderno'},
-      {e:'GIF',l:'Sem animação'},{e:'BMP',l:'Bitmap Puro'},{e:'AVIF',l:'Ultra HD'},{e:'TIFF',l:'Impressão'}
-    ],
-    audio: [
-      {e:'MP3',l:'Universal'},{e:'WAV',l:'Sem perda'},{e:'OGG',l:'Open'},{e:'FLAC',l:'Lossless'},
-      {e:'AAC',l:'Apple'},{e:'M4A',l:'iTunes'},{e:'WMA',l:'Windows'},{e:'OPUS',l:'Streaming'}
-    ],
-    video: [
-      {e:'MP4',l:'Universal'},{e:'WebM',l:'Web'},{e:'MOV',l:'Apple'},{e:'AVI',l:'Clássico'},
-      {e:'MKV',l:'Container'},{e:'FLV',l:'Flash'},{e:'WMV',l:'Windows'},{e:'MPEG',l:'Antigo'}
-    ],
-    doc: [
-      {e:'PDF',l:'Documento'},{e:'TXT',l:'Texto'},{e:'CSV',l:'Planilha'},{e:'HTML',l:'Web'},
-      {e:'MD',l:'Markdown'},{e:'JSON',l:'Dados'},{e:'XML',l:'Markup'}
-    ]
+    image: [{e:'PNG',l:'Lossless'},{e:'JPG',l:'Comprimido'},{e:'WEBP',l:'Moderno'},{e:'GIF',l:'Animação'},{e:'ICO',l:'Ícone'}],
+    audio: [{e:'MP3',l:'Universal'},{e:'WAV',l:'Sem perda'},{e:'OGG',l:'Open'}],
+    video: [{e:'MP4',l:'Universal'},{e:'WEBM',l:'Web'},{e:'AVI',l:'Clássico'}]
   };
 
-  var catLabels = {image:'IMAGEM (Real Offline)', audio:'ÁUDIO (Apenas Renomeia)', video:'VÍDEO (Apenas Renomeia)', doc:'DOCUMENTO (Apenas Renomeia)'};
   var curCat = 'image', selFiles = [], convBlobs = [];
+  var ffmpegInst = null;
 
   function renderFormats() {
     var fmts = FMTS[curCat];
     var grid = document.getElementById('fgrid');
     var sel  = document.getElementById('outfmt');
-    document.getElementById('catbdg').textContent = catLabels[curCat];
+    document.getElementById('catbdg').textContent = curCat.toUpperCase();
     
-    document.getElementById('warn-media').style.display = (curCat === 'image') ? 'none' : 'block';
-
     grid.innerHTML = fmts.map(function(f) {
       return '<div class="chip" data-fmt="'+f.e.toLowerCase()+'">'+f.e+'<small>'+f.l+'</small></div>';
     }).join('');
@@ -268,135 +269,110 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // ── CATEGORY CHIPS ──
   var catChips = Array.prototype.slice.call(document.querySelectorAll('.cbar .chip[data-cat]'));
   catChips.forEach(function(chip) {
     chip.addEventListener('click', function() {
       catChips.forEach(function(c){ c.classList.remove('on'); });
       chip.classList.add('on');
       curCat = chip.getAttribute('data-cat');
-      selFiles = []; convBlobs = [];
-      renderFormats();
+      selFiles = []; renderFormats();
       document.getElementById('flist').innerHTML = '';
       document.getElementById('ctrls').style.display = 'none';
-      document.getElementById('osec').style.display  = 'none';
+      document.getElementById('osec').style.display = 'none';
     });
   });
 
   renderFormats();
 
-  // ── QUALITY SLIDER ──
-  document.getElementById('qsl').addEventListener('input', function() {
-    document.getElementById('qval').textContent = Math.round(this.value * 100) + '%';
-  });
-
-  // ── FILE DROP & SELECT ──
-  var dz   = document.getElementById('dz');
+  var dz = document.getElementById('dz');
   var finp = document.getElementById('finp');
-  dz.addEventListener('dragover',  function(e){ e.preventDefault(); dz.classList.add('ov'); });
-  dz.addEventListener('dragleave', function(){  dz.classList.remove('ov'); });
+  dz.addEventListener('dragover', function(e){ e.preventDefault(); dz.classList.add('ov'); });
+  dz.addEventListener('dragleave', function(){ dz.classList.remove('ov'); });
   dz.addEventListener('drop', function(e){
     e.preventDefault(); dz.classList.remove('ov');
     addFiles(Array.prototype.slice.call(e.dataTransfer.files));
   });
   finp.addEventListener('change', function(){ addFiles(Array.prototype.slice.call(finp.files)); });
 
-  var ICONS = {png:'🖼️',jpg:'📷',jpeg:'📷',gif:'🎞️',webp:'🖼️',bmp:'🖼️',
-    mp3:'🎵',wav:'🎵',ogg:'🎵',flac:'🎵',aac:'🎵',m4a:'🎵',
-    mp4:'🎬',webm:'🎬',mov:'🎬',avi:'🎬',mkv:'🎬',
-    pdf:'📄',txt:'📝',csv:'📊',html:'🌐',md:'📝',json:'🔧'};
-
-  function fic(n) { return ICONS[n.split('.').pop().toLowerCase()] || '📁'; }
-  function fsz(b) {
-    if (b < 1024) return b + 'B';
-    if (b < 1048576) return (b/1024).toFixed(1) + 'KB';
-    return (b/1048576).toFixed(1) + 'MB';
-  }
-
   function addFiles(files) {
     selFiles = selFiles.concat(files);
-    convBlobs = [];
     var list = document.getElementById('flist');
     list.innerHTML = selFiles.map(function(f, i) {
-      return '<div class="fi"><span>'+fic(f.name)+'</span><span class="fin">'+f.name+'</span><span class="fsz">'+fsz(f.size)+'</span><span class="tag tr" id="fs'+i+'">pronto</span></div>';
+      return '<div class="fi"><span class="fin">'+f.name+'</span><span class="tag tr" id="fs'+i+'">pronto</span></div>';
     }).join('');
     document.getElementById('ctrls').style.display = selFiles.length ? 'flex' : 'none';
-    document.getElementById('osec').style.display  = 'none';
   }
 
-  // ── CONVERT TRIGGER ──
   document.getElementById('cvtbtn').addEventListener('click', async function() {
     if (!selFiles.length) return;
     convBlobs = [];
-    var fmt  = document.getElementById('outfmt').value;
-    var qual = parseFloat(document.getElementById('qsl').value);
-    var ol   = document.getElementById('olist');
+    var fmt = document.getElementById('outfmt').value;
+    var ol = document.getElementById('olist');
     ol.innerHTML = '';
-    document.getElementById('osec').style.display = 'none';
+    
+    var logEl = document.getElementById('fflog');
+    if (curCat !== 'image') {
+      logEl.style.display = 'block';
+    }
 
     for (var i = 0; i < selFiles.length; i++) {
-      var f  = selFiles[i];
+      var f = selFiles[i];
       var se = document.getElementById('fs' + i);
-      if (se) { se.textContent = 'processando…'; se.className = 'tag td'; }
+      if (se) { se.textContent = 'a processar...'; se.className = 'tag td'; }
+      
       try {
-        var blob = await cvt1(f, fmt, qual);
+        var blob;
+        if (curCat === 'image') {
+          blob = await cvtImage(f, fmt);
+        } else {
+          blob = await cvtMediaFFmpeg(f, fmt, logEl);
+        }
+
         var newn = f.name.replace(/\.[^.]+$/, '') + '.' + fmt;
         convBlobs.push({name: newn, blob: blob});
-        if (se) { 
-           if(curCat !== 'image') {
-              se.textContent = 'extensão forçada'; se.className = 'tag t-warn';
-           } else {
-              se.textContent = '✓ convertido'; se.className = 'tag tok'; 
-           }
-        }
+        if (se) { se.textContent = '✓ OK'; se.className = 'tag tok'; }
+        
         var url = URL.createObjectURL(blob);
-        var d   = document.createElement('div'); d.className = 'fi';
-        d.innerHTML = '<span>'+fic(newn)+'</span><span class="fin">'+newn+'</span><span class="fsz">'+fsz(blob.size)+'</span><a href="'+url+'" download="'+newn+'" class="btn bg bs">⬇ Baixar</a>';
+        var d = document.createElement('div'); d.className = 'fi';
+        d.innerHTML = '<span class="fin">'+newn+'</span><a href="'+url+'" download="'+newn+'" class="btn bg bs">⬇ Baixar</a>';
         ol.appendChild(d);
       } catch(err) {
-        if (se) { se.textContent = 'erro'; se.className = 'tag te'; }
+        if (se) { se.textContent = 'Erro'; se.className = 'tag te'; }
       }
     }
     document.getElementById('osec').style.display = convBlobs.length ? 'block' : 'none';
-    notify('✅', convBlobs.length + ' arquivo(s) processado(s)!');
   });
 
-  // ── HTML5 CANVAS / FAKE BLOB LOGIC ──
-  function cvt1(file, fmt, qual) {
-    return new Promise(function(res, rej) {
-      if (file.type.startsWith('image/') || curCat === 'image') {
-        var mimes = {jpg:'image/jpeg',jpeg:'image/jpeg',png:'image/png',webp:'image/webp',gif:'image/gif',bmp:'image/bmp',avif:'image/avif',tiff:'image/tiff'};
-        var mime  = mimes[fmt] || 'image/png';
-        var url   = URL.createObjectURL(file);
-        var img   = new Image();
-        img.onload = function() {
-          var c = document.createElement('canvas');
-          c.width = img.naturalWidth; c.height = img.naturalHeight;
-          var ctx = c.getContext('2d');
-          if (fmt !== 'png' && fmt !== 'gif') { ctx.fillStyle='#fff'; ctx.fillRect(0,0,c.width,c.height); }
-          ctx.drawImage(img, 0, 0);
-          URL.revokeObjectURL(url);
-          c.toBlob(function(b) { b ? res(b) : res(new Blob([file], {type: file.type})); }, mime, qual);
-        };
-        img.onerror = function() { res(new Blob([file], {type: file.type})); }; 
-        img.src = url;
-      } else {
-        var ftype = '';
-        if(curCat === 'audio') ftype = 'audio/'+fmt;
-        if(curCat === 'video') ftype = 'video/'+fmt;
-        if(curCat === 'doc') ftype = 'application/'+fmt;
-        res(new Blob([file], {type: ftype}));
-      }
+  function cvtImage(file, fmt) {
+    return new Promise(function(res) {
+      var url = URL.createObjectURL(file);
+      var img = new Image();
+      img.onload = function() {
+        var c = document.createElement('canvas');
+        c.width = img.naturalWidth; c.height = img.naturalHeight;
+        var ctx = c.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        c.toBlob(function(b) { res(b); }, 'image/'+(fmt==='jpg'?'jpeg':fmt), 0.9);
+      };
+      img.src = url;
     });
   }
 
-  document.getElementById('dlallbtn').addEventListener('click', function() {
-    convBlobs.forEach(function(it) {
-      var a = document.createElement('a');
-      a.href = URL.createObjectURL(it.blob); a.download = it.name; a.click();
-    });
-    notify('📦', 'Downloads iniciados!');
-  });
+  async function cvtMediaFFmpeg(file, fmt, logEl) {
+    const { createFFmpeg, fetchFile } = FFmpeg;
+    if (!ffmpegInst) {
+      logEl.innerHTML += '> A carregar motor FFmpeg...<br>';
+      ffmpegInst = createFFmpeg({ corePath: 'https://unpkg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js' });
+      await ffmpegInst.load();
+    }
+    const inName = 'in_' + file.name;
+    const outName = 'out.' + fmt;
+    ffmpegInst.FS('writeFile', inName, await fetchFile(file));
+    logEl.innerHTML += '> A converter para ' + fmt + '...<br>';
+    await ffmpegInst.run('-i', inName, outName);
+    const data = ffmpegInst.FS('readFile', outName);
+    return new Blob([data.buffer], { type: (curCat==='video'?'video/':'audio/')+fmt });
+  }
 
   var _ntm;
   window.notify = function(icon, msg) {
@@ -407,7 +383,6 @@ document.addEventListener('DOMContentLoaded', function() {
     el.classList.add('show');
     _ntm = setTimeout(function(){ el.classList.remove('show'); }, 3200);
   };
-
 });
 </script>
 </body>
