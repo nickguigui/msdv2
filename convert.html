@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Conversor - TomoConvert Studio</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.6/dist/ffmpeg.min.js"></script>
+
 <style>
 :root{
   --pk:#FF4FA3;--yw:#FFD93D;--cy:#00E5FF;
@@ -60,7 +61,8 @@ header{
   border-color:var(--pu);border-bottom-color:var(--ca);
   position:relative;bottom:-2px;
 }
-.pn{padding:22px; max-width: 1200px; margin: 0 auto;}
+.pn{padding:22px; max-width: 1200px; margin: 0 auto; animation:pfin .22s ease;}
+@keyframes pfin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .sh{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(20px,4vw,32px);line-height:1.1;margin-bottom:4px;}
 .ss{font-family:'Space Mono',monospace;font-size:10px;color:var(--mu);margin-bottom:22px;}
 .card{
@@ -102,7 +104,9 @@ header{
   display:flex;align-items:center;gap:9px;
   background:rgba(155,89,255,.07);border:1px solid rgba(155,89,255,.15);
   border-radius:9px;padding:9px 12px;margin-top:7px;
+  animation:sli .25s ease;
 }
+@keyframes sli{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
 .fin{flex:1;font-size:10px;font-family:'Space Mono',monospace;word-break:break-all;}
 .fsz{font-size:10px;color:var(--mu);font-family:'Space Mono',monospace;white-space:nowrap;}
 .tag{font-size:10px;padding:2px 9px;border-radius:7px;font-weight:700;white-space:nowrap;}
@@ -110,11 +114,15 @@ header{
 .td{background:rgba(0,229,255,.14);color:var(--cy);}
 .tok{background:rgba(57,255,126,.18);color:var(--gn);}
 .te{background:rgba(255,79,163,.15);color:var(--pk);}
+.t-warn{background:rgba(255,107,53,.15);color:var(--or);}
 .ctrls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px;}
 .sel{
   background:var(--dk3);border:1.5px solid var(--bo);color:var(--tx);
   font-family:'Fredoka',sans-serif;font-size:14px;padding:8px 14px;
   border-radius:10px;cursor:pointer;flex:1;min-width:130px;
+  appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%239B59FF' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;
 }
 .sel:focus{outline:none;border-color:var(--pu);}
 .btn{
@@ -130,6 +138,7 @@ input[type=range]{-webkit-appearance:none;appearance:none;height:5px;background:
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--pu);cursor:pointer;}
 .rv{font-family:'Space Mono',monospace;font-size:11px;color:var(--pu);font-weight:700;min-width:34px;text-align:right;}
 .bdg{display:inline-block;background:rgba(155,89,255,.18);color:var(--pu);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:6px;font-weight:700;}
+
 #notif{
   position:fixed;bottom:22px;right:22px;
   background:var(--ca);border:1.5px solid var(--pu);border-radius:14px;
@@ -139,10 +148,33 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
   transform:translateX(160%);transition:transform .38s cubic-bezier(.34,1.56,.64,1);max-width:320px;
 }
 #notif.show{transform:translateX(0);}
+
 #fflog {
   background: rgba(0,0,0,0.4); border-radius: 8px; padding: 10px; margin-top: 14px;
   font-family: 'Space Mono', monospace; font-size: 9px; color: var(--gn);
   max-height: 100px; overflow-y: auto; display: none; word-break: break-all;
+}
+
+/* ========================================= */
+/* INTERFACE DE TELEMÓVEL (APP BOTTOM BAR)   */
+/* ========================================= */
+@media(max-width: 650px) {
+  body { padding-bottom: 85px; }
+  #nav {
+    position: fixed; bottom: 0; top: auto; left: 0; right: 0; width: 100%;
+    padding: 10px 5px; padding-bottom: calc(10px + env(safe-area-inset-bottom)); 
+    border-top: 1px solid var(--bo); border-bottom: none;
+    justify-content: space-around; flex-wrap: nowrap;
+    background: rgba(16, 16, 26, 0.98); z-index: 9999; box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
+  }
+  .nb { flex-direction: column; font-size: 10px; border: none !important; width: 24%; gap: 5px; padding: 8px 2px; white-space: normal; text-align: center; border-radius: 12px; }
+  .nb.on { background: rgba(155, 89, 255, 0.15) !important; transform: translateY(-3px); }
+  header { padding: 12px; justify-content: center; }
+  .hdr { display: none; } 
+  .pn { padding: 18px 14px; }
+  .sh { font-size: 26px; text-align: center; }
+  .ss { text-align: center; }
+  #fgrid { grid-template-columns: repeat(3, 1fr); }
 }
 </style>
 </head>
@@ -153,12 +185,12 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
     <span class="logo">🌴 TomoConvert</span>
     <span class="lpill">STUDIO</span>
   </div>
-  <div class="hdr">conversor · save editor · IA · downloads</div>
+  <div class="hdr">conversor · save editor · IA · pdf</div>
 </header>
 
 <nav id="nav">
   <a href="index.html" class="nb">🏠 Início</a>
-  <a href="convert.html" class="nb">🔄 Conversor</a>
+  <a href="convert.html" class="nb on">🔄 Conversor</a>
   <a href="save.html" class="nb">💾 Save Editor</a>
   <a href="pdf.html" class="nb">📄 PDF Studio</a>
 </nav>
@@ -168,7 +200,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
   
   <div class="cbar" style="margin-bottom: 22px; justify-content: center; background: var(--ca); padding: 10px; border-radius: 12px; border: 1px solid var(--bo);">
     <button class="chip on" id="mode-conv-local" style="flex:1;">⚙️ Engine Local<small>Canvas/FFmpeg (Offline)</small></button>
-    <button class="chip" id="mode-conv-p2r3" style="flex:1;">🌐 p2r3 Oficial<small>Todas as Opções (Requer Internet)</small></button>
+    <button class="chip" id="mode-conv-p2r3" style="flex:1;">🌐 p2r3 Oficial<small>Todas as Opções (Local)</small></button>
   </div>
 
   <div id="conv-local-wrap">
@@ -178,6 +210,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
       <button class="chip" data-cat="video">🎬 Vídeo</button>
     </div>
     
+    <div class="card" id="warn-media" style="display:none; border-color: var(--pu); background: rgba(155,89,255,0.05);">
+      <div class="ct" style="color: var(--pu);">🚀 Motor FFmpeg Ativado</div>
+      <p style="font-size:12px; color:var(--mu); line-height: 1.5;">
+        A utilizar a engine FFmpeg WebAssembly. A primeira conversão irá transferir o núcleo do motor (~25MB) para a tua cache local. Todo o processamento será feito pelo teu computador, garantindo total privacidade.
+      </p>
+    </div>
+
     <div class="card">
       <div class="ct">📦 Formatos Suportados <span class="bdg" id="catbdg">IMAGEM</span></div>
       <div id="fgrid"></div>
@@ -192,8 +231,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
       </div>
       <div id="flist"></div>
       <div class="ctrls" id="ctrls" style="display:none;">
-        <span style="color:var(--mu);font-size:12px;">Converter para:</span>
+        <span style="color:var(--mu);font-size:12px;font-family:'Space Mono',monospace;white-space:nowrap;">Converter para:</span>
         <select class="sel" id="outfmt"></select>
+        <div style="display:flex;align-items:center;gap:8px;" id="qwrap">
+          <span style="font-size:12px;color:var(--mu);">Qualidade:</span>
+          <input type="range" id="qsl" min="0.1" max="1" step="0.05" value="0.92">
+          <span class="rv" id="qval">92%</span>
+        </div>
         <button class="btn bp" id="cvtbtn">⚡ Converter</button>
       </div>
       <div id="fflog"></div>
@@ -209,10 +253,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
   </div>
 
   <div id="conv-p2r3-wrap" style="display:none; height: 80vh; min-height: 600px; border-radius: 16px; overflow: hidden; border: 1px solid var(--bo); background: #fff; position: relative;">
-    <div style="position: absolute; top:0; left:0; right:0; background: #FFD93D; color: #0A0A12; padding: 8px; text-align: center; font-size: 12px; font-weight: bold; z-index: 10;">
-      Aviso: A carregar o p2r3.github.io completo. Requer internet.
-    </div>
-    <iframe src="https://p2r3.github.io/convert/" style="width:100%; height:100%; border:none; padding-top: 30px;"></iframe>
+    <iframe src="./p2r3/index.html" style="width:100%; height:100%; border:none;"></iframe>
   </div>
 
 </section>
@@ -222,7 +263,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;heigh
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   
-  // ── CONTROLE DAS ABAS DO CONVERSOR ──
+  // ── CONTROLO DAS ABAS DO CONVERSOR ──
   var btnConvLocal = document.getElementById('mode-conv-local');
   var btnConvP2r3 = document.getElementById('mode-conv-p2r3');
   var wrapConvLocal = document.getElementById('conv-local-wrap');
@@ -254,6 +295,10 @@ document.addEventListener('DOMContentLoaded', function() {
     var sel  = document.getElementById('outfmt');
     document.getElementById('catbdg').textContent = curCat.toUpperCase();
     
+    var isMedia = (curCat === 'audio' || curCat === 'video');
+    document.getElementById('warn-media').style.display = isMedia ? 'block' : 'none';
+    document.getElementById('qwrap').style.display = (curCat === 'image') ? 'flex' : 'none';
+
     grid.innerHTML = fmts.map(function(f) {
       return '<div class="chip" data-fmt="'+f.e.toLowerCase()+'">'+f.e+'<small>'+f.l+'</small></div>';
     }).join('');
@@ -280,10 +325,15 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('flist').innerHTML = '';
       document.getElementById('ctrls').style.display = 'none';
       document.getElementById('osec').style.display = 'none';
+      document.getElementById('fflog').style.display = 'none';
     });
   });
 
   renderFormats();
+
+  document.getElementById('qsl').addEventListener('input', function() {
+    document.getElementById('qval').textContent = Math.round(this.value * 100) + '%';
+  });
 
   var dz = document.getElementById('dz');
   var finp = document.getElementById('finp');
@@ -294,12 +344,24 @@ document.addEventListener('DOMContentLoaded', function() {
     addFiles(Array.prototype.slice.call(e.dataTransfer.files));
   });
   finp.addEventListener('change', function(){ addFiles(Array.prototype.slice.call(finp.files)); });
+  
+  function fic(n) { 
+    var ext = n.split('.').pop().toLowerCase();
+    var ic = {png:'🖼️',jpg:'📷',mp4:'🎬',mp3:'🎵',wav:'🎵'};
+    return ic[ext] || '📁'; 
+  }
+
+  function fsz(b) {
+    if (b < 1024) return b + 'B';
+    if (b < 1048576) return (b/1024).toFixed(1) + 'KB';
+    return (b/1048576).toFixed(1) + 'MB';
+  }
 
   function addFiles(files) {
     selFiles = selFiles.concat(files);
     var list = document.getElementById('flist');
     list.innerHTML = selFiles.map(function(f, i) {
-      return '<div class="fi"><span class="fin">'+f.name+'</span><span class="tag tr" id="fs'+i+'">pronto</span></div>';
+      return '<div class="fi"><span>'+fic(f.name)+'</span><span class="fin">'+f.name+'</span><span class="fsz">'+fsz(f.size)+'</span><span class="tag tr" id="fs'+i+'">pronto</span></div>';
     }).join('');
     document.getElementById('ctrls').style.display = selFiles.length ? 'flex' : 'none';
   }
@@ -308,12 +370,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!selFiles.length) return;
     convBlobs = [];
     var fmt = document.getElementById('outfmt').value;
+    var qual = parseFloat(document.getElementById('qsl').value);
     var ol = document.getElementById('olist');
     ol.innerHTML = '';
     
+    var isMedia = (curCat === 'audio' || curCat === 'video');
     var logEl = document.getElementById('fflog');
-    if (curCat !== 'image') {
+    if (isMedia) {
       logEl.style.display = 'block';
+      logEl.innerHTML = '> A preparar ambiente FFmpeg...<br>';
     }
 
     for (var i = 0; i < selFiles.length; i++) {
@@ -324,56 +389,81 @@ document.addEventListener('DOMContentLoaded', function() {
       try {
         var blob;
         if (curCat === 'image') {
-          blob = await cvtImage(f, fmt);
+          blob = await cvtImage(f, fmt, qual);
         } else {
-          blob = await cvtMediaFFmpeg(f, fmt, logEl);
+          blob = await cvtMediaFFmpeg(f, fmt, logEl, se);
         }
 
         var newn = f.name.replace(/\.[^.]+$/, '') + '.' + fmt;
         convBlobs.push({name: newn, blob: blob});
-        if (se) { se.textContent = '✓ OK'; se.className = 'tag tok'; }
+        if (se) { se.textContent = '✓ concluído'; se.className = 'tag tok'; }
         
         var url = URL.createObjectURL(blob);
         var d = document.createElement('div'); d.className = 'fi';
-        d.innerHTML = '<span class="fin">'+newn+'</span><a href="'+url+'" download="'+newn+'" class="btn bg bs">⬇ Baixar</a>';
+        d.innerHTML = '<span>'+fic(newn)+'</span><span class="fin">'+newn+'</span><span class="fsz">'+fsz(blob.size)+'</span><a href="'+url+'" download="'+newn+'" class="btn bg bs">⬇ Transferir</a>';
         ol.appendChild(d);
       } catch(err) {
         if (se) { se.textContent = 'Erro'; se.className = 'tag te'; }
+        if (isMedia) logEl.innerHTML += '<br><span style="color:var(--pk)">> Erro: ' + err.message + '</span>';
       }
     }
     document.getElementById('osec').style.display = convBlobs.length ? 'block' : 'none';
+    notify('✅', convBlobs.length + ' ficheiro(s) processado(s)!');
   });
 
-  function cvtImage(file, fmt) {
-    return new Promise(function(res) {
+  function cvtImage(file, fmt, qual) {
+    return new Promise(function(res, rej) {
+      var mime  = 'image/' + (fmt === 'jpg' ? 'jpeg' : fmt);
       var url = URL.createObjectURL(file);
       var img = new Image();
       img.onload = function() {
         var c = document.createElement('canvas');
         c.width = img.naturalWidth; c.height = img.naturalHeight;
         var ctx = c.getContext('2d');
+        if (fmt !== 'png' && fmt !== 'gif') { ctx.fillStyle='#fff'; ctx.fillRect(0,0,c.width,c.height); }
         ctx.drawImage(img, 0, 0);
-        c.toBlob(function(b) { res(b); }, 'image/'+(fmt==='jpg'?'jpeg':fmt), 0.9);
+        URL.revokeObjectURL(url);
+        c.toBlob(function(b) { b ? res(b) : res(new Blob([file], {type: file.type})); }, mime, qual);
       };
+      img.onerror = function() { res(new Blob([file], {type: file.type})); };
       img.src = url;
     });
   }
 
-  async function cvtMediaFFmpeg(file, fmt, logEl) {
+  async function cvtMediaFFmpeg(file, fmt, logEl, statusBadge) {
     const { createFFmpeg, fetchFile } = FFmpeg;
     if (!ffmpegInst) {
-      logEl.innerHTML += '> A carregar motor FFmpeg...<br>';
-      ffmpegInst = createFFmpeg({ corePath: 'https://unpkg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js' });
+      statusBadge.textContent = 'A carregar Core.js...';
+      logEl.innerHTML += '> A descarregar @ffmpeg/core...<br>';
+      ffmpegInst = createFFmpeg({ 
+        log: true,
+        corePath: 'https://unpkg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js'
+      });
+      ffmpegInst.setLogger(({ type, message }) => {
+        logEl.innerHTML += '> ' + message + '<br>';
+        logEl.scrollTop = logEl.scrollHeight;
+      });
       await ffmpegInst.load();
     }
-    const inName = 'in_' + file.name;
+    statusBadge.textContent = 'A processar...';
+    const inName = 'in_' + file.name.replace(/\s+/g, '_');
     const outName = 'out.' + fmt;
     ffmpegInst.FS('writeFile', inName, await fetchFile(file));
-    logEl.innerHTML += '> A converter para ' + fmt + '...<br>';
+    logEl.innerHTML += '> A converter...<br>';
     await ffmpegInst.run('-i', inName, outName);
     const data = ffmpegInst.FS('readFile', outName);
+    ffmpegInst.FS('unlink', inName);
+    ffmpegInst.FS('unlink', outName);
     return new Blob([data.buffer], { type: (curCat==='video'?'video/':'audio/')+fmt });
   }
+
+  document.getElementById('dlallbtn').addEventListener('click', function() {
+    convBlobs.forEach(function(it) {
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(it.blob); a.download = it.name; a.click();
+    });
+    notify('📦', 'Transferências iniciadas!');
+  });
 
   var _ntm;
   window.notify = function(icon, msg) {

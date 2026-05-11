@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,7 +59,8 @@ header{
   border-color:var(--pu);border-bottom-color:var(--ca);
   position:relative;bottom:-2px;
 }
-.pn{padding:22px; max-width: 1200px; margin: 0 auto;}
+.pn{padding:22px; max-width: 1200px; margin: 0 auto; animation:pfin .22s ease;}
+@keyframes pfin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .sh{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(20px,4vw,32px);line-height:1.1;margin-bottom:4px;}
 .ss{font-family:'Space Mono',monospace;font-size:10px;color:var(--mu);margin-bottom:22px;}
 .card{
@@ -102,6 +103,7 @@ header{
 .bo2{background:linear-gradient(135deg,var(--or),var(--yw));color:var(--dk);}
 .bs{font-size:12px;padding:5px 12px;border-radius:8px;}
 .bdg{display:inline-block;background:rgba(155,89,255,.18);color:var(--pu);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:6px;font-weight:700;}
+
 #hexview{
   font-family:'Space Mono',monospace;font-size:12px;line-height:2;
   color:var(--mu);word-break:break-all;max-height:300px;overflow-y:auto;
@@ -111,15 +113,41 @@ header{
 .hex-byte:hover { background: rgba(255,255,255,0.1); color: #fff; }
 .hex-byte:focus { outline: none; background: var(--pu); color: #fff; border-radius: 3px; }
 .hex-ascii { color: #888; margin-left: 10px; border-left: 1px solid #333; padding-left: 10px; }
+
 #notif{
   position:fixed;bottom:22px;right:22px;
   background:var(--ca);border:1.5px solid var(--pu);border-radius:14px;
   padding:12px 18px;font-size:13px;font-weight:600;
   display:flex;align-items:center;gap:9px;
   box-shadow:0 14px 44px rgba(0,0,0,.4);z-index:9999;
-  transform:translateX(160%);transition:transform .38s;
+  transform:translateX(160%);transition:transform .38s cubic-bezier(.34,1.56,.64,1);max-width:320px;
 }
 #notif.show{transform:translateX(0);}
+
+::-webkit-scrollbar{width:7px;}::-webkit-scrollbar-track{background:var(--dk);}
+::-webkit-scrollbar-thumb{background:rgba(155,89,255,.28);border-radius:4px;}
+::-webkit-scrollbar-thumb:hover{background:var(--pu);}
+
+/* ========================================= */
+/* INTERFACE DE TELEMÓVEL (APP BOTTOM BAR)   */
+/* ========================================= */
+@media(max-width: 650px) {
+  body { padding-bottom: 85px; }
+  #nav {
+    position: fixed; bottom: 0; top: auto; left: 0; right: 0; width: 100%;
+    padding: 10px 5px; padding-bottom: calc(10px + env(safe-area-inset-bottom)); 
+    border-top: 1px solid var(--bo); border-bottom: none;
+    justify-content: space-around; flex-wrap: nowrap;
+    background: rgba(16, 16, 26, 0.98); z-index: 9999; box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
+  }
+  .nb { flex-direction: column; font-size: 10px; border: none !important; width: 24%; gap: 5px; padding: 8px 2px; white-space: normal; text-align: center; border-radius: 12px; }
+  .nb.on { background: rgba(155, 89, 255, 0.15) !important; transform: translateY(-3px); }
+  header { padding: 12px; justify-content: center; }
+  .hdr { display: none; } 
+  .pn { padding: 18px 14px; }
+  .sh { font-size: 26px; text-align: center; }
+  .ss { text-align: center; }
+}
 </style>
 </head>
 <body>
@@ -129,33 +157,33 @@ header{
     <span class="logo">🌴 TomoConvert</span>
     <span class="lpill">STUDIO</span>
   </div>
-  <div class="hdr">conversor · save editor · IA · downloads</div>
+  <div class="hdr">conversor · save editor · IA · pdf</div>
 </header>
 
 <nav id="nav">
   <a href="index.html" class="nb">🏠 Início</a>
   <a href="convert.html" class="nb">🔄 Conversor</a>
-  <a href="save.html" class="nb">💾 Save Editor</a>
+  <a href="save.html" class="nb on">💾 Save Editor</a>
   <a href="pdf.html" class="nb">📄 PDF Studio</a>
 </nav>
 
 <section class="pn">
-  <div class="sh" style="background:linear-gradient(135deg,var(--pk),var(--yw));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Save Editor</div>
+  <div class="sh" style="background:linear-gradient(135deg,var(--pk),var(--yw));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Save Editor Pro</div>
   <div class="ss">// Edição profissional offline e integração PC</div>
 
   <div class="cbar" style="margin-bottom: 22px; justify-content: center; background: var(--ca); padding: 10px; border-radius: 12px; border: 1px solid var(--bo);">
     <button class="chip on" id="mode-local" style="flex:1;">🤖 Editor Hex<small>Local e Interativo (Offline)</small></button>
-    <button class="chip" id="mode-ltd" style="flex:1;">🏝️ LTD Editor<small>Avançado (Requer Internet)</small></button>
+    <button class="chip" id="mode-ltd" style="flex:1;">🏝️ LTD Editor<small>Avançado (Local Fork)</small></button>
   </div>
 
   <div id="save-local-wrap">
     
     <div class="card" style="border-color: var(--cy); background: rgba(0, 229, 255, 0.03);">
       <div style="font-family:'Syne'; font-weight:700; font-size:16px; margin-bottom:8px; display:flex; align-items:center; gap:8px;">
-        ☁️ Buscar Saves do PC (Nuvem)
+        ☁️ Encontrar Saves do PC
       </div>
       <p style="font-size:12px; color:var(--mu); margin-bottom:14px; line-height:1.5;">
-        O navegador não possui permissões de sistema para hackear diretamente os clientes de jogos. Clica abaixo para revelar o caminho exato no explorador de ficheiros do Windows e arrasta o save para o editor!
+        Clica abaixo para revelar o caminho exato no explorador de ficheiros do Windows e arrasta o ficheiro save para o editor!
       </p>
       <div style="display:flex; gap:10px; flex-wrap:wrap;">
         <button class="btn" style="background:#171a21; color:#fff;" onclick="showPath('steam')">⚙️ Steam</button>
@@ -173,7 +201,7 @@ header{
       <div class="dz" id="sdz">
         <input type="file" id="sinp" accept=".sav,.bin,.dat,.save,.srm,.state,.bak">
         <span class="dz-ic">💾</span>
-        <div class="dz-t">Arrasta o teu Save File</div>
+        <div class="dz-t">Arrasta o teu ficheiro Save</div>
         <div class="dz-s">Suporta qualquer formato extraído do teu PC ou emulador</div>
       </div>
     </div>
@@ -191,7 +219,7 @@ header{
           <div id="gfi"  style="font-family:'Space Mono',monospace;font-size:10px;color:var(--mu);"></div>
         </div>
         <div style="margin-left:auto;display:flex;gap:7px;flex-wrap:wrap;">
-          <button class="btn bc bs" id="expbtn">💾 Exportar Save Editado</button>
+          <button class="btn bc bs" id="expbtn">💾 Exportar Editado</button>
           <button class="btn bo2 bs" id="rstbtn">🔄 Fechar</button>
         </div>
       </div>
@@ -204,8 +232,9 @@ header{
   </div>
 
   <div id="save-ltd-wrap" style="display:none; height: 75vh; min-height: 600px; border-radius: 16px; overflow: hidden; border: 1px solid var(--bo); background: #fff; position: relative;">
-    <iframe src="https://ltd-save-editor.pages.dev/" style="width:100%; height:100%; border:none;"></iframe>
+    <iframe src="./ltd-editor/index.html" style="width:100%; height:100%; border:none;"></iframe>
   </div>
+
 </section>
 
 <div id="notif"><span id="ni">✅</span><span id="nm">ok</span></div>
@@ -213,7 +242,7 @@ header{
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   
-  // ── CONTROLE DAS ABAS ──
+  // ── CONTROLO DAS ABAS DO EDITOR ──
   var btnLocal = document.getElementById('mode-local');
   var btnLtd = document.getElementById('mode-ltd');
   var wrapLocal = document.getElementById('save-local-wrap');
@@ -236,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
     box.style.alignItems = 'center';
     
     if(platform === 'steam') {
-      txt.textContent = 'C:\\Program Files (x86)\\Steam\\userdata\\[SEU_ID_STEAM]';
+      txt.textContent = 'C:\\Program Files (x86)\\Steam\\userdata\\[TEU_ID_STEAM]';
     } else if(platform === 'xbox') {
       txt.textContent = '%LOCALAPPDATA%\\Packages\\';
     } else if(platform === 'epic') {
@@ -250,7 +279,7 @@ document.addEventListener('DOMContentLoaded', function() {
     notify('📋', 'Caminho copiado! Cola na barra do Windows Explorer.');
   };
 
-  // ── SISTEMA DE HEX EDITOR ──
+  // ── SISTEMA DE HEX EDITOR LOCAL ──
   var curSave = null;
   var sdz = document.getElementById('sdz');
   var sinp = document.getElementById('sinp');
@@ -275,14 +304,14 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('gfi').textContent = bytes.length + ' bytes em memória local';
       
       renderHex(bytes);
-      notify('🤖', 'Arquivo aberto. Edição liberada!');
+      notify('🤖', 'Ficheiro aberto. Edição libertada!');
     };
     reader.readAsArrayBuffer(file);
   }
 
   function renderHex(bytes) {
     var hv = document.getElementById('hexview');
-    var limit = Math.min(bytes.length, 2048); 
+    var limit = Math.min(bytes.length, 2048); // Limite visual para não travar o navegador
     var html = '';
     
     for (var i = 0; i < limit; i += 16) {
@@ -297,8 +326,14 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       html += '<div><span style="color:var(--pu); user-select:none;">' + i.toString(16).padStart(6,'0').toUpperCase() + ' |</span> ' + lineHex + '<span class="hex-ascii">' + lineAscii.replace(/</g, "&lt;").replace(/>/g, "&gt;") + '</span></div>';
     }
+    
+    if(bytes.length > limit) {
+      html += '<div style="margin-top:10px; color:var(--cy);">... Mais ' + (bytes.length - limit) + ' bytes ocultos visualmente (mas serão exportados).</div>';
+    }
+    
     hv.innerHTML = html;
 
+    // Adiciona interatividade aos bytes
     var hexBytes = hv.querySelectorAll('.hex-byte');
     hexBytes.forEach(function(el) {
       el.addEventListener('keypress', function(e) {
@@ -327,7 +362,7 @@ document.addEventListener('DOMContentLoaded', function() {
     a.href = URL.createObjectURL(blob);
     a.download = 'MOD_' + curSave.file.name;
     a.click();
-    notify('💾', 'Save exportado para reescrever no PC!');
+    notify('💾', 'Save exportado com sucesso!');
   });
 
   document.getElementById('rstbtn').addEventListener('click', function() {
@@ -336,6 +371,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('sed').style.display  = 'none';
   });
 
+  // ── SISTEMA DE NOTIFICAÇÕES ──
   var _ntm;
   window.notify = function(icon, msg) {
     clearTimeout(_ntm);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,8 +59,11 @@ header{
   border-color:var(--pu);border-bottom-color:var(--ca);
   position:relative;bottom:-2px;
 }
-/* CORREÇÃO AQUI: Garante que o painel seja sempre visível no index */
-.pn-index{padding:22px; max-width: 1200px; margin: 0 auto; display: block; opacity: 1;}
+
+/* Área principal sempre visível */
+.pn-index{
+  padding:22px; max-width: 1200px; margin: 0 auto; display: block; opacity: 1;
+}
 
 .sh{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(20px,4vw,32px);line-height:1.1;margin-bottom:4px;}
 .ss{font-family:'Space Mono',monospace;font-size:10px;color:var(--mu);margin-bottom:22px;}
@@ -73,7 +76,6 @@ header{
   content:'';position:absolute;top:0;left:0;right:0;height:2px;
   background:linear-gradient(90deg,var(--pu),var(--pk),var(--cy));
 }
-.ct{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
 
 /* Grelhas e Cartões */
 .lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px; margin-bottom: 30px;}
@@ -90,6 +92,8 @@ header{
 .lk:nth-child(4)::before{background:linear-gradient(90deg,var(--gn),var(--yw));}
 .lk:nth-child(5)::before{background:linear-gradient(90deg,var(--yw),var(--or));}
 .lk:nth-child(6)::before{background:linear-gradient(90deg,var(--or),var(--pk));}
+.lk:nth-child(7)::before{background:linear-gradient(90deg,var(--pk),var(--pu));}
+.lk:nth-child(8)::before{background:linear-gradient(90deg,var(--pu),var(--cy));}
 
 .lem{font-size:32px;}.lnm{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;}
 .lds{font-size:12px;color:var(--mu);line-height:1.55;}
@@ -130,15 +134,57 @@ header{
 }
 #notif.show{transform:translateX(0);}
 
-/* Scrollbar */
 ::-webkit-scrollbar{width:7px;}::-webkit-scrollbar-track{background:var(--dk);}
 ::-webkit-scrollbar-thumb{background:rgba(155,89,255,.28);border-radius:4px;}
 ::-webkit-scrollbar-thumb:hover{background:var(--pu);}
 
-/* Mobile */
-@media(max-width:580px){
-  header{padding:12px 14px 10px;}#nav{padding:8px 14px 0;}.nb{padding:6px 10px;font-size:12px;}
-  .pn-index{padding:14px;}.lgrid,.dlgrid{grid-template-columns:1fr;}
+/* ========================================= */
+/* INTERFACE DE TELEMÓVEL (APP BOTTOM BAR)   */
+/* ========================================= */
+@media(max-width: 650px) {
+  body {
+    padding-bottom: 85px; 
+  }
+  #nav {
+    position: fixed;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 10px 5px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom)); 
+    border-top: 1px solid var(--bo);
+    border-bottom: none;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    background: rgba(16, 16, 26, 0.98);
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.5);
+    z-index: 9999;
+  }
+  .nb {
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    font-size: 10px;
+    padding: 8px 2px;
+    border: none !important;
+    border-radius: 12px;
+    width: 24%;
+    white-space: normal;
+    text-align: center;
+  }
+  .nb.on {
+    background: rgba(155, 89, 255, 0.15) !important;
+    color: var(--tx);
+    transform: translateY(-3px);
+  }
+  header { padding: 12px; justify-content: center; }
+  .hdr { display: none; } 
+  .pn-index { padding: 18px 14px; }
+  .sh { font-size: 26px; text-align: center; }
+  .ss { text-align: center; }
+  .lgrid,.dlgrid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -149,11 +195,11 @@ header{
     <span class="logo">🌴 TomoConvert</span>
     <span class="lpill">STUDIO</span>
   </div>
-  <div class="hdr">conversor · save editor · IA · downloads</div>
+  <div class="hdr">conversor · save editor · IA · pdf</div>
 </header>
 
 <nav id="nav">
-  <a href="index.html" class="nb">🏠 Início</a>
+  <a href="index.html" class="nb on">🏠 Início</a>
   <a href="convert.html" class="nb">🔄 Conversor</a>
   <a href="save.html" class="nb">💾 Save Editor</a>
   <a href="pdf.html" class="nb">📄 PDF Studio</a>
@@ -161,24 +207,29 @@ header{
 
 <section class="pn-index">
   <div class="sh" style="background:linear-gradient(135deg,var(--pu),var(--cy));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Bem-vindo ao Studio</div>
-  <div class="ss">// O seu centro criativo e de edição</div>
+  <div class="ss">// O teu centro criativo e de edição</div>
 
-  <div class="lgrid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-bottom: 40px; margin-top: 10px;">
-    <a href="convert.html" class="lk" style="padding: 30px; text-align: center; border-color: var(--cy); background: rgba(0, 229, 255, 0.03);">
-      <div style="font-size: 54px; margin-bottom: 14px;">🔄</div>
-      <div class="lnm" style="font-size: 22px; color: var(--cy);">Conversor Universal</div>
-      <div class="lds" style="margin-top: 8px;">Processamento local de Imagens, Áudio e Vídeo com suporte ao motor FFmpeg.wasm e integração p2r3.</div>
+  <div class="lgrid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-bottom: 40px; margin-top: 10px;">
+    <a href="convert.html" class="lk" style="padding: 24px; text-align: center; border-color: var(--cy); background: rgba(0, 229, 255, 0.03);">
+      <div style="font-size: 48px; margin-bottom: 12px;">🔄</div>
+      <div class="lnm" style="font-size: 20px; color: var(--cy);">Conversor Universal</div>
+      <div class="lds" style="margin-top: 8px;">Processamento de Imagens, Áudio e Vídeo (FFmpeg.wasm / p2r3).</div>
     </a>
-    <a href="save.html" class="lk" style="padding: 30px; text-align: center; border-color: var(--pk); background: rgba(255, 79, 163, 0.03);">
-      <div style="font-size: 54px; margin-bottom: 14px;">💾</div>
-      <div class="lnm" style="font-size: 22px; color: var(--pk);">Save Editor Pro</div>
-      <div class="lds" style="margin-top: 8px;">Edição Hexadecimal interativa offline, integração de saves da Steam/Xbox/Epic e modo LTD na nuvem.</div>
+    <a href="save.html" class="lk" style="padding: 24px; text-align: center; border-color: var(--pk); background: rgba(255, 79, 163, 0.03);">
+      <div style="font-size: 48px; margin-bottom: 12px;">💾</div>
+      <div class="lnm" style="font-size: 20px; color: var(--pk);">Save Editor Pro</div>
+      <div class="lds" style="margin-top: 8px;">Edição Hexadecimal offline, saves do PC e modo LTD na nuvem.</div>
+    </a>
+    <a href="pdf.html" class="lk" style="padding: 24px; text-align: center; border-color: var(--pu); background: rgba(155, 89, 255, 0.03);">
+      <div style="font-size: 48px; margin-bottom: 12px;">📄</div>
+      <div class="lnm" style="font-size: 20px; color: var(--pu);">PDF & Design Studio</div>
+      <div class="lds" style="margin-top: 8px;">Edição de PDFs e ficheiros PSD avançada com integração Photopea.</div>
     </a>
   </div>
 
   <div class="div-line"></div>
 
-  <h3 style="margin-bottom: 16px; font-family:'Syne',sans-serif; font-size: 20px;">🔗 Links Úteis (Tomodachi Life)</h3>
+  <h3 style="margin-bottom: 16px; font-family:'Syne',sans-serif; font-size: 20px;">🔗 Links Úteis (Comunidade & Emulação)</h3>
   <div class="lgrid">
     <a class="lk" href="https://gamebanana.com/games/23911" target="_blank">
       <div class="lem">🍌</div><div class="lnm">GameBanana TLLD</div>
@@ -194,45 +245,53 @@ header{
     </a>
     <a class="lk" href="https://tomoplanner.com" target="_blank">
       <div class="lem">📋</div><div class="lnm">TomoPlanner</div>
-      <div class="lds">Planejador para a sua ilha. Organize Miis, eventos e atividades.</div>
+      <div class="lds">Planeador para a tua ilha. Organiza Miis, eventos e atividades.</div>
     </a>
     <a class="lk" href="https://tomodachishare.com" target="_blank">
       <div class="lem">🤝</div><div class="lnm">TomodachiShare</div>
-      <div class="lds">Compartilhe Miis, saves e conteúdo com outros jogadores globalmente.</div>
+      <div class="lds">Partilha Miis, saves e conteúdo com outros jogadores globalmente.</div>
     </a>
     <a class="lk" href="https://mii.nxw.pw" target="_blank">
       <div class="lem">👾</div><div class="lnm">Mii Tools</div>
       <div class="lds">Ferramentas para criação, edição e conversão de Miis para Switch e 3DS.</div>
     </a>
+    <a class="lk" href="https://prodkeys.net" target="_blank">
+      <div class="lem">🔑</div><div class="lnm">ProdKeys</div>
+      <div class="lds">Title Keys e Firmwares atualizados essenciais para a emulação do Nintendo Switch.</div>
+    </a>
+    <a class="lk" href="https://nsw2u.click" target="_blank">
+      <div class="lem">🎮</div><div class="lnm">NSW2U</div>
+      <div class="lds">Repositório completo com ROMs, atualizações e DLCs (NSP/XCI) para os teus jogos.</div>
+    </a>
   </div>
 
   <div class="div-line"></div>
 
-  <h3 style="margin-bottom: 16px; font-family:'Syne',sans-serif; font-size: 20px;">⬇ Transfira a Ferramenta (v1.4.0)</h3>
+  <h3 style="margin-bottom: 16px; font-family:'Syne',sans-serif; font-size: 20px;">⬇ Transfere a Ferramenta (v1.5.0)</h3>
   <div class="dlgrid">
     <div class="dlcard win">
       <div class="dlos">🪟</div>
-      <div><div class="dlname">Windows App</div><div class="dlver">v1.4.0 · Integração p2r3/Steam</div></div>
-      <div class="dldesc">Baixe os 3 arquivos HTML em um arquivo ZIP para acessar o conversor e o Localizador de Saves de PC offline.</div>
-      <button class="btn bp" id="winbtn">⬇ Baixar .ZIP</button>
+      <div><div class="dlname">Windows App</div><div class="dlver">v1.5.0 · Integração p2r3/Steam</div></div>
+      <div class="dldesc">Descarrega os ficheiros num pacote ZIP para acederes ao conversor e ao Localizador de Saves offline.</div>
+      <button class="btn bp" id="winbtn">⬇ Transferir .ZIP</button>
     </div>
     <div class="dlcard apk">
       <div class="dlos">🤖</div>
-      <div><div class="dlname">Android App</div><div class="dlver">v1.4.0 · Android 8.0+</div></div>
-      <div class="dldesc">Adicione à tela inicial e converta mídia de forma rápida usando o novo hub integrado.</div>
+      <div><div class="dlname">Android App</div><div class="dlver">v1.5.0 · Android 8.0+</div></div>
+      <div class="dldesc">Adiciona ao ecrã principal e converte multimédia usando a nova barra de navegação inferior.</div>
       <button class="btn bp" id="apkbtn">📲 Instruções Android</button>
     </div>
     <div class="dlcard pwa">
       <div class="dlos">🍎</div>
       <div><div class="dlname">iPhone / iPad</div><div class="dlver">PWA · iOS 16.4+</div></div>
-      <div class="dldesc">Instale o web app nativo no Safari para usar a edição Hexadecimal onde quer que esteja.</div>
+      <div class="dldesc">Instala a aplicação web nativa no Safari para usares o Photopea e a edição Hexadecimal onde quer que estejas.</div>
       <button class="btn bp" id="iosbtn">📲 Instruções iOS</button>
     </div>
     <div class="dlcard mac">
       <div class="dlos">🍏</div>
-      <div><div class="dlname">macOS App</div><div class="dlver">v1.4.0 · macOS 12+</div></div>
-      <div class="dldesc">Baixe o pacote ZIP e ative o poderoso motor FFmpeg WebAssembly com segurança.</div>
-      <button class="btn bp" id="macbtn">⬇ Baixar para macOS</button>
+      <div><div class="dlname">macOS App</div><div class="dlver">v1.5.0 · macOS 12+</div></div>
+      <div class="dldesc">Transfere o pacote ZIP e ativa o poderoso motor FFmpeg WebAssembly em total segurança.</div>
+      <button class="btn bp" id="macbtn">⬇ Transferir para macOS</button>
     </div>
   </div>
 
@@ -241,14 +300,15 @@ header{
   <div class="card" style="max-width:700px; margin: 0 auto; text-align: center;">
     <div style="font-size:50px;margin-bottom:12px;">🌴</div>
     <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px;margin-bottom:4px;">TomoConvert Studio</div>
-    <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--mu);margin-bottom:18px;">v1.4.0 · browser-native · multi-file</div>
+    <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--mu);margin-bottom:18px;">v1.5.0 · browser-native · multi-file</div>
     <p style="line-height:1.8;font-size:13px;color:var(--mu);margin-bottom:18px;">
-      Esta aplicação utiliza uma arquitetura de múltiplos arquivos para máxima performance. O <strong>Universal Converter</strong> processa mídia nativamente. O <strong>Save Editor</strong> conta com edição Hexadecimal local e integração na nuvem.
+      Esta aplicação utiliza uma arquitetura de múltiplos ficheiros para máxima performance. O <strong>Universal Converter</strong> processa multimédia nativamente. O <strong>Save Editor</strong> conta com edição Hexadecimal local e integração na nuvem.
     </p>
     <div style="font-size:10px;color:var(--mu);font-family:'Space Mono',monospace;line-height:1.8; border-top: 1px solid var(--bo); padding-top: 14px;">
       Tomodachi Life © Nintendo · Projeto de fã não oficial<br>
       Motor de Conversão: FFmpeg.wasm & fork p2r3/convert<br>
-      LTD Save Editor Avançado: ltd-save-editor.pages.dev
+      LTD Save Editor Avançado: ltd-save-editor.pages.dev<br>
+      PDF & Design Studio: Photopea
     </div>
   </div>
 
@@ -273,15 +333,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
   async function downloadZip(osName) {
     if (typeof JSZip === 'undefined') {
-      notify('⚠️', 'A biblioteca JSZip não carregou. É necessário internet para empacotar o download pela primeira vez!');
+      notify('⚠️', 'A biblioteca JSZip não carregou. É necessário ter internet para empacotar a transferência pela primeira vez!');
       return;
     }
     
-    notify('📦', 'Empacotando a aplicação num .zip... Aguarde!');
+    notify('📦', 'A empacotar a aplicação num .zip... Aguarda um momento!');
     
     try {
       var zip = new JSZip();
-      var files = ['index.html', 'convert.html', 'save.html'];
+      var files = ['index.html', 'convert.html', 'save.html', 'pdf.html'];
       
       for (var i = 0; i < files.length; i++) {
         var res = await fetch(files[i]);
@@ -296,10 +356,10 @@ document.addEventListener('DOMContentLoaded', function() {
       a.download = 'TomoConvert-Studio-' + osName + '.zip';
       a.click();
       
-      notify('✅', 'Download do ' + osName + ' concluído! Extraia na mesma pasta.');
+      notify('✅', 'Transferência para ' + osName + ' concluída! Extrai os ficheiros para a mesma pasta.');
     } catch(e) {
       console.error(e);
-      notify('❌', 'Erro: O site precisa estar online (no seu domínio) para gerar o pacote ZIP.');
+      notify('❌', 'Erro: O site precisa de estar online (no teu domínio) para gerar o pacote ZIP.');
     }
   }
 
@@ -307,11 +367,11 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('macbtn').addEventListener('click', function() { downloadZip('macOS'); });
 
   document.getElementById('apkbtn').addEventListener('click', function() {
-    notify('📲', 'Abra no Chrome, clique nos 3 pontos e escolha "Adicionar à Tela Inicial"!');
+    notify('📲', 'Abre no Chrome, clica nos 3 pontos e escolhe "Adicionar ao Ecrã Principal"!');
   });
   
   document.getElementById('iosbtn').addEventListener('click', function() {
-    notify('🍎', 'No Safari, toque em Compartilhar (⬆) e depois em "Adicionar à Tela de Início"!');
+    notify('🍎', 'No Safari, toca no ícone de Partilha (⬆) e depois em "Adicionar ao Ecrã Principal"!');
   });
 
 });
