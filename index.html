@@ -1,27 +1,85 @@
-<h3 style="margin-bottom: 12px; font-family:'Syne',sans-serif;">⬇ Transfere a Ferramenta (v1.4.0)</h3>
-  <div class="dlgrid">
-    <div class="dlcard win">
-      <div class="dlos">🪟</div>
-      <div><div class="dlname">Windows App</div><div class="dlver">v1.4.0 · Integração p2r3/Steam</div></div>
-      <div class="dldesc">Guarda os 3 ficheiros HTML num ficheiro ZIP para acederes ao conversor e ao Localizador de Saves de PC.</div>
-      <button class="btn bp" id="winbtn">⬇ Transferir .ZIP</button>
-    </div>
-    <div class="dlcard apk">
-      <div class="dlos">🤖</div>
-      <div><div class="dlname">Android App</div><div class="dlver">v1.4.0 · Android 8.0+</div></div>
-      <div class="dldesc">Adiciona ao ecrã principal e converte mídia na nuvem usando o novo hub integrado.</div>
-      <button class="btn bp" id="apkbtn">📲 Instruções Android</button>
-    </div>
-    <div class="dlcard pwa">
-      <div class="dlos">🍎</div>
-      <div><div class="dlname">iPhone / iPad</div><div class="dlver">PWA · iOS 16.4+</div></div>
-      <div class="dldesc">Instala a aplicação web nativa no Safari para edição Hexadecimal local.</div>
-      <button class="btn bp" id="iosbtn">📲 Instruções iOS</button>
-    </div>
-    <div class="dlcard mac">
-      <div class="dlos">🍏</div>
-      <div><div class="dlname">macOS App</div><div class="dlver">v1.4.0 · macOS 12+</div></div>
-      <div class="dldesc">Transfere o pacote ZIP e ativa a engine FFmpeg WebAssembly em segurança.</div>
-      <button class="btn bp" id="macbtn">⬇ Transferir para macOS</button>
-    </div>
-  </div>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Início - TomoConvert Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pk:#FF4FA3;--yw:#FFD93D;--cy:#00E5FF;
+  --pu:#9B59FF;--gn:#39FF7E;--or:#FF6B35;
+  --dk:#0A0A12;--dk3:#1A1A2E;
+  --ca:#16162A;--bo:rgba(255,255,255,0.09);
+  --tx:#F0EEFF;--mu:rgba(240,238,255,0.46);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:var(--dk);color:var(--tx);
+  font-family:'Fredoka',sans-serif;font-size:16px;
+  min-height:100vh;overflow-x:hidden;
+  background-image:
+    radial-gradient(ellipse 700px 500px at 8% 12%,rgba(155,89,255,.14) 0%,transparent 68%),
+    radial-gradient(ellipse 500px 380px at 92% 88%,rgba(255,79,163,.10) 0%,transparent 68%),
+    radial-gradient(ellipse 420px 320px at 52% 48%,rgba(0,229,255,.06) 0%,transparent 68%);
+}
+header{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:16px 22px 12px;border-bottom:1px solid var(--bo);
+}
+.logo{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(18px,3.5vw,26px);letter-spacing:-.8px;
+  background:linear-gradient(135deg,var(--pk),var(--pu),var(--cy));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.lpill{
+  background:linear-gradient(135deg,var(--pk),var(--pu));
+  color:#fff;font-family:'Space Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:1.5px;padding:3px 9px;border-radius:20px;
+}
+.hdr{margin-left:auto;font-family:'Space Mono',monospace;font-size:9px;color:var(--mu);}
+#nav{
+  display:flex;gap:3px;flex-wrap:wrap;padding:10px 22px 0;
+  background:rgba(10,10,18,.97);border-bottom:2px solid var(--bo);
+  position:sticky;top:0;z-index:99;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+}
+.nb{
+  text-decoration: none;
+  background:none;border:1.5px solid transparent;color:var(--mu);
+  font-family:'Fredoka',sans-serif;font-size:14px;font-weight:500;
+  padding:7px 14px;border-radius:10px 10px 0 0;cursor:pointer;
+  display:flex;align-items:center;gap:6px;white-space:nowrap;
+  transition:color .15s,background .15s;
+}
+.nb:hover{color:var(--tx);background:rgba(255,255,255,.05);}
+.nb.on{
+  color:var(--tx);background:var(--ca);
+  border-color:var(--pu);border-bottom-color:var(--ca);
+  position:relative;bottom:-2px;
+}
+.pn{padding:22px; max-width: 1200px; margin: 0 auto; animation:pfin .22s ease;}
+@keyframes pfin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.sh{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(20px,4vw,32px);line-height:1.1;margin-bottom:4px;}
+.ss{font-family:'Space Mono',monospace;font-size:10px;color:var(--mu);margin-bottom:22px;}
+.card{
+  background:var(--ca);border:1px solid var(--bo);
+  border-radius:16px;padding:20px;margin-bottom:24px;
+  position:relative;overflow:hidden;
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--pu),var(--pk),var(--cy));
+}
+.ct{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+
+/* Grelhas e Cartões */
+.lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px; margin-bottom: 30px;}
+.lk{
+  background:var(--ca);border:1px solid var(--bo);border-radius:16px;
+  padding:20px;text-decoration:none;color:var(--tx);
+  display:flex;flex-direction:column;gap:10px;transition:all .24s;position:relative;overflow:hidden;
+}
+.lk:hover{transform:translateY(-4px);border-color:var(--pu);box-shadow:0 14px 40px rgba(155,89,255,.18);}
+.lk::before{content:'';position:absolute;
