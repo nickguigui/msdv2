@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Studio - TomoConvert Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+
+<style>
+:root{
+  --pk:#FF4FA3;--yw:#FFD93D;--cy:#00E5FF;
+  --pu:#9B59FF;--gn:#39FF7E;--or:#FF6B35;
+  --dk:#0A0A12;--dk3:#1A1A2E;
+  --ca:#16162A;--bo:rgba(255,255,255,0.09);
+  --tx:#F0EEFF;--mu:rgba(240,238,255,0.46);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:var(--dk);color:var(--tx);
+  font-family:'Fredoka',sans-serif;font-size:16px;
+  min-height:100vh;overflow-x:hidden;
+  background-image:
+    radial-gradient(ellipse 700px 500px at 8% 12%,rgba(155,89,255,.14) 0%,transparent 68%),
+    radial-gradient(ellipse 500px 380px at 92% 88%,rgba(255,79,163,.10) 0%,transparent 68%),
+    radial-gradient(ellipse 420px 320px at 52% 48%,rgba(0,229,255,.06) 0%,transparent 68%);
+}
+header{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:16px 22px 12px;border-bottom:1px solid var(--bo);
+}
+.logo{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(18px,3.5vw,26px);letter-spacing:-.8px;
+  background:linear-gradient(135deg,var(--pk),var(--pu),var(--cy));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.lpill{
+  background:linear-gradient(135deg,var(--pk),var(--pu));
+  color:#fff;font-family:'Space Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:1.5px;padding:3px 9px;border-radius:20px;
+}
+.hdr{margin-left:auto;font-family:'Space Mono',monospace;font-size:9px;color:var(--mu);}
+#nav{
+  display:flex;gap:3px;flex-wrap:wrap;padding:10px 22px 0;
+  background:rgba(10,10,18,.97);border-bottom:2px solid var(--bo);
+  position:sticky;top:0;z-index:99;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+}
+.nb{
+  text-decoration: none;
+  background:none;border:1.5px solid transparent;color:var(--mu);
+  font-family:'Fredoka',sans-serif;font-size:14px;font-weight:500;
+  padding:7px 14px;border-radius:10px 10px 0 0;cursor:pointer;
+  display:flex;align-items:center;gap:6px;white-space:nowrap;
+  transition:color .15s,background .15s;
+}
+.nb:hover{color:var(--tx);background:rgba(255,255,255,.05);}
+.nb.on{
+  color:var(--tx);background:var(--ca);
+  border-color:var(--pu);border-bottom-color:var(--ca);
+  position:relative;bottom:-2px;
+}
+.pn{padding:22px; max-width: 1200px; margin: 0 auto;}
+.sh{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(20px,4vw,32px);line-height:1.1;margin-bottom:4px;}
+.ss{font-family:'Space Mono',monospace;font-size:10px;color:var(--mu);margin-bottom:22px;}
+.card{
+  background:var(--ca);border:1px solid var(--bo);
+  border-radius:16px;padding:20px;margin-bottom:14px;
+  position:relative;overflow:hidden;
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--pu),var(--pk),var(--cy));
+}
+.ct{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.cbar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.chip{
+  background:rgba(155,89,255,.10);border:1.5px solid rgba(155,89,255,.28);
+  color:var(--pu);border-radius:8px;padding:6px 12px;
+  font-family:'Space Mono',monospace;font-size:10px;font-weight:700;
+  cursor:pointer;transition:all .15s;text-align:center; flex:1; min-width: 120px;
+}
+.chip small{display:block;font-size:8px;color:var(--mu);font-weight:400;margin-top:1px;}
+.chip:hover,.chip.on{
+  background:rgba(155,89,255,.24);border-color:var(--pu);color:var(--tx);
+  transform:translateY(-2px);box-shadow:0 5px 16px rgba(155,89,255,.2);
+}
+.dz{
+  border:2.5px dashed rgba(155,89,255,.36);border-radius:14px;
+  padding:38px 16px;text-align:center;cursor:pointer;
+  transition:all .22s;background:rgba(155,89,255,.03);
+  position:relative;overflow:hidden;
+}
+.dz:hover,.dz.ov{border-color:var(--pu);background:rgba(155,89,255,.09);}
+.dz input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.dz-ic{font-size:40px;display:block;margin-bottom:8px;}
+.dz-t{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:4px;}
+.dz-s{font-size:11px;color:var(--mu);font-family:'Space Mono',monospace;}
+.fi{
+  display:flex;align-items:center;gap:9px;
+  background:rgba(155,89,255,.07);border:1px solid rgba(155,89,255,.15);
+  border-radius:9px;padding:9px 12px;margin-top:7px;
+}
+.fin{flex:1;font-size:10px;font-family:'Space Mono',monospace;word-break:break-all;}
+.tag{font-size:10px;padding:2px 9px;border-radius:7px;font-weight:700;white-space:nowrap;}
+.tr{background:rgba(155,89,255,.16);color:var(--pu);}
+.td{background:rgba(0,229,255,.14);color:var(--cy);}
+.tok{background:rgba(57,255,126,.18);color:var(--gn);}
+.te{background:rgba(255,79,163,.15);color:var(--pk);}
+
+.btn{
+  border:none;border-radius:10px;padding:8px 18px;
+  font-family:'Fredoka',sans-serif;font-size:14px;font-weight:600;
+  cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;
+}
+.bp{background:linear-gradient(135deg,var(--pu),var(--pk));color:#fff;box-shadow:0 3px 16px rgba(155,89,255,.32);}
+.bp:hover{transform:translateY(-2px);box-shadow:0 7px 26px rgba(155,89,255,.4);}
+.bg{background:linear-gradient(135deg,#00C851,var(--gn));color:var(--dk);}
+
+.input-text {
+  background:var(--dk3);border:1.5px solid var(--bo);color:var(--tx);
+  font-family:'Fredoka',sans-serif;font-size:14px;padding:10px 14px;
+  border-radius:10px; width: 100%; margin-bottom: 10px;
+}
+.input-text:focus { outline:none; border-color:var(--pu); }
+
+#notif{
+  position:fixed;bottom:22px;right:22px;
+  background:var(--ca);border:1.5px solid var(--pu);border-radius:14px;
+  padding:12px 18px;font-size:13px;font-weight:600;
+  display:flex;align-items:center;gap:9px;
+  box-shadow:0 14px 44px rgba(0,0,0,.4);z-index:9999;
+  transform:translateX(160%);transition:transform .38s;
+}
+#notif.show{transform:translateX(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <span class="logo">🌴 TomoConvert</span>
+    <span class="lpill">STUDIO</span>
+  </div>
+  <div class="hdr">conversor · save editor · IA · pdf</div>
+</header>
+
+<nav id="nav">
+  <a href="index.html" class="nb">🏠 Início</a>
+  <a href="convert.html" class="nb">🔄 Conversor</a>
+  <a href="save.html" class="nb">💾 Save Editor</a>
+  <a href="pdf.html" class="nb on">📄 PDF Studio</a>
+</nav>
+
+<section class="pn">
+  <div class="sh" style="background:linear-gradient(135deg,var(--pk),var(--yw));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">PDF Studio</div>
+  <div class="ss">// Manipulação de documentos 100% offline e segura</div>
+
+  <div class="cbar">
+    <button class="chip on" id="mode-merge">📑 Unir PDFs<small>Junta vários ficheiros num só</small></button>
+    <button class="chip" id="mode-watermark">✍️ Escrever no PDF<small>Adiciona texto ou marca d'água</small></button>
+  </div>
+
+  <div class="card" id="tool-panel">
+    
+    <div id="ui-watermark" style="display:none; margin-bottom: 15px;">
+      <div class="ct">✏️ Adicionar Texto</div>
+      <input type="text" id="wm-text" class="input-text" placeholder="Escreve o texto que queres adicionar ao PDF..." value="Editado com TomoConvert">
+    </div>
+
+    <div class="dz" id="dz">
+      <input type="file" id="finp" accept="application/pdf" multiple>
+      <span class="dz-ic">📄</span>
+      <div class="dz-t" id="dz-title">Arrasta os teus ficheiros PDF aqui</div>
+      <div class="dz-s">Processamento rápido sem envio para a internet</div>
+    </div>
+    
+    <div id="flist"></div>
+    
+    <div class="ctrls" id="ctrls" style="display:none; margin-top: 15px; justify-content: flex-end;">
+      <button class="btn bp" id="processbtn">⚡ Processar PDF</button>
+    </div>
+  </div>
+
+  <div id="osec" style="display:none;">
+    <div class="card">
+      <div class="ct">✅ Documento Gerado</div>
+      <div id="olist"></div>
+    </div>
+  </div>
+
+</section>
+
+<div id="notif"><span id="ni">✅</span><span id="nm">ok</span></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Controlo de Modos
+  let curMode = 'merge'; // 'merge' ou 'watermark'
+  let selFiles = [];
+
+  const btnMerge = document.getElementById('mode-merge');
+  const btnWm = document.getElementById('mode-watermark');
+  const uiWm = document.getElementById('ui-watermark');
+  const dzTitle = document.getElementById('dz-title');
+  const finp = document.getElementById('finp');
+
+  btnMerge.addEventListener('click', () => {
+    curMode = 'merge';
+    btnMerge.classList.add('on'); btnWm.classList.remove('on');
+    uiWm.style.display = 'none';
+    finp.multiple = true;
+    dzTitle.textContent = "Arrasta os PDFs que queres unir";
+    resetFiles();
+  });
+
+  btnWm.addEventListener('click', () => {
+    curMode = 'watermark';
+    btnWm.classList.add('on'); btnMerge.classList.remove('on');
+    uiWm.style.display = 'block';
+    finp.multiple = false;
+    dzTitle.textContent = "Arrasta 1 PDF para adicionar texto";
+    resetFiles();
+  });
+
+  // Upload Logic
+  const dz = document.getElementById('dz');
+  dz.addEventListener('dragover', e => { e.preventDefault(); dz.style.borderColor = 'var(--pu)'; });
+  dz.addEventListener('dragleave', () => { dz.style.borderColor = ''; });
+  dz.addEventListener('drop', e => {
+    e.preventDefault(); dz.style.borderColor = '';
+    handleFiles(Array.from(e.dataTransfer.files));
+  });
+  finp.addEventListener('change', () => handleFiles(Array.from(finp.files)));
+
+  function handleFiles(files) {
+    const pdfs = files.filter(f => f.type === 'application/pdf' || f.name.toLowerCase().endsWith('.pdf'));
+    if(pdfs.length === 0) return notify('⚠️', 'Por favor, seleciona apenas ficheiros PDF.');
+    
+    if (curMode === 'watermark' && pdfs.length > 0) {
+      selFiles = [pdfs[0]]; // Apenas 1 ficheiro para marca de água
+    } else {
+      selFiles = selFiles.concat(pdfs);
+    }
+    renderList();
+  }
+
+  function resetFiles() {
+    selFiles = [];
+    renderList();
+    document.getElementById('osec').style.display = 'none';
+  }
+
+  function renderList() {
+    const list = document.getElementById('flist');
+    list.innerHTML = selFiles.map((f, i) => `
+      <div class="fi">
+        <span class="fin">${f.name}</span>
+        <span class="tag tr" id="fs${i}">aguardando</span>
+      </div>
+    `).join('');
+    document.getElementById('ctrls').style.display = selFiles.length > 0 ? 'flex' : 'none';
+  }
+
+  // Processamento PDF-LIB
+  document.getElementById('processbtn').addEventListener('click', async () => {
+    if(typeof PDFLib === 'undefined') return notify('❌', 'Biblioteca PDF não carregada. Requer internet.');
+    if(selFiles.length === 0) return;
+
+    // Atualiza interface
+    selFiles.forEach((_, i) => {
+      let se = document.getElementById('fs'+i);
+      if(se) { se.textContent = 'processando...'; se.className = 'tag td'; }
+    });
+
+    try {
+      let finalPdfBytes;
+      let finalName = 'documento_editado.pdf';
+
+      if (curMode === 'merge') {
+        if(selFiles.length < 2) return notify('⚠️', 'Precisas de pelo menos 2 PDFs para unir!');
+        finalPdfBytes = await mergePDFs(selFiles);
+        finalName = 'PDF_Unido.pdf';
+      } 
+      else if (curMode === 'watermark') {
+        const text = document.getElementById('wm-text').value || "TomoConvert";
+        finalPdfBytes = await addTextToPDF(selFiles[0], text);
+        finalName = 'Texto_' + selFiles[0].name;
+      }
+
+      // Concluido
+      selFiles.forEach((_, i) => {
+        let se = document.getElementById('fs'+i);
+        if(se) { se.textContent = '✓ concluído'; se.className = 'tag tok'; }
+      });
+
+      // Gerar Download
+      const blob = new Blob([finalPdfBytes], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      
+      const ol = document.getElementById('olist');
+      ol.innerHTML = `
+        <div class="fi">
+          <span class="fin">${finalName}</span>
+          <a href="${url}" download="${finalName}" class="btn bg">⬇ Transferir PDF</a>
+        </div>
+      `;
+      document.getElementById('osec').style.display = 'block';
+      notify('✅', 'PDF gerado com sucesso!');
+
+    } catch (err) {
+      console.error(err);
+      notify('❌', 'Erro ao processar o PDF. O ficheiro pode estar protegido.');
+    }
+  });
+
+  // Função: Unir PDFs
+  async function mergePDFs(files) {
+    const { PDFDocument } = PDFLib;
+    const mergedPdf = await PDFDocument.create();
+
+    for (const file of files) {
+      const arrayBuffer = await file.arrayBuffer();
+      const pdf = await PDFDocument.load(arrayBuffer);
+      const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+      copiedPages.forEach((page) => mergedPdf.addPage(page));
+    }
+    return await mergedPdf.save();
+  }
+
+  // Função: Adicionar Texto
+  async function addTextToPDF(file, text) {
+    const { PDFDocument, rgb, degrees } = PDFLib;
+    const arrayBuffer = await file.arrayBuffer();
+    const pdfDoc = await PDFDocument.load(arrayBuffer);
+    const pages = pdfDoc.getPages();
+
+    // Adiciona texto na primeira página (pode ser ajustado para todas)
+    const firstPage = pages[0];
+    const { width, height } = firstPage.getSize();
+    
+    firstPage.drawText(text, {
+      x: 50,
+      y: height - 50,
+      size: 30,
+      color: rgb(0.95, 0.1, 0.1), // Vermelho
+      opacity: 0.8,
+    });
+
+    return await pdfDoc.save();
+  }
+
+  // Notificações
+  let _ntm;
+  window.notify = function(icon, msg) {
+    clearTimeout(_ntm);
+    document.getElementById('ni').textContent = icon;
+    document.getElementById('nm').textContent = msg;
+    const el = document.getElementById('notif');
+    el.classList.add('show');
+    _ntm = setTimeout(() => el.classList.remove('show'), 3200);
+  };
+});
+</script>
+
+</body>
+</html>
