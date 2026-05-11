@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Save Editor - TomoConvert Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Mono:wght@400;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pk:#FF4FA3;--yw:#FFD93D;--cy:#00E5FF;
+  --pu:#9B59FF;--gn:#39FF7E;--or:#FF6B35;
+  --dk:#0A0A12;--dk3:#1A1A2E;
+  --ca:#16162A;--bo:rgba(255,255,255,0.09);
+  --tx:#F0EEFF;--mu:rgba(240,238,255,0.46);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:var(--dk);color:var(--tx);
+  font-family:'Fredoka',sans-serif;font-size:16px;
+  min-height:100vh;overflow-x:hidden;
+  background-image:
+    radial-gradient(ellipse 700px 500px at 8% 12%,rgba(155,89,255,.14) 0%,transparent 68%),
+    radial-gradient(ellipse 500px 380px at 92% 88%,rgba(255,79,163,.10) 0%,transparent 68%),
+    radial-gradient(ellipse 420px 320px at 52% 48%,rgba(0,229,255,.06) 0%,transparent 68%);
+}
+header{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:16px 22px 12px;border-bottom:1px solid var(--bo);
+}
+.logo{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(18px,3.5vw,26px);letter-spacing:-.8px;
+  background:linear-gradient(135deg,var(--pk),var(--pu),var(--cy));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.lpill{
+  background:linear-gradient(135deg,var(--pk),var(--pu));
+  color:#fff;font-family:'Space Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:1.5px;padding:3px 9px;border-radius:20px;
+}
+.hdr{margin-left:auto;font-family:'Space Mono',monospace;font-size:9px;color:var(--mu);}
+#nav{
+  display:flex;gap:3px;flex-wrap:wrap;padding:10px 22px 0;
+  background:rgba(10,10,18,.97);border-bottom:2px solid var(--bo);
+  position:sticky;top:0;z-index:99;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+}
+/* MUDANÇA: Agora o .nb é uma tag <a> para linkar outras páginas */
+.nb{
+  text-decoration: none;
+  background:none;border:1.5px solid transparent;color:var(--mu);
+  font-family:'Fredoka',sans-serif;font-size:14px;font-weight:500;
+  padding:7px 14px;border-radius:10px 10px 0 0;cursor:pointer;
+  display:flex;align-items:center;gap:6px;white-space:nowrap;
+  transition:color .15s,background .15s;
+}
+.nb:hover{color:var(--tx);background:rgba(255,255,255,.05);}
+.nb.on{
+  color:var(--tx);background:var(--ca);
+  border-color:var(--pu);border-bottom-color:var(--ca);
+  position:relative;bottom:-2px;
+}
+.pn{padding:22px;}
+.sh{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(20px,4vw,32px);line-height:1.1;margin-bottom:4px;}
+.ss{font-family:'Space Mono',monospace;font-size:10px;color:var(--mu);margin-bottom:22px;}
+.card{
+  background:var(--ca);border:1px solid var(--bo);
+  border-radius:16px;padding:20px;margin-bottom:14px;
+  position:relative;overflow:hidden;
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--pu),var(--pk),var(--cy));
+}
+.ct{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.cbar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.chip{
+  background:rgba(155,89,255,.10);border:1.5px solid rgba(155,89,255,.28);
+  color:var(--pu);border-radius:8px;padding:6px 12px;
+  font-family:'Space Mono',monospace;font-size:10px;font-weight:700;
+  cursor:pointer;transition:all .15s;text-align:center;
+}
+.chip small{display:block;font-size:8px;color:var(--mu);font-weight:400;margin-top:1px;}
+.chip:hover,.chip.on{
+  background:rgba(155,89,255,.24);border-color:var(--pu);color:var(--tx);
+  transform:translateY(-2px);box-shadow:0 5px 16px rgba(155,89,255,.2);
+}
+.dz{
+  border:2.5px dashed rgba(155,89,255,.36);border-radius:14px;
+  padding:38px 16px;text-align:center;cursor:pointer;
+  transition:all .22s;background:rgba(155,89,255,.03);
+  position:relative;overflow:hidden;
+}
+.dz:hover,.dz.ov{border-color:var(--pu);background:rgba(155,89,255,.09);}
+.dz input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.dz-ic{font-size:40px;display:block;margin-bottom:8px;animation:bob 3s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.dz-t{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin-bottom:4px;}
+.dz-s{font-size:11px;color:var(--mu);font-family:'Space Mono',monospace;}
+.btn{
+  border:none;border-radius:10px;padding:8px 18px;
+  font-family:'Fredoka',sans-serif;font-size:14px;font-weight:600;
+  cursor:pointer;transition:all .18s;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;
+}
+.bc{background:linear-gradient(135deg,#009aaa,var(--cy));color:var(--dk);}
+.bo2{background:linear-gradient(135deg,var(--or),var(--yw));color:var(--dk);}
+.bs{font-size:12px;padding:5px 12px;border-radius:8px;}
+.aibox{
+  background:linear-gradient(135deg,rgba(155,89,255,.10),rgba(0,229,255,.07));
+  border:1.5px solid rgba(155,89,255,.28);border-radius:14px;padding:18px;margin-bottom:14px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+}
+.aiic{
+  width:48px;height:48px;border-radius:13px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--pu),var(--cy));
+  display:flex;align-items:center;justify-content:center;font-size:24px;
+  animation:aig 3s ease-in-out infinite;
+}
+@keyframes aig{0%,100%{box-shadow:0 0 0 0 rgba(155,89,255,.4)}55%{box-shadow:0 0 18px 5px rgba(155,89,255,.12)}}
+.ait{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:3px;}
+.ais{font-family:'Space Mono',monospace;font-size:10px;color:var(--mu);}
+.gbadge{
+  display:none;align-items:center;gap:7px;
+  background:rgba(57,255,126,.14);border:1.5px solid rgba(57,255,126,.28);
+  border-radius:20px;padding:5px 13px;font-weight:600;font-size:13px;color:var(--gn);margin-top:8px;
+}
+.bdg{display:inline-block;background:rgba(155,89,255,.18);color:var(--pu);font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:6px;font-weight:700;}
+#hexview{
+  font-family:'Space Mono',monospace;font-size:12px;line-height:2;
+  color:var(--mu);word-break:break-all;max-height:300px;overflow-y:auto;
+  background:rgba(0,0,0,.5);border-radius:9px;padding:12px;
+}
+/* Estilos para o Editor Hex Interativo */
+.hex-byte {
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+  cursor: text;
+  transition: color 0.2s, background 0.2s;
+}
+.hex-byte:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+.hex-byte:focus {
+  outline: none;
+  background: var(--pu);
+  color: #fff;
+  border-radius: 3px;
+}
+.hex-ascii {
+  color: #888;
+  margin-left: 10px;
+  border-left: 1px solid #333;
+  padding-left: 10px;
+}
+#notif{
+  position:fixed;bottom:22px;right:22px;
+  background:var(--ca);border:1.5px solid var(--pu);border-radius:14px;
+  padding:12px 18px;font-size:13px;font-weight:600;
+  display:flex;align-items:center;gap:9px;
+  box-shadow:0 14px 44px rgba(0,0,0,.4);z-index:9999;
+  transform:translateX(160%);transition:transform .38s cubic-bezier(.34,1.56,.64,1);max-width:320px;
+}
+#notif.show{transform:translateX(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <span class="logo">🌴 TomoConvert</span>
+    <span class="lpill">STUDIO</span>
+  </div>
+  <div class="hdr">conversor · save editor · IA · downloads</div>
+</header>
+
+<nav id="nav">
+  <a href="index.html" class="nb">🏠 Início</a>
+  <a href="convert.html" class="nb">🔄 Conversor</a>
+  <a href="save.html" class="nb on">💾 Save Editor</a>
+</nav>
+
+<section class="pn" id="pn-save">
+  <div class="sh" style="background:linear-gradient(135deg,var(--pk),var(--yw));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Save Editor</div>
+  <div class="ss">// Edição profissional offline e avançada na nuvem</div>
+
+  <div class="cbar" style="margin-bottom: 22px; justify-content: center; background: var(--ca); padding: 10px; border-radius: 12px; border: 1px solid var(--bo);">
+    <button class="chip on" id="mode-local" style="flex:1;">🤖 Editor Hex<small>Local e Interativo (Offline)</small></button>
+    <button class="chip" id="mode-ltd" style="flex:1;">🏝️ LTD Editor<small>Avançado (Requer Internet 🌐)</small></button>
+  </div>
+
+  <div id="save-local-wrap">
+    <div class="aibox">
+      <div class="aiic">🤖</div>
+      <div style="flex:1;">
+        <div class="ait">Editor Hexadecimal Universal</div>
+        <div class="ais">Arraste QUALQUER save. Clique nos bytes para alterar os valores do jogo diretamente no código!</div>
+        <div id="gbadge" class="gbadge">✅ <span id="gname">—</span></div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="dz" id="sdz">
+        <input type="file" id="sinp" accept=".sav,.bin,.dat,.save,.srm,.state,.bak">
+        <span class="dz-ic">💾</span>
+        <div class="dz-t">Arraste seu Save File</div>
+        <div class="dz-s">.sav · .bin · .dat · .save · .srm — qualquer formato</div>
+      </div>
+    </div>
+
+    <div id="sph" class="card" style="text-align:center;padding:44px;">
+      <div style="font-size:56px;margin-bottom:14px;">🎮</div>
+      <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:7px;">Nenhum Save Carregado</div>
+      <div style="color:var(--mu);font-size:13px;">Faça o upload para visualizar o código do jogo</div>
+    </div>
+
+    <div id="sed" style="display:none;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap;">
+        <div id="gic" style="font-size:30px;">⚙️</div>
+        <div>
+          <div id="gtit" style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;"></div>
+          <div id="gfi"  style="font-family:'Space Mono',monospace;font-size:10px;color:var(--mu);"></div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:7px;flex-wrap:wrap;">
+          <button class="btn bc bs" id="expbtn">💾 Exportar Save Editado</button>
+          <button class="btn bo2 bs" id="rstbtn">🔄 Fechar</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="ct">🔍 Hex Editor Interativo <span class="bdg">CLIQUE PARA EDITAR</span></div>
+        <p style="font-size: 11px; color: var(--or); margin-bottom: 10px;">Aviso: O arquivo está aberto e pronto para edição. Alterar bytes incorretos pode corromper seu save.</p>
+        <div id="hexview">Carregue um arquivo…</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="save-ltd-wrap" style="display:none; height: 75vh; min-height: 600px; border-radius: 16px; overflow: hidden; border: 1px solid var(--bo); background: #fff; position: relative;">
+    <div style="position: absolute; top:0; left:0; right:0; background: #FFD93D; color: #0A0A12; padding: 8px; text-align: center; font-size: 12px; font-weight: bold; z-index: 10;">
+      Aviso: O LTD Editor completo é externo e requer conexão com a internet.
+    </div>
+    <iframe src="https://ltd-save-editor.pages.dev/" style="width:100%; height:100%; border:none; padding-top: 30px;"></iframe>
+  </div>
+</section>
+
+<div id="notif"><span id="ni">✅</span><span id="nm">ok</span></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // ── CONTROLE DAS ABAS DO SAVE EDITOR ──
+  var btnLocal = document.getElementById('mode-local');
+  var btnLtd = document.getElementById('mode-ltd');
+  var wrapLocal = document.getElementById('save-local-wrap');
+  var wrapLtd = document.getElementById('save-ltd-wrap');
+
+  btnLocal.addEventListener('click', function() {
+    btnLocal.classList.add('on');
+    btnLtd.classList.remove('on');
+    wrapLocal.style.display = 'block';
+    wrapLtd.style.display = 'none';
+  });
+  
+  btnLtd.addEventListener('click', function() {
+    btnLtd.classList.add('on');
+    btnLocal.classList.remove('on');
+    wrapLocal.style.display = 'none';
+    wrapLtd.style.display = 'block';
+  });
+
+  // ── SISTEMA DE UPLOAD E HEX EDITOR ──
+  var curSave = null;
+
+  var sdz  = document.getElementById('sdz');
+  var sinp = document.getElementById('sinp');
+  sdz.addEventListener('dragover',  function(e){ e.preventDefault(); sdz.classList.add('ov'); });
+  sdz.addEventListener('dragleave', function(){  sdz.classList.remove('ov'); });
+  sdz.addEventListener('drop', function(e){
+    e.preventDefault(); sdz.classList.remove('ov');
+    if (e.dataTransfer.files[0]) loadSave(e.dataTransfer.files[0]);
+  });
+  sinp.addEventListener('change', function(){ if (sinp.files[0]) loadSave(sinp.files[0]); });
+
+  function detectGame(name) {
+    var n = name.toLowerCase();
+    if (n.includes('mii.sav') || n.includes('player.sav') || n.includes('map.sav')) return 'Tomodachi Life';
+    if (n.includes('pokemon') || n.endsWith('.srm')) return 'Pokémon';
+    return 'Save Desconhecido';
+  }
+
+  function loadSave(file) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var buf = e.target.result;
+      var bytes = new Uint8Array(buf);
+      curSave = {file: file, buf: buf, bytes: bytes}; // Armazenamos os bytes puros
+      
+      var gameName = detectGame(file.name);
+      
+      document.getElementById('gbadge').style.display = 'inline-flex';
+      document.getElementById('gname').textContent = gameName;
+      document.getElementById('sph').style.display = 'none';
+      document.getElementById('sed').style.display = 'block';
+      document.getElementById('gtit').textContent = file.name;
+      document.getElementById('gtit').style.color = 'var(--pu)';
+      document.getElementById('gfi').textContent = bytes.length + ' bytes processados';
+      
+      renderHex(bytes);
+      notify('🤖', 'Arquivo carregado. Pronto para edição!');
+    };
+    reader.readAsArrayBuffer(file);
+  }
+
+  // NOVA LÓGICA DO EDITOR HEXADECIMAL INTERATIVO
+  function renderHex(bytes) {
+    var hv = document.getElementById('hexview');
+    hv.innerHTML = '';
+    
+    // Limitamos a visualização para não travar o navegador (paginação futura pode ser adicionada)
+    var limit = Math.min(bytes.length, 2048); 
+    var html = '';
+    
+    for (var i = 0; i < limit; i += 16) {
+      var lineHex = '';
+      var lineAscii = '';
+      
+      for(var j = 0; j < 16; j++) {
+        if(i + j < limit) {
+          var b = bytes[i + j];
+          var hex = b.toString(16).padStart(2,'0').toUpperCase();
+          lineHex += '<span class="hex-byte" contenteditable="true" data-idx="'+(i+j)+'">'+hex+'</span> ';
+          // Converte para ASCII se for um caractere imprimível, senão usa ponto
+          lineAscii += (b >= 32 && b <= 126) ? String.fromCharCode(b) : '.';
+        }
+      }
+      html += '<div><span style="color:var(--pu); user-select:none;">' + i.toString(16).padStart(6,'0').toUpperCase() + ' |</span> ' + lineHex + '<span class="hex-ascii">' + lineAscii.replace(/</g, "&lt;").replace(/>/g, "&gt;") + '</span></div>';
+    }
+    
+    if(bytes.length > limit) {
+      html += '<div style="margin-top:10px; color:var(--cy);">... Mais ' + (bytes.length - limit) + ' bytes ocultos por segurança do navegador.</div>';
+    }
+    
+    hv.innerHTML = html;
+
+    // Adiciona os eventos de edição
+    var hexBytes = hv.querySelectorAll('.hex-byte');
+    hexBytes.forEach(function(el) {
+      
+      // Limita a digitação a 2 caracteres
+      el.addEventListener('keypress', function(e) {
+        if(this.innerText.length >= 2) e.preventDefault();
+        var char = String.fromCharCode(e.keyCode).toUpperCase();
+        if(!/^[0-9A-F]$/.test(char)) e.preventDefault(); // Só permite Hex
+      });
+
+      // Salva a alteração nos bytes originais
+      el.addEventListener('blur', function() {
+        var val = parseInt(this.innerText, 16);
+        if(!isNaN(val) && val >= 0 && val <= 255) {
+          curSave.bytes[this.dataset.idx] = val; // Atualiza a memória!
+          this.style.color = 'var(--gn)'; // Fica verde para mostrar que alterou
+          this.innerText = val.toString(16).padStart(2,'0').toUpperCase(); // Padroniza visual
+        } else {
+          // Reverte se a digitação foi inválida
+          this.innerText = curSave.bytes[this.dataset.idx].toString(16).padStart(2,'0').toUpperCase();
+          this.style.color = 'var(--or)'; 
+        }
+      });
+    });
+  }
+
+  // NOVO SISTEMA DE EXPORTAÇÃO USANDO OS BYTES EDITADOS
+  document.getElementById('expbtn').addEventListener('click', function() {
+    if (!curSave) return notify('⚠️', 'Nenhum save carregado!');
+    
+    // Cria o novo arquivo baseado na array de bytes que o usuário acabou de modificar!
+    var blob = new Blob([curSave.bytes], {type:'application/octet-stream'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'MODIFICADO_' + curSave.file.name;
+    a.click();
+    notify('💾', 'Save exportado com suas alterações!');
+  });
+
+  document.getElementById('rstbtn').addEventListener('click', function() {
+    curSave = null;
+    document.getElementById('sph').style.display = 'block';
+    document.getElementById('sed').style.display  = 'none';
+    document.getElementById('gbadge').style.display = 'none';
+  });
+
+  var _ntm;
+  window.notify = function(icon, msg) {
+    clearTimeout(_ntm);
+    document.getElementById('ni').textContent = icon;
+    document.getElementById('nm').textContent = msg;
+    var el = document.getElementById('notif');
+    el.classList.add('show');
+    _ntm = setTimeout(function(){ el.classList.remove('show'); }, 3200);
+  };
+});
+</script>
+</body>
+</html>
