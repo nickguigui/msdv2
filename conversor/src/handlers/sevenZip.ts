@@ -95,8 +95,12 @@ class sevenZipHandler implements FormatHandler {
   ): Promise<FileData[]> {
     const outputFiles: FileData[] = [];
 
+    if (inputFormat.internal === "brarchive") {
+        throw new Error(`sevenZipHandler cannot convert from ${inputFormat.mime}`);
+    }
+
     if (!this.supportedFormats.some(format => format.to && format.internal === outputFormat.internal)) {
-      throw new Error(`sevenZipHandler cannot convert to ${outputFormat.mime}`);
+      throw new TypeError(`sevenZipHandler cannot convert to ${outputFormat.mime}`);
     }
 
     // handle compressed tars
@@ -126,7 +130,7 @@ class sevenZipHandler implements FormatHandler {
           outputFiles.push({ bytes, name });
         }
       } else {
-        throw new Error(`sevenZipHandler cannot convert from ${inputFormat.mime} to ${outputFormat.mime}`);
+        throw new TypeError(`sevenZipHandler cannot convert from ${inputFormat.mime} to ${outputFormat.mime}`);
       }
       
       return outputFiles;
