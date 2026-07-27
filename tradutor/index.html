@@ -4,150 +4,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tradutor da Minha Língua</title>
+    <!-- Adicionando o Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    
     <style>
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            max-width: 600px; 
-            margin: 40px auto; 
-            padding: 20px; 
-            background-color: #1e1e2e; 
-            color: #cdd6f4; 
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; background-color: #1e1e2e; color: #cdd6f4; }
         h1 { color: #89b4fa; text-align: center; }
-        textarea { 
-            width: 100%; 
-            height: 100px; 
-            padding: 15px; 
-            font-size: 16px; 
-            margin-bottom: 15px; 
-            border-radius: 8px; 
-            border: none; 
-            background-color: #313244; 
-            color: #cdd6f4; 
-            box-sizing: border-box;
-        }
-        .botoes { display: flex; gap: 10px; }
-        button { 
-            flex: 1;
-            background-color: #89b4fa; 
-            color: #1e1e2e; 
-            border: none; 
-            padding: 12px 20px; 
-            font-size: 16px; 
-            font-weight: bold;
-            border-radius: 8px; 
-            cursor: pointer; 
-            transition: 0.2s;
-        }
+        textarea { width: 100%; height: 100px; padding: 15px; font-size: 16px; margin-bottom: 15px; border-radius: 8px; border: none; background-color: #313244; color: #cdd6f4; box-sizing: border-box; }
+        button { width: 100%; background-color: #89b4fa; color: #1e1e2e; border: none; padding: 12px 20px; font-size: 16px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: 0.2s; }
         button:hover { background-color: #b4befe; }
-        .btn-baixar { background-color: #a6e3a1; }
-        .btn-baixar:hover { background-color: #94e2d5; }
-        #resultado { 
-            margin-top: 25px; 
-            padding: 20px; 
-            background: #313244; 
-            border-radius: 8px; 
-            min-height: 60px; 
-            font-size: 20px; 
-            font-weight: bold;
-            text-align: center;
-        }
-        .aviso { 
-            color: #f9e2af; 
-            font-weight: bold; 
-            margin-top: 15px; 
-            font-size: 14px; 
-            text-align: center;
-        }
+        #resultado { margin-top: 25px; padding: 20px; background: #313244; border-radius: 8px; min-height: 60px; font-size: 20px; font-weight: bold; text-align: center; }
+        .aviso { color: #f9e2af; font-weight: bold; margin-top: 15px; font-size: 14px; text-align: center; }
     </style>
 </head>
 <body>
 
     <h1>Tradutor da Minha Língua</h1>
-    
     <textarea id="textoOrigem" placeholder="Digite sua frase em português..."></textarea>
-    
-    <div class="botoes">
-        <button onclick="traduzir()">Traduzir</button>
-        <button class="btn-baixar" onclick="baixarDicionario()">Baixar Dicionário</button>
-    </div>
-
+    <button onclick="traduzir()">Traduzir</button>
     <div id="resultado">A tradução aparecerá aqui...</div>
     <div id="avisos"></div>
 
     <script>
-        // 1. Sílabas estilo Japonês
-        const silabas = [
-            'a', 'i', 'u', 'e', 'o', 'ka', 'ki', 'ku', 'ke', 'ko',
-            'sa', 'shi', 'su', 'se', 'so', 'ta', 'chi', 'tsu', 'te', 'to',
-            'na', 'ni', 'nu', 'ne', 'no', 'ha', 'hi', 'fu', 'he', 'ho',
-            'ma', 'mi', 'mu', 'me', 'mo', 'ya', 'yu', 'yo',
-            'ra', 'ri', 'ru', 're', 'ro', 'wa', 'n',
-            'ga', 'gi', 'gu', 'ge', 'go', 'za', 'ji', 'zu', 'ze', 'zo',
-            'ba', 'bi', 'bu', 'be', 'bo'
-        ];
+        // ==========================================
+        // 1. CONFIGURAÇÃO DO FIREBASE (COLE SUA CONFIG AQUI!)
+        // ==========================================
+       const firebaseConfig = {
+  apiKey: "AIzaSyBgIGZC3xUiraaP5Z0Xbil22MEKyVKGeDo",
+  authDomain: "tradutor-axiciniano.firebaseapp.com",
+  databaseURL: "https://tradutor-axiciniano-default-rtdb.firebaseio.com",
+  projectId: "tradutor-axiciniano",
+  storageBucket: "tradutor-axiciniano.firebasestorage.app",
+  messagingSenderId: "652007167873",
+  appId: "1:652007167873:web:b0551ee15864343bc83a80",
+  measurementId: "G-1KR03HN4BM"
+};
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
 
-        // 2. Dicionário Base
-        let dicionario = {
-            'água': 'glu', 'ele': 'hei', 'dele': 'ri',
-            'ela': 'hai', 'dela': 'ra', 'você': 'mux'
-        };
+        // ==========================================
+        // 2. DICIONÁRIO BASE E ALFABETO
+        // ==========================================
+        const alfabeto = { 'a': 'to', 'b': 'su', 'c': 'ka', 'd': 'ne', 'e': 'tsu', 'f': 'se', 'g': 'na', 'h': 'du', 'i': 'te', 'j': 'ba', 'k': 'tche', 'l': 'gu', 'm': 'ri', 'n': 'sa', 'o': 'ta', 'p': 'ko', 'q': 'be', 'r': 'ni', 's': 'zi', 't': 'is', 'u': 'cra', 'v': 'bo', 'w': 'nup', 'x': 'de', 'y': 'ali', 'z': 'oru' };
+        
+        let dicionario = { 'água': 'glu', 'ele': 'hei', 'dele': 'ri', 'ela': 'hai', 'dela': 'ra', 'você': 'mux' };
+        
+        const silabas = ['a', 'i', 'u', 'e', 'o', 'ka', 'ki', 'ku', 'ke', 'ko', 'sa', 'shi', 'su', 'se', 'so', 'ta', 'chi', 'tsu', 'te', 'to', 'na', 'ni', 'nu', 'ne', 'no', 'ha', 'hi', 'fu', 'he', 'ho', 'ma', 'mi', 'mu', 'me', 'mo', 'ya', 'yu', 'yo', 'ra', 'ri', 'ru', 're', 'ro', 'wa', 'n', 'ga', 'gi', 'gu', 'ge', 'go', 'za', 'ji', 'zu', 'ze', 'zo', 'ba', 'bi', 'bu', 'be', 'bo'];
 
-        // 3. Tenta carregar as palavras salvas no navegador
-        if (localStorage.getItem("dicionarioSalvo")) {
-            dicionario = JSON.parse(localStorage.getItem("dicionarioSalvo"));
-        }
+        // ==========================================
+        // 3. CARREGAR PALAVRAS DA NUVEM (FIREBASE)
+        // ==========================================
+        // Toda vez que alguém entra no site, ele baixa as palavras mais recentes
+        database.ref('dicionario').on('value', (snapshot) => {
+            const palavrasDaNuvem = snapshot.val();
+            if (palavrasDaNuvem) {
+                Object.assign(dicionario, palavrasDaNuvem);
+                console.log("Dicionário atualizado da nuvem!");
+            }
+        });
 
         function escolherAleatorio(array) {
             return array[Math.floor(Math.random() * array.length)];
         }
 
+        // ==========================================
+        // 4. LÓGICA DE TRADUÇÃO E SALVAMENTO NA NUVEM
+        // ==========================================
         function traduzir() {
             const texto = document.getElementById("textoOrigem").value.toLowerCase();
             if (!texto.trim()) return;
 
-            // Separa as palavras e tira pontuações básicas
             const palavras = texto.replace(/[.,!?]/g, "").split(/\s+/);
             let traduzido = [];
             let novosAvisos = [];
+            let palavrasParaSalvarNaNuvem = {}; // Guarda o que precisa subir para o banco
 
             palavras.forEach(palavra => {
                 if (dicionario[palavra]) {
                     traduzido.push(dicionario[palavra]);
+                } else if (palavra.length === 1 && alfabeto[palavra]) {
+                    traduzido.push(alfabeto[palavra]);
                 } else {
-                    // Sorteia 2, 3 ou 4 sílabas
                     const quantidade = [2, 3, 4][Math.floor(Math.random() * 3)];
                     let palavraInventada = "";
                     for (let i = 0; i < quantidade; i++) {
                         palavraInventada += escolherAleatorio(silabas);
                     }
                     
-                    // Salva a nova palavra
                     dicionario[palavra] = palavraInventada;
-                    novosAvisos.push(`Nova palavra: '${palavra}' agora é '${palavraInventada}'`);
+                    palavrasParaSalvarNaNuvem[palavra] = palavraInventada; // Prepara para subir
+                    
+                    novosAvisos.push(`Nova palavra inventada e salva: '${palavra}' agora é '${palavraInventada}'`);
                     traduzido.push(palavraInventada);
                 }
             });
 
-            // Salva o dicionário atualizado na memória do navegador
-            localStorage.setItem("dicionarioSalvo", JSON.stringify(dicionario));
+            // Se o programa inventou alguma palavra nova, salva direto no Firebase!
+            if (Object.keys(palavrasParaSalvarNaNuvem).length > 0) {
+                database.ref('dicionario').update(palavrasParaSalvarNaNuvem);
+            }
 
-            // Mostra o resultado na tela
             document.getElementById("resultado").innerText = traduzido.join(" ");
-            
-            // Mostra os avisos de palavras novas
             document.getElementById("avisos").innerHTML = novosAvisos.map(a => `<p class="aviso">${a}</p>`).join("");
-        }
-
-        function baixarDicionario() {
-            // Cria um arquivo JSON com o dicionário atual e faz o download
-            const data = JSON.stringify(dicionario, null, 2);
-            const blob = new Blob([data], {type: "application/json"});
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = "meu_dicionario.json";
-            a.click();
         }
     </script>
 </body>
