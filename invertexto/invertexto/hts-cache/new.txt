@@ -1,0 +1,3 @@
+date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
+00:44:14	235/235	---M--	301	error ('Moved%20Permanently')	text/html	date:Wed,%2029%20Jul%202026%2003:44:15%20GMT	http://invertexto.com/	C:/Meus%20Sites/invertexto/invertexto.com/index.html	(from )
+00:44:14	245/245	---M--	301	error ('Moved%20Permanently')	text/html	date:Wed,%2029%20Jul%202026%2003:44:15%20GMT	http://invertexto.com/robots.txt		(from )
