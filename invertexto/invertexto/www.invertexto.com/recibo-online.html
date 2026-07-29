@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!-- Mirrored from www.invertexto.com/recibo-online by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:57:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-title" content="Recibo Online">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="description" content="Gerador de recibo online para imprimir. Modelo para emitir recibo de pagamento, de compra e venda, de aluguel, de salário, com logomarca, etc">
+	<meta property="og:title" content="Recibo Online">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="recibo-online.html">
+	<meta property="og:image" content="../cdn.invertexto.com/img/face-note.png">
+	<meta property="og:site_name" content="invertexto.com">
+	<meta property="og:description" content="Gerador de recibo online para imprimir. Modelo para emitir recibo de pagamento, de compra e venda, de aluguel, de salário, com logomarca, etc">
+	<meta property="fb:app_id" content="515652911960455">
+	<title>Recibo Online | invertexto.com</title>
+
+	<link rel="canonical" href="recibo-online.html">
+	<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+	<link rel="stylesheet" href="../cdn.invertexto.com/css/appe44f.css?id=20260619">
+	<link rel="apple-touch-icon" href="../cdn.invertexto.com/img/apple-touch-icon.png">
+</head>
+<body>
+	<header class="hidden-print">
+		<div class="top">
+			<div class="container" style="height:100%">
+				<div style="height:100%;display:flex;justify-content:space-between;align-items:center">
+					<div style="padding-right:24px;margin-top:36px;margin-bottom:31px">
+						<a href="index.html">
+							<img src="../cdn.invertexto.com/img/invertexto.png" style="width:263px;height:48px" alt="invertexto.com">
+						</a>
+					</div>
+					<div id="topads" style="width:100%">
+													<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+							crossorigin="anonymous"></script>
+							<!-- Top -->
+							<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-client="ca-pub-1714195545121238"
+							data-ad-slot="4449009840"
+							data-ad-format="horizontal"
+							data-full-width-responsive="true"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+											</div>
+				</div>
+			</div>
+		</div>
+
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<style>
+					a.btnInsta{display:block;background-color:#D83277;height:20px;color:#fff;font-size:12px;padding:0 6px;line-height:20px;border-radius:4px;float:left}
+					a.btnInsta:hover,a.btnInsta:focus{text-decoration:none;color:#fff}
+				</style>
+				<div class="like pull-left">
+					<a href="https://www.instagram.com/invertexto/" target="_blank" rel="nofollow noopener" class="btnInsta"><strong>Siga</strong> @invertexto</a>
+				</div>
+
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				  </button>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="https://api.invertexto.com/" target="_blank" rel="nofollow">API</a></li>
+						<li><a href="sobre.html">Sobre</a></li>
+						<li><a href="contato.html">Contato</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	
+	<main>
+		
+<style>
+.options{background-color:#fff;border:1px solid #ddd;padding:20px}
+.recibo{background-color:#fff;border:1px solid #ddd;min-height:300px;padding:48px;font-size:16px}
+.recibo [contenteditable]{outline:none;border-width:1px;border-style:dashed;border-color:transparent;display:inline-block;min-width:20px;cursor:text}
+@media (max-width: 767px){
+    .recibo{padding:20px}
+}
+@media print{
+    .recibo .empty{visibility: hidden}
+    .segunda-via{display:block !important}
+}
+.recibo [contenteditable]:hover{border-color:#ffa800}
+.recibo [contenteditable]:empty:before{content:attr(placeholder);color:#aaa}
+.recibo [contenteditable].invalid{color:red}
+.recibo [contenteditable].zero{color:#aaa}
+.recibo .logomarca{min-width:160px;max-height:90px;max-width:320px;cursor:pointer}
+.recibo .logomarca.empty{border:2px dashed #ddd;display:flex;justify-content:center;align-items:center}
+.recibo .logomarca:hover{border-color:#ffa800}
+.recibo .logomarca span{font-size:12px}
+.recibo .logomarca img{max-height:90px;max-width:320px}
+.recibo .title{font-size:24px;font-weight:bold}
+.recibo .body{margin-top:25px;text-align:justify}
+.recibo .date{text-align:right;margin-top:20px}
+.recibo .signature{margin-top:45px}
+.recibo .signature p{margin:0;font-size:12px}
+.segunda-via{margin-top:50px;display:none}
+.tool-tip{display: inline-block}
+.btn[disabled]{pointer-events:none}
+</style>
+
+<div class="func-wrap container" id="app">
+    <h1 class="hidden-print">Recibo Online</h1>
+
+    <div class="document">
+        <div class="recibo">
+            <div class="flex justify-between">
+                <label class="logomarca empty">
+                    <div class="text-muted">
+                        <i class="glyphicon glyphicon-picture"></i> <span>Logomarca</span>
+                    </div>
+                    <input type="file" id="getFile" accept="image/*" style="display:none">
+                </label>
+                <div class="title text-right">
+                    <p><span contenteditable="true" data-field="title" placeholder="RECIBO Nº 1"></span></p>
+                    <p style="font-size:16px">Valor: R$ <span contenteditable="true" data-field="value" placeholder="0,00" class="valor"></span></p>
+                </div>
+            </div>
+            
+            <div class="body">
+                <p>Recebi(emos) de <span contenteditable="true" data-field="client" placeholder="Nome do Cliente"></span>, <span class="doc-title">CPF/CNPJ</span> nº <span contenteditable="true" data-field="client_doc" placeholder="000.000.000-00"></span>, a importância de <span class="full-number">zero reais</span> referente à(ao) <span contenteditable="true" data-field="service" placeholder="Serviço Prestado"></span>.</p>
+
+                <p>Para maior clareza firmo(amos) o presente recibo para que produza os seus efeitos, dando plena, rasa e irrevogável quitação, pelo valor recebido.</p>
+
+                <p class="date"><span contenteditable="true" data-field="city" placeholder="Cidade"></span>, <span contenteditable="true" data-field="day" placeholder="Dia"></span> de <span contenteditable="true" data-field="month" placeholder="Mês"></span> de <span contenteditable="true" data-field="year" placeholder="Ano"></span></p>
+                
+                <div class="signature text-center">
+                    <p>_________________________________________________</p>
+                    <p><span contenteditable="true" data-field="user" placeholder="Nome ou Empresa"></span></p>
+                    <p><span class="doc-title">CPF/CNPJ</span>: <span contenteditable="true" data-field="user_doc" placeholder="000.000.000-00"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="options hidden-print" style="margin-top:25px">
+        <div class="form-inline">
+            <div class="form-group" style="margin-right:10px">
+                <select class="form-control" id="vias">
+                    <option value="1">1 Via</option>
+                    <option value="2">2 Vias</option>
+                </select>
+            </div>
+            <button class="btn btn-default" id="clear" style="margin-right:10px"><i class="glyphicon glyphicon-trash"></i> Limpar</button>
+            <span class="tool-tip" data-toggle="tooltip" data-placement="right" data-original-title="">
+                <button class="btn btn-custom" id="print" disabled><i class="glyphicon glyphicon-print"></i> Imprimir</button>
+            </span>
+        </div>
+    </div>
+
+    <div class="panel panel-custom hidden-print">
+        <div class="panel-heading">Ferramentas Relacionadas</div>
+        <div class="list-group">
+            <a href="nota-promissoria-online.html" class="list-group-item">Nota Promissória Online</a>
+        </div>
+    </div>
+</div>
+	</main>
+
+			<div class="container hidden-print">
+			<div class="bottom-banner">
+				<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+				crossorigin="anonymous"></script>
+				<!-- Bottom -->
+				<ins class="adsbygoogle"
+				style="display:block"
+				data-ad-client="ca-pub-1714195545121238"
+				data-ad-slot="6345858528"
+				data-ad-format="auto"
+				data-full-width-responsive="true"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+	
+	<footer class="hidden-print"></footer>
+
+	<script src="../cdn.invertexto.com/js/app-v1.2.js"></script>
+	
+    <script src="js/helpers.js"></script>
+    <script src="js/recibo-online-vanilla.js"></script>
+	<script src="js/ad_728x90.js"></script>
+	<script>
+	if (typeof run === "function") { 
+    	run();
+	}
+
+	// new banner test
+	var isMobile = 0;
+	var hasAd = 1;
+	if(!isMobile && (window.canRunAds===undefined || !hasAd)){
+				document.getElementById('topads').innerHTML = '<a href="/banners/banner-link.php?id=banner3" target="_blank" rel="nofollow"><img src="/banners/banner-image.php?id=banner3" class="img-responsive" style="margin:0 auto"></a>';
+	}
+	</script>
+
+<script data-cfasync="false" type="text/javascript" id="clever-core">
+/* <![CDATA[ */
+    (function (document, window) {
+        var a, c = document.createElement("script"), f = window.frameElement;
+
+        c.id = "CleverCoreLoader83219";
+        c.src = "../scripts.cleverwebserver.com/919807a68a8d275b2e7dd47c1ad6a69c.js";
+
+        c.async = !0;
+        c.type = "text/javascript";
+        c.setAttribute("data-target", window.name || (f && f.getAttribute("id")));
+        c.setAttribute("data-callback", "put-your-callback-function-here");
+        c.setAttribute("data-callback-url-click", "put-your-click-macro-here");
+        c.setAttribute("data-callback-url-view", "put-your-view-macro-here");
+
+        try {
+            a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
+        } catch (e) {
+            a = !1;
+        }
+
+        a || (a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
+        a.parentNode.insertBefore(c, a);
+    })(document, window);
+/* ]]> */
+</script>
+</body>
+
+<!-- Mirrored from www.invertexto.com/recibo-online by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:57:03 GMT -->
+</html>

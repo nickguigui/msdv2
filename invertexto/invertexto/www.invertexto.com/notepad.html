@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!-- Mirrored from www.invertexto.com/notepad by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-title" content="Notepad Online">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="description" content="Ferramenta de Notepad Online. Salve seu texto na nuvem e o utilize em qualquer lugar ou plataforma com este bloco de notas online.">
+	<meta property="og:title" content="Notepad Online">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="notepad.html">
+	<meta property="og:image" content="../cdn.invertexto.com/img/face-note.png">
+	<meta property="og:site_name" content="invertexto.com">
+	<meta property="og:description" content="Ferramenta de Notepad Online. Salve seu texto na nuvem e o utilize em qualquer lugar ou plataforma com este bloco de notas online.">
+	<meta property="fb:app_id" content="515652911960455">
+	<title>Notepad Online | invertexto.com</title>
+
+	<link rel="canonical" href="notepad.html">
+	<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+	<link rel="stylesheet" href="../cdn.invertexto.com/css/appe44f.css?id=20260619">
+	<link rel="apple-touch-icon" href="../cdn.invertexto.com/img/apple-touch-icon.png">
+</head>
+<body>
+	<header class="hidden-print">
+		<div class="top">
+			<div class="container" style="height:100%">
+				<div style="height:100%;display:flex;justify-content:space-between;align-items:center">
+					<div style="padding-right:24px;margin-top:36px;margin-bottom:31px">
+						<a href="index.html">
+							<img src="../cdn.invertexto.com/img/invertexto.png" style="width:263px;height:48px" alt="invertexto.com">
+						</a>
+					</div>
+					<div id="topads" style="width:100%">
+													<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+							crossorigin="anonymous"></script>
+							<!-- Top -->
+							<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-client="ca-pub-1714195545121238"
+							data-ad-slot="4449009840"
+							data-ad-format="horizontal"
+							data-full-width-responsive="true"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+											</div>
+				</div>
+			</div>
+		</div>
+
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<style>
+					a.btnInsta{display:block;background-color:#D83277;height:20px;color:#fff;font-size:12px;padding:0 6px;line-height:20px;border-radius:4px;float:left}
+					a.btnInsta:hover,a.btnInsta:focus{text-decoration:none;color:#fff}
+				</style>
+				<div class="like pull-left">
+					<a href="https://www.instagram.com/invertexto/" target="_blank" rel="nofollow noopener" class="btnInsta"><strong>Siga</strong> @invertexto</a>
+				</div>
+
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				  </button>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="https://api.invertexto.com/" target="_blank" rel="nofollow">API</a></li>
+						<li><a href="sobre.html">Sobre</a></li>
+						<li><a href="contato.html">Contato</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	
+	<main>
+		<div class="container">
+	<h1>Notepad Online</h1>
+	<div class="box">
+		<div class="row">
+			<div class="user-box">
+				<label class="title-label" for="slug">Escolha um nome de usuário</label>
+				<div class="input-group">
+					<span class="input-group-addon domain" id="basic-addon3">invertexto.com/</span>
+					<input type="text" spellcheck="false" class="form-control userinput no-focus" id="slug" value="dvdu07">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-classic okbtn">OK</button>
+					</span>
+				</div>
+				<div class="alerta"></div>
+			</div>
+		</div>
+	</div>
+	<div class="box" style="margin-top:24px">
+		<p style="font-weight:600">Características</p>
+		<p>O Notepad Online é uma ferramenta sem cadastro, ideal para anotações rápidas ou compartilhamento de texto. Por padrão, qualquer pessoa com o link pode visualizar e editar o conteúdo. Para proteger dados sensíveis, ative a proteção por senha ao criar seu notepad.</p>
+
+		<p style="margin-bottom:0">Notas não editadas por mais de 1 ano são removidas automaticamente neste formato. Se precisar de armazenamento permanente e recursos adicionais, utilize a versão completa do <a href="https://notepad.ink/" target="_blank">notepad.ink</a>.</p>
+	</div>
+</div>
+
+<script>
+function run(){
+	$('.userinput').keyup(function(){
+		$('.userinput').val($('.userinput').val().toLowerCase());
+	});
+
+	$('.userinput').keydown(function(event){
+		if(event.keyCode == 13)
+			$('.okbtn').click();
+	});
+
+	$('.okbtn').click(function(){
+		var username = $('.userinput').val();
+
+		$(document).ajaxStart(function(){
+			$('.okbtn').attr('disabled', true);
+			$(".okbtn").html('<span class="glyphicon glyphicon-repeat loading"></span>');
+		});
+	
+		$(document).ajaxStop(function(){
+			$('.okbtn').removeAttr('disabled');
+			$(".okbtn").html('OK');
+		});
+
+		$.post('ajax/notepad-create.html', {username:username}, function(data) {
+			if(data.status!='ok'){
+				$('.alerta').text(data.status).fadeIn();
+				$('.alerta').delay(3000).fadeOut();
+				return;
+			}
+			window.location.href = './'+username;
+		});
+	});
+}
+</script>	</main>
+
+			<div class="container hidden-print">
+			<div class="bottom-banner">
+				<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+				crossorigin="anonymous"></script>
+				<!-- Bottom -->
+				<ins class="adsbygoogle"
+				style="display:block"
+				data-ad-client="ca-pub-1714195545121238"
+				data-ad-slot="6345858528"
+				data-ad-format="auto"
+				data-full-width-responsive="true"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+	
+	<footer class="hidden-print"></footer>
+
+	<script src="../cdn.invertexto.com/js/app-v1.2.js"></script>
+	
+	<script src="js/ad_728x90.js"></script>
+	<script>
+	if (typeof run === "function") { 
+    	run();
+	}
+
+	// new banner test
+	var isMobile = 0;
+	var hasAd = 1;
+	if(!isMobile && (window.canRunAds===undefined || !hasAd)){
+				document.getElementById('topads').innerHTML = '<a href="/banners/banner-link.php?id=banner1" target="_blank" rel="nofollow"><img src="/banners/banner-image.php?id=banner1" class="img-responsive" style="margin:0 auto"></a>';
+	}
+	</script>
+
+<script data-cfasync="false" type="text/javascript" id="clever-core">
+/* <![CDATA[ */
+    (function (document, window) {
+        var a, c = document.createElement("script"), f = window.frameElement;
+
+        c.id = "CleverCoreLoader83219";
+        c.src = "../scripts.cleverwebserver.com/919807a68a8d275b2e7dd47c1ad6a69c.js";
+
+        c.async = !0;
+        c.type = "text/javascript";
+        c.setAttribute("data-target", window.name || (f && f.getAttribute("id")));
+        c.setAttribute("data-callback", "put-your-callback-function-here");
+        c.setAttribute("data-callback-url-click", "put-your-click-macro-here");
+        c.setAttribute("data-callback-url-view", "put-your-view-macro-here");
+
+        try {
+            a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
+        } catch (e) {
+            a = !1;
+        }
+
+        a || (a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
+        a.parentNode.insertBefore(c, a);
+    })(document, window);
+/* ]]> */
+</script>
+</body>
+
+<!-- Mirrored from www.invertexto.com/notepad by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:22 GMT -->
+</html>

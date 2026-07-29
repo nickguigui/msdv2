@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!-- Mirrored from www.invertexto.com/dividir-pdf by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-title" content="Dividir PDF">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="description" content="Ferramenta online para dividir arquivos PDF grátis. Útil para separar seu documento PDF em várias páginas. Cortar PDF nunca foi tão fácil!">
+	<meta property="og:title" content="Dividir PDF">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="dividir-pdf.html">
+	<meta property="og:image" content="../cdn.invertexto.com/img/face-note.png">
+	<meta property="og:site_name" content="invertexto.com">
+	<meta property="og:description" content="Ferramenta online para dividir arquivos PDF grátis. Útil para separar seu documento PDF em várias páginas. Cortar PDF nunca foi tão fácil!">
+	<meta property="fb:app_id" content="515652911960455">
+	<title>Dividir PDF | invertexto.com</title>
+
+	<link rel="canonical" href="dividir-pdf.html">
+	<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+	<link rel="stylesheet" href="../cdn.invertexto.com/css/appe44f.css?id=20260619">
+	<link rel="apple-touch-icon" href="../cdn.invertexto.com/img/apple-touch-icon.png">
+</head>
+<body>
+	<header class="hidden-print">
+		<div class="top">
+			<div class="container" style="height:100%">
+				<div style="height:100%;display:flex;justify-content:space-between;align-items:center">
+					<div style="padding-right:24px;margin-top:36px;margin-bottom:31px">
+						<a href="index.html">
+							<img src="../cdn.invertexto.com/img/invertexto.png" style="width:263px;height:48px" alt="invertexto.com">
+						</a>
+					</div>
+					<div id="topads" style="width:100%">
+													<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+							crossorigin="anonymous"></script>
+							<!-- Top -->
+							<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-client="ca-pub-1714195545121238"
+							data-ad-slot="4449009840"
+							data-ad-format="horizontal"
+							data-full-width-responsive="true"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+											</div>
+				</div>
+			</div>
+		</div>
+
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<style>
+					a.btnInsta{display:block;background-color:#D83277;height:20px;color:#fff;font-size:12px;padding:0 6px;line-height:20px;border-radius:4px;float:left}
+					a.btnInsta:hover,a.btnInsta:focus{text-decoration:none;color:#fff}
+				</style>
+				<div class="like pull-left">
+					<a href="https://www.instagram.com/invertexto/" target="_blank" rel="nofollow noopener" class="btnInsta"><strong>Siga</strong> @invertexto</a>
+				</div>
+
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				  </button>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="https://api.invertexto.com/" target="_blank" rel="nofollow">API</a></li>
+						<li><a href="sobre.html">Sobre</a></li>
+						<li><a href="contato.html">Contato</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	
+	<main>
+		
+<link rel="stylesheet" href="../cdn.jsdelivr.net/npm/dropzone%406.0.0-beta.2/dist/dropzone.css">
+
+<style>
+.dropzone.dz-clickable{cursor:pointer !important}
+.page-controls button{cursor:pointer !important}
+.page-controls button i{cursor:pointer !important}
+
+.about{background: #fff;padding:25px;margin-top:20px;border-radius:4px;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1)}
+.about h2{margin-top: 0;margin-bottom: 20px;border-bottom: 2px solid #f0f0f0;padding-bottom: 10px;font-size:24px}
+.about h3{font-size:18px}
+
+.box-style{background-color:#fff;border:1px solid #ddd;min-height:300px}
+i.drop{font-size:42px;color:#aaa;margin-top:30px;margin-bottom:20px}
+#previews{text-align:center;padding:20px}
+.page-item{display:inline-block;width:180px;height:280px;border:2px solid transparent;position:relative;margin:15px;vertical-align:top;background-color:#fff;border-radius:8px}
+.page-item:hover{background-color:#f8f9fa;border-color:#007bff;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.page-item.selected{background-color:#e7f3ff;border-color:#007bff;box-shadow:0 4px 12px rgba(0,123,255,.2)}
+.page-item canvas{box-shadow:0 2px 8px rgba(0,0,0,.15);background:url(img/pdf.png) center center no-repeat #FFF;width:150px;height:212px;display:block;margin:40px auto 0;cursor:pointer;border-radius:4px}
+.page-controls{position:absolute;bottom:8px;left:0;right:0;text-align:center;padding:0}
+.page-controls button{margin:0 3px;padding:6px 10px;font-size:11px;border-radius:4px}
+.page-controls .select-page{display:none}
+.selection-mode .page-controls .select-page{display:inline-block}
+.selection-mode .page-item{cursor:pointer}
+.selection-mode .page-item canvas{cursor:pointer}
+.file-label{position:absolute;top:8px;left:50%;transform:translateX(-50%);color:#fff;padding:4px 8px;border-radius:4px;font-size:11px;box-shadow:0 2px 4px rgba(0,0,0,.2);max-width:calc(100% - 16px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center}
+.page-number{margin-left:6px;opacity:.85;font-size:11px}
+.dz-max-files-reached{cursor:default!important}
+.controll-bar{margin-top:-1px;border:1px solid #ddd;background-color:#fff}
+.controll-bar .progress{margin:0;height:4px;border-radius:0!important;background-color:#fff}
+.controll-bar .progress-bar{box-shadow:none!important}
+.options{display:flex;justify-content:space-between;align-items:center;padding:24px}
+.options .buttons{display:flex;gap:12px;align-items:center}
+.info-text{color:#666;font-size:14px}
+.split-mode{display:flex;gap:8px;align-items:center}
+.split-mode label{margin:0;font-weight:normal;cursor:pointer}
+@media (max-width: 767px) {
+	i.drop{margin-top:0}
+	.box-style{min-height:160px}
+	.box-sidebar{margin-top:25px}
+	.controll-bar{text-align:center!important}
+	.options{flex-direction:column}
+	.options .buttons{margin-top:12px;flex-direction:column;width:100%}
+	.split-mode{margin-top:12px}
+	.page-item{width:160px;height:260px;margin:10px}
+	.page-item canvas{width:130px;height:184px;margin-top:35px}
+}
+</style>
+<div class="func-wrap container">
+	<h1>Dividir PDF</h1>
+
+	<form method="post" enctype="multipart/form-data" action="https://www.invertexto.com/pdf-upload.php" class="box-style dropzone" id="previews"></form>
+	
+	<div class="controll-bar" style="display:none">
+		<div class="progress">
+			<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+		</div>
+		<div class="options">
+			<div class="info-text">
+				<span id="page-count">0</span> páginas • <span id="selected-count">0</span> selecionadas
+			</div>
+			<div class="buttons">
+				<div class="split-mode">
+					<label><input type="radio" name="splitMode" value="all" checked> Todas as páginas</label>
+					<label><input type="radio" name="splitMode" value="selected"> Páginas selecionadas</label>
+				</div>
+				<button type="button" class="btn btn-default btn-lg" id="reset">Resetar</button>
+				<button type="button" class="btn btn-classic btn-lg" id="processar">Dividir PDF <i class="glyphicon glyphicon-menu-right"></i></button>
+			</div>
+		</div>
+	</div>
+
+	<div class="about">
+		<h2>Sobre o Divisor de PDF</h2>
+		<p>Esta ferramenta permite dividir arquivos PDF em páginas individuais de forma rápida e gratuita. Funciona diretamente no seu navegador, sem necessidade de cadastro. Seus arquivos são processados com segurança e automaticamente excluídos após uma hora.</p>
+		
+		<h3>Como usar</h3>
+		<ul style="list-style-position:inside;padding:0;margin:0">
+			<li><strong>Envie o PDF:</strong> arraste o arquivo ou clique na área de upload</li>
+			<li><strong>Selecione páginas:</strong> clique nas páginas que deseja extrair (modo seleção) ou deixe marcado "Todas as páginas"</li>
+			<li><strong>Divida:</strong> clique em "Dividir PDF" e baixe o arquivo ZIP com as páginas separadas</li>
+		</ul>
+	</div>
+
+	<div class="panel panel-custom">
+		<div class="panel-heading">Ferramentas Relacionadas</div>
+		<div class="list-group">
+			<a href="juntar-pdf.html" class="list-group-item">Juntar PDF</a>
+			<a href="organizar-pdf.html" class="list-group-item">Organizar PDF</a>
+			<a href="comprimir-pdf.html" class="list-group-item">Comprimir PDF</a>
+		</div>
+	</div>
+</div>
+
+<script>
+function run(){
+
+	var pdfDocs = {};
+	var pageData = [];
+	var thumbId = 0;
+	var fileColors = ['#007bff', '#28a745', '#dc3545', '#ffc107', '#17a2b8', '#6f42c1', '#e83e8c', '#fd7e14'];
+	var fileColorMap = {};
+	var colorIndex = 0;
+
+	function generateThumbnail(filename, pageNum, canvasId){
+		var pdfDoc = pdfDocs[filename];
+		if(!pdfDoc) return;
+
+		pdfDoc.getPage(pageNum).then(function(page) {
+			var canvas = document.getElementById(canvasId);
+			if(!canvas) return;
+
+			var vp = page.getViewport(1);
+			canvas.width = 149;
+			canvas.height = 212;
+			var scale = Math.max(canvas.width / vp.width, canvas.height / vp.height);
+			var viewport = page.getViewport(scale);
+
+			var context = canvas.getContext('2d');
+			context.clearRect(0, 0, canvas.width, canvas.height);
+
+			var renderContext = {
+				canvasContext: context,
+				viewport: viewport
+			};
+			page.render(renderContext);
+		});
+	}
+
+	function loadPDF(url, filename){
+		pdfjsLib.GlobalWorkerOptions.workerSrc = 'js/pdf.worker.min.js';
+
+		if(!fileColorMap[filename]){
+			fileColorMap[filename] = fileColors[colorIndex % fileColors.length];
+			colorIndex++;
+		}
+
+		pdfjsLib.getDocument(url).then(function(pdf) {
+			pdfDocs[filename] = pdf;
+			var totalPages = pdf.numPages;
+
+			for(var i = 1; i <= totalPages; i++){
+				pageData.push({
+					filename: filename,
+					page: i,
+					selected: false
+				});
+
+				addPageToDOM(filename, i);
+			}
+
+			$('.controll-bar').show();
+			updateCounters();
+		});
+	}
+
+	function addPageToDOM(filename, pageNum){
+		var canvasId = 'page-canvas-' + thumbId;
+		thumbId++;
+
+		var fileColor = fileColorMap[filename] || '#007bff';
+		var fileLabel = filename.replace('.pdf', '').substring(0, 12);
+		
+		var html = '';
+		html += '<div class="page-item" data-filename="' + filename + '" data-page="' + pageNum + '">';
+		html += '  <div class="file-label" style="background-color:' + fileColor + '" title="' + filename + '">';
+		html += fileLabel + '<span class="page-number">• Pág ' + pageNum + '</span>';
+		html += '  </div>';
+		html += '  <canvas id="' + canvasId + '" width="149" height="212"></canvas>';
+		html += '  <div class="page-controls">';
+		html += '    <button type="button" class="btn btn-xs btn-primary select-page" title="Selecionar"><i class="glyphicon glyphicon-ok"></i> Selecionar</button>';
+		html += '  </div>';
+		html += '</div>';
+
+		$('#previews').append(html);
+
+		setTimeout(function(){
+			generateThumbnail(filename, pageNum, canvasId);
+		}, 50);
+	}
+
+	function updateCounters(){
+		var total = pageData.length;
+		var splitMode = $('input[name="splitMode"]:checked').val();
+		var selected;
+		
+		if(splitMode === 'all'){
+			selected = total;
+		} else {
+			selected = pageData.filter(function(p){ return p.selected; }).length;
+		}
+		
+		$('#page-count').text(total);
+		$('#selected-count').text(selected);
+	}
+
+	function updateSelectionMode(){
+		var splitMode = $('input[name="splitMode"]:checked').val();
+		if(splitMode === 'selected'){
+			$('#previews').addClass('selection-mode');
+		} else {
+			$('#previews').removeClass('selection-mode');
+			// Desmarcar todas as páginas ao sair do modo seleção
+			$('.page-item').removeClass('selected');
+			pageData.forEach(function(p){ p.selected = false; });
+		}
+		updateCounters();
+	}
+
+	// Event handlers
+	$(document).on('change', 'input[name="splitMode"]', function(){
+		updateSelectionMode();
+	});
+
+	$(document).on('click', '.page-item canvas, .select-page', function(e){
+		e.stopPropagation();
+		var splitMode = $('input[name="splitMode"]:checked').val();
+		if(splitMode !== 'selected') return;
+		
+		var $item = $(this).closest('.page-item');
+		var filename = $item.attr('data-filename');
+		var pageNum = parseInt($item.attr('data-page'));
+		
+		var pageInfo = pageData.find(function(p){ 
+			return p.filename === filename && p.page === pageNum; 
+		});
+		if(pageInfo){
+			pageInfo.selected = !pageInfo.selected;
+			$item.toggleClass('selected');
+			updateCounters();
+		}
+	});
+
+	$('#reset').click(function(){
+		location.reload();
+	});
+
+	var hasError = false;
+	var hasUploadError = false;
+
+	Dropzone.autoDiscover = false;
+	var myDropzone = new Dropzone('#previews', {
+		autoProcessQueue: false,
+		uploadMultiple: false,
+		parallelUploads: 20,
+		maxFiles: 5,
+		paramName: "file",
+		maxFilesize: 16,
+		addRemoveLinks: false,
+		clickable: true,
+		timeout: 3600000,
+		acceptedFiles: '.pdf',
+		previewsContainer: false,
+		dictDefaultMessage: '<i class="glyphicon glyphicon-download-alt drop"></i><p>Arraste o arquivo PDF ou clique aqui.</p>',
+		dictInvalidFileType: 'Tipo de arquivo não permitido.',
+		dictMaxFilesExceeded: 'Limitado a 5 arquivos.',
+		dictFileTooBig: 'Limitado a 16MB por arquivo.',
+		init: function() {
+
+			var porcentagem=0;
+
+			this.on("sending", function(file) {
+				$('#processar').text('ENVIANDO...');
+				$('#processar').attr('disabled', true);
+			});
+
+			this.on("addedfile", function(file) {
+				$('#previews .dz-message').remove();
+				
+				var uploadedFileName = file.name.replace(/[^a-zA-Z0-9.\s]/g, '');
+				
+				var reader = new FileReader();
+				reader.onload = function(event) {
+					if(!file.accepted) return;
+					loadPDF(event.target.result, uploadedFileName);
+				};
+				reader.readAsDataURL(file);
+			});
+
+			this.on("removedfile", function(file) {
+				var files = this.getAcceptedFiles();
+				if(files.length==0) $('.controll-bar').hide();
+			});
+
+			this.on("totaluploadprogress", function(uploadProgress, totalBytes, totalBytesSent) {
+				if(porcentagem>uploadProgress) return;
+				if(totalBytesSent==0) return;
+
+				porcentagem = Math.floor(uploadProgress);
+				$('.progress-bar').css('width', porcentagem+'%');
+				$('.progress-bar').attr('aria-valuenow', porcentagem);
+			});
+
+			this.on("success", function(file, response) {
+				if(response!='OK'){
+					if(!hasUploadError) alert(response);
+
+					this.removeFile(file);
+					hasUploadError = true;
+					location.reload();
+				}
+			});
+
+			this.on("queuecomplete", function() {
+				if(hasError) return;
+				if(this.getAcceptedFiles().length == 0) return;
+
+				$('#processar').text('Carregando...');
+
+				var splitMode = $('input[name="splitMode"]:checked').val();
+
+				$.ajax({type:'post', 
+					data:{
+						pages: JSON.stringify(pageData),
+						mode: splitMode
+					}, 
+					url:'dividir-pdf-process.php', 
+					dataType:'json',
+					success: function(j){
+						if(j.status=='OK'){
+							window.location = '?download='+j.token;
+						}else{
+							alert(j.status);
+							location.reload();
+						}
+					},
+					error: function(xhr, status, error){
+						console.log('Erro AJAX:', xhr.responseText);
+						
+						try {
+							var response = JSON.parse(xhr.responseText);
+							alert(response.status || 'Erro ao processar arquivos.');
+						} catch(e) {
+							alert('Erro ao processar arquivos: ' + xhr.status + ' - ' + error);
+						}
+						
+						location.reload();
+					}
+				});
+			});
+
+			this.on("error", function(file, errorMessage) {
+				if(errorMessage!='0'){
+					this.removeFile(file);
+					alert(errorMessage);
+					hasError = true;
+					return;
+				}
+				hasError = false;
+			});
+  		}
+	});
+
+	$('#processar').click(function(){
+		var splitMode = $('input[name="splitMode"]:checked').val();
+		
+		if(splitMode === 'selected'){
+			var selectedCount = pageData.filter(function(p){ return p.selected; }).length;
+			if(selectedCount == 0){
+				alert('Você precisa selecionar pelo menos uma página para dividir.');
+				return;
+			}
+		}
+
+		hasError = false;
+		myDropzone.processQueue();
+	});
+}
+</script>	</main>
+
+			<div class="container hidden-print">
+			<div class="bottom-banner">
+				<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+				crossorigin="anonymous"></script>
+				<!-- Bottom -->
+				<ins class="adsbygoogle"
+				style="display:block"
+				data-ad-client="ca-pub-1714195545121238"
+				data-ad-slot="6345858528"
+				data-ad-format="auto"
+				data-full-width-responsive="true"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+	
+	<footer class="hidden-print"></footer>
+
+	<script src="../cdn.invertexto.com/js/app-v1.2.js"></script>
+	<script src="../cdn.jsdelivr.net/npm/dropzone%406.0.0-beta.2/dist/dropzone-min.js"></script><script src="js/pdf.min.js"></script>
+	<script src="js/ad_728x90.js"></script>
+	<script>
+	if (typeof run === "function") { 
+    	run();
+	}
+
+	// new banner test
+	var isMobile = 0;
+	var hasAd = 1;
+	if(!isMobile && (window.canRunAds===undefined || !hasAd)){
+				document.getElementById('topads').innerHTML = '<a href="/banners/banner-link.php?id=banner1" target="_blank" rel="nofollow"><img src="/banners/banner-image.php?id=banner1" class="img-responsive" style="margin:0 auto"></a>';
+	}
+	</script>
+
+<script data-cfasync="false" type="text/javascript" id="clever-core">
+/* <![CDATA[ */
+    (function (document, window) {
+        var a, c = document.createElement("script"), f = window.frameElement;
+
+        c.id = "CleverCoreLoader83219";
+        c.src = "../scripts.cleverwebserver.com/919807a68a8d275b2e7dd47c1ad6a69c.js";
+
+        c.async = !0;
+        c.type = "text/javascript";
+        c.setAttribute("data-target", window.name || (f && f.getAttribute("id")));
+        c.setAttribute("data-callback", "put-your-callback-function-here");
+        c.setAttribute("data-callback-url-click", "put-your-click-macro-here");
+        c.setAttribute("data-callback-url-view", "put-your-view-macro-here");
+
+        try {
+            a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
+        } catch (e) {
+            a = !1;
+        }
+
+        a || (a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
+        a.parentNode.insertBefore(c, a);
+    })(document, window);
+/* ]]> */
+</script>
+</body>
+
+<!-- Mirrored from www.invertexto.com/dividir-pdf by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:57 GMT -->
+</html>

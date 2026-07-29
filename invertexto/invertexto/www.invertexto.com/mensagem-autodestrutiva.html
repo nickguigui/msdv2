@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!-- Mirrored from www.invertexto.com/mensagem-autodestrutiva by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:23 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-title" content="Mensagem Autodestrutiva">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="description" content="Ferramenta online para criar uma mensagem criptografada que é destruída após a leitura.">
+	<meta property="og:title" content="Mensagem Autodestrutiva">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="mensagem-autodestrutiva.html">
+	<meta property="og:image" content="../cdn.invertexto.com/img/face-note.png">
+	<meta property="og:site_name" content="invertexto.com">
+	<meta property="og:description" content="Ferramenta online para criar uma mensagem criptografada que é destruída após a leitura.">
+	<meta property="fb:app_id" content="515652911960455">
+	<title>Mensagem Autodestrutiva | invertexto.com</title>
+
+	<link rel="canonical" href="mensagem-autodestrutiva.html">
+	<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+	<link rel="stylesheet" href="../cdn.invertexto.com/css/appe44f.css?id=20260619">
+	<link rel="apple-touch-icon" href="../cdn.invertexto.com/img/apple-touch-icon.png">
+</head>
+<body>
+	<header class="hidden-print">
+		<div class="top">
+			<div class="container" style="height:100%">
+				<div style="height:100%;display:flex;justify-content:space-between;align-items:center">
+					<div style="padding-right:24px;margin-top:36px;margin-bottom:31px">
+						<a href="index.html">
+							<img src="../cdn.invertexto.com/img/invertexto.png" style="width:263px;height:48px" alt="invertexto.com">
+						</a>
+					</div>
+					<div id="topads" style="width:100%">
+													<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+							crossorigin="anonymous"></script>
+							<!-- Top -->
+							<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-client="ca-pub-1714195545121238"
+							data-ad-slot="4449009840"
+							data-ad-format="horizontal"
+							data-full-width-responsive="true"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+											</div>
+				</div>
+			</div>
+		</div>
+
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<style>
+					a.btnInsta{display:block;background-color:#D83277;height:20px;color:#fff;font-size:12px;padding:0 6px;line-height:20px;border-radius:4px;float:left}
+					a.btnInsta:hover,a.btnInsta:focus{text-decoration:none;color:#fff}
+				</style>
+				<div class="like pull-left">
+					<a href="https://www.instagram.com/invertexto/" target="_blank" rel="nofollow noopener" class="btnInsta"><strong>Siga</strong> @invertexto</a>
+				</div>
+
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				  </button>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="https://api.invertexto.com/" target="_blank" rel="nofollow">API</a></li>
+						<li><a href="sobre.html">Sobre</a></li>
+						<li><a href="contato.html">Contato</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	
+	<main>
+		<style>
+.box{
+	position: relative;
+	min-height:240px;
+}
+.box textarea{
+	height:200px;
+}
+.box label{
+	font-weight:normal;
+}
+.comofunciona{
+	color:#444;
+}
+.comofunciona h2{
+	font-size:16px;
+	font-weight: 600;
+}
+.error{
+	display:none;
+	margin-top:10px;
+	color:red;
+}
+.result{
+	display:none;
+	max-width:440px;
+}
+.result p.info{
+	margin-top:20px;
+	margin-bottom:70px;
+}
+@media (max-width: 767px) {
+	.result{
+		max-width:100%;
+	}
+}
+#copiar:focus{outline:none;}
+</style>
+<div class="container">
+	<h1>Mensagem Autodestrutiva</h1>
+	<div class="box">
+		<div class="row mainblock">
+			<div class="col-sm-12">
+				<div class="form-group">
+					<label for="mensagem">Mesagem:</label>
+					<textarea class="form-control" id="mensagem" placeholder="Digite sua mensagem secreta..."></textarea>
+				</div>
+				<div class="form-group">
+					<label for="autodestroy">Destruir automaticamente caso não visto:</label>
+					<select class="form-control" id="autodestroy">
+						<optgroup label="Minutos">
+							<option value="30">30 minutos</option>
+							<option value="60">60 minutos</option>
+						</optgroup>
+						<optgroup label="Horas">
+							<option value="120">2 horas</option>
+							<option value="240">4 horas</option>
+							<option value="480">8 horas</option>
+						</optgroup>
+						<optgroup label="Dias">
+							<option value="1440">1 dia</option>
+							<option value="10080" selected>7 dias</option>
+							<option value="43200">30 dias</option>
+						</optgroup>
+					</select>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-classic" id="btnSave">Criar Link</button>
+					<div class="error"></div>
+				</div>
+			</div>
+			<div class="col-sm-offset-2 col-sm-10">
+				<div class='comofunciona'>
+					<h2>Como funciona?</h2>
+					Este aplicativo gera uma mensagem que será deletada automaticamente após ser aberta.<br />
+					A mensagem é criptografada e armazenada em nosso servidor. A chave para decifrá-la está dentro do link gerado, dessa forma ninguém além de você e o destinatário a possui.
+					<h2>Qual é a utilidade?</h2>
+					- Fazer uma promoção em que o primeiro a abrir o link e descobrir a mensagem ganha;<br />
+					- Enviar mensagem com segurança e privacidade para alguém.
+				</div>
+			</div>
+		</div>
+	
+		<div class="result">
+			<label for="url">URL de uso único:</label>
+			<div class="input-group">
+				<input type="text" class="form-control" id="url" style="background-color:#fff" readonly>
+				<span class="input-group-btn">
+					<button class="btn btn-default" type="button" id="copiar" title="Copiar" aria-label="Copiar" data-clipboard-target="#url"><span class="glyphicon glyphicon-copy text-muted"></span></button>
+				</span>
+			</div>
+	
+			<div class="bottom-links">
+				<ul class="list-inline">
+					<li><a href="mensagem-autodestrutiva.html"><span class="glyphicon glyphicon-chevron-left"></span> Criar Outra</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+function run(){
+	$(".box input[type='text']").on("click", function () {
+		$(this).select();
+	});
+
+	$('#btnSave').click(function(){
+
+		var msg  = $('#mensagem').val();
+		var autodestroy  = $('#autodestroy').val();
+
+		$(document).ajaxStart(function(){
+			$('#btnSave').attr('value', 'Carregando...');
+			$('#btnSave').attr('disabled', true);
+		});
+
+		$(document).ajaxStop(function(){
+			$('#btnSave').attr('value', 'Criar Link');
+			$('#btnSave').removeAttr('disabled');
+		});
+
+		$.ajax({
+			method: "POST",
+			url: "ajax/mensagem-autodestrutiva.php",
+			dataType: "json",
+			data: {msg:msg,autodestroy:autodestroy}
+
+		}).done(function(json) {
+			if(json.status=='OK'){
+
+				var link = 'https://www.invertexto.com/?key='+json.secret+'&id='+json.linkId;
+				$('.mainblock').remove();
+				$('.result input').val(link);
+				$('.result').show();
+
+			}else{
+				$('.error').text(json.status).fadeIn();
+				$('.error').delay(3000).fadeOut();
+			}
+		});
+	});
+
+	// Clipboard
+	$('#copiar').tooltip({
+		trigger: 'manual',
+		placement: 'bottom'
+	});
+
+	function setTooltip(btn, message) {
+		btn.attr('data-original-title', message)
+		.tooltip('show');
+	}
+
+	function hideTooltip(btn) {
+		setTimeout(function() {
+			btn.tooltip('hide');
+		}, 1000);
+	}
+
+	var clipboard = new ClipboardJS('#copiar');
+	clipboard.on('success', function(e) {
+		var btn = $(e.trigger);
+		setTooltip(btn, 'Copiado');
+		hideTooltip(btn);
+		e.clearSelection();
+        $('#copiar').blur();
+	});
+}
+</script>	</main>
+
+			<div class="container hidden-print">
+			<div class="bottom-banner">
+				<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+				crossorigin="anonymous"></script>
+				<!-- Bottom -->
+				<ins class="adsbygoogle"
+				style="display:block"
+				data-ad-client="ca-pub-1714195545121238"
+				data-ad-slot="6345858528"
+				data-ad-format="auto"
+				data-full-width-responsive="true"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+	
+	<footer class="hidden-print"></footer>
+
+	<script src="../cdn.invertexto.com/js/app-v1.2.js"></script>
+	<script src="../cdn.jsdelivr.net/npm/clipboard%402.0.11/dist/clipboard.min.js"></script>
+	<script src="js/ad_728x90.js"></script>
+	<script>
+	if (typeof run === "function") { 
+    	run();
+	}
+
+	// new banner test
+	var isMobile = 0;
+	var hasAd = 1;
+	if(!isMobile && (window.canRunAds===undefined || !hasAd)){
+				document.getElementById('topads').innerHTML = '<a href="/banners/banner-link.php?id=banner1" target="_blank" rel="nofollow"><img src="/banners/banner-image.php?id=banner1" class="img-responsive" style="margin:0 auto"></a>';
+	}
+	</script>
+
+<script data-cfasync="false" type="text/javascript" id="clever-core">
+/* <![CDATA[ */
+    (function (document, window) {
+        var a, c = document.createElement("script"), f = window.frameElement;
+
+        c.id = "CleverCoreLoader83219";
+        c.src = "../scripts.cleverwebserver.com/919807a68a8d275b2e7dd47c1ad6a69c.js";
+
+        c.async = !0;
+        c.type = "text/javascript";
+        c.setAttribute("data-target", window.name || (f && f.getAttribute("id")));
+        c.setAttribute("data-callback", "put-your-callback-function-here");
+        c.setAttribute("data-callback-url-click", "put-your-click-macro-here");
+        c.setAttribute("data-callback-url-view", "put-your-view-macro-here");
+
+        try {
+            a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
+        } catch (e) {
+            a = !1;
+        }
+
+        a || (a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
+        a.parentNode.insertBefore(c, a);
+    })(document, window);
+/* ]]> */
+</script>
+</body>
+
+<!-- Mirrored from www.invertexto.com/mensagem-autodestrutiva by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:23 GMT -->
+</html>

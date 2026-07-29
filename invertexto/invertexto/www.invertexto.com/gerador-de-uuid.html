@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!-- Mirrored from www.invertexto.com/gerador-de-uuid by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:50 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-title" content="Gerador de UUID">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="description" content="Ferramenta online para gerar UUIDs v4, v7 e mais. O gerador UUIDV4 é ideal para desenvolvedores que precisam de identificadores únicos em seus projetos.">
+	<meta property="og:title" content="Gerador de UUID">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="gerador-de-uuid.html">
+	<meta property="og:image" content="../cdn.invertexto.com/img/face-note.png">
+	<meta property="og:site_name" content="invertexto.com">
+	<meta property="og:description" content="Ferramenta online para gerar UUIDs v4, v7 e mais. O gerador UUIDV4 é ideal para desenvolvedores que precisam de identificadores únicos em seus projetos.">
+	<meta property="fb:app_id" content="515652911960455">
+	<title>Gerador de UUID | invertexto.com</title>
+
+	<link rel="canonical" href="gerador-de-uuid.html">
+	<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+	<link rel="stylesheet" href="../cdn.invertexto.com/css/appe44f.css?id=20260619">
+	<link rel="apple-touch-icon" href="../cdn.invertexto.com/img/apple-touch-icon.png">
+</head>
+<body>
+	<header class="hidden-print">
+		<div class="top">
+			<div class="container" style="height:100%">
+				<div style="height:100%;display:flex;justify-content:space-between;align-items:center">
+					<div style="padding-right:24px;margin-top:36px;margin-bottom:31px">
+						<a href="index.html">
+							<img src="../cdn.invertexto.com/img/invertexto.png" style="width:263px;height:48px" alt="invertexto.com">
+						</a>
+					</div>
+					<div id="topads" style="width:100%">
+													<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+							crossorigin="anonymous"></script>
+							<!-- Top -->
+							<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-client="ca-pub-1714195545121238"
+							data-ad-slot="4449009840"
+							data-ad-format="horizontal"
+							data-full-width-responsive="true"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+											</div>
+				</div>
+			</div>
+		</div>
+
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<style>
+					a.btnInsta{display:block;background-color:#D83277;height:20px;color:#fff;font-size:12px;padding:0 6px;line-height:20px;border-radius:4px;float:left}
+					a.btnInsta:hover,a.btnInsta:focus{text-decoration:none;color:#fff}
+				</style>
+				<div class="like pull-left">
+					<a href="https://www.instagram.com/invertexto/" target="_blank" rel="nofollow noopener" class="btnInsta"><strong>Siga</strong> @invertexto</a>
+				</div>
+
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				  </button>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="https://api.invertexto.com/" target="_blank" rel="nofollow">API</a></li>
+						<li><a href="sobre.html">Sobre</a></li>
+						<li><a href="contato.html">Contato</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	
+	<main>
+		
+<style>
+.btn-secondary{background-color:#EFEFEF}
+.btn-secondary:hover{background-color:#DFDFDF}
+.btn-secondary:focus{box-shadow:none;outline:0!important}
+.box {
+	background: #fff;
+	padding: 25px;
+	border-radius: 4px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+	margin-bottom: 20px;
+}
+.box label {
+    font-weight: normal;
+}
+.box h3 {
+	margin-top: 0;
+	margin-bottom: 20px;
+	color: #333;
+	border-bottom: 2px solid #f0f0f0;
+	padding-bottom: 10px;
+}
+.box h4 {
+	color: #555;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+.box p, .box ul {
+	color: #666;
+	line-height: 1.6;
+}
+.box ul {
+	margin-top: 10px;
+}
+.box ul li {
+	margin-bottom: 8px;
+}
+#uuid-results {
+	background-color: #f9f9f9;
+	border: 1px solid #ddd;
+}
+#uuid-results:focus {
+	background-color: #fff;
+	border-color: #66afe9;
+	outline: 0;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+}
+.btn-lg {
+	margin: 5px;
+}
+.flex-container {
+	display: flex;
+    align-items: end;
+	flex-wrap: wrap;
+	gap: 15px;
+	margin-bottom: 15px;
+}
+.flex-item {
+	min-width:240px;
+}
+@media (max-width: 768px) {
+	.flex-item {
+		flex: 1 1 100%;
+	}
+}
+</style>
+
+<div class="container">
+	<h1>Gerador de UUID</h1>
+	
+	<div class="box">		
+		<div class="flex-container">
+			<div class="flex-item">
+                <label for="uuid-version">Versão do UUID</label>
+                <select class="form-control" id="uuid-version" onchange="generateUUIDs()">
+                    <option value="4" selected>UUID v4</option>
+                    <option value="7">UUID v7</option>
+                    <option value="1">UUID v1</option>
+                </select>
+			</div>
+			
+			<div class="flex-item">
+                <label for="uuid-count">Quantidade</label>
+                <input type="number" class="form-control" id="uuid-count" value="1" min="1" max="100" onchange="generateUUIDs()">
+			</div>
+
+            <div class="flex-item">
+                <button class="btn btn-classic" style="margin-right:4px" onclick="generateUUIDs()">
+                    <span class="glyphicon glyphicon-refresh"></span> Gerar
+                </button>
+                <button class="btn btn-secondary" style="margin-right:4px" id="copy-btn" data-clipboard-target="#uuid-results">
+                    <span class="glyphicon glyphicon-copy"></span> Copiar
+                </button>
+            </div>
+		</div>
+		
+		<div style="margin-top:24px">
+			<label for="uuid-results">UUIDs Gerados</label>
+			<textarea class="form-control" id="uuid-results" rows="8" readonly style="font-family: 'Courier New', monospace; font-size: 14px; resize: vertical;background-color:#fff">8d95fd7a-62f5-4d50-a3af-4c6df2565c1f</textarea>
+		</div>
+		
+		<div id="copy-feedback" class="alert alert-success" style="display: none; margin-top: 15px;margin-bottom:0">
+			<span class="glyphicon glyphicon-ok"></span> <span id="copy-message"></span>
+		</div>
+	</div>
+	
+	<div class="box">
+		<h3>Sobre UUIDs</h3>
+		
+		<h4>UUID v4 (Aleatório)</h4>
+		<p>Gerado de forma totalmente aleatória usando números pseudoaleatórios criptograficamente seguros. É o formato mais comum e recomendado para a maioria dos casos de uso, garantindo alta probabilidade de unicidade sem depender de informações do sistema.</p>
+		
+		<h4>UUID v7 (Timestamp + Aleatório)</h4>
+		<p>Combina timestamp Unix com dados aleatórios, permitindo ordenação temporal natural. Ideal para bancos de dados e sistemas que se beneficiam de IDs ordenáveis cronologicamente, melhorando a performance de índices e consultas.</p>
+		
+		<h4>UUID v1 (Timestamp + MAC)</h4>
+		<p>Baseado em timestamp e endereço MAC da máquina. Menos usado atualmente devido a questões de privacidade (pode expor informações do sistema) e por não ser tão eficiente quanto v7 para ordenação temporal.</p>
+		
+		<h4>Quando usar cada versão?</h4>
+		<ul style="list-style-position: inside;padding:0">
+			<li><strong>v4:</strong> Uso geral, APIs REST, identificadores únicos sem requisitos especiais</li>
+			<li><strong>v7:</strong> Chaves primárias em bancos de dados, logs ordenados, sistemas distribuídos</li>
+			<li><strong>v1:</strong> Sistemas legados ou quando compatibilidade com v1 é necessária</li>
+		</ul>
+	</div>
+</div>
+
+<script src="../cdn.jsdelivr.net/npm/clipboard%402.0.11/dist/clipboard.min.js"></script>
+<script>
+// Inicializar ClipboardJS
+var clipboard = new ClipboardJS('#copy-btn');
+
+clipboard.on('success', function(e) {
+	const count = e.text.split('\n').filter(line => line.trim()).length;
+	showFeedback(`${count} UUID(s) copiado(s) para a área de transferência!`);
+	e.clearSelection();
+});
+
+clipboard.on('error', function(e) {
+	showFeedback('Erro ao copiar. Por favor, copie manualmente.');
+});
+
+function generateUUIDs() {
+	const version = document.getElementById('uuid-version').value;
+	const count = Math.min(Math.max(1, parseInt(document.getElementById('uuid-count').value) || 5), 100);
+	
+	// Atualizar o valor do input caso esteja fora do range
+	document.getElementById('uuid-count').value = count;
+
+	fetch('ajax/generate-uuid.json', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+		},
+		body: `version=${version}&count=${count}`
+	})
+	.then(response => response.json())
+	.then(data => {
+		if (data.success) {
+			displayUUIDs(data.uuids);
+			return;
+		}
+		alert(data.error || 'Erro inesperado.');
+	})
+	.catch(error => {
+		alert('Erro inesperado.');
+	});
+}
+
+function displayUUIDs(uuids) {
+	const resultsTextarea = document.getElementById('uuid-results');
+	resultsTextarea.value = uuids.join('\n');
+}
+
+function showFeedback(message) {
+	const feedback = document.getElementById('copy-feedback');
+	const messageEl = document.getElementById('copy-message');
+	messageEl.textContent = message;
+	feedback.style.display = 'block';
+	setTimeout(() => {
+		feedback.style.display = 'none';
+	}, 3000);
+}
+</script>	</main>
+
+			<div class="container hidden-print">
+			<div class="bottom-banner">
+				<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+				crossorigin="anonymous"></script>
+				<!-- Bottom -->
+				<ins class="adsbygoogle"
+				style="display:block"
+				data-ad-client="ca-pub-1714195545121238"
+				data-ad-slot="6345858528"
+				data-ad-format="auto"
+				data-full-width-responsive="true"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+	
+	<footer class="hidden-print"></footer>
+
+	<script src="../cdn.invertexto.com/js/app-v1.2.js"></script>
+	
+	<script src="js/ad_728x90.js"></script>
+	<script>
+	if (typeof run === "function") { 
+    	run();
+	}
+
+	// new banner test
+	var isMobile = 0;
+	var hasAd = 1;
+	if(!isMobile && (window.canRunAds===undefined || !hasAd)){
+				document.getElementById('topads').innerHTML = '<a href="/banners/banner-link.php?id=banner1" target="_blank" rel="nofollow"><img src="/banners/banner-image.php?id=banner1" class="img-responsive" style="margin:0 auto"></a>';
+	}
+	</script>
+
+<script data-cfasync="false" type="text/javascript" id="clever-core">
+/* <![CDATA[ */
+    (function (document, window) {
+        var a, c = document.createElement("script"), f = window.frameElement;
+
+        c.id = "CleverCoreLoader83219";
+        c.src = "../scripts.cleverwebserver.com/919807a68a8d275b2e7dd47c1ad6a69c.js";
+
+        c.async = !0;
+        c.type = "text/javascript";
+        c.setAttribute("data-target", window.name || (f && f.getAttribute("id")));
+        c.setAttribute("data-callback", "put-your-callback-function-here");
+        c.setAttribute("data-callback-url-click", "put-your-click-macro-here");
+        c.setAttribute("data-callback-url-view", "put-your-view-macro-here");
+
+        try {
+            a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
+        } catch (e) {
+            a = !1;
+        }
+
+        a || (a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
+        a.parentNode.insertBefore(c, a);
+    })(document, window);
+/* ]]> */
+</script>
+</body>
+
+<!-- Mirrored from www.invertexto.com/gerador-de-uuid by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:51 GMT -->
+</html>

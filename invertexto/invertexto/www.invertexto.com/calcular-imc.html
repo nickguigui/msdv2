@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!-- Mirrored from www.invertexto.com/calcular-imc by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:57:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-title" content="Calcular IMC">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="description" content="Calculadora de IMC (índice de massa corporal) online para calcular o IMC com base no peso e altura. Saiba seu peso ideal com o cálculo e a tabela IMC.">
+	<meta property="og:title" content="Calcular IMC">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="calcular-imc.html">
+	<meta property="og:image" content="../cdn.invertexto.com/img/face-imc.png">
+	<meta property="og:site_name" content="invertexto.com">
+	<meta property="og:description" content="Calculadora de IMC (índice de massa corporal) online para calcular o IMC com base no peso e altura. Saiba seu peso ideal com o cálculo e a tabela IMC.">
+	<meta property="fb:app_id" content="515652911960455">
+	<title>Calcular IMC | invertexto.com</title>
+
+	<link rel="canonical" href="calcular-imc.html">
+	<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+	<link rel="stylesheet" href="../cdn.invertexto.com/css/appe44f.css?id=20260619">
+	<link rel="apple-touch-icon" href="../cdn.invertexto.com/img/apple-touch-icon.png">
+</head>
+<body>
+	<header class="hidden-print">
+		<div class="top">
+			<div class="container" style="height:100%">
+				<div style="height:100%;display:flex;justify-content:space-between;align-items:center">
+					<div style="padding-right:24px;margin-top:36px;margin-bottom:31px">
+						<a href="index.html">
+							<img src="../cdn.invertexto.com/img/invertexto.png" style="width:263px;height:48px" alt="invertexto.com">
+						</a>
+					</div>
+					<div id="topads" style="width:100%">
+													<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+							crossorigin="anonymous"></script>
+							<!-- Top -->
+							<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-client="ca-pub-1714195545121238"
+							data-ad-slot="4449009840"
+							data-ad-format="horizontal"
+							data-full-width-responsive="true"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+											</div>
+				</div>
+			</div>
+		</div>
+
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<style>
+					a.btnInsta{display:block;background-color:#D83277;height:20px;color:#fff;font-size:12px;padding:0 6px;line-height:20px;border-radius:4px;float:left}
+					a.btnInsta:hover,a.btnInsta:focus{text-decoration:none;color:#fff}
+				</style>
+				<div class="like pull-left">
+					<a href="https://www.instagram.com/invertexto/" target="_blank" rel="nofollow noopener" class="btnInsta"><strong>Siga</strong> @invertexto</a>
+				</div>
+
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				  </button>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="https://api.invertexto.com/" target="_blank" rel="nofollow">API</a></li>
+						<li><a href="sobre.html">Sobre</a></li>
+						<li><a href="contato.html">Contato</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	
+	<main>
+		<style>
+.block{
+	max-width:400px;
+	margin:0 auto;
+}
+.block span.normal{
+	font-weight: normal;
+}
+.block table{
+	margin-top:30px;
+}
+.block-result{
+	text-align: center;
+	margin-top:20px;
+	display: none;
+}
+.block-result p.imc{
+	font-size:24px;
+	font-weight: bold;
+}
+.block-result iframe{
+	margin-top:10px;
+}
+</style>
+<div class="func-wrap container">
+	<h1>Calcular IMC</h1>
+	<div class="box">
+
+		<div class="block">
+			<div class="form-group">
+				<label for="peso">Peso <span class="normal">(kg)</span></label>
+				<input type="text" class="form-control" id="peso">
+			</div>
+			<div class="form-group">
+				<label for="altura">Altura <span class="normal">(cm)</span></label>
+				<input type="text" class="form-control" id="altura">
+			</div>
+			<button class="btn btn-classic" id="calcular">Calcular</button>
+
+			<div class="block-result alert" role="alert">
+				<p class="imc">24,38</p>
+				<p class="msg">Parabéns, você está em seu peso ideal.</p>
+				<iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fwww.invertexto.com%2Fcalculadora-imc.php%3Fimc%3D123&amp;layout=link&amp;mobile_iframe=true&amp;appId=515652911960455&amp;width=130&amp;height=14" width="130" height="14" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+			</div>
+		
+			<table class="table table-bordered">
+				<tr>
+					<th>Resultado</th>
+					<th>Situação</th> 
+				</tr>
+				<tr>
+					<td>Abaixo de 18,5</td>
+					<td>Abaixo do peso ideal</td> 
+				</tr>
+				<tr>
+					<td>Entre 18,5 e 24,9</td>
+					<td>Peso ideal</td> 
+				</tr>
+				<tr>
+					<td>Entre 25,0 e 29,9</td>
+					<td>Sobrepeso</td> 
+				</tr>
+				<tr>
+					<td>Entre 30,0 e 34,9</td>
+					<td>Obesidade grau I</td> 
+				</tr>
+				<tr>
+					<td>Entre 35,0 e 39,9</td>
+					<td>Obesidade grau II</td> 
+				</tr>
+				<tr>
+					<td>Entre 40 e acima</td>
+					<td>Obesidade grau III</td> 
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+
+<script>
+function run(){
+
+	$('#calcular').click(function(){
+
+		var peso = $('#peso').val();
+		var altura = $('#altura').val();
+
+		if(isNaN(peso) || isNaN(altura)){
+			alert('Digite apenas números.');
+			return;
+		}
+
+		if(peso=='' || altura==''){
+			alert('Preencha todos os campos.');
+			return;
+		}
+
+		var quadrado = Math.pow((altura/100), 2);
+		var imc = (peso / quadrado).toFixed(2);
+
+		var msg;
+		var color;
+		if(imc<18.5){
+			color = 'danger';
+			msg = 'Você está abaixo do peso ideal';
+		}else if(imc<24.99){
+			color = 'success';
+			msg = 'Parabéns, você está no seu peso ideal';
+		}else if(imc<29.99){
+			color = 'warning';
+			msg = 'Você está acima do seu peso ideal';
+		}else if(imc<34.99){
+			color = 'danger';
+			msg = 'Obesidade Grau I';
+		}else if(imc<39.99){
+			color = 'danger';
+			msg = 'Obesidade Grau II';
+		}else if(imc>40){
+			color = 'danger';
+			msg = 'Obesidade Grau III';
+		}
+
+		$('.block-result .imc').text(imc);
+		$('.block-result .msg').text(msg);
+		$('.block-result iframe').attr('src', 'https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fwww.invertexto.com%2Fcalculadora-imc.php%3Fimc%3D'+imc+'&layout=link&mobile_iframe=true&appId=515652911960455&width=130&height=14');
+		$('.block-result').removeClass('alert-success');
+		$('.block-result').removeClass('alert-warning');
+		$('.block-result').removeClass('alert-danger');
+		$('.block-result').addClass('alert-'+color);
+		$('.block-result').slideDown();
+	});
+
+	$('#peso, #altura').keydown(function(event){
+		if(event.keyCode == 13)
+			$('#calcular').click();
+	});
+
+}
+</script>	</main>
+
+			<div class="container hidden-print">
+			<div class="bottom-banner">
+				<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+				crossorigin="anonymous"></script>
+				<!-- Bottom -->
+				<ins class="adsbygoogle"
+				style="display:block"
+				data-ad-client="ca-pub-1714195545121238"
+				data-ad-slot="6345858528"
+				data-ad-format="auto"
+				data-full-width-responsive="true"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+	
+	<footer class="hidden-print"></footer>
+
+	<script src="../cdn.invertexto.com/js/app-v1.2.js"></script>
+	
+	<script src="js/ad_728x90.js"></script>
+	<script>
+	if (typeof run === "function") { 
+    	run();
+	}
+
+	// new banner test
+	var isMobile = 0;
+	var hasAd = 1;
+	if(!isMobile && (window.canRunAds===undefined || !hasAd)){
+				document.getElementById('topads').innerHTML = '<a href="/banners/banner-link.php?id=banner1" target="_blank" rel="nofollow"><img src="/banners/banner-image.php?id=banner1" class="img-responsive" style="margin:0 auto"></a>';
+	}
+	</script>
+
+<script data-cfasync="false" type="text/javascript" id="clever-core">
+/* <![CDATA[ */
+    (function (document, window) {
+        var a, c = document.createElement("script"), f = window.frameElement;
+
+        c.id = "CleverCoreLoader83219";
+        c.src = "../scripts.cleverwebserver.com/919807a68a8d275b2e7dd47c1ad6a69c.js";
+
+        c.async = !0;
+        c.type = "text/javascript";
+        c.setAttribute("data-target", window.name || (f && f.getAttribute("id")));
+        c.setAttribute("data-callback", "put-your-callback-function-here");
+        c.setAttribute("data-callback-url-click", "put-your-click-macro-here");
+        c.setAttribute("data-callback-url-view", "put-your-view-macro-here");
+
+        try {
+            a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
+        } catch (e) {
+            a = !1;
+        }
+
+        a || (a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
+        a.parentNode.insertBefore(c, a);
+    })(document, window);
+/* ]]> */
+</script>
+</body>
+
+<!-- Mirrored from www.invertexto.com/calcular-imc by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:57:03 GMT -->
+</html>

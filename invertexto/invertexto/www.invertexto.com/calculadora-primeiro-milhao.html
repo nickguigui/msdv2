@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!-- Mirrored from www.invertexto.com/calculadora-primeiro-milhao by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:43 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-title" content="Calculadora do Primeiro Milhão">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="description" content="Ferramenta para calcular em quanto tempo você chegará ao seu primeiro milhão, ou quanto será necessário poupar para atingir esse objetivo.">
+	<meta property="og:title" content="Calculadora do Primeiro Milhão">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="calculadora-primeiro-milhao.html">
+	<meta property="og:image" content="../cdn.invertexto.com/img/face-note.png">
+	<meta property="og:site_name" content="invertexto.com">
+	<meta property="og:description" content="Ferramenta para calcular em quanto tempo você chegará ao seu primeiro milhão, ou quanto será necessário poupar para atingir esse objetivo.">
+	<meta property="fb:app_id" content="515652911960455">
+	<title>Calculadora do Primeiro Milhão | invertexto.com</title>
+
+	<link rel="canonical" href="calculadora-primeiro-milhao.html">
+	<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+	<link rel="stylesheet" href="../cdn.invertexto.com/css/appe44f.css?id=20260619">
+	<link rel="apple-touch-icon" href="../cdn.invertexto.com/img/apple-touch-icon.png">
+</head>
+<body>
+	<header class="hidden-print">
+		<div class="top">
+			<div class="container" style="height:100%">
+				<div style="height:100%;display:flex;justify-content:space-between;align-items:center">
+					<div style="padding-right:24px;margin-top:36px;margin-bottom:31px">
+						<a href="index.html">
+							<img src="../cdn.invertexto.com/img/invertexto.png" style="width:263px;height:48px" alt="invertexto.com">
+						</a>
+					</div>
+					<div id="topads" style="width:100%">
+													<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+							crossorigin="anonymous"></script>
+							<!-- Top -->
+							<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-client="ca-pub-1714195545121238"
+							data-ad-slot="4449009840"
+							data-ad-format="horizontal"
+							data-full-width-responsive="true"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+											</div>
+				</div>
+			</div>
+		</div>
+
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<style>
+					a.btnInsta{display:block;background-color:#D83277;height:20px;color:#fff;font-size:12px;padding:0 6px;line-height:20px;border-radius:4px;float:left}
+					a.btnInsta:hover,a.btnInsta:focus{text-decoration:none;color:#fff}
+				</style>
+				<div class="like pull-left">
+					<a href="https://www.instagram.com/invertexto/" target="_blank" rel="nofollow noopener" class="btnInsta"><strong>Siga</strong> @invertexto</a>
+				</div>
+
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				  </button>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="https://api.invertexto.com/" target="_blank" rel="nofollow">API</a></li>
+						<li><a href="sobre.html">Sobre</a></li>
+						<li><a href="contato.html">Contato</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	
+	<main>
+		<style>
+.space{
+	height:50px;
+}
+.box h2{
+	font-size:16px;
+	margin:0;
+	margin-bottom:25px;
+	color:#999;
+}
+.box label{
+	font-weight: normal;
+}
+.box label span{
+	color:#999;
+}
+.box .result{
+	background-color:#edeff3;
+	padding:15px 20px;
+	margin:-20px;
+	margin-top:25px;
+}
+span.bold{
+	font-weight:bold;
+}
+@media screen and (max-width: 767px) {
+	.box .result{
+		margin:-15px;
+		margin-top:25px;
+	}
+}
+</style>
+<div class="container">
+	<h1>Calculadora do Primeiro Milhão</h1>
+
+	<div class="row">
+		<div class="col-md-11">
+			<div class="box">
+				<h2>POUPANÇA NECESSÁRIA</h2>
+				<div class="form-group">
+					<label for="objetivo1">Valor desejado <span>(R$)</span></label>
+					<input type="text" name="objetivo1" class="form-control numerico" id="objetivo1" value="1.000.000,00">
+				</div>
+				<div class="form-group">
+					<label for="juros1">Taxa de juros mensal <span>(%)</span></label>
+					<input type="text" name="juros1" class="form-control numerico" id="juros1">
+				</div>
+				<div class="form-group">
+					<label for="periodo1">Período para atingir objetivo <span>(anos)</span></label>
+					<input type="text" name="periodo1" class="form-control" id="periodo1" onkeypress="return onlyNumbers(event)" maxlength="3">
+				</div>
+				<button type="submit" class="btn btn-classic" id="calc1">Calcular</button>
+
+				<div class="result">
+					Poupança mensal: <span class="bold calculo1"></span>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1"></div>
+		<div class="visible-xs visible-sm space"></div>
+
+		<div class="col-md-11">
+			<div class="box">
+				<h2>TEMPO NECESSÁRIO</h2>
+				<div class="form-group">
+					<label for="objetivo2">Valor desejado <span>(R$)</span></label>
+					<input type="text" name="objetivo2" class="form-control numerico" id="objetivo2" value="1.000.000,00">
+				</div>
+				<div class="form-group">
+					<label for="juros2">Taxa de juros mensal <span>(%)</span></label>
+					<input type="text" name="juros2" class="form-control numerico" id="juros2">
+				</div>
+				<div class="form-group">
+					<label for="poupanca2">Poupança mensal <span>(R$)</span></label>
+					<input type="text" name="poupanca2" class="form-control numerico" id="poupanca2">
+				</div>
+				<button type="submit" class="btn btn-classic" id="calc2">Calcular</button>
+
+				<div class="result">
+					Período para atingir objetivo: <span class="bold calculo2"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+function onlyNumbers(event){
+	var key = window.event ? event.keyCode : event.which;
+	if (key < 48 || key > 57) return false;
+	else return true;
+}
+
+function run(){
+	$('.numerico').number(true, 2, ',', '.');
+
+	//formata números
+	Number.prototype.formatMoney = function(c, d, t){
+	var n = this, 
+		c = isNaN(c = Math.abs(c)) ? 2 : c, 
+		d = d == undefined ? "." : d, 
+		t = t == undefined ? "," : t, 
+		s = n < 0 ? "-" : "", 
+		i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", 
+		j = (j = i.length) > 3 ? j % 3 : 0;
+		return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+	 };
+
+	//cálculo I
+	$('#calc1').click(function(){
+		var objetivo = $("input[name='objetivo1']").val();
+		var juros = $("input[name='juros1']").val();
+		var periodo = $("input[name='periodo1']").val();
+		
+		var meses = periodo*12;
+		var jurosdecimal = juros/100;
+		var d = 1+jurosdecimal;
+		
+		var calculo = objetivo*(jurosdecimal/(Math.pow(d,meses)-1));
+		calculo = calculo.formatMoney(2, ',', '.');
+		
+		var resultado = 'R$ '+calculo;
+		$('span.calculo1').text(resultado);
+	});
+
+	//cálculo II
+	$('#calc2').click(function(){
+		var objetivo = $("input[name='objetivo2']").val();
+		var juros = $("input[name='juros2']").val();
+		var poupanca = $("input[name='poupanca2']").val();
+		
+		var jurosdecimal = juros/100;
+		var d = 1+jurosdecimal;
+		
+		var calculo = Math.log(((objetivo*jurosdecimal)/poupanca)+1)/Math.log(d);
+		anos = calculo/12;
+		anos = anos.formatMoney(2, ',', '.');
+		
+		var resultado = anos+' anos';
+		$('span.calculo2').text(resultado);
+	});
+}
+</script>	</main>
+
+			<div class="container hidden-print">
+			<div class="bottom-banner">
+				<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+				crossorigin="anonymous"></script>
+				<!-- Bottom -->
+				<ins class="adsbygoogle"
+				style="display:block"
+				data-ad-client="ca-pub-1714195545121238"
+				data-ad-slot="6345858528"
+				data-ad-format="auto"
+				data-full-width-responsive="true"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+	
+	<footer class="hidden-print"></footer>
+
+	<script src="../cdn.invertexto.com/js/app-v1.2.js"></script>
+	<script src="js/jquery.number.min.js"></script>
+	<script src="js/ad_728x90.js"></script>
+	<script>
+	if (typeof run === "function") { 
+    	run();
+	}
+
+	// new banner test
+	var isMobile = 0;
+	var hasAd = 1;
+	if(!isMobile && (window.canRunAds===undefined || !hasAd)){
+				document.getElementById('topads').innerHTML = '<a href="/banners/banner-link.php?id=banner1" target="_blank" rel="nofollow"><img src="/banners/banner-image.php?id=banner1" class="img-responsive" style="margin:0 auto"></a>';
+	}
+	</script>
+
+<script data-cfasync="false" type="text/javascript" id="clever-core">
+/* <![CDATA[ */
+    (function (document, window) {
+        var a, c = document.createElement("script"), f = window.frameElement;
+
+        c.id = "CleverCoreLoader83219";
+        c.src = "../scripts.cleverwebserver.com/919807a68a8d275b2e7dd47c1ad6a69c.js";
+
+        c.async = !0;
+        c.type = "text/javascript";
+        c.setAttribute("data-target", window.name || (f && f.getAttribute("id")));
+        c.setAttribute("data-callback", "put-your-callback-function-here");
+        c.setAttribute("data-callback-url-click", "put-your-click-macro-here");
+        c.setAttribute("data-callback-url-view", "put-your-view-macro-here");
+
+        try {
+            a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
+        } catch (e) {
+            a = !1;
+        }
+
+        a || (a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
+        a.parentNode.insertBefore(c, a);
+    })(document, window);
+/* ]]> */
+</script>
+</body>
+
+<!-- Mirrored from www.invertexto.com/calculadora-primeiro-milhao by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:43 GMT -->
+</html>

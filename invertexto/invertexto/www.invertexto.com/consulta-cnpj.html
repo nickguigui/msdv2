@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!-- Mirrored from www.invertexto.com/consulta-cnpj by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:57:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-title" content="Consulta de CNPJ">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="description" content="Ferramenta grátis para consultar o cartão CNPJ (Cadastro Nacional de Pessoa Jurídica) da Receita Federal. Pesquisa situação cadastral, CNAE, sócios e mais.">
+	<meta property="og:title" content="Consulta de CNPJ">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="consulta-cnpj.html">
+	<meta property="og:image" content="../cdn.invertexto.com/img/face-note.png">
+	<meta property="og:site_name" content="invertexto.com">
+	<meta property="og:description" content="Ferramenta grátis para consultar o cartão CNPJ (Cadastro Nacional de Pessoa Jurídica) da Receita Federal. Pesquisa situação cadastral, CNAE, sócios e mais.">
+	<meta property="fb:app_id" content="515652911960455">
+	<title>Consulta de CNPJ | invertexto.com</title>
+
+	<link rel="canonical" href="consulta-cnpj.html">
+	<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+	<link rel="stylesheet" href="../cdn.invertexto.com/css/appe44f.css?id=20260619">
+	<link rel="apple-touch-icon" href="../cdn.invertexto.com/img/apple-touch-icon.png">
+</head>
+<body>
+	<header class="hidden-print">
+		<div class="top">
+			<div class="container" style="height:100%">
+				<div style="height:100%;display:flex;justify-content:space-between;align-items:center">
+					<div style="padding-right:24px;margin-top:36px;margin-bottom:31px">
+						<a href="index.html">
+							<img src="../cdn.invertexto.com/img/invertexto.png" style="width:263px;height:48px" alt="invertexto.com">
+						</a>
+					</div>
+					<div id="topads" style="width:100%">
+													<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+							crossorigin="anonymous"></script>
+							<!-- Top -->
+							<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-client="ca-pub-1714195545121238"
+							data-ad-slot="4449009840"
+							data-ad-format="horizontal"
+							data-full-width-responsive="true"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+											</div>
+				</div>
+			</div>
+		</div>
+
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<style>
+					a.btnInsta{display:block;background-color:#D83277;height:20px;color:#fff;font-size:12px;padding:0 6px;line-height:20px;border-radius:4px;float:left}
+					a.btnInsta:hover,a.btnInsta:focus{text-decoration:none;color:#fff}
+				</style>
+				<div class="like pull-left">
+					<a href="https://www.instagram.com/invertexto/" target="_blank" rel="nofollow noopener" class="btnInsta"><strong>Siga</strong> @invertexto</a>
+				</div>
+
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				  </button>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="https://api.invertexto.com/" target="_blank" rel="nofollow">API</a></li>
+						<li><a href="sobre.html">Sobre</a></li>
+						<li><a href="contato.html">Contato</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	
+	<main>
+		
+<style>
+.container .panel{border-radius:0;margin-top:25px}
+.mb-3{margin-bottom:12px}
+.block{
+	max-width:400px;
+	margin:0 auto;
+	padding:30px 0 50px 0;
+}
+.box .title{font-weight:500;text-align:center;font-size:16px;margin:28px 0}
+
+.icon{width:40px;height:40px;border-radius:4px;margin-right:16px;background-color:#EDF4FA;color:#2496ED;flex-shrink:0}
+.icon svg{width:20px;height:20px;fill:currentColor}
+
+.secao{font-size:16px;padding:24px 0 12px 0;border-top:1px solid #edeff3}
+.dlabel{color:#767676;font-size:12px}
+</style>
+<div class="container">
+	<h1>Consulta de CNPJ</h1>
+    <div class="alert alert-danger" id="error" style="display:none"></div>
+	<div class="box">
+        <div class="block hidden-print">
+            <div class="input-group" style="max-width:320px;margin:0 auto">
+                <input type="text" id="cnpj-input" class="form-control" placeholder="Informe um CNPJ" autofocus required>
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-classic" id="pesquisar">Pesquisar</button>
+                </span>
+            </div>
+        </div>
+
+        <div id="result" style="display:none">
+            <div class="flex secao">
+                <div class="icon flex justify-center items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512"><path d="M20 424.229h20V279.771H20c-11.046 0-20-8.954-20-20V212c0-11.046 8.954-20 20-20h112c11.046 0 20 8.954 20 20v212.229h20c11.046 0 20 8.954 20 20V492c0 11.046-8.954 20-20 20H20c-11.046 0-20-8.954-20-20v-47.771c0-11.046 8.954-20 20-20zM96 0C56.235 0 24 32.235 24 72s32.235 72 72 72 72-32.235 72-72S135.764 0 96 0z"/></svg>
+                </div>
+                <div>
+                    <div class="mb-3">
+                        <div class="dlabel">CNPJ</div>
+                        <div class="ddata" id="cnpj">&nbsp;</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="dlabel">RAZÃO SOCIAL</div>
+                        <div class="ddata" id="razao_social">&nbsp;</div>
+                    </div>
+                    <div class="mb-3" style="display:none">
+                        <div class="dlabel">NOME FANTASIA</div>
+                        <div class="ddata" id="nome_fantasia">&nbsp;</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="dlabel">TIPO</div>
+                        <div class="ddata" id="tipo">&nbsp;</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="dlabel">NATUREZA JURÍDICA</div>
+                        <div class="ddata" id="natureza_juridica">&nbsp;</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="dlabel">DATA DA ABERTURA</div>
+                        <div class="ddata" id="data_inicio">&nbsp;</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="dlabel">SITUAÇÃO CADASTRAL</div>
+                        <div class="ddata" id="situacao">&nbsp;</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="dlabel">CAPITAL SOCIAL</div>
+                        <div class="ddata" id="capital_social"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex secao">
+                <div class="icon flex justify-center items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M272 288h-64C163.8 288 128 323.8 128 368C128 376.8 135.2 384 144 384h192c8.836 0 16-7.164 16-16C352 323.8 316.2 288 272 288zM240 256c35.35 0 64-28.65 64-64s-28.65-64-64-64c-35.34 0-64 28.65-64 64S204.7 256 240 256zM496 320H480v96h16c8.836 0 16-7.164 16-16v-64C512 327.2 504.8 320 496 320zM496 64H480v96h16C504.8 160 512 152.8 512 144v-64C512 71.16 504.8 64 496 64zM496 192H480v96h16C504.8 288 512 280.8 512 272v-64C512 199.2 504.8 192 496 192zM384 0H96C60.65 0 32 28.65 32 64v384c0 35.35 28.65 64 64 64h288c35.35 0 64-28.65 64-64V64C448 28.65 419.3 0 384 0zM400 448c0 8.836-7.164 16-16 16H96c-8.836 0-16-7.164-16-16V64c0-8.838 7.164-16 16-16h288c8.836 0 16 7.162 16 16V448z"/></svg>
+                </div>
+                <div>
+                    <div class="mb-3">
+                        <div class="dlabel">TELEFONE</div>
+                        <div class="ddata" id="telefone">&nbsp;</div>
+                    </div>
+                    <div class="mb-3" style="display:none">
+                        <div class="dlabel">E-MAIL</div>
+                        <div class="ddata" id="email">&nbsp;</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="dlabel">ENDEREÇO</div>
+                        <div class="ddata" id="endereco">&nbsp;</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="dlabel">CIDADE / UF</div>
+                        <div class="ddata" id="cidade">&nbsp;</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="dlabel">CEP</div>
+                        <div class="ddata" id="cep">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex secao">
+                <div class="icon flex justify-center items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M131.1 105.4c-20.1 8.6-30.8 21.8-33.9 39.4c-2.4 14.1-.7 23.2 2 29.4c2.8 6.3 7.9 12.4 16.7 18.6c19.2 13.4 48.3 22.1 84.9 32.5c1 .3 1.9 .6 2.9 .8c32.7 9.3 72 20.6 100.9 40.7c15.7 10.9 29.9 25.5 38.6 45.1c8.8 19.8 10.8 42 6.6 66.3c-7.3 42.5-35.3 71.7-71.8 87.3c-35.4 15.2-79.1 17.9-123.7 10.9l-.2 0 0 0c-24-3.9-62.7-17.1-87.6-25.6c-4.8-1.7-9.2-3.1-12.8-4.3c-16.8-5.6-25.8-23.7-20.3-40.5s23.7-25.8 40.5-20.3c4.9 1.6 10.2 3.4 15.9 5.4c25.4 8.6 56.4 19.2 74.4 22.1c36.8 5.7 67.5 2.5 88.5-6.5c20.1-8.6 30.8-21.8 33.9-39.4c2.4-14.1 .7-23.2-2-29.4c-2.8-6.3-7.9-12.4-16.7-18.6c-19.2-13.4-48.3-22.1-84.9-32.5c-1-.3-1.9-.6-2.9-.8c-32.7-9.3-72-20.6-100.9-40.7c-15.7-10.9-29.9-25.5-38.6-45.1c-8.8-19.8-10.8-42-6.6-66.3l31.5 5.5-31.5-5.5c7.3-42.5 35.3-71.7 71.8-87.3c35.4-15.2 79.1-17.9 123.7-10.9c13 2 52.4 9.6 66.6 13.4c17.1 4.5 27.2 22.1 22.7 39.2s-22.1 27.2-39.1 22.7c-11.2-3-48.2-10.2-60.1-12l4.9-31.5-4.9 31.5c-36.9-5.8-67.5-2.5-88.6 6.5z"/></svg>
+                </div>
+                <div>
+                    <div class="mb-3">
+                        <div class="dlabel">OPTANTE SIMPLES</div>
+                        <div class="ddata" id="simples">&nbsp;</div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="dlabel">OPTANTE MEI</div>
+                        <div class="ddata" id="mei">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex secao">
+                <div class="icon flex justify-center items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"/></svg>
+                </div>
+                <div>
+                    <div class="mb-3">
+                        <div class="dlabel">CNAE PRINCIPAL</div>
+                        <div class="ddata" id="cnae_principal">
+                            <div>&nbsp;</div>
+                       </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="dlabel">CNAE SECUNDÁRIAS</div>
+                        <div class="ddata" id="cnae_secundarias">
+                            <div>&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex secao" style="border-bottom:none;margin-bottom:0">
+                <div class="icon flex justify-center items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M506.1 127.1c-17.97-20.17-61.46-61.65-122.7-71.1c-22.5-3.354-45.39 3.606-63.41 18.21C302 60.47 279.1 53.42 256.5 56.86C176.8 69.17 126.7 136.2 124.6 139.1c-7.844 10.69-5.531 25.72 5.125 33.57c4.281 3.157 9.281 4.657 14.19 4.657c7.406 0 14.69-3.375 19.38-9.782c.4062-.5626 40.19-53.91 100.5-63.23c7.457-.9611 14.98 .67 21.56 4.483L227.2 168.2C214.8 180.5 207.1 196.1 207.1 214.5c0 17.5 6.812 33.94 19.16 46.29C239.5 273.2 255.9 279.1 273.4 279.1s33.94-6.813 46.31-19.19l11.35-11.35l124.2 100.9c2.312 1.875 2.656 5.251 .5 7.97l-27.69 35.75c-1.844 2.25-5.25 2.594-7.156 1.063l-22.22-18.69l-26.19 27.75c-2.344 2.875-5.344 3.563-6.906 3.719c-1.656 .1562-4.562 .125-6.812-1.719l-32.41-27.66L310.7 392.3l-2.812 2.938c-5.844 7.157-14.09 11.66-23.28 12.6c-9.469 .8126-18.25-1.75-24.5-6.782L170.3 319.8H96V128.3L0 128.3v255.6l64 .0404c11.74 0 21.57-6.706 27.14-16.14h60.64l77.06 69.66C243.7 449.6 261.9 456 280.8 456c2.875 0 5.781-.125 8.656-.4376c13.62-1.406 26.41-6.063 37.47-13.5l.9062 .8126c12.03 9.876 27.28 14.41 42.69 12.78c13.19-1.375 25.28-7.032 33.91-15.35c21.09 8.188 46.09 2.344 61.25-16.47l27.69-35.75c18.47-22.82 14.97-56.48-7.844-75.01l-120.3-97.76l8.381-8.382c9.375-9.376 9.375-24.57 0-33.94c-9.375-9.376-24.56-9.376-33.94 0L285.8 226.8C279.2 233.5 267.7 233.5 261.1 226.8c-3.312-3.282-5.125-7.657-5.125-12.31c0-4.688 1.812-9.064 5.281-12.53l85.91-87.64c7.812-7.845 18.53-11.75 28.94-10.03c59.75 9.22 100.2 62.73 100.6 63.29c3.088 4.155 7.264 6.946 11.84 8.376H544v175.1c0 17.67 14.33 32.05 31.1 32.05L640 384V128.1L506.1 127.1zM48 352c-8.75 0-16-7.245-16-15.99c0-8.876 7.25-15.99 16-15.99S64 327.2 64 336.1C64 344.8 56.75 352 48 352zM592 352c-8.75 0-16-7.245-16-15.99c0-8.876 7.25-15.99 16-15.99s16 7.117 16 15.99C608 344.8 600.8 352 592 352z"/></svg>
+                </div>
+                <div>
+                    <div class="mb-3">
+                        <div class="dlabel">SÓCIOS</div>
+                        <div class="ddata" id="socios">
+                            <div>&nbsp;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <div class="panel panel-default" style="margin-bottom:0;border:none">
+		<div class="panel-body">
+			<p>Ferramenta online para consulta de CNPJ na base pública da Receita Federal.</p>
+            <p style="margin:0">Se você é desenvolvedor, também pode utilizar nossa <a href="https://api.invertexto.com/api-consulta-cnpj" target="_blank">API CNPJ</a> para integrar a consulta em seu sistema de forma simples e eficiente.</p>
+		</div>
+	</div>
+
+    <div class="panel panel-custom hidden-print">
+		<div class="panel-heading">Ferramentas Relacionadas</div>
+		<div class="list-group">
+			<a href="consulta-cep.html" class="list-group-item">Consulta de CEP</a>
+            <a href="tabela-fipe.html" class="list-group-item">Tabela Fipe Veículos</a>
+		</div>
+	</div>
+</div>
+
+<script>
+function run(){
+
+    $('#cnpj-input').mask('**.***.***/****-**');
+
+    function toNumber(number){
+        return (parseFloat(number)).toLocaleString('pt-BR',{
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        })
+    }
+
+    function toDate(date){
+        const dt = new Date(date);
+        return dt.toLocaleDateString();
+    }
+
+    function toCNPJ(cnpj){
+        return cnpj.replace(/^([A-Z0-9]{2})([A-Z0-9]{3})([A-Z0-9]{3})([A-Z0-9]{4})(\d{2})/, "$1.$2.$3/$4-$5")
+    }
+
+	function validarCNPJ(cnpj) {
+		cnpj = cnpj.replace(/[.\/-]/g, '').toUpperCase();
+		if (cnpj.length !== 14) return false;
+		if (!/^[A-Z0-9]{12}\d{2}$/.test(cnpj)) return false;
+		if (cnpj === '00000000000000') return false;
+
+		function charValue(c) {
+			return c.charCodeAt(0) - 48;
+		}
+
+		function calcDV(base) {
+			const len = base.length;
+			const numRanges = Math.ceil(len / 8);
+			let weights = [];
+			for (let i = 0; i < numRanges; i++) {
+				weights = weights.concat([2, 3, 4, 5, 6, 7, 8, 9]);
+			}
+			weights = weights.slice(0, len).reverse();
+			const sum = base.split('').reduce(function(acc, c, i) {
+				return acc + charValue(c) * weights[i];
+			}, 0);
+			const mod = sum % 11;
+			return mod < 2 ? 0 : 11 - mod;
+		}
+
+		const base = cnpj.substring(0, 12);
+		const dv1 = calcDV(base);
+		const dv2 = calcDV(base + dv1);
+
+		return parseInt(cnpj[12]) === dv1 && parseInt(cnpj[13]) === dv2;
+	}
+
+    function request(cnpj){
+        if(!validarCNPJ(cnpj)){
+            $('#error').text('CNPJ inválido.').show();
+            return;
+        }
+
+        $(document).ajaxStart(function(){
+            $('#pesquisar').attr('disabled',true)
+        });
+
+        $(document).ajaxStop(function(){
+            $('#pesquisar').attr('disabled',false)
+        });
+
+        $.ajax({type:'get', url:'https://api.invertexto.com/v1/cnpj/'+cnpj+'?token=661|xqfbRfFda6qReBvlbBRhuX3hFw6DdQ1f', dataType:'json',
+            success:function(j){
+
+                var cnae_secundarias='';
+                for (const atividade of j.atividades_secundarias){
+                    cnae_secundarias += '<div>'+atividade.codigo+' - '+atividade.descricao+'</div>'
+                }
+
+                var socios='';
+                for (const socio of j.socios){
+                    socios += '<div>'+socio.nome+' - '+socio.qualificacao+' desde '+toDate(socio.data_entrada)+'</div>'
+                }
+
+                var endereco = '';
+                if (j.endereco.tipo_logradouro) endereco+= j.endereco.tipo_logradouro+' '
+                if (j.endereco.logradouro) endereco += j.endereco.logradouro
+                if (j.endereco.numero && j.endereco.numero.replace('index.html','')!='SN') endereco += ', '+j.endereco.numero
+                if (j.endereco.complemento) endereco += ', '+j.endereco.complemento;
+                if (j.endereco.bairro) endereco += ' - '+j.endereco.bairro;
+
+                var simples = '';
+                if(j.simples.optante_simples=='S'){
+                    simples = 'Sim - desde '+toDate(j.simples.data_opcao);
+                }else{
+                    simples = !j.simples.data_exclusao ? 'Não' : 'Não - desde '+toDate(j.simples.data_exclusao);
+                }
+
+                var mei = '';
+                if(j.mei.optante_mei=='S'){
+                    mei = 'Sim - desde '+toDate(j.mei.data_opcao);
+                }else{
+                    mei = !j.mei.data_exclusao ? 'Não' : 'Não - desde '+toDate(j.mei.data_exclusao);
+                }
+
+                $('#cnpj').text(toCNPJ(j.cnpj))
+                $('#razao_social').text(j.razao_social)
+                $('#nome_fantasia').text(j.nome_fantasia)
+                if(j.nome_fantasia) $('#nome_fantasia').parent().show()
+                $('#tipo').text(j.tipo)
+                $('#natureza_juridica').text(j.natureza_juridica)
+                $('#data_inicio').text(toDate(j.data_inicio))
+                $('#situacao').text(j.situacao.nome)
+                $('#capital_social').text('R$ '+toNumber(j.capital_social))
+                $('#telefone').text(j.telefone1)
+                $('#email').html(j.email)
+                if(j.email) $('#email').parent().show()
+                $('#endereco').text(endereco)
+                $('#cidade').text(j.endereco.municipio+' / '+j.endereco.uf)
+                $('#cep').text(j.endereco.cep)
+                $('#simples').text(simples)
+                $('#mei').text(mei)
+                $('#cnae_principal').html('<div>'+j.atividade_principal.codigo+' '+j.atividade_principal.descricao+'</div>')
+                $('#cnae_secundarias').html(cnae_secundarias)
+                $('#socios').html(socios)
+
+                $('#error').hide()
+                $('#result').show()
+            },
+            error:function(e){
+                if(e.responseJSON != undefined){
+                    $('#error').text(e.responseJSON.message).show();
+                }else{
+                    $('#error').text('Erro inesperado.').show();
+                }
+            }
+        });
+    }
+
+    $('#pesquisar').click(function(){
+        const cnpj = $('#cnpj-input').val().replace(/[^A-Za-z0-9]/g, '').toUpperCase()
+        request(cnpj)
+    });
+
+    $('#cnpj-input').keydown(function(event){
+		if(event.keyCode == 13) $('#pesquisar').click();
+	});
+}
+</script>	</main>
+
+			<div class="container hidden-print">
+			<div class="bottom-banner">
+				<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+				crossorigin="anonymous"></script>
+				<!-- Bottom -->
+				<ins class="adsbygoogle"
+				style="display:block"
+				data-ad-client="ca-pub-1714195545121238"
+				data-ad-slot="6345858528"
+				data-ad-format="auto"
+				data-full-width-responsive="true"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+	
+	<footer class="hidden-print"></footer>
+
+	<script src="../cdn.invertexto.com/js/app-v1.2.js"></script>
+	<script src="js/jquery.maskedinput.min.js"></script>
+	<script src="js/ad_728x90.js"></script>
+	<script>
+	if (typeof run === "function") { 
+    	run();
+	}
+
+	// new banner test
+	var isMobile = 0;
+	var hasAd = 1;
+	if(!isMobile && (window.canRunAds===undefined || !hasAd)){
+				document.getElementById('topads').innerHTML = '<a href="/banners/banner-link.php?id=banner1" target="_blank" rel="nofollow"><img src="/banners/banner-image.php?id=banner1" class="img-responsive" style="margin:0 auto"></a>';
+	}
+	</script>
+
+<script data-cfasync="false" type="text/javascript" id="clever-core">
+/* <![CDATA[ */
+    (function (document, window) {
+        var a, c = document.createElement("script"), f = window.frameElement;
+
+        c.id = "CleverCoreLoader83219";
+        c.src = "../scripts.cleverwebserver.com/919807a68a8d275b2e7dd47c1ad6a69c.js";
+
+        c.async = !0;
+        c.type = "text/javascript";
+        c.setAttribute("data-target", window.name || (f && f.getAttribute("id")));
+        c.setAttribute("data-callback", "put-your-callback-function-here");
+        c.setAttribute("data-callback-url-click", "put-your-click-macro-here");
+        c.setAttribute("data-callback-url-view", "put-your-view-macro-here");
+
+        try {
+            a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
+        } catch (e) {
+            a = !1;
+        }
+
+        a || (a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
+        a.parentNode.insertBefore(c, a);
+    })(document, window);
+/* ]]> */
+</script>
+</body>
+
+<!-- Mirrored from www.invertexto.com/consulta-cnpj by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:57:04 GMT -->
+</html>

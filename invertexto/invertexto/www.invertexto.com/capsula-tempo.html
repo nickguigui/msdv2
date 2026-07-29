@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!-- Mirrored from www.invertexto.com/capsula-tempo by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:22 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-title" content="Cápsula do Tempo">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="description" content="Cápsula do tempo online com opção de anexo de imagem e seleção de data. Mande um e-mail para você mesmo no futuro!">
+	<meta property="og:title" content="Cápsula do Tempo">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="capsula-tempo.html">
+	<meta property="og:image" content="../cdn.invertexto.com/img/face-note.png">
+	<meta property="og:site_name" content="invertexto.com">
+	<meta property="og:description" content="Cápsula do tempo online com opção de anexo de imagem e seleção de data. Mande um e-mail para você mesmo no futuro!">
+	<meta property="fb:app_id" content="515652911960455">
+	<title>Cápsula do Tempo | invertexto.com</title>
+
+	<link rel="canonical" href="capsula-tempo.html">
+	<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+	<link rel="stylesheet" href="../cdn.invertexto.com/css/appe44f.css?id=20260619">
+	<link rel="apple-touch-icon" href="../cdn.invertexto.com/img/apple-touch-icon.png">
+</head>
+<body>
+	<header class="hidden-print">
+		<div class="top">
+			<div class="container" style="height:100%">
+				<div style="height:100%;display:flex;justify-content:space-between;align-items:center">
+					<div style="padding-right:24px;margin-top:36px;margin-bottom:31px">
+						<a href="index.html">
+							<img src="../cdn.invertexto.com/img/invertexto.png" style="width:263px;height:48px" alt="invertexto.com">
+						</a>
+					</div>
+					<div id="topads" style="width:100%">
+													<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+							crossorigin="anonymous"></script>
+							<!-- Top -->
+							<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-client="ca-pub-1714195545121238"
+							data-ad-slot="4449009840"
+							data-ad-format="horizontal"
+							data-full-width-responsive="true"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+											</div>
+				</div>
+			</div>
+		</div>
+
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<style>
+					a.btnInsta{display:block;background-color:#D83277;height:20px;color:#fff;font-size:12px;padding:0 6px;line-height:20px;border-radius:4px;float:left}
+					a.btnInsta:hover,a.btnInsta:focus{text-decoration:none;color:#fff}
+				</style>
+				<div class="like pull-left">
+					<a href="https://www.instagram.com/invertexto/" target="_blank" rel="nofollow noopener" class="btnInsta"><strong>Siga</strong> @invertexto</a>
+				</div>
+
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				  </button>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="https://api.invertexto.com/" target="_blank" rel="nofollow">API</a></li>
+						<li><a href="sobre.html">Sobre</a></li>
+						<li><a href="contato.html">Contato</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	
+	<main>
+		<style>
+.form-horizontal label{
+	font-weight: normal;
+}
+.form-horizontal textarea{
+	height:150px;
+}
+.form-horizontal select{
+	margin-right:5px;
+}
+.form-horizontal .col-sm-6{
+	padding-right:0;
+}
+.form-inline .form-control {
+	display: inline-block;
+	width: auto;
+	vertical-align: middle;
+}
+#photoimg{
+	font-size:12px;
+}
+.imgAndInfo{
+	margin:20px 0;
+	float:left;
+}
+.imgAndInfo #preview{
+	background:url('img/noimage.png') no-repeat;
+	border:1px solid #999;
+	width:231px;
+	height:140px;
+	text-align:center;
+	overflow:hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.imgAndInfo #preview .loading{
+	font-size:32px;
+	color: #999;
+}
+.imgAndInfo #preview .erro{
+	color:red;
+	font-size:14px;
+	padding:4px;
+}
+.imgAndInfo #comofunciona{
+	margin-top:20px;
+	overflow:hidden;
+	color:#444;
+}
+.imgAndInfo #comofunciona h2{
+	margin-top:20px;
+	font-size:16px;
+	font-weight: 600;
+}
+.resultado{
+	display:none;
+	margin-top:10px;
+	font-size:14px;
+	color:red;
+}
+</style>
+<div class="container">
+	<h1>Cápsula do Tempo</h1>
+	<div class="box">
+		<div class="row">
+			<div class="col-sm-12" style="margin-top:20px">
+				<div class="form-horizontal">
+					<div class="form-group form-inline">
+						<label for="selections" class="col-sm-6 control-label">Data:</label>
+						<div class="col-sm-18">
+							<select class="form-control listener" id="mes" name="mes"> 
+								<option  value="1">Jan</option>
+								<option  value="2">Fev</option>
+								<option  value="3">Mar</option>
+								<option  value="4">Abr</option>
+								<option  value="5">Mai</option>
+								<option  value="6">Jun</option>
+								<option selected="true" value="7">Jul</option>
+								<option  value="8">Ago</option>
+								<option  value="9">Set</option>
+								<option  value="10">Out</option>
+								<option  value="11">Nov</option>
+								<option  value="12">Dec</option>
+							</select>
+	
+							<select class="form-control" id="dia" name="dia"> 
+								<option value='01' >01</option><option value='02' >02</option><option value='03' >03</option><option value='04' >04</option><option value='05' >05</option><option value='06' >06</option><option value='07' >07</option><option value='08' >08</option><option value='09' >09</option><option value='10' >10</option><option value='11' >11</option><option value='12' >12</option><option value='13' >13</option><option value='14' >14</option><option value='15' >15</option><option value='16' >16</option><option value='17' >17</option><option value='18' >18</option><option value='19' >19</option><option value='20' >20</option><option value='21' >21</option><option value='22' >22</option><option value='23' >23</option><option value='24' >24</option><option value='25' >25</option><option value='26' >26</option><option value='27' >27</option><option value='28' >28</option><option value='29' selected>29</option><option value='30' >30</option><option value='31' >31</option> 
+							</select>
+	
+							<select class="form-control listener" id="ano" name="ano">
+							<option value='2026'>2026</option><option value='2027'>2027</option><option value='2028'>2028</option><option value='2029'>2029</option><option value='2030'>2030</option><option value='2031'>2031</option><option value='2032'>2032</option><option value='2033'>2033</option><option value='2034'>2034</option><option value='2035'>2035</option><option value='2036'>2036</option>							</select>
+	
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="destino" class="col-sm-6 control-label">E-mail:</label>
+						<div class="col-sm-18">
+							<input type="email" name="email" class="form-control" name="destino" id="destino" maxlength="60" placeholder="E-mail">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="assunto" class="col-sm-6 control-label">Assunto:</label>
+						<div class="col-sm-18">
+							<input type="text" class="form-control" name="assunto" id="assunto" maxlength="60" placeholder="Assunto">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="imageform" class="col-sm-6 control-label">Imagem:</label>
+						<div class="col-sm-18">
+							<form id="imageform" method="post" enctype="multipart/form-data" action='https://www.invertexto.com/ajax/timecapsule-image.php'>
+								<input class="form-control input-img" type="file" name="photoimg" id="photoimg" />
+							</form>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="mensagem" class="col-sm-6 control-label">Mesagem:</label>
+						<div class="col-sm-18">
+							<textarea class="form-control" id="mensagem" name="msg" placeholder="Mensagem"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-6 col-sm-18">
+							<button type="submit" class="btn btn-classic btnTime">Enviar para o futuro</button>
+							<div class="resultado"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-offset-2 col-sm-10">
+				<div class="imgAndInfo">
+					<div id='preview'></div>
+					<div id='comofunciona'>
+						<h2>Como funciona?</h2>
+						Seu e-mail será enviado na data que você programar.
+						Os dados serão criptografados e apagados após o envio, aumentando sua segurança e privacidade.
+						<h2>Qual é a utilidade?</h2>
+						Você pode utilizá-lo para te lembrar de alguma coisa, ou
+						para salvar um momento especial no tempo e recebê-lo por e-mail no futuro, entre outras...
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+function run(){
+	let img = '';
+
+	document.getElementById('photoimg').addEventListener('change', function () {
+
+		const fileInput = this;
+		const form = document.getElementById('imageform');
+		const preview = document.getElementById('preview');
+		const file = fileInput.files[0];
+		if (!file) return;
+
+		preview.style.background = '#f7f7f7';
+
+		if (file.size > 5 * 1024 * 1024) { // 5MB
+			preview.innerHTML = '<p class="erro">A imagem deve ter no máximo 5MB.</p>';
+			return;
+		}
+
+		const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/bmp'];
+		if (!allowedTypes.includes(file.type)) {
+			preview.innerHTML = '<p class="erro">Formato inválido. Use jpg, jpeg, png, gif ou bmp.</p>';
+			return;
+		}
+
+		// Mostra carregando
+		preview.innerHTML = '<i class="glyphicon glyphicon-refresh loading"></i>';
+
+		const formData = new FormData(form);
+		$('.btnTime').text('Carregando...');
+		$('.btnTime').attr('disabled', true);
+
+		fetch(form.action, {method: 'POST', body: formData})
+		.then(response => response.json())
+		.then(data => {
+			if (data.status == 'ok') {
+				img = data.image_name;
+
+				const reader = new FileReader();
+				reader.onload = function (e) {
+					preview.innerHTML = `<img src="${e.target.result}" alt="Preview da imagem" style="max-width:100%" />`;
+				};
+				reader.readAsDataURL(file);
+			} else {
+				preview.innerHTML = `<p class="erro">Erro: ${data.status}</p>`;
+			}
+		})
+		.catch(error => {
+			preview.innerHTML = '<p class="erro">Erro no upload.</p>';
+			console.error('Erro:', error);
+		})
+		.finally(() => {
+			$('.btnTime').text('Enviar para o futuro');
+			$('.btnTime').attr('disabled', false);
+		});
+	});
+
+	function daysInMonth(month,year) {
+		return new Date(year, month, 0).getDate();
+	}
+
+	$('.listener').on('change', function(){
+		var dia = parseInt($('#dia').val());
+		var mes = parseInt($('#mes').val());
+		var ano = parseInt($('#ano').val());
+		var result = '';
+
+		var num = parseInt(daysInMonth(mes, ano));
+		if(dia>num) dia = num;
+
+		for(var i=1; i<=num; i++){
+			var value = (i<10) ? '0'+i : i;
+			result += '<option value="'+value+'">'+value+'</option>';
+		}
+
+		$('#dia').empty().html(result);
+		dia = (dia<10) ? '0'+dia : dia;
+		$('#dia').val(dia);
+	});
+
+	$('.btnTime').click(function(){
+		const obj = {
+			img,
+			mail: $('#destino').val(),
+			assu: $('#assunto').val(),
+			mes: $('#mes').val(),
+			dia: $('#dia').val(),
+			ano: $('#ano').val(),
+			msg: $('#mensagem').val(),
+		};
+		
+		$(document).ajaxStart(function(){
+			$('.btnTime').text('Carregando...');
+			$('.btnTime').attr('disabled', true);
+		});
+
+		$(document).ajaxStop(function(){
+			$('.btnTime').text('Enviar para o futuro');
+			$('.btnTime').attr('disabled', false);
+		});
+
+		$.ajax({type:'post', data:obj, url:'ajax/timecapsule-new.php', dataType:'json',
+			success: function(j){
+				if(j.status!='ok'){
+					$('.resultado').text(j.status).fadeIn().delay(3000).fadeOut();
+				}else{
+					$('.box').empty().append('<div class="success"><span class="glyphicon glyphicon-ok icon"></span><p class="msg"><b>Sucesso!</b><span>Seu e-mail foi enviado para o futuro...</span></p></div>');
+				}
+			},
+			error: function(e){
+				$('.resultado').text('Erro inesperado.').fadeIn().delay(3000).fadeOut();
+			}
+		});
+	});
+}
+</script>	</main>
+
+			<div class="container hidden-print">
+			<div class="bottom-banner">
+				<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+				crossorigin="anonymous"></script>
+				<!-- Bottom -->
+				<ins class="adsbygoogle"
+				style="display:block"
+				data-ad-client="ca-pub-1714195545121238"
+				data-ad-slot="6345858528"
+				data-ad-format="auto"
+				data-full-width-responsive="true"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+	
+	<footer class="hidden-print"></footer>
+
+	<script src="../cdn.invertexto.com/js/app-v1.2.js"></script>
+	
+	<script src="js/ad_728x90.js"></script>
+	<script>
+	if (typeof run === "function") { 
+    	run();
+	}
+
+	// new banner test
+	var isMobile = 0;
+	var hasAd = 1;
+	if(!isMobile && (window.canRunAds===undefined || !hasAd)){
+				document.getElementById('topads').innerHTML = '<a href="/banners/banner-link.php?id=banner1" target="_blank" rel="nofollow"><img src="/banners/banner-image.php?id=banner1" class="img-responsive" style="margin:0 auto"></a>';
+	}
+	</script>
+
+<script data-cfasync="false" type="text/javascript" id="clever-core">
+/* <![CDATA[ */
+    (function (document, window) {
+        var a, c = document.createElement("script"), f = window.frameElement;
+
+        c.id = "CleverCoreLoader83219";
+        c.src = "../scripts.cleverwebserver.com/919807a68a8d275b2e7dd47c1ad6a69c.js";
+
+        c.async = !0;
+        c.type = "text/javascript";
+        c.setAttribute("data-target", window.name || (f && f.getAttribute("id")));
+        c.setAttribute("data-callback", "put-your-callback-function-here");
+        c.setAttribute("data-callback-url-click", "put-your-click-macro-here");
+        c.setAttribute("data-callback-url-view", "put-your-view-macro-here");
+
+        try {
+            a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
+        } catch (e) {
+            a = !1;
+        }
+
+        a || (a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
+        a.parentNode.insertBefore(c, a);
+    })(document, window);
+/* ]]> */
+</script>
+</body>
+
+<!-- Mirrored from www.invertexto.com/capsula-tempo by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:23 GMT -->
+</html>

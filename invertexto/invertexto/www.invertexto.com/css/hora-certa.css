@@ -1,0 +1,49 @@
+@font-face{
+	font-family:clockicons;
+	src:url(../fonts/clockicons.woff2) format('woff2'),url(../fonts/clockicons.woff) format('woff'),url(../fonts/clockicons.ttf) format('truetype'),url(../fonts/clockicons.svg) format('svg');
+	font-weight:400;
+	font-style:normal;
+}
+.clock{min-height:300px;background:#fff;margin-bottom:30px;margin-top:15px}
+.clock, .clock h1{text-align:center;font-size:32px;font-weight:300;line-height:1.4;color:#444}
+.clock h1{margin:0}
+.clock .lbl-time{font-size:110px;white-space:nowrap}
+.font-digit{font-family:clockicons !important}
+.mini-clock{
+	color:#444;
+	min-height:160px;
+}
+.mini-clock .font-digit{
+	text-align:center;
+	font-size:30px;
+}
+.mini-clock .lbl-offset{
+	text-align:center;
+	font-size:16px;
+	margin-top:10px;
+}
+.mini-clock .panel-heading{
+	position:relative;
+}
+.mini-clock .close-clock{
+	cursor:pointer;
+	position:absolute;
+	right:15px;
+	top:10px;
+}
+.mini-clock a{
+	color:#444;
+}
+.mini-clock a:hover,
+.mini-clock a:focus{
+	color:#444;
+	text-decoration:none;
+}
+.pac-container{
+	z-index:9999;
+}
+.list-popular li{margin-bottom:4px}
+@media screen and (max-width: 767px) {
+	.clock{min-height:220px;font-size:24px}
+	.clock .lbl-time{font-size:64px}
+}

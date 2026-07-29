@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!-- Mirrored from www.invertexto.com/dns-lookup by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-title" content="DNS Lookup">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="description" content="Ferramenta online para realizar consultas DNS. Verifique informações de DNS, como registros A, AAAA, MX, CNAME e TXT de um domínio.">
+	<meta property="og:title" content="DNS Lookup">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="dns-lookup.html">
+	<meta property="og:image" content="../cdn.invertexto.com/img/face-note.png">
+	<meta property="og:site_name" content="invertexto.com">
+	<meta property="og:description" content="Ferramenta online para realizar consultas DNS. Verifique informações de DNS, como registros A, AAAA, MX, CNAME e TXT de um domínio.">
+	<meta property="fb:app_id" content="515652911960455">
+	<title>DNS Lookup | invertexto.com</title>
+
+	<link rel="canonical" href="dns-lookup.html">
+	<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+	<link rel="stylesheet" href="../cdn.invertexto.com/css/appe44f.css?id=20260619">
+	<link rel="apple-touch-icon" href="../cdn.invertexto.com/img/apple-touch-icon.png">
+</head>
+<body>
+	<header class="hidden-print">
+		<div class="top">
+			<div class="container" style="height:100%">
+				<div style="height:100%;display:flex;justify-content:space-between;align-items:center">
+					<div style="padding-right:24px;margin-top:36px;margin-bottom:31px">
+						<a href="index.html">
+							<img src="../cdn.invertexto.com/img/invertexto.png" style="width:263px;height:48px" alt="invertexto.com">
+						</a>
+					</div>
+					<div id="topads" style="width:100%">
+													<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+							crossorigin="anonymous"></script>
+							<!-- Top -->
+							<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-client="ca-pub-1714195545121238"
+							data-ad-slot="4449009840"
+							data-ad-format="horizontal"
+							data-full-width-responsive="true"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+											</div>
+				</div>
+			</div>
+		</div>
+
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<style>
+					a.btnInsta{display:block;background-color:#D83277;height:20px;color:#fff;font-size:12px;padding:0 6px;line-height:20px;border-radius:4px;float:left}
+					a.btnInsta:hover,a.btnInsta:focus{text-decoration:none;color:#fff}
+				</style>
+				<div class="like pull-left">
+					<a href="https://www.instagram.com/invertexto/" target="_blank" rel="nofollow noopener" class="btnInsta"><strong>Siga</strong> @invertexto</a>
+				</div>
+
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				  </button>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="https://api.invertexto.com/" target="_blank" rel="nofollow">API</a></li>
+						<li><a href="sobre.html">Sobre</a></li>
+						<li><a href="contato.html">Contato</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	
+	<main>
+		
+<style>
+.box{padding:25px;border-radius:4px;box-shadow:0 1px 3px #0000001a;margin-bottom:20px}
+.box h2{margin-top:0;margin-bottom:20px;border-bottom:2px solid #f0f0f0;padding-bottom:10px;font-size:24px}
+.about h3 {margin-top:0;margin-bottom:20px;color:#333;border-bottom:2px solid #f0f0f0;padding-bottom:10px}
+.form-box{max-width:500px;margin:0 auto}
+.form-box button{margin-top:24px}
+.result-section{margin-top:25px;display:none}
+.result-section h3{font-size:18px}
+.result-section.show{display:block}
+.record-card{background:#f9f9f9;border:1px solid #ddd;padding:15px;margin-bottom:15px;border-radius:3px}
+.record-data{font-family:'Courier New',monospace;font-size:14px;word-break:break-all}
+.record-data strong{color:#555}
+.loading-spinner{text-align:center;padding:30px;display:none}
+.loading-spinner.show{display:block}
+.error-message{display:none}
+.error-message.show{display:block}
+.empty-state{text-align:center;padding:40px 20px;color:#999}
+.empty-state i{font-size:48px;margin-bottom:15px}
+.badge-record-count{margin-left:10px}
+</style>
+
+<div class="container">
+    <h1>DNS Lookup</h1>
+    <div class="box">
+        <div class="form-box">
+            <form id="dnsForm">
+                <div class="form-group">
+                    <label for="domain">Domínio</label>
+                    <input type="text" class="form-control input-lg" id="domain" placeholder="exemplo.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="recordType">Tipo de registro</label>
+                    <select class="form-control input-lg" id="recordType">
+                        <option value="ALL">Todos os tipos</option>
+                        <option value="A">A - Endereço IPv4</option>
+                        <option value="AAAA">AAAA - Endereço IPv6</option>
+                        <option value="MX">MX - Servidor de Email</option>
+                        <option value="NS">NS - Servidor de Nomes</option>
+                        <option value="TXT">TXT - Registro de Texto</option>
+                        <option value="CNAME">CNAME - Nome Canônico</option>
+                        <option value="SOA">SOA - Autoridade da Zona</option>
+                        <option value="CAA">CAA - Autorização de Certificado</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-classic btn-lg btn-block" id="lookupBtn">
+                    <span class="glyphicon glyphicon-search"></span> Consultar DNS
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="loading-spinner">
+        <i class="glyphicon glyphicon-refresh glyphicon-spin" style="font-size: 24px;"></i>
+        <p>Consultando registros DNS...</p>
+    </div>
+
+    <div class="error-message alert alert-danger">
+        <strong>Erro:</strong> <span id="errorText"></span>
+    </div>
+
+    <div class="result-section">
+        <div class="box">
+            <h2>Resultados para <span id="resultDomain"></span></h2>
+            <div id="recordsContainer"></div>
+        </div>
+    </div>
+
+	<div class="box about">
+		<h3>Sobre a Consulta de DNS</h3>
+		
+		<p>O DNS (Domain Name System) é como uma agenda telefônica da internet, convertendo nomes de domínio em endereços IP. Nossa ferramenta permite consultar todos os registros DNS de um domínio, revelando informações como:</p>
+		
+		<ul style="list-style-position: inside;padding:0">
+			<li><strong>Registros A e AAAA:</strong> Endereços IP (IPv4 e IPv6) do servidor</li>
+			<li><strong>Registros MX:</strong> Servidores de email configurados</li>
+			<li><strong>Registros NS:</strong> Servidores de nomes autoritativos</li>
+			<li><strong>Registros TXT:</strong> Verificações de domínio e configurações SPF/DKIM</li>
+			<li><strong>Registros CNAME:</strong> Apelidos e redirecionamentos de domínio</li>
+		</ul>
+
+		<p style="margin-bottom:0">Ideal para diagnosticar problemas de email, verificar propagação de DNS, validar configurações de domínio ou auditar a infraestrutura de sites. Obtenha resultados precisos e em tempo real para domínios e subdomínios.</p>
+	</div>
+</div>
+
+<script>
+// Form submission
+document.getElementById('dnsForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const domain = document.getElementById('domain').value.trim();
+    const recordType = document.getElementById('recordType').value;
+    
+    if (!domain) {
+        showError('Por favor, digite um domínio válido');
+        return;
+    }
+
+    // Basic domain validation (allows subdomains)
+    const domainRegex = /^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/;
+    if (!domainRegex.test(domain)) {
+        showError('Por favor, digite um domínio válido');
+        return;
+    }
+
+    run(domain, recordType);
+});
+
+async function run(domain, recordType) {
+	if(domain.length === 0) return;
+
+    // Clean domain (remove protocol and trailing slash, but keep subdomains)
+    domain = domain.replace(/^(https?:\/\/)?/, '').replace(/\/$/, '');
+    
+    // Hide previous results and errors
+    document.querySelector('.result-section').classList.remove('show');
+    document.querySelector('.error-message').classList.remove('show');
+    
+    // Show loading
+	const lookupBtn = document.getElementById('lookupBtn');
+	lookupBtn.innerHTML = '<i class="glyphicon glyphicon-refresh loading"></i>';
+    lookupBtn.disabled = true;
+
+    try {
+        const results = await lookupDNS(domain, recordType);
+        displayResults(domain, results, recordType);
+    } catch (error) {
+        showError(error.message || 'Erro ao consultar DNS. Tente novamente.');
+    } finally {
+        lookupBtn.innerHTML = '<span class="glyphicon glyphicon-search"></span> Consultar DNS';
+        lookupBtn.disabled = false;
+    }
+}
+
+async function lookupDNS(domain, recordType) {
+    // Using PHP backend to avoid CORS issues
+    const response = await fetch('dns-lookup-api.json', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ domain, recordType })
+    });
+
+    const data = await response.json();
+    
+    if (data.error) {
+        throw new Error(data.error);
+    }
+
+	if (!response.ok) {
+        throw new Error('Erro na requisição DNS');
+    }
+
+    return data;
+}
+
+function displayResults(domain, results, recordType) {
+    document.getElementById('resultDomain').textContent = domain;
+    
+    const container = document.getElementById('recordsContainer');
+    container.innerHTML = '';
+
+    let hasResults = false;
+
+    // Get types to display
+    const types = recordType === 'ALL' 
+        ? ['A', 'AAAA', 'MX', 'NS', 'TXT', 'CNAME', 'SOA', 'CAA']
+        : [recordType];
+
+    types.forEach(type => {
+        if (results[type] && results[type].length > 0) {
+            hasResults = true;
+            const section = createRecordSection(type, results[type]);
+            container.appendChild(section);
+        }
+    });
+
+    if (!hasResults) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <i class="glyphicon glyphicon-info-sign"></i>
+                <h3>Nenhum registro encontrado</h3>
+                <p>Não foram encontrados registros DNS do tipo selecionado para este domínio.</p>
+            </div>
+        `;
+    }
+
+    document.querySelector('.result-section').classList.add('show');
+}
+
+function createRecordSection(type, records) {
+    const section = document.createElement('div');
+    section.style.marginBottom = '25px';
+    
+    const title = document.createElement('h3');
+    title.innerHTML = `
+        ${type} Records 
+        <span class="badge badge-record-count">${records.length}</span>
+    `;
+    section.appendChild(title);
+
+    records.forEach(record => {
+        const card = createRecordCard(type, record);
+        section.appendChild(card);
+    });
+
+    return section;
+}
+
+function createRecordCard(type, record) {
+    const card = document.createElement('div');
+    card.className = 'record-card';
+
+    let content = '';
+
+    switch(type) {
+        case 'A':
+        case 'AAAA':
+            content = `
+                <div class="record-data">
+                    <strong>IP:</strong> ${record.ip || record.ipv6 || record.address}<br>
+                    <strong>TTL:</strong> ${record.ttl || 'N/A'}
+                </div>
+            `;
+            break;
+        
+        case 'MX':
+            content = `
+                <div class="record-data">
+                    <strong>Server:</strong> ${record.exchange || record.target}<br>
+                    <strong>Priority:</strong> ${record.priority || record.pri}<br>
+                    <strong>TTL:</strong> ${record.ttl || 'N/A'}
+                </div>
+            `;
+            break;
+        
+        case 'NS':
+            content = `
+                <div class="record-data">
+                    <strong>Server:</strong> ${record.nameserver || record.target || record.value}<br>
+                    <strong>TTL:</strong> ${record.ttl || 'N/A'}
+                </div>
+            `;
+            break;
+        
+        case 'TXT':
+            content = `
+                <div class="record-data">
+                    <strong>Value:</strong> ${record.txt || record.data || record.value}<br>
+                    <strong>TTL:</strong> ${record.ttl || 'N/A'}
+                </div>
+            `;
+            break;
+        
+        case 'CNAME':
+            content = `
+                <div class="record-data">
+                    <strong>Target:</strong> ${record.cname || record.target || record.value}<br>
+                    <strong>TTL:</strong> ${record.ttl || 'N/A'}
+                </div>
+            `;
+            break;
+        
+        case 'SOA':
+            content = `
+                <div class="record-data">
+                    <strong>Primary NS:</strong> ${record.mname || record.primary}<br>
+                    <strong>Admin:</strong> ${record.rname || record.admin}<br>
+                    <strong>Serial:</strong> ${record.serial}<br>
+                    <strong>Refresh:</strong> ${record.refresh}<br>
+                    <strong>Retry:</strong> ${record.retry}<br>
+                    <strong>Expire:</strong> ${record.expire}<br>
+                    <strong>TTL:</strong> ${record.minimum || record.ttl || 'N/A'}
+                </div>
+            `;
+            break;
+        
+        case 'CAA':
+            content = `
+                <div class="record-data">
+                    <strong>Flags:</strong> ${record.flags}<br>
+                    <strong>Tag:</strong> ${record.tag}<br>
+                    <strong>Value:</strong> ${record.value}<br>
+                    <strong>TTL:</strong> ${record.ttl || 'N/A'}
+                </div>
+            `;
+            break;
+        
+        default:
+            content = `
+                <div class="record-data">
+                    <pre>${JSON.stringify(record, null, 2)}</pre>
+                </div>
+            `;
+    }
+
+    card.innerHTML = content;
+    return card;
+}
+
+function showError(message) {
+    document.getElementById('errorText').textContent = message;
+    document.querySelector('.error-message').classList.add('show');
+    document.querySelector('.result-section').classList.remove('show');
+}
+</script>
+	</main>
+
+			<div class="container hidden-print">
+			<div class="bottom-banner">
+				<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+				crossorigin="anonymous"></script>
+				<!-- Bottom -->
+				<ins class="adsbygoogle"
+				style="display:block"
+				data-ad-client="ca-pub-1714195545121238"
+				data-ad-slot="6345858528"
+				data-ad-format="auto"
+				data-full-width-responsive="true"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+	
+	<footer class="hidden-print"></footer>
+
+	<script src="../cdn.invertexto.com/js/app-v1.2.js"></script>
+	
+	<script src="js/ad_728x90.js"></script>
+	<script>
+	if (typeof run === "function") { 
+    	run();
+	}
+
+	// new banner test
+	var isMobile = 0;
+	var hasAd = 1;
+	if(!isMobile && (window.canRunAds===undefined || !hasAd)){
+				document.getElementById('topads').innerHTML = '<a href="/banners/banner-link.php?id=banner1" target="_blank" rel="nofollow"><img src="/banners/banner-image.php?id=banner1" class="img-responsive" style="margin:0 auto"></a>';
+	}
+	</script>
+
+<script data-cfasync="false" type="text/javascript" id="clever-core">
+/* <![CDATA[ */
+    (function (document, window) {
+        var a, c = document.createElement("script"), f = window.frameElement;
+
+        c.id = "CleverCoreLoader83219";
+        c.src = "../scripts.cleverwebserver.com/919807a68a8d275b2e7dd47c1ad6a69c.js";
+
+        c.async = !0;
+        c.type = "text/javascript";
+        c.setAttribute("data-target", window.name || (f && f.getAttribute("id")));
+        c.setAttribute("data-callback", "put-your-callback-function-here");
+        c.setAttribute("data-callback-url-click", "put-your-click-macro-here");
+        c.setAttribute("data-callback-url-view", "put-your-view-macro-here");
+
+        try {
+            a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
+        } catch (e) {
+            a = !1;
+        }
+
+        a || (a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
+        a.parentNode.insertBefore(c, a);
+    })(document, window);
+/* ]]> */
+</script>
+</body>
+
+<!-- Mirrored from www.invertexto.com/dns-lookup by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:52 GMT -->
+</html>

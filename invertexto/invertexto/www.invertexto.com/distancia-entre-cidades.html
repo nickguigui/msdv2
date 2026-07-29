@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!-- Mirrored from www.invertexto.com/distancia-entre-cidades by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:57:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-title" content="Distância Entre Cidades">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="description" content="Ferramenta online para calcular a distância entre duas cidades, mostrando a quilometragem entre dois pontos. Útil para medir distâncias, calcular rota e viagem.">
+	<meta property="og:title" content="Distância Entre Cidades">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="distancia-entre-cidades.html">
+	<meta property="og:image" content="../cdn.invertexto.com/img/face-note.png">
+	<meta property="og:site_name" content="invertexto.com">
+	<meta property="og:description" content="Ferramenta online para calcular a distância entre duas cidades, mostrando a quilometragem entre dois pontos. Útil para medir distâncias, calcular rota e viagem.">
+	<meta property="fb:app_id" content="515652911960455">
+	<title>Distância Entre Cidades | invertexto.com</title>
+
+	<link rel="canonical" href="distancia-entre-cidades.html">
+	<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+	<link rel="stylesheet" href="../cdn.invertexto.com/css/appe44f.css?id=20260619">
+	<link rel="apple-touch-icon" href="../cdn.invertexto.com/img/apple-touch-icon.png">
+</head>
+<body>
+	<header class="hidden-print">
+		<div class="top">
+			<div class="container" style="height:100%">
+				<div style="height:100%;display:flex;justify-content:space-between;align-items:center">
+					<div style="padding-right:24px;margin-top:36px;margin-bottom:31px">
+						<a href="index.html">
+							<img src="../cdn.invertexto.com/img/invertexto.png" style="width:263px;height:48px" alt="invertexto.com">
+						</a>
+					</div>
+					<div id="topads" style="width:100%">
+													<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+							crossorigin="anonymous"></script>
+							<!-- Top -->
+							<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-client="ca-pub-1714195545121238"
+							data-ad-slot="4449009840"
+							data-ad-format="horizontal"
+							data-full-width-responsive="true"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+											</div>
+				</div>
+			</div>
+		</div>
+
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<style>
+					a.btnInsta{display:block;background-color:#D83277;height:20px;color:#fff;font-size:12px;padding:0 6px;line-height:20px;border-radius:4px;float:left}
+					a.btnInsta:hover,a.btnInsta:focus{text-decoration:none;color:#fff}
+				</style>
+				<div class="like pull-left">
+					<a href="https://www.instagram.com/invertexto/" target="_blank" rel="nofollow noopener" class="btnInsta"><strong>Siga</strong> @invertexto</a>
+				</div>
+
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				  </button>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="https://api.invertexto.com/" target="_blank" rel="nofollow">API</a></li>
+						<li><a href="sobre.html">Sobre</a></li>
+						<li><a href="contato.html">Contato</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	
+	<main>
+		
+<link href="../api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
+<link href="../api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" rel="stylesheet" />
+
+<style>
+.box{
+	border:0px;
+}
+.resultado{
+	margin-top:20px;
+	margin-bottom:20px;
+}
+.resultado .alert{
+	border-radius:0px;
+	border:0px;
+}
+#from,#to{
+    width: 100%;
+}
+.mapboxgl-ctrl-geocoder{
+    width: 100%;
+}
+#from .mapboxgl-ctrl-geocoder {
+    z-index: 1001;
+}
+#map {
+	width: 100%;
+	height: 400px;
+}
+</style>
+<div class="func-wrap container">
+	<h1>Distância Entre Cidades</h1>
+
+	<div class="box">
+		<div style="margin:0 auto;width:300px">
+			<div>
+				<label for="from">Origem</label>
+                <div id="from"></div>
+			</div>
+			<div style="margin-top:20px">
+				<label for="to">Destino</label>
+                <div id="to"></div>
+            </div>
+			<button type="submit" class="btn btn-classic btn-block" style="margin-top:30px" id="calcular">Calcular</button>
+        </div>
+		
+	</div>
+
+	<div class="resultado" id="output" style="display:none">
+		<div class='alert alert-info'>
+			Distância por estrada: <b>carregando...</b><br/>
+			Duração: <b>carregando...</b>
+		</div>
+	</div>
+
+	<div class="mapa"></div>
+</div>
+
+<script>
+function run(){
+    var lat;
+    var lng;
+    var coordinates1 = '';
+    var coordinates2 = '';
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoiaW52ZXJ0ZXh0byIsImEiOiJjbGVvdzJ5YnAwNmtrM3NxdTU3bnFsbjZnIn0.vQEjlLblHR2tejZiTkpr2A';
+
+    var geocoder1 = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        types: 'country,region,place,postcode,locality,neighborhood'
+    });
+
+    var geocoder2 = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        types: 'country,region,place,postcode,locality,neighborhood'
+    });
+
+    geocoder1.addTo('#from');
+    geocoder2.addTo('#to');
+
+    geocoder1.on('result', function(ev) {
+        lat = ev.result.center[0];
+        lng = ev.result.center[1];
+        coordinates1 = ev.result.center[0]+','+ev.result.center[1];
+    });
+
+    geocoder2.on('result', function(ev) {
+        coordinates2 = ev.result.center[0]+','+ev.result.center[1];
+    });
+
+    function fancyTimeFormat(duration) {   
+        var hrs = ~~(duration / 3600);
+        var mins = ~~((duration % 3600) / 60);
+        var secs = ~~duration % 60;
+
+        var result = "";
+
+        if (hrs > 0) {
+            var hString = hrs > 1 ? 'horas' : 'hora';
+            result += hrs + ' ' + hString + ' ';
+        }
+
+        result += mins + ' minutos ';
+        result += secs + ' segundos';
+        return result;
+    }
+
+    function loadMap(geometry) {
+        $('.mapa').html('<div id="map"></div>');
+
+        var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v12',
+                center: [lat,lng],
+                zoom: 2
+            });
+
+        map.on('load', function() {
+            // check if the route is already loaded
+            if (map.getSource('route')) {
+                map.removeLayer('route');
+                map.removeSource('route');
+            } else{
+                map.addLayer({
+                    'id': 'route',
+                    'type': 'line',
+                    'source': {
+                        'type': 'geojson',
+                        'data': {
+                            'type': 'Feature',
+                            'properties': {},
+                            'geometry': geometry
+                        }
+                    },
+                    'layout': {
+                        'line-join': 'round',
+                        'line-cap': 'round'
+                    },
+                    'paint': {
+                        'line-color': '#1db7dd',
+                        'line-width': 8,
+                        'line-opacity': 0.8
+                    }
+                });
+            }
+
+            var bounds = geometry.coordinates.reduce(function(bounds, coord) {
+                return bounds.extend(coord);
+            }, new mapboxgl.LngLatBounds(geometry.coordinates[0], geometry.coordinates[0]));
+
+            map.fitBounds(bounds, {
+                padding: 20
+            });
+        });
+    }
+
+    $('#calcular').click(function(){
+        $('#output').show();
+        var coordinates = coordinates1+';'+coordinates2;
+
+        var url = 'https://api.mapbox.com/directions/v5/mapbox/driving/' + coordinates
+            +'?geometries=geojson&steps=true&access_token=' + mapboxgl.accessToken;
+        console.log(url)
+
+        $(document).ajaxStart(function(){
+            $('#calcular').attr('disabled', true);
+        });
+
+        $(document).ajaxStop(function(){
+            $('#calcular').attr('disabled', false);
+        });
+
+        $.ajax({type:'get', url:url, dataType:'json',
+            success: function(data){
+                
+                var distance = data.routes[0].distance / 1000;
+                var duration = fancyTimeFormat(data.routes[0].duration);
+                
+                $('#output').html('<div class="alert alert-info">Distância por estrada: <b>'+distance.toFixed(2).toLocaleString()+' km</b><br/>Duração: <b>' +duration+'</b></div>'); 
+
+                loadMap(data.routes[0].geometry);
+            }
+	    });
+    });
+}
+</script>
+
+	</main>
+
+			<div class="container hidden-print">
+			<div class="bottom-banner">
+				<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+				crossorigin="anonymous"></script>
+				<!-- Bottom -->
+				<ins class="adsbygoogle"
+				style="display:block"
+				data-ad-client="ca-pub-1714195545121238"
+				data-ad-slot="6345858528"
+				data-ad-format="auto"
+				data-full-width-responsive="true"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+	
+	<footer class="hidden-print"></footer>
+
+	<script src="../cdn.invertexto.com/js/app-v1.2.js"></script>
+	<script src="../api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script><script src="../api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+	<script src="js/ad_728x90.js"></script>
+	<script>
+	if (typeof run === "function") { 
+    	run();
+	}
+
+	// new banner test
+	var isMobile = 0;
+	var hasAd = 1;
+	if(!isMobile && (window.canRunAds===undefined || !hasAd)){
+				document.getElementById('topads').innerHTML = '<a href="/banners/banner-link.php?id=banner1" target="_blank" rel="nofollow"><img src="/banners/banner-image.php?id=banner1" class="img-responsive" style="margin:0 auto"></a>';
+	}
+	</script>
+
+<script data-cfasync="false" type="text/javascript" id="clever-core">
+/* <![CDATA[ */
+    (function (document, window) {
+        var a, c = document.createElement("script"), f = window.frameElement;
+
+        c.id = "CleverCoreLoader83219";
+        c.src = "../scripts.cleverwebserver.com/919807a68a8d275b2e7dd47c1ad6a69c.js";
+
+        c.async = !0;
+        c.type = "text/javascript";
+        c.setAttribute("data-target", window.name || (f && f.getAttribute("id")));
+        c.setAttribute("data-callback", "put-your-callback-function-here");
+        c.setAttribute("data-callback-url-click", "put-your-click-macro-here");
+        c.setAttribute("data-callback-url-view", "put-your-view-macro-here");
+
+        try {
+            a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
+        } catch (e) {
+            a = !1;
+        }
+
+        a || (a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
+        a.parentNode.insertBefore(c, a);
+    })(document, window);
+/* ]]> */
+</script>
+</body>
+
+<!-- Mirrored from www.invertexto.com/distancia-entre-cidades by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:57:07 GMT -->
+</html>

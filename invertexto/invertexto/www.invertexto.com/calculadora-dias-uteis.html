@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!-- Mirrored from www.invertexto.com/calculadora-dias-uteis by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-title" content="Calculadora de Dias Úteis">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="description" content="Calculadora de prazo em dias úteis. Faça o cálculo de dias úteis entre duas datas com este contador online e simplifique sua rotina.">
+	<meta property="og:title" content="Calculadora de Dias Úteis">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="calculadora-dias-uteis.html">
+	<meta property="og:image" content="../cdn.invertexto.com/img/face-note.png">
+	<meta property="og:site_name" content="invertexto.com">
+	<meta property="og:description" content="Calculadora de prazo em dias úteis. Faça o cálculo de dias úteis entre duas datas com este contador online e simplifique sua rotina.">
+	<meta property="fb:app_id" content="515652911960455">
+	<title>Calculadora de Dias Úteis | invertexto.com</title>
+
+	<link rel="canonical" href="calculadora-dias-uteis.html">
+	<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+	<link rel="stylesheet" href="../cdn.invertexto.com/css/appe44f.css?id=20260619">
+	<link rel="apple-touch-icon" href="../cdn.invertexto.com/img/apple-touch-icon.png">
+</head>
+<body>
+	<header class="hidden-print">
+		<div class="top">
+			<div class="container" style="height:100%">
+				<div style="height:100%;display:flex;justify-content:space-between;align-items:center">
+					<div style="padding-right:24px;margin-top:36px;margin-bottom:31px">
+						<a href="index.html">
+							<img src="../cdn.invertexto.com/img/invertexto.png" style="width:263px;height:48px" alt="invertexto.com">
+						</a>
+					</div>
+					<div id="topads" style="width:100%">
+													<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+							crossorigin="anonymous"></script>
+							<!-- Top -->
+							<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-client="ca-pub-1714195545121238"
+							data-ad-slot="4449009840"
+							data-ad-format="horizontal"
+							data-full-width-responsive="true"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+											</div>
+				</div>
+			</div>
+		</div>
+
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<style>
+					a.btnInsta{display:block;background-color:#D83277;height:20px;color:#fff;font-size:12px;padding:0 6px;line-height:20px;border-radius:4px;float:left}
+					a.btnInsta:hover,a.btnInsta:focus{text-decoration:none;color:#fff}
+				</style>
+				<div class="like pull-left">
+					<a href="https://www.instagram.com/invertexto/" target="_blank" rel="nofollow noopener" class="btnInsta"><strong>Siga</strong> @invertexto</a>
+				</div>
+
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				  </button>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="https://api.invertexto.com/" target="_blank" rel="nofollow">API</a></li>
+						<li><a href="sobre.html">Sobre</a></li>
+						<li><a href="contato.html">Contato</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	
+	<main>
+		
+<style>
+.box label{font-weight:500}
+.mt-2{margin-top:8px}
+.wrapper{width:100%;max-width:400px;margin:0 auto}
+thead tr{background-color:#f5f5f5}
+
+.calendar *{margin:0;padding:0}
+.calendar{margin-top:24px;background:#fff;border-radius:10px;box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)}
+.calendar-header{display:flex}
+.calendar-header .icons{display:flex}
+.calendar-header .icons span{height:38px;width:38px;margin:0 1px;cursor:pointer;color:#878787;user-select:none;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.calendar-header .icons svg{height:16px;width:16px;fill:currentColor}
+.icons span:last-child{margin-right:-10px}
+.calendar-header{display:flex;align-items:center;padding:25px 30px 10px;justify-content:space-between}
+.calendar-header .icons span:hover{background:#f2f2f2}
+.calendar-header .current-date{font-size:1.45rem;font-weight:500}
+.calendar-body{padding:20px}
+.calendar-body ul{display:flex;flex-wrap:wrap;list-style:none;text-align:center}
+.calendar-body .days{margin-bottom:20px}
+.calendar-body li{color:#333;width:calc(100% / 7);font-size:1rem}
+.weeks li{font-weight:500;cursor:default}
+.days li{z-index:1;position:relative;margin-top:30px;user-select:none}
+.days li.inactive{color:#aaa}
+.days li.active{color:#fff}
+/* .days li::before{position:absolute;content:"";left:50%;top:50%;height:40px;width:40px;z-index:-1;border-radius:50%;transform:translate(-50%, -50%)} */
+.days li::before{position:absolute;content:"";left:50%;top:50%;height:40px;width:100%;z-index:-1;transform:translate(-50%, -50%)}
+.days li.active::before{background:#9B59B6}
+.days li.workingday::before{background:#86efac !important}
+.days li.weekend::before{background:#eee}
+.days li.holiday::before{background:#fdba74}
+.days li.custom::before{background:#fca5a5}
+
+.days li.workingday,.days li.holiday,.days li.custom{cursor:pointer}
+/* .days li:not(.active):hover::before{background: #f2f2f2} */
+.days li.workingday:hover::before,.days li.holiday:hover::before{border:2px solid rgba(0,0,0,0.25)}
+
+@media (max-width: 767px) {
+    input[type="date"]{
+        display:block;
+        min-width: 95%;
+    }
+}
+</style>
+
+<div class="container">
+	<h1>Calculadora de Dias Úteis</h1>
+	<div class="box">
+		<div class="flex justify-center align-center">
+			<div class="wrapper">
+                <div class="form-group">
+                    <label for="from">De</label>
+                    <input type="date" autocomplete="off" class="form-control" id="from">
+                </div>
+                <div class="form-group" style="margin-bottom:24px">
+                    <label for="to">Para</label>
+                    <input type="date" autocomplete="off" class="form-control" id="to">
+                </div>
+
+                <div class="alert alert-danger" id="error" style="display:none"></div>
+                <button type="button" class="btn btn-classic" id="calcular" style="width:100%">Calcular</button>
+
+                <table class="table table-hover table-bordered" style="margin-top:24px;display:none">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Dias</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dias úteis</td>
+                            <td id="workingDays"></td>
+                        </tr>
+                        <tr>
+                            <td>Dias corridos</td>
+                            <td id="days"></td>
+                        </tr>
+                        <tr>
+                            <td>Sábados</td>
+                            <td id="saturdays"></td>
+                        </tr>
+                        <tr>
+                            <td>Domingos</td>
+                            <td id="sundays"></td>
+                        </tr>
+                        <tr>
+                            <td>Feriados</td>
+                            <td id="holidays"></td>
+                        </tr>
+                        <tr>
+                            <td>Personalizados</td>
+                            <td id="customs">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="calendar" style="display:none">
+                    <div class="calendar-header">
+                        <p class="current-date"></p>
+                        <div class="icons">
+                            <span id="prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/></svg></span>
+                            <span id="next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"/></svg></span>
+                        </div>
+                    </div>
+                    <div class="calendar-body">
+                        <ul class="weeks">
+                            <li>Dom</li>
+                            <li>Seg</li>
+                            <li>Ter</li>
+                            <li>Qua</li>
+                            <li>Qui</li>
+                            <li>Sex</li>
+                            <li>Sab</li>
+                        </ul>
+                        <ul class="days"></ul>
+                    </div>
+                </div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-custom">
+		<div class="panel-heading">Ferramentas Relacionadas</div>
+		<div class="list-group">
+			<a href="somar-ou-subtrair-dias.html" class="list-group-item">Somar ou Subtrair Dias</a>
+			<a href="contador-de-dias.html" class="list-group-item">Contador de Dias</a>
+		</div>
+	</div>
+</div>
+
+<script>
+function run(){
+    let startDate;
+    let endDate;
+    let holidays={};
+    let customs={};
+    
+    let count={
+        days: 0,
+        workingDays: 0,
+        saturdays: 0,
+        sundays: 0,
+        holidays: 0,
+        customs: 0
+    };
+
+    function reloadCounter(){
+        $('#workingDays').text(count.workingDays);
+        $('#days').text(count.days);
+        $('#saturdays').text(count.saturdays);
+        $('#sundays').text(count.sundays);
+        $('#holidays').text(count.holidays);
+        $('#customs').text(count.customs);
+        $('.table').show();
+    }
+
+	$('#calcular').click(function(){
+		var data = {
+			from: $('#from').val(),
+			to: $('#to').val(),
+		}
+
+        if(data.from.length=='' || data.to.length==''){
+            $('#error').text('Preencha todos os campos').show();
+            return;
+        }
+
+		$(document).ajaxStart(function(){
+			$('#calcular').attr('disabled',true);
+		})
+
+		$(document).ajaxStop(function(){
+			$('#calcular').attr('disabled',false);
+		})
+
+        $('#error').hide();
+
+		$.ajax({type:'GET', data:data, url:'/ajax/calculadora-dias-uteis.php', dataType:'json',
+			success: function(j){
+
+                if(j.status!='ok'){
+                    $('#error').text(j.status).show();
+                    return;
+                }
+
+                count = j.count;
+                reloadCounter();
+
+                startDate = new Date(data.from+' 00:00:00');
+                endDate = new Date(data.to+' 00:00:00');
+                
+                for(let holiday of j.holidays){
+                    const key = Object.keys(holiday)[0];
+                    const value = Object.values(holiday)[0];
+                    holidays[key] = value;
+                }
+
+                date = new Date(startDate);
+                currYear = date.getFullYear();
+                currMonth = date.getMonth();
+                renderCalendar();
+
+                $('.calendar').show();
+
+			},error: function(e){
+				$('#error').text('Erro inesperado.').show();
+			}
+		})
+	});
+
+    function pad(n){
+        return n < 10 ? '0'+n : n;
+    }
+
+    function formatDate(d){
+        return pad(d.getFullYear())+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+    }
+
+    // Calendar
+    const daysTag = document.querySelector(".days"),
+    currentDate = document.querySelector(".current-date"),
+    prevNextIcon = document.querySelectorAll(".icons span");
+
+    // getting new date, current year and month
+    let date = new Date();
+    let currYear = date.getFullYear();
+    let currMonth = date.getMonth();
+
+    // storing full name of all months in array
+    const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+
+    const renderCalendar = () => {
+        let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(), // getting first day of month
+        lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(), // getting last date of month
+        lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(), // getting last day of month
+        lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
+        let liTag = "";
+
+        for (let i = firstDayofMonth; i > 0; i--) { // creating li of previous month last days
+            liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
+        }
+
+        for (let i = 1; i <= lastDateofMonth; i++) { // creating li of all days of current month
+            
+            let title = '';
+            let dayClass = '';
+            const currDate = new Date(currYear, currMonth, i);
+            const currFormatted = formatDate(currDate);
+
+            if(startDate <= currDate && endDate >= currDate){
+                dayClass = 'workingday';
+
+                if(currDate.getDay() == 6 || currDate.getDay() == 0){
+                    dayClass = 'weekend';
+                }else if(holidays[currFormatted] !== undefined){
+                    dayClass = 'holiday';
+                    title = `title="${holidays[currFormatted]}"`;
+                }
+            }
+
+            // adding active class to li if the current day, month, and year matched
+            // if(i == date.getDate() && currMonth == new Date().getMonth() && currYear == new Date().getFullYear()){
+            //     dayClass = 'active';
+            // }
+
+            liTag += `<li ${title} class="${dayClass}" data-day="${currFormatted}">${i}</li>`;
+        }
+
+        for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
+            liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`
+        }
+        currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
+        daysTag.innerHTML = liTag;
+    }
+
+    prevNextIcon.forEach(icon => { // getting prev and next icons
+        icon.addEventListener("click", () => { // adding click event on both icons
+            // if clicked icon is previous icon then decrement current month by 1 else increment it by 1
+            currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
+
+            if(currMonth < 0 || currMonth > 11) { // if current month is less than 0 or greater than 11
+                // creating a new date of current year & month and pass it as date value
+                date = new Date(currYear, currMonth, new Date().getDate());
+                currYear = date.getFullYear(); // updating current year with new date year
+                currMonth = date.getMonth(); // updating current month with new date month
+            } else {
+                date = new Date(); // pass the current date as date value
+            }
+            renderCalendar(); // calling renderCalendar function
+        });
+    });
+
+    document.querySelector('.days').addEventListener('click', function(e){
+        const el = e.target;
+        const day = el.getAttribute('data-day');
+
+        if(el.matches('.holiday')){
+            if(el.classList.contains('workingday')){
+                el.classList.remove('workingday');
+                count.workingDays--;
+                count.holidays++;
+            }else{
+                el.classList.add('workingday');
+                count.workingDays++;
+                count.holidays--;
+            }
+        }
+        else if(el.matches('.workingday')){
+            el.classList.remove('workingday')
+            el.classList.add('custom')
+            count.workingDays--;
+            count.customs++;
+        }
+        else if(el.matches('.custom')){
+            el.classList.remove('custom')
+            el.classList.add('workingday')
+            count.workingDays++;
+            count.customs--;
+        }
+
+        reloadCounter();
+    });
+}
+</script>	</main>
+
+			<div class="container hidden-print">
+			<div class="bottom-banner">
+				<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+				crossorigin="anonymous"></script>
+				<!-- Bottom -->
+				<ins class="adsbygoogle"
+				style="display:block"
+				data-ad-client="ca-pub-1714195545121238"
+				data-ad-slot="6345858528"
+				data-ad-format="auto"
+				data-full-width-responsive="true"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+	
+	<footer class="hidden-print"></footer>
+
+	<script src="../cdn.invertexto.com/js/app-v1.2.js"></script>
+	
+	<script src="js/ad_728x90.js"></script>
+	<script>
+	if (typeof run === "function") { 
+    	run();
+	}
+
+	// new banner test
+	var isMobile = 0;
+	var hasAd = 1;
+	if(!isMobile && (window.canRunAds===undefined || !hasAd)){
+				document.getElementById('topads').innerHTML = '<a href="/banners/banner-link.php?id=banner3" target="_blank" rel="nofollow"><img src="/banners/banner-image.php?id=banner3" class="img-responsive" style="margin:0 auto"></a>';
+	}
+	</script>
+
+<script data-cfasync="false" type="text/javascript" id="clever-core">
+/* <![CDATA[ */
+    (function (document, window) {
+        var a, c = document.createElement("script"), f = window.frameElement;
+
+        c.id = "CleverCoreLoader83219";
+        c.src = "../scripts.cleverwebserver.com/919807a68a8d275b2e7dd47c1ad6a69c.js";
+
+        c.async = !0;
+        c.type = "text/javascript";
+        c.setAttribute("data-target", window.name || (f && f.getAttribute("id")));
+        c.setAttribute("data-callback", "put-your-callback-function-here");
+        c.setAttribute("data-callback-url-click", "put-your-click-macro-here");
+        c.setAttribute("data-callback-url-view", "put-your-view-macro-here");
+
+        try {
+            a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
+        } catch (e) {
+            a = !1;
+        }
+
+        a || (a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
+        a.parentNode.insertBefore(c, a);
+    })(document, window);
+/* ]]> */
+</script>
+</body>
+
+<!-- Mirrored from www.invertexto.com/calculadora-dias-uteis by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:29 GMT -->
+</html>

@@ -1,0 +1,6 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+www.invertexto.com	TRUE	/	FALSE	1999999999	PHPSESSID	6ckg5bt8kfgs6npbdo857pu9t8
+scripts.cleverwebserver.com	TRUE	/	FALSE	1999999999	__cf_bm	aNCKjKVmEoHFu3i2eI9rLjbIEtShfTi1pewNB8Jy36E-1785297373.5354145-1.0.1.1-T5UFs2giqbgOfuiQeJNMHQN1pByLLAj.gkBbTkc0kGIF83iDPmza9Ax6al0EiAxuL.sBugUqkOE78IqEvvGOKqsOGqM.xULlvY7VILfQjMyrX0w2G0Qk0PGRtERkqRPx
+cleverwebserver.com	TRUE	/	FALSE	1999999999	SameSite	None
+

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!-- Mirrored from www.invertexto.com/pomodoro-timer by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-title" content="Pomodoro Timer">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="description" content="Maximize sua produtividade com nosso Timer Pomodoro online. Método ideal para estudo, trabalho e outras tarefas que exigem foco. Experimente agora!">
+	<meta property="og:title" content="Pomodoro Timer">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="pomodoro-timer.html">
+	<meta property="og:image" content="../cdn.invertexto.com/img/face-note.png">
+	<meta property="og:site_name" content="invertexto.com">
+	<meta property="og:description" content="Maximize sua produtividade com nosso Timer Pomodoro online. Método ideal para estudo, trabalho e outras tarefas que exigem foco. Experimente agora!">
+	<meta property="fb:app_id" content="515652911960455">
+	<title>Pomodoro Timer | invertexto.com</title>
+
+	<link rel="canonical" href="pomodoro-timer.html">
+	<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+	<link rel="stylesheet" href="../cdn.invertexto.com/css/appe44f.css?id=20260619">
+	<link rel="apple-touch-icon" href="../cdn.invertexto.com/img/apple-touch-icon.png">
+</head>
+<body>
+	<header class="hidden-print">
+		<div class="top">
+			<div class="container" style="height:100%">
+				<div style="height:100%;display:flex;justify-content:space-between;align-items:center">
+					<div style="padding-right:24px;margin-top:36px;margin-bottom:31px">
+						<a href="index.html">
+							<img src="../cdn.invertexto.com/img/invertexto.png" style="width:263px;height:48px" alt="invertexto.com">
+						</a>
+					</div>
+					<div id="topads" style="width:100%">
+													<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+							crossorigin="anonymous"></script>
+							<!-- Top -->
+							<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-client="ca-pub-1714195545121238"
+							data-ad-slot="4449009840"
+							data-ad-format="horizontal"
+							data-full-width-responsive="true"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+											</div>
+				</div>
+			</div>
+		</div>
+
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<style>
+					a.btnInsta{display:block;background-color:#D83277;height:20px;color:#fff;font-size:12px;padding:0 6px;line-height:20px;border-radius:4px;float:left}
+					a.btnInsta:hover,a.btnInsta:focus{text-decoration:none;color:#fff}
+				</style>
+				<div class="like pull-left">
+					<a href="https://www.instagram.com/invertexto/" target="_blank" rel="nofollow noopener" class="btnInsta"><strong>Siga</strong> @invertexto</a>
+				</div>
+
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				  </button>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="https://api.invertexto.com/" target="_blank" rel="nofollow">API</a></li>
+						<li><a href="sobre.html">Sobre</a></li>
+						<li><a href="contato.html">Contato</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	
+	<main>
+		
+<style>
+.mt-2{margin-top:8px}
+.mt-4{margin-top:16px}
+.circle{position:relative;width:200px;height:200px;border-radius:50%;background:#E9EAEE}
+.circle:before{content:'';position:absolute;width:180px;height:180px;background-color:#fff;border-radius:50%;top:50%;left:50%;transform:translate(-50%, -50%)}
+.dot{position:absolute;width:12px;/* half dot */height:50%;left:47.5%;top:0;transform:rotate(75deg);transform-origin:center bottom}
+.dot:before{content:"";position:absolute;background-color:#fff;box-shadow:0 0 4px #333;width:24px;transform:translate3d(-25%, -25%, 0);padding-bottom:24px;border-radius:50%;cursor:pointer}
+.debug{font-family:monospace;position:absolute;top:50%;left:50%;transform:translate(-50%, -50%);z-index:100;font-size:32px;user-select:none}
+
+.buttons{margin-top:32px;display:flex}
+.buttons .btn-secondary{width:120px;height:40px;border-radius:40px;background-color:#EFEFEF;border:none;font-size:14px}
+.buttons .btn-secondary:hover:enabled{background-color:#E7E7E7}
+.buttons .btn-secondary:disabled{opacity:.65}
+.task{position:relative;background-color:#fff;border:1px solid #eee;border-radius:4px;cursor:pointer;margin-bottom:8px;padding:0 12px;height:48px;overflow:hidden}
+.task:hover{border-color:#ddd}
+.task .icon{margin-right:8px;color:#999;fill:currentColor;width:24px;height:24px}
+.task .editbuttons{position:absolute;right:0;top:0;bottom:0;display:flex}
+.task button{width:44px;border:none;display:flex;justify-content:center;align-items:center;background-color:#fff}
+.task button svg{fill:currentColor;width:20px;height:20px}
+.task button.remove{color:#ef4444}
+.task button.remove:hover{background-color:#fef2f2}
+.task button.edit{color:#3b82f6}
+.task button.edit:hover{background-color:#eff6ff}
+.task.active svg{color:#DD6964}
+.task.add{background-color:#fff;margin-bottom:0;height:48px}
+.task input{width:100%;border:0;background-color:transparent}
+.task input:focus{box-shadow:none !important;border:0 0 1px 0 solid #eee;outline:0}
+.pill{background-color:transparent;border:none;font-size:14px;color:#333;border-radius:4px;padding:0 12px;height:32px;border-radius:16px}
+.pill.active{background-color:#f5f5f5}
+
+.segment{display:flex}
+.segment button{background-color:transparent;border:1px solid #eee;border-right:none;font-size:14px;color:#333;width:100%;padding:4px}
+.segment button:first-child{border-radius:4px 0 0 4px}
+.segment button:last-child{border-radius:0 4px 4px 0;border-right:1px solid #eee}
+.segment button:hover{background-color:#f9fafb}
+.segment button.active{background-color:#f5f5f5}
+
+.datenav{font-size:14px}
+.datenav button{border:0;background-color:transparent;padding:2px;display:flex;justify-content:center;align-items:center}
+
+.bars{margin:12px 0 36px 0;display:flex;justify-content:space-between}
+.bars div{height:140px;background-color:#f7f7f7;position:relative}
+.bars div:after{position:absolute;left:0;right:0;top:100%;display:block;text-align:center;content:attr(data-label);font-size:14px;color:#767676}
+.bars span{background-color:#DD6964;position:absolute;bottom:0;left:0;right:0;animation:draw 0.5s ease-in-out}
+@keyframes draw{ 0%{height:0} }
+</style>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="width:0;height:0;display:none"><defs>
+<symbol viewBox="0 -960 960 960" id="play"><path d="m380-300 280-180-280-180v360ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></symbol>
+<symbol viewBox="0 -960 960 960" id="add"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></symbol>
+<symbol viewBox="0 -960 960 960" id="edit"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h357l-80 80H200v560h560v-278l80-80v358q0 33-23.5 56.5T760-120H200Zm280-360ZM360-360v-170l367-367q12-12 27-18t30-6q16 0 30.5 6t26.5 18l56 57q11 12 17 26.5t6 29.5q0 15-5.5 29.5T897-728L530-360H360Zm481-424-56-56 56 56ZM440-440h56l232-232-28-28-29-28-231 231v57Zm260-260-29-28 29 28 28 28-28-28Z"/></symbol>
+<symbol viewBox="0 -960 960 960" id="remove"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></symbol>
+</defs></svg>
+
+<div class="container">
+    <h1>Pomodoro Timer</h1>
+    <div class="box flex justify-center items-center" style="flex-direction:column">
+        <div class="flex" id="stages" style="margin-bottom:32px">
+            <button class="pill active" data-stage="P">Pomodoro</button>
+            <button class="pill" data-stage="S">Pausa Curta</button>
+            <button class="pill" data-stage="L">Pausa Longa</button>
+        </div>
+        <div class="circle">
+            <div class="debug"></div>
+            <div class="dot"></div>
+        </div>
+        <div class="buttons">
+            <button class="btn-secondary" id="start" style="margin-right:8px">Iniciar</button>
+            <button class="btn-secondary" id="giveup" style="margin-left:8px" disabled>Desistir</button>
+        </div>
+    </div>
+
+    <div class="box flex justify-center" style="margin-top:25px">
+        <div style="width:100%;max-width:400px">
+            <div class="flex items-center" style="color:#767676;font-size:14px;margin-bottom:8px">
+                <span style="margin-right:8px">TAREFAS</span>
+                <a href="#" style="cursor:pointer" class="flex items-center" id="editmode">editar</a>
+            </div>
+            <div class="tasks">
+
+            </div>
+            <div class="flex items-center task add">                
+                <svg class="icon"><use xlink:href="#add"/></svg>
+                <span>Adicionar Tarefa</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="box flex justify-center" style="margin-top:25px">
+        <div style="width:100%;max-width:400px">
+            <div style="color:#767676;font-size:14px">ESTATÍSTICAS</div>
+
+            <div class="segment mt-2" id="period">
+                <button class="active" id="week">Semana</button>
+                <button id="month">Mês</button>
+                <button id="year">Ano</button>
+            </div>
+
+            <div class="flex justify-between items-center mt-4 datenav">
+                <button aria-label="Anterior" id="left"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -960 960 960"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg></button>
+                <div id="date"></div>
+                <button aria-label="Próxima" id="right"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -960 960 960"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg></button>
+            </div>
+
+            <div class="bars">
+
+            </div>
+
+            <hr style="margin:8px 0">
+            <div class="flex justify-between items-center">
+                <div>Total</div>
+                <div style="font-size: 14px;" id="total"></div>
+            </div>
+            <hr style="margin:8px 0">
+            <div class="flex justify-between items-center">
+                <div>Média por dia</div>
+                <div style="font-size: 14px;" id="average"></div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+	</main>
+
+			<div class="container hidden-print">
+			<div class="bottom-banner">
+				<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+				crossorigin="anonymous"></script>
+				<!-- Bottom -->
+				<ins class="adsbygoogle"
+				style="display:block"
+				data-ad-client="ca-pub-1714195545121238"
+				data-ad-slot="6345858528"
+				data-ad-format="auto"
+				data-full-width-responsive="true"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+	
+	<footer class="hidden-print"></footer>
+
+	<script src="../cdn.invertexto.com/js/app-v1.2.js"></script>
+	<script src="js/pomodoro.min5ab3.js?id=20240304"></script>
+	<script src="js/ad_728x90.js"></script>
+	<script>
+	if (typeof run === "function") { 
+    	run();
+	}
+
+	// new banner test
+	var isMobile = 0;
+	var hasAd = 1;
+	if(!isMobile && (window.canRunAds===undefined || !hasAd)){
+				document.getElementById('topads').innerHTML = '<a href="/banners/banner-link.php?id=banner1" target="_blank" rel="nofollow"><img src="/banners/banner-image.php?id=banner1" class="img-responsive" style="margin:0 auto"></a>';
+	}
+	</script>
+
+<script data-cfasync="false" type="text/javascript" id="clever-core">
+/* <![CDATA[ */
+    (function (document, window) {
+        var a, c = document.createElement("script"), f = window.frameElement;
+
+        c.id = "CleverCoreLoader83219";
+        c.src = "../scripts.cleverwebserver.com/919807a68a8d275b2e7dd47c1ad6a69c.js";
+
+        c.async = !0;
+        c.type = "text/javascript";
+        c.setAttribute("data-target", window.name || (f && f.getAttribute("id")));
+        c.setAttribute("data-callback", "put-your-callback-function-here");
+        c.setAttribute("data-callback-url-click", "put-your-click-macro-here");
+        c.setAttribute("data-callback-url-view", "put-your-view-macro-here");
+
+        try {
+            a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
+        } catch (e) {
+            a = !1;
+        }
+
+        a || (a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
+        a.parentNode.insertBefore(c, a);
+    })(document, window);
+/* ]]> */
+</script>
+</body>
+
+<!-- Mirrored from www.invertexto.com/pomodoro-timer by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:34 GMT -->
+</html>

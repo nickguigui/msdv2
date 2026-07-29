@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!-- Mirrored from www.invertexto.com/gerador-de-cep by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:50 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-title" content="Gerador de CEP">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="description" content="O gerador de cep é uma ferramenta online para gerar um CEP válido e seu respectivo endereço, com filtro para Estados brasileiros.">
+	<meta property="og:title" content="Gerador de CEP">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="gerador-de-cep.html">
+	<meta property="og:image" content="../cdn.invertexto.com/img/face-note.png">
+	<meta property="og:site_name" content="invertexto.com">
+	<meta property="og:description" content="O gerador de cep é uma ferramenta online para gerar um CEP válido e seu respectivo endereço, com filtro para Estados brasileiros.">
+	<meta property="fb:app_id" content="515652911960455">
+	<title>Gerador de CEP | invertexto.com</title>
+
+	<link rel="canonical" href="gerador-de-cep.html">
+	<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+	<link rel="stylesheet" href="../cdn.invertexto.com/css/appe44f.css?id=20260619">
+	<link rel="apple-touch-icon" href="../cdn.invertexto.com/img/apple-touch-icon.png">
+</head>
+<body>
+	<header class="hidden-print">
+		<div class="top">
+			<div class="container" style="height:100%">
+				<div style="height:100%;display:flex;justify-content:space-between;align-items:center">
+					<div style="padding-right:24px;margin-top:36px;margin-bottom:31px">
+						<a href="index.html">
+							<img src="../cdn.invertexto.com/img/invertexto.png" style="width:263px;height:48px" alt="invertexto.com">
+						</a>
+					</div>
+					<div id="topads" style="width:100%">
+													<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+							crossorigin="anonymous"></script>
+							<!-- Top -->
+							<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-client="ca-pub-1714195545121238"
+							data-ad-slot="4449009840"
+							data-ad-format="horizontal"
+							data-full-width-responsive="true"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+											</div>
+				</div>
+			</div>
+		</div>
+
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<style>
+					a.btnInsta{display:block;background-color:#D83277;height:20px;color:#fff;font-size:12px;padding:0 6px;line-height:20px;border-radius:4px;float:left}
+					a.btnInsta:hover,a.btnInsta:focus{text-decoration:none;color:#fff}
+				</style>
+				<div class="like pull-left">
+					<a href="https://www.instagram.com/invertexto/" target="_blank" rel="nofollow noopener" class="btnInsta"><strong>Siga</strong> @invertexto</a>
+				</div>
+
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				  </button>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="https://api.invertexto.com/" target="_blank" rel="nofollow">API</a></li>
+						<li><a href="sobre.html">Sobre</a></li>
+						<li><a href="contato.html">Contato</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	
+	<main>
+		<style>
+.block{
+	max-width:400px;
+	margin:0 auto;
+	margin-top:25px;
+}
+.block .form-inline{
+	margin-top:20px;
+}
+.block .form-inline button{
+	margin-right:5px;
+}
+.form-resultado{
+	margin-top:45px;
+}
+@media (min-width: 768px){
+	.form-horizontal .control-label {
+		text-align:left !important;
+	}
+}
+
+</style>
+<div class="container">
+	<h1>Gerador de CEP</h1>
+	<div class="box">
+		<div class="block">
+			<select class="form-control" id="estado">
+				<option value="">Qualquer Estado</option>
+				<option value="AC">Acre</option>
+				<option value="AL">Alagoas</option>
+				<option value="AP">Amapá</option>
+				<option value="AM">Amazonas</option>
+				<option value="BA">Bahia</option>
+				<option value="CE">Ceará</option>
+				<option value="DF">Distrito Federal</option>
+				<option value="ES">Espírito Santo</option>
+				<option value="GO">Goiás</option>
+				<option value="MA">Maranhão</option>
+				<option value="MT">Mato Grosso</option>
+				<option value="MS">Mato Grosso do Sul</option>
+				<option value="MG">Minas Gerais</option>
+				<option value="PR">Paraná</option>
+				<option value="PB">Paraíba</option>
+				<option value="PA">Pará</option>
+				<option value="PE">Pernambuco</option>
+				<option value="PI">Piauí</option>
+				<option value="RJ">Rio de Janeiro</option>
+				<option value="RN">Rio Grande do Norte</option>
+				<option value="RS">Rio Grande do Sul</option>
+				<option value="RO">Rondônia</option>
+				<option value="RR">Roraima</option>
+				<option value="SC">Santa Catarina</option>
+				<option value="SE">Sergipe</option>
+				<option value="SP">São Paulo</option>
+				<option value="TO">Tocantins</option>
+			</select>
+			<div class="form-inline">
+				<button class="btn btn-classic" id="gerar">Gerar CEP</button>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" id="pontuacao" checked> Pontuação
+					</label>
+				</div>
+			</div>
+
+			<form class="form-horizontal form-resultado">
+				<div class="form-group">
+					<label for="cep" class="col-sm-4 control-label">CEP</label>
+					<div class="col-sm-20">
+						<input type="text" class="form-control" id="cep">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="endereco" class="col-sm-4 control-label">Endereço</label>
+					<div class="col-sm-20">
+						<input type="text" class="form-control" id="endereco">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="bairro" class="col-sm-4 control-label">Bairro</label>
+					<div class="col-sm-20">
+						<input type="text" class="form-control" id="bairro">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="cidade" class="col-sm-4 control-label">Cidade</label>
+					<div class="col-sm-20">
+						<input type="text" class="form-control" id="cidade">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="uf" class="col-sm-4 control-label">Estado</label>
+					<div class="col-sm-20">
+						<input type="text" class="form-control" id="uf">
+					</div>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</div>
+
+<script>
+function run(){
+	$('#gerar').click(function(){
+		var estado = $('#estado').val();
+		var pontuacao = $("#pontuacao").is(':checked');
+
+		$(document).ajaxStart(function(){
+			$('#gerar').attr('disabled', true);
+		});
+
+		$(document).ajaxStop(function(){
+			$('#gerar').removeAttr('disabled');
+		});
+
+		$.ajax({
+			type:'post', data:{estado:estado,pontuacao:pontuacao}, url:'ajax/gerar-cep.php', dataType:'json',
+			success: function(j){
+				$('#cep').val(j.cep);
+				$('#endereco').val(j.endereco);
+				$('#bairro').val(j.bairro);
+				$('#cidade').val(j.cidade);
+				$('#uf').val(j.uf);
+			},
+			error: function(j){
+				console.log(j);
+			}
+		});
+	});
+
+	$('.box input[type=text]').click(function(){
+		$(this).select();
+	});
+}
+</script>	</main>
+
+			<div class="container hidden-print">
+			<div class="bottom-banner">
+				<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+				crossorigin="anonymous"></script>
+				<!-- Bottom -->
+				<ins class="adsbygoogle"
+				style="display:block"
+				data-ad-client="ca-pub-1714195545121238"
+				data-ad-slot="6345858528"
+				data-ad-format="auto"
+				data-full-width-responsive="true"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+	
+	<footer class="hidden-print"></footer>
+
+	<script src="../cdn.invertexto.com/js/app-v1.2.js"></script>
+	
+	<script src="js/ad_728x90.js"></script>
+	<script>
+	if (typeof run === "function") { 
+    	run();
+	}
+
+	// new banner test
+	var isMobile = 0;
+	var hasAd = 1;
+	if(!isMobile && (window.canRunAds===undefined || !hasAd)){
+				document.getElementById('topads').innerHTML = '<a href="/banners/banner-link.php?id=banner1" target="_blank" rel="nofollow"><img src="/banners/banner-image.php?id=banner1" class="img-responsive" style="margin:0 auto"></a>';
+	}
+	</script>
+
+<script data-cfasync="false" type="text/javascript" id="clever-core">
+/* <![CDATA[ */
+    (function (document, window) {
+        var a, c = document.createElement("script"), f = window.frameElement;
+
+        c.id = "CleverCoreLoader83219";
+        c.src = "../scripts.cleverwebserver.com/919807a68a8d275b2e7dd47c1ad6a69c.js";
+
+        c.async = !0;
+        c.type = "text/javascript";
+        c.setAttribute("data-target", window.name || (f && f.getAttribute("id")));
+        c.setAttribute("data-callback", "put-your-callback-function-here");
+        c.setAttribute("data-callback-url-click", "put-your-click-macro-here");
+        c.setAttribute("data-callback-url-view", "put-your-view-macro-here");
+
+        try {
+            a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
+        } catch (e) {
+            a = !1;
+        }
+
+        a || (a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
+        a.parentNode.insertBefore(c, a);
+    })(document, window);
+/* ]]> */
+</script>
+</body>
+
+<!-- Mirrored from www.invertexto.com/gerador-de-cep by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:50 GMT -->
+</html>

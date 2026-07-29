@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!-- Mirrored from www.invertexto.com/leitor-qr-code-online by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-title" content="Leitor de QR Code Online">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="description" content="Leitor QR Code grátis online para ler ou escanear códigos QR no pc. Realize a leitura com a câmera ou faça o upload da imagem. Escaneamento simples e rápido.">
+	<meta property="og:title" content="Leitor de QR Code Online">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="leitor-qr-code-online.html">
+	<meta property="og:image" content="../cdn.invertexto.com/img/face-note.png">
+	<meta property="og:site_name" content="invertexto.com">
+	<meta property="og:description" content="Leitor QR Code grátis online para ler ou escanear códigos QR no pc. Realize a leitura com a câmera ou faça o upload da imagem. Escaneamento simples e rápido.">
+	<meta property="fb:app_id" content="515652911960455">
+	<title>Leitor de QR Code Online | invertexto.com</title>
+
+	<link rel="canonical" href="leitor-qr-code-online.html">
+	<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+	<link rel="stylesheet" href="../cdn.invertexto.com/css/appe44f.css?id=20260619">
+	<link rel="apple-touch-icon" href="../cdn.invertexto.com/img/apple-touch-icon.png">
+</head>
+<body>
+	<header class="hidden-print">
+		<div class="top">
+			<div class="container" style="height:100%">
+				<div style="height:100%;display:flex;justify-content:space-between;align-items:center">
+					<div style="padding-right:24px;margin-top:36px;margin-bottom:31px">
+						<a href="index.html">
+							<img src="../cdn.invertexto.com/img/invertexto.png" style="width:263px;height:48px" alt="invertexto.com">
+						</a>
+					</div>
+					<div id="topads" style="width:100%">
+													<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+							crossorigin="anonymous"></script>
+							<!-- Top -->
+							<ins class="adsbygoogle"
+							style="display:block"
+							data-ad-client="ca-pub-1714195545121238"
+							data-ad-slot="4449009840"
+							data-ad-format="horizontal"
+							data-full-width-responsive="true"></ins>
+							<script>
+							(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+											</div>
+				</div>
+			</div>
+		</div>
+
+		<nav class="navbar navbar-default navbar-static-top">
+			<div class="container">
+				<style>
+					a.btnInsta{display:block;background-color:#D83277;height:20px;color:#fff;font-size:12px;padding:0 6px;line-height:20px;border-radius:4px;float:left}
+					a.btnInsta:hover,a.btnInsta:focus{text-decoration:none;color:#fff}
+				</style>
+				<div class="like pull-left">
+					<a href="https://www.instagram.com/invertexto/" target="_blank" rel="nofollow noopener" class="btnInsta"><strong>Siga</strong> @invertexto</a>
+				</div>
+
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				  </button>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="https://api.invertexto.com/" target="_blank" rel="nofollow">API</a></li>
+						<li><a href="sobre.html">Sobre</a></li>
+						<li><a href="contato.html">Contato</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	
+	<main>
+		<style>
+.flex-col{flex-direction:column}
+.box{min-height:300px}
+.box button,.box label{width:100%;max-width:400px}
+.resultado{
+	font-size:16px;
+	background-color:#F8F9FA;
+	border-radius: 8px;
+	padding: 8px 30px 8px 12px;
+	position: relative;
+    margin-top:24px;
+}
+.copy-btn{
+	position: absolute;
+	right: 4px;
+	top: 2px;
+	cursor: pointer;
+	opacity: 0.4;
+}
+.copy-btn:hover{
+	opacity: 0.5;
+}
+</style>
+
+<div class="container">
+	<h1>Leitor de QR Code Online</h1>
+	<div class="box flex justify-center items-center flex-col">
+        <div id="reader" style="width:100%;max-width:400px"></div>
+        <div id="buttons" class="flex justify-center items-center flex-col" style="margin-top:12px;width:100%">
+            <button class="btn btn-lg btn-default" id="camerabtn"><i class="glyphicon glyphicon-camera"></i> Abrir Câmera</button>
+            <button class="btn btn-lg btn-default" style="display:none" id="stopbtn">Fechar</button>
+            <form enctype="multipart/form-data" action="https://www.invertexto.com/anexar" method="post" id="fileform" style="width:100%;max-width:400px">
+                <label class="btn btn-lg btn-default" style="margin-top:12px">
+                    <span class="upload-text">
+                        <span class="glyphicon glyphicon-upload"></span> Enviar Imagem
+                    </span>
+                    <input type="file" id="file" name="file" style="display:none">
+                </label>
+            </form>
+        </div>
+
+        <div id="error" class="text-danger" style="margin-top:12px;display:none"></div>
+        
+        <div style="height:100%;min-height:100px;width:100%;max-width:400px;display:none;overflow-wrap:break-word">			
+            <div class="resultado">
+                <span id="result"></span>
+                <div style="transform:rotateX(180deg)" class="copy-btn" title="Copiar" aria-label="Copiar texto" role="button" tabindex="0" data-clipboard-target="#result">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M16,20H5V6H3v14c0,1.1,0.9,2,2,2h11V20z M20,16V4c0-1.1-0.9-2-2-2H9C7.9,2,7,2.9,7,4v12c0,1.1,0.9,2,2,2h9 C19.1,18,20,17.1,20,16z M18,16H9V4h9V16z"></path></svg>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <div class="panel panel-custom">
+		<div class="panel-heading">Ferramentas Relacionadas</div>
+		<div class="list-group">
+			<a href="gerador-qr-code.html" class="list-group-item">Gerador de QR Code</a>
+			<a href="codigo-barras.html" class="list-group-item">Gerador de Código de Barras</a>
+		</div>
+	</div>
+</div>
+
+<script>
+function run(){
+
+    let type='';
+    const reader = document.getElementById('reader');
+    const cameraButton = document.getElementById('camerabtn');
+    const stopButton = document.getElementById('stopbtn');
+    const fileButton = document.getElementById('fileform');
+    const resultText = document.getElementById('result');
+
+    const html5QrCode = new Html5Qrcode("reader");
+
+    cameraButton.addEventListener('click', function(){
+        type = 'camera';
+        
+        resultText.parentElement.parentElement.style.display = 'none';
+        cameraButton.innerHTML = 'Carregando...'
+        cameraButton.disabled = true
+        Html5Qrcode.getCameras().then(devices => {
+            if (devices && devices.length) {
+                var cameraId = devices[0].id;
+
+                const qrCodeSuccessCallback = (decodedText, decodedResult) => {
+                    displayText(decodedText);
+
+                    html5QrCode.stop().then(ignore => {
+                        close()
+                    })
+                };
+
+                const config = { fps: 10, qrbox: { width: 250, height: 250 } };
+                // html5QrCode.start({ deviceId: { exact: cameraId} }, config, qrCodeSuccessCallback);
+                html5QrCode.start({ facingMode: "environment" }, config, qrCodeSuccessCallback);
+            }
+        }).catch(err => {
+            console.log(`Error scanning câmera. Reason: ${err}`)
+        });
+    });
+
+    function displayText(text){
+        if (text.slice(0, 4) == 'http') {
+            resultText.innerHTML = '<a href="'+text+'" target="_blank">'+text+'</a>';
+        }else{
+            resultText.innerText = text;
+        }
+        resultText.parentElement.parentElement.style.display = 'block';
+    }
+
+    function close(){
+        reader.innerHTML = ''
+        cameraButton.style.display = 'block'
+        fileButton.style.display = 'block'
+        stopButton.style.display = 'none'
+        fileButton.reset()
+    }
+
+    stopButton.addEventListener('click', function(){
+        if(html5QrCode.getState() == 2){
+            html5QrCode.stop().then(ignore => {
+                close()
+            })
+        }else{
+            close()
+        }
+    })
+
+    new ResizeObserver(function(entries){
+        if(entries[0].contentRect.height > 0){
+            if(type != 'file'){
+                cameraButton.style.display = 'none'
+                fileButton.style.display = 'none'
+                stopButton.style.display = 'block'
+            }
+            
+            cameraButton.innerHTML = '<i class="glyphicon glyphicon-camera"></i> Abrir Câmera'
+            cameraButton.disabled = false
+        }
+    }).observe(reader)
+
+    fileButton.addEventListener('change', e => {
+        if (e.target.files.length == 0) {
+            return;
+        }
+
+        type = 'file';
+        const imageFile = e.target.files[0];
+
+        html5QrCode.scanFile(imageFile, true)
+            .then(decodedText => {
+                displayText(decodedText);
+                $('#error').hide();
+            })
+            .catch(err => {
+                console.log(`Error scanning file. Reason: ${err}`)
+                $('#error').html('Não foi possível ler o código dessa imagem.').show();
+                resultText.parentElement.parentElement.style.display = 'none';
+            });
+    });
+
+    // Tooltip
+	$('.copy-btn').tooltip({
+		trigger: 'manual',
+		placement: 'bottom'
+	});
+
+	function setTooltip(btn, message) {
+		btn.attr('data-original-title', message).tooltip('show');
+	}
+
+	function hideTooltip(btn) {
+		setTimeout(function() {
+			btn.tooltip('hide');
+		}, 1000);
+	}
+
+	// Clipboard
+	var clipboard = new ClipboardJS('.copy-btn');
+
+	clipboard.on('success', function(e) {
+		var btn = $(e.trigger);
+		setTooltip(btn, 'Copiado');
+		hideTooltip(btn);
+		e.clearSelection();
+	});
+}
+</script>	</main>
+
+			<div class="container hidden-print">
+			<div class="bottom-banner">
+				<script async src="../pagead2.googlesyndication.com/pagead/js/fbe82.txt?client=ca-pub-1714195545121238"
+				crossorigin="anonymous"></script>
+				<!-- Bottom -->
+				<ins class="adsbygoogle"
+				style="display:block"
+				data-ad-client="ca-pub-1714195545121238"
+				data-ad-slot="6345858528"
+				data-ad-format="auto"
+				data-full-width-responsive="true"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			</div>
+		</div>
+	
+	<footer class="hidden-print"></footer>
+
+	<script src="../cdn.invertexto.com/js/app-v1.2.js"></script>
+	<script src="../unpkg.com/html5-qrcode%402.3.8/html5-qrcode.min.js"></script><script src="../cdn.jsdelivr.net/npm/clipboard%402.0.11/dist/clipboard.min.js"></script>
+	<script src="js/ad_728x90.js"></script>
+	<script>
+	if (typeof run === "function") { 
+    	run();
+	}
+
+	// new banner test
+	var isMobile = 0;
+	var hasAd = 1;
+	if(!isMobile && (window.canRunAds===undefined || !hasAd)){
+				document.getElementById('topads').innerHTML = '<a href="/banners/banner-link.php?id=banner1" target="_blank" rel="nofollow"><img src="/banners/banner-image.php?id=banner1" class="img-responsive" style="margin:0 auto"></a>';
+	}
+	</script>
+
+<script data-cfasync="false" type="text/javascript" id="clever-core">
+/* <![CDATA[ */
+    (function (document, window) {
+        var a, c = document.createElement("script"), f = window.frameElement;
+
+        c.id = "CleverCoreLoader83219";
+        c.src = "../scripts.cleverwebserver.com/919807a68a8d275b2e7dd47c1ad6a69c.js";
+
+        c.async = !0;
+        c.type = "text/javascript";
+        c.setAttribute("data-target", window.name || (f && f.getAttribute("id")));
+        c.setAttribute("data-callback", "put-your-callback-function-here");
+        c.setAttribute("data-callback-url-click", "put-your-click-macro-here");
+        c.setAttribute("data-callback-url-view", "put-your-view-macro-here");
+
+        try {
+            a = parent.document.getElementsByTagName("script")[0] || document.getElementsByTagName("script")[0];
+        } catch (e) {
+            a = !1;
+        }
+
+        a || (a = document.getElementsByTagName("head")[0] || document.getElementsByTagName("body")[0]);
+        a.parentNode.insertBefore(c, a);
+    })(document, window);
+/* ]]> */
+</script>
+</body>
+
+<!-- Mirrored from www.invertexto.com/leitor-qr-code-online by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2026 03:56:27 GMT -->
+</html>
