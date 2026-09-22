@@ -60,7 +60,7 @@
         <svg class="ic ic-moon" aria-hidden="true"><use href="#i-moon"/></svg>
         <svg class="ic ic-sun" aria-hidden="true"><use href="#i-sun"/></svg>
       </button>
-      <a href="minha-conta.html" id="navAuth" hidden>Entrar</a>
+      <a href="minha-conta.html" id="navAuth">Entrar</a>
       <a class="btn-nav" href="#converter">Converter grátis</a>
     </nav>
   </div>
@@ -225,8 +225,6 @@
         </span>
       </label>
 
-
-
         </div>
       </details>
 
@@ -348,13 +346,8 @@
         </span>
       </label>
 
-
-
-
         </div>
       </details>
-
-
 
       <details class="acc" id="accChunks" open>
         <summary><span class="acc-n">5</span><img class="mc-ic" src="mc/item/map.png" alt="" aria-hidden="true"> Restaurar chunks corrompidas <span class="lock">VIP</span></summary>
@@ -440,8 +433,6 @@
         </div>
       </details>
 
-
-    
       <label class="accept">
         <input type="checkbox" id="accept">
         <span>Aceito <a href="termos.html" target="_blank" rel="noopener">Termos</a>, <a href="privacidade.html" target="_blank" rel="noopener">Privacidade</a> e <a href="reembolso.html" target="_blank" rel="noopener">Reembolso</a>. O mundo é meu. Sem garantia da Mojang. <b>Obrigatório.</b></span>
@@ -525,7 +516,13 @@
   </section>
 
   <section class="section" id="como-funciona">
-    Replace section items...
+    <h2>Como funciona</h2>
+    <div class="steps">
+      <div class="step"><b>1.</b> Você escolhe as alterações; manter o modo atual é grátis e mudar o modo exige plano pago.</div>
+      <div class="step"><b>2.</b> Só isso muda. Mapa e itens intactos.</div>
+      <div class="step"><b>3.</b> Abra no Survival, sem cheats. Vale a regra da Mojang.</div>
+    </div>
+    <div class="warn"><b>Sem promessa:</b> ninguém garante liberação da Mojang. O arquivo passa por validação técnica; direitos de arrependimento, falhas e reembolsos seguem a <a href="reembolso.html">Política de Reembolso</a>. Addons próprios bloqueiam conquistas — use <b>Remover addons</b>.</div>
   </section>
 
   <section class="section" id="faq">
@@ -572,16 +569,19 @@
 <script src="chunksae52.js?v=5"></script>
 <script src="player1bce.js?v=6"></script>
 <script src="appce31.js?v=19"></script>
+<script src="firebase-configf500.js?v=13"></script>
+<script src="authae24.js?v=14"></script>
+<script src="pagamento5059.js?v=20"></script>
 
 <script>
-  // Script de Desbloqueio Silencioso (Mantém o design visual da paywall, mas remove limites internos)
+  // Script de Desbloqueio Silencioso (Força acesso ilimitado no navegador)
   window.RC_isVip = true;
   window.RC_vip = true;
   localStorage.setItem("rc_vip", "true");
   localStorage.setItem("rc_quota", "99999");
   
   document.addEventListener("DOMContentLoaded", function() {
-    // Habilita todos os seletores e inputs que estiverem dentro das opções
+    // Habilita todos os seletores e inputs desbloqueados
     document.querySelectorAll("select, input").forEach(function(el) {
       el.removeAttribute("disabled");
     });
@@ -594,4 +594,6 @@
   });
 </script>
 </body>
+
+<!-- Mirrored from http://reativarconquistas.rosidomingos032.workers.dev/ by HTTrack Website Copier/3.x [XR&CO], Tue, 22 Sep 2026 01:46:08 GMT -->
 </html>
