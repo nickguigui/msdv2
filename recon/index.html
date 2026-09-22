@@ -1,15 +1,21 @@
 <!doctype html>
 <html lang="pt-BR">
 
+<!-- Mirrored from http://reativarconquistas.rosidomingos032.workers.dev/ by HTTrack Website Copier/3.x [XR&CO], Tue, 22 Sep 2026 01:45:56 GMT -->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ReativaConquistas — conquistas de volta no seu mundo Minecraft Bedrock</title>
-<meta name="description" content="Editor de mundos Minecraft Bedrock no navegador: reative conquistas, renomeie, mude dificuldade e regras. Arquivo nunca sai do seu PC.">
+<meta name="description" content="Editor de mundos Minecraft Bedrock no navegador: reative conquistas, renomeie, mude dificuldade e regras. O limite grátis atual aparece no conversor. Arquivo nunca sai do seu PC.">
 <link rel="icon" type="image/png" href="logo.png">
 <meta name="theme-color" content="#5EBB2B">
 <link rel="stylesheet" href="styleb6f5.css?v=10">
 <script>try{var t=localStorage.getItem("rc_theme");if(t!=="dark"&&t!=="light")t="light";document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}</script>
+<style>
+  /* Desbloqueia a interação visual mantendo o design das opções */
+  .opt.locked { opacity: 1 !important; pointer-events: auto !important; cursor: pointer !important; }
+  .opt.locked select, .opt.locked input { pointer-events: auto !important; opacity: 1 !important; }
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -48,11 +54,13 @@
     </a>
     <nav class="nav">
       <a class="hide-m" href="#como-funciona">Como funciona</a>
+      <a class="hide-m" href="#planos">Planos</a>
       <a class="hide-m" href="#faq">Dúvidas</a>
       <button class="theme-btn" type="button" aria-pressed="false" aria-label="Alternar modo escuro">
         <svg class="ic ic-moon" aria-hidden="true"><use href="#i-moon"/></svg>
         <svg class="ic ic-sun" aria-hidden="true"><use href="#i-sun"/></svg>
       </button>
+      <a href="minha-conta.html" id="navAuth" hidden>Entrar</a>
       <a class="btn-nav" href="#converter">Converter grátis</a>
     </nav>
   </div>
@@ -71,10 +79,21 @@
     </span>
   </div>
   <a href="#converter"><svg class="ic" aria-hidden="true"><use href="#i-wand"/></svg>Converter mundo</a>
+  <a href="#planos"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg>Planos</a>
   <a href="#como-funciona"><svg class="ic" aria-hidden="true"><use href="#i-info"/></svg>Como funciona</a>
   <a href="#faq"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg>Dúvidas</a>
+  <a href="minha-conta.html"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg>Minha conta</a>
+  <a href="minha-conta.html#login"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg>Entrar com Google</a>
   <a href="mailto:ncmine75@gmail.com"><svg class="ic" aria-hidden="true"><use href="#i-mail"/></svg>Contato</a>
 </aside>
+
+<div class="sticky-cta" id="stickyCta" hidden>
+  <svg class="ic" aria-hidden="true"><use href="#i-box"/></svg>
+  <span class="sticky-tx"><b>Até 10 MB grátis por mundo.</b><em>Recupere suas conquistas em segundos</em></span>
+  <a class="sticky-go" href="#converter">Converter</a>
+  <a class="sticky-vip" href="#planos"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg>Ser VIP</a>
+  <button class="sticky-x" id="stickyX" type="button" aria-label="Fechar aviso">×</button>
+</div>
 
 <div class="page page-wide">
   <div class="page" style="padding-left:0;padding-right:0;max-width:760px">
@@ -83,15 +102,22 @@
     <p class="kicker">Projeto independente · sem vínculo com Mojang/Microsoft</p>
     <img class="hero-logo" src="hero.png" alt="Reativando as Conquistas do Minecraft Bedrock" onerror="this.style.display='none'">
     <h1>Conquistas sumiram?<br><span>Volte a desbloquear</span></h1>
-    <p class="tagline">Solte o <b>.mcworld</b> abaixo. Roda <b>no seu celular/PC</b> · original intacto · <b>100% grátis e ilimitado</b>.</p>
+    <p class="tagline">Solte o <b>.mcworld</b> abaixo. Roda <b>no seu celular/PC</b> · original intacto · <b>até 10 MB grátis por mundo</b>.</p>
     <div class="hero-cta">
       <a class="primary hero-btn" href="#converter">Corrigir meu mundo grátis</a>
+      <a class="btn-ghost hero-btn" href="#planos">Ver o VIP</a>
     </div>
     <div class="trust">
       <span><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg>100% no seu aparelho</span>
-      <span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Ilimitado e Gratuito</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>7 dias para arrependimento</span>
+      <span><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg>Pix ou cartão</span>
     </div>
   </header>
+
+  <div id="quotaBar" class="quota">
+    <svg class="ic" aria-hidden="true"><use href="#i-box"/></svg>
+    <span id="quotaText">Verificando seu plano…</span>
+  </div>
 
   <section class="demo" aria-label="Como funciona em 4 passos">
     <div class="demo-step"><span><b>1.</b> Exporte o <b>.mcworld</b></span></div>
@@ -114,7 +140,7 @@
           <svg viewBox="0 0 24 24" width="32" height="32"><path fill="currentColor" d="M12 3l5 5h-3v6h-4V8H7zm-7 15h14v2H5z"/></svg>
         </span>
         <span class="drop-title">Toque p/ escolher ou solte o .mcworld</span>
-        <span class="drop-sub">Processamento local · totalmente gratuito</span>
+        <span class="drop-sub">Até <b>10 MB grátis · 3 operações por dia</b> · arquivo maior = <b>resolver este mundo por R$ 5,99</b></span>
         <span id="fileName" class="file-name" hidden></span>
         <span id="filex" class="file-x" hidden></span>
       </label>
@@ -130,6 +156,7 @@
           <div class="wi-row"><span>Conquistas</span><b id="wiStatus">—</b></div>
         </div>
       </div>
+
 
       <div id="mapPreview" class="mappreview" hidden>
         <div class="wi-title">Mapa 2D <span class="wi-sub">visualização da pasta db/ — nada é alterado · grátis</span></div>
@@ -153,7 +180,7 @@
       </details>
 
       <details class="acc" id="accFree" open>
-        <summary><span class="acc-n">2</span><img class="mc-ic" src="mc/item/experience_bottle.png" alt="" aria-hidden="true"> Ajustes Básicos <span class="acc-badge">incluídos</span></summary>
+        <summary><span class="acc-n">2</span><img class="mc-ic" src="mc/item/experience_bottle.png" alt="" aria-hidden="true"> Ajustes grátis <span class="acc-badge">incluídos</span></summary>
         <div class="acc-body">
 
       <label class="opt" id="diffOpt">
@@ -198,13 +225,15 @@
         </span>
       </label>
 
+
+
         </div>
       </details>
 
       <details class="acc" id="accPacks" open>
         <summary><span class="acc-n">3</span><img class="mc-ic" src="mc/item/book.png" alt="" aria-hidden="true"> Pacotes (addons)</summary>
         <div class="acc-body">
-          <p class="sub" style="margin:6px 0 10px">Gerencie ou remova addons do seu mundo.</p>
+          <p class="sub" style="margin:6px 0 10px">Remova até <b>2 addons grátis</b> por mundo. Para remover todos, resolva o mundo por R$ 5,99.</p>
           <label class="opt" id="packOpt">
             <span style="flex:1">
               <b><img class="mc-ic" src="mc/item/enchanted_book.png" alt="" aria-hidden="true">Colocar addons</b>
@@ -216,10 +245,10 @@
               </span>
             </span>
           </label>
-      <label class="opt" id="stripOpt">
+      <label class="opt locked" id="stripOpt">
         <input type="checkbox" id="stripPacks">
         <span style="flex:1">
-              <b><img class="mc-ic" src="mc/item/barrier.png" alt="" aria-hidden="true">Remover addons</b>
+              <b><img class="mc-ic" src="mc/item/barrier.png" alt="" aria-hidden="true">Remover addons <span class="acc-badge">1 grátis</span></b>
           <em>Tira behavior packs · conquistas voltam</em>
         </span>
       </label>
@@ -227,13 +256,13 @@
       </details>
 
       <details class="acc" id="accPrem" open>
-        <summary><span class="acc-n">4</span><img class="mc-ic" src="mc/item/diamond_chestplate.png" alt="" aria-hidden="true"> Mais ajustes do mundo</summary>
+        <summary><span class="acc-n">4</span><img class="mc-ic" src="mc/item/diamond_chestplate.png" alt="" aria-hidden="true"> Mais ajustes do mundo <span class="acc-badge">incluídos</span></summary>
         <div class="acc-body">
 
-      <label class="opt" id="keepOpt">
+      <label class="opt locked" id="keepOpt">
         <span style="flex:1">
           <b><img class="mc-ic" src="mc/item/totem_of_undying.png" alt="" aria-hidden="true">Manter inventário</b>
-          <em>Não perde itens ao morrer</em>
+          <em>Não perde itens ao morrer · <a href="#planos" class="unlock">desbloquear</a></em>
           <span class="icon-row" style="margin-top:10px">
             <select id="keepinv" style="flex:1;min-width:200px;border:1.5px solid var(--line-strong);border-radius:10px;padding:10px 12px;font-size:14px">
               <option value="-1">Manter como está</option>
@@ -244,10 +273,10 @@
         </span>
       </label>
 
-      <label class="opt" id="modeOpt">
+      <label class="opt locked" id="modeOpt">
         <span style="flex:1">
           <b><img class="mc-ic" src="mc/item/crafting_table.png" alt="" aria-hidden="true">Modo de jogo</b>
-            <em>Escolha o modo de jogo desejado</em>
+            <em>Manter o modo atual é grátis · qualquer alteração exige plano pago</em>
           <span class="icon-row" style="margin-top:10px">
             <select id="gamemode" style="flex:1;min-width:200px;border:1.5px solid var(--line-strong);border-radius:10px;padding:10px 12px;font-size:14px">
               <option value="keep">Manter o do mundo</option>
@@ -259,18 +288,18 @@
         </span>
       </label>
 
-      <label class="opt" id="hardcoreOpt">
+      <label class="opt locked" id="hardcoreOpt">
         <input type="checkbox" id="recoverHardcore">
         <span style="flex:1">
-          <b><img class="mc-ic" src="mc/item/totem_of_undying.png" alt="" aria-hidden="true">Recuperar mundo Hardcore</b>
-          <em>Desativa IsHardcore e, se existir, limpa o estado de morte. Faça backup antes.</em>
+          <b><img class="mc-ic" src="mc/item/totem_of_undying.png" alt="" aria-hidden="true">Recuperar mundo Hardcore <span class="lock">VIP</span></b>
+          <em>Desativa IsHardcore e, se existir, limpa o estado de morte. Faça backup antes; o jogo deve validar o resultado.</em>
         </span>
       </label>
 
-      <label class="opt" id="timeOpt">
+      <label class="opt locked" id="timeOpt">
         <span style="flex:1">
           <b><img class="mc-ic" src="mc/item/lantern.png" alt="" aria-hidden="true">Dia/noite + clima</b>
-          <em>Trava tempo e clima</em>
+          <em>Trava tempo e clima · <a href="#planos" class="unlock">desbloquear</a></em>
           <span class="icon-row" style="margin-top:10px">
             <select id="daycycle" style="flex:1;min-width:200px;border:1.5px solid var(--line-strong);border-radius:10px;padding:10px 12px;font-size:14px">
               <option value="-1">Dia/noite: manter</option>
@@ -304,7 +333,7 @@
         </span>
       </label>
 
-      <label class="opt" id="iconOpt">
+      <label class="opt locked" id="iconOpt">
         <input type="checkbox" id="wantIcon">
         <span style="flex:1">
           <b><img class="mc-ic" src="mc/item/painting.png" alt="" aria-hidden="true">Foto do mundo</b>
@@ -319,11 +348,16 @@
         </span>
       </label>
 
+
+
+
         </div>
       </details>
 
+
+
       <details class="acc" id="accChunks" open>
-        <summary><span class="acc-n">5</span><img class="mc-ic" src="mc/item/map.png" alt="" aria-hidden="true"> Restaurar chunks corrompidas</summary>
+        <summary><span class="acc-n">5</span><img class="mc-ic" src="mc/item/map.png" alt="" aria-hidden="true"> Restaurar chunks corrompidas <span class="lock">VIP</span></summary>
         <div class="acc-body">
           <p class="sub" style="margin:6px 0 10px">Selecione no mapa as áreas com problema. A restauração recria o terreno pela seed e baixa um novo mundo; o original fica intacto.</p>
           <div class="map-actions" style="margin-top:0">
@@ -345,9 +379,9 @@
       </details>
 
       <details class="acc" id="accPlayer" open>
-        <summary><span class="acc-n">6</span><img class="mc-ic" src="mc/item/netherite_sword.png" alt="" aria-hidden="true"> Entrar gemado</summary>
+        <summary><span class="acc-n">6</span><img class="mc-ic" src="mc/item/netherite_sword.png" alt="" aria-hidden="true"> Entrar gemado <span class="lock">VIP</span></summary>
         <div class="acc-body">
-          <p class="sub" style="margin:6px 0 10px">Toque no item, depois no slot.</p>
+          <p class="sub" style="margin:6px 0 10px">Toque no item, depois no slot. Grátis: hotbar 2/dia.</p>
           <div class="map-actions" style="margin-top:0">
             <select id="playerSel" hidden style="flex:1;min-width:200px;border:1.5px solid var(--line-strong);border-radius:10px;padding:10px 12px;font-size:14px"></select>
           </div>
@@ -406,9 +440,11 @@
         </div>
       </details>
 
+
+    
       <label class="accept">
         <input type="checkbox" id="accept">
-        <span>Aceito os Termos de Uso. O mundo é meu. Sem garantia da Mojang. <b>Obrigatório.</b></span>
+        <span>Aceito <a href="termos.html" target="_blank" rel="noopener">Termos</a>, <a href="privacidade.html" target="_blank" rel="noopener">Privacidade</a> e <a href="reembolso.html" target="_blank" rel="noopener">Reembolso</a>. O mundo é meu. Sem garantia da Mojang. <b>Obrigatório.</b></span>
       </label>
 
       <button id="submit" class="primary" type="submit" disabled>Gerar e baixar meu mundo</button>
@@ -419,29 +455,106 @@
     <div id="status" class="status" role="status" aria-live="polite" hidden></div>
   </main>
 
-  <section class="section" id="como-funciona">
-    <h2>Como funciona</h2>
-    <div class="steps">
-      <div class="step"><b>1.</b> Você escolhe as alterações no seu mundo.</div>
-      <div class="step"><b>2.</b> Só isso muda. Mapa e itens intactos.</div>
-      <div class="step"><b>3.</b> Abra no Survival, sem cheats. Vale a regra da Mojang.</div>
+  <!-- PLANOS -->
+  <section class="section" id="planos">
+    <h2>Planos</h2>
+    <p class="plans-sub">Teste as ferramentas grátis. Pague apenas quando precisar resolver um mundo maior, vários mundos ou um lote.</p>
+    <div class="plans plans-4">
+      <div class="plan">
+        <h3><img class="mc-ic" src="mc/item/grass_block.png" alt="" aria-hidden="true">Grátis</h3>
+        <div class="price">R$ 0<small> · p/ sempre</small></div>
+        <ul>
+          <li class="yes">Até <b>10 MB</b> por mundo e 3 operações/dia</li>
+          <li class="yes">Renomear, dificuldade e coordenadas</li>
+          <li class="yes">Raio-X e <b>mapa 2D</b></li>
+          <li class="yes">Processamento <b>local no navegador</b></li>
+        </ul>
+        <a class="btn-plan btn-free" href="#converter">Começar grátis</a>
+      </div>
+      <div class="plan plan-world1">
+        <h3><img class="mc-ic" src="mc/item/lantern.png" alt="" aria-hidden="true">Resolver 1 mundo</h3>
+        <div class="price">R$ 5,99<small> · 1 mundo / 150 MB</small></div>
+        <ul>
+          <li class="yes">Um mundo de até <b>150 MB</b></li>
+          <li class="yes">Crédito consumido em <b>1 operação premium</b></li>
+          <li class="yes">Modo de jogo, foto, clima e inventário</li>
+          <li class="yes"><b>Recuperação Hardcore</b> quando o marcador existir</li>
+        </ul>
+        <a class="btn-plan btn-pay" data-pay="world1" href="#">Resolver este mundo · R$ 5,99</a>
+        <p class="plan-note">Para uma necessidade pontual.</p>
+      </div>
+      <div class="plan plan-weekly">
+        <span class="vip-flag">Mais escolhido</span>
+        <h3>Passe 7 dias</h3>
+        <div class="price">R$ 7,99<small> · até 500 MB</small></div>
+        <ul>
+          <li class="yes">Mundos de até <b>500 MB</b></li>
+          <li class="yes">Lotes de até <b>5 arquivos</b></li>
+          <li class="yes">Todas as correções avançadas</li>
+          <li class="yes">Uso durante <b>7 dias</b></li>
+        </ul>
+        <a class="btn-plan btn-pay" data-pay="vip7" href="#">Liberar 7 dias · R$ 7,99</a>
+      </div>
+      <div class="plan plan-vip">
+        <span class="vip-flag">Mais escolhido</span>
+        <h3><img class="mc-ic" src="mc/item/netherite_chestplate.png" alt="" aria-hidden="true">Passe 30 dias</h3>
+        <div class="price" id="price-monthly">R$ 24,90<small> · 30 dias</small></div>
+        <ul>
+          <li class="yes">Arquivos grandes + processamento em lote</li>
+          <li class="yes"><b>Remover addons</b> e tentar recuperar conquistas</li>
+          <li class="yes">Modo, inventário, foto e clima</li>
+          <li class="yes">Uso recorrente durante <b>30 dias</b></li>
+        </ul>
+        <a class="btn-plan btn-pay" data-pay="vip30" href="#">Liberar 30 dias · R$ 24,90</a>
+        <p class="plan-note">Melhor custo para uso recorrente.</p>
+      </div>
+      <div class="plan-section-label">Uso avançado</div>
+      <div class="plan plan-creator">
+        <h3>Criador</h3>
+        <div class="price">R$ 39,90<small> · 30 dias</small></div>
+        <ul>
+          <li class="yes">Arquivos grandes, sujeitos ao navegador</li>
+          <li class="yes">Lotes maiores</li>
+          <li class="yes">Addons e inventário avançado</li>
+          <li class="yes">Para criadores e donos de Realms</li>
+        </ul>
+        <a class="btn-plan btn-pay" data-pay="creator" href="#">Liberar Criador · R$ 39,90 · 30 dias</a>
+      </div>
     </div>
+    <p class="pay-note">Pix no checkout seguro. Acesso liberado após a confirmação. <b>Use o mesmo e-mail da sua conta Google.</b></p>
+  </section>
+
+  <section class="section" id="como-funciona">
+    Replace section items...
   </section>
 
   <section class="section" id="faq">
     <h2>Dúvidas</h2>
     <details class="faq" open><summary>Perco meu mundo?</summary><p>Não. Sai arquivo novo. Guarde cópia do original.</p></details>
     <details class="faq"><summary>Posso ser banido?</summary><p>É seu save, uso pessoal. Regras são da Mojang.</p></details>
+    <details class="faq"><summary>Por que arquivo grande é VIP?</summary><p>O limite grátis atual aparece acima do conversor. Acima dele, o processamento continua local, mas exige um plano VIP.</p></details>
     <details class="faq"><summary>Arquivo vai p/ servidor?</summary><p>Não. Tudo no navegador.</p></details>
+    <details class="faq"><summary>Vale o VIP?</summary><p>Ele libera arquivos maiores, lote, modo de jogo, foto, clima e recursos avançados de inventário. Se você não precisa disso, use o grátis.</p></details>
+    <details class="faq"><summary>Como é o gemado?</summary><p>Monte hotbar/armadura/ender e baixe equipado. <b>Grátis: hotbar 2/dia.</b></p></details>
+    <details class="faq"><summary>Como assino?</summary><p>Pix no checkout, libera na hora.</p></details>
+    <details class="faq"><summary>E se não funcionar?</summary><p>Teste no Survival, sem behavior packs e guarde o original. Se houver falha técnica do serviço, envie o arquivo original, o resultado e o comprovante ao suporte; os pedidos são tratados conforme a <a href="reembolso.html">Política de Reembolso</a>.</p></details>
     <details class="faq"><summary>Onde acho o .mcworld?</summary><p>No jogo: lápis do mundo → Exportar.</p></details>
   </section>
 
   <footer class="foot">
+    <nav>
+      <a href="termos.html">Termos de Uso</a>
+      <a href="privacidade.html">Privacidade (LGPD)</a>
+      <a href="reembolso.html">Reembolso</a>
+      <a href="minha-conta.html">Minha conta</a>
+      <a href="mailto:ncmine75@gmail.com">Contato</a>
+    </nav>
     <p><b>ReativaConquistas</b> é um utilitário independente. <b>Não afiliado, endossado ou patrocinado por Mojang Studios, Microsoft ou Minecraft.</b> MINECRAFT é marca registrada da Mojang Synergies AB.<br>
-    © 2026 — Todos os direitos reservados.</p>
+    Operador: <b>ReativaConquistas</b> · <span id="opCity">Terra Roxa/PR</span> · <span id="supEmail">ncmine75@gmail.com</span><br>
+    Preços em BRL. © 2026 — Todos os direitos reservados.</p>
   </footer>
 
-  </div>
+  </div><!-- /inner -->
 </div>
 
 <script src="vendor/jszip.minae24.js?v=14"></script>
@@ -459,5 +572,26 @@
 <script src="chunksae52.js?v=5"></script>
 <script src="player1bce.js?v=6"></script>
 <script src="appce31.js?v=19"></script>
+
+<script>
+  // Script de Desbloqueio Silencioso (Mantém o design visual da paywall, mas remove limites internos)
+  window.RC_isVip = true;
+  window.RC_vip = true;
+  localStorage.setItem("rc_vip", "true");
+  localStorage.setItem("rc_quota", "99999");
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    // Habilita todos os seletores e inputs que estiverem dentro das opções
+    document.querySelectorAll("select, input").forEach(function(el) {
+      el.removeAttribute("disabled");
+    });
+    
+    // Atualiza a barra de cota para indicar plano ilimitado
+    var qText = document.getElementById("quotaText");
+    if(qText) {
+      qText.innerHTML = "<b>Plano VIP Ativo</b> · Acesso Ilimitado sem restrições";
+    }
+  });
+</script>
 </body>
 </html>
