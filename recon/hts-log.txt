@@ -1,0 +1,17 @@
+HTTrack3.50-2 launched on Mon, 21 Sep 2026 21:42:47 at reativarconquistas.rosidomingos032.workers.dev +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2%f#f -F "Mozilla/5.0 (compatible; HTTrack; +https://www.httrack.com/)" -%F "<!-- Mirrored from {url} by HTTrack Website Copier/3.x [XR&CO], {date} -->" -%l "pt_BR, en, *" reativarconquistas.rosidomingos032.workers.dev -O1 "C:\Meus Sites\recon" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+21:43:04	Error: 	"Not Found" (404) at link reativarconquistas.rosidomingos032.workers.dev/world_behavior_packs.json (from reativarconquistas.rosidomingos032.workers.dev/converter.js?v=16)
+21:43:04	Error: 	"Not Found" (404) at link reativarconquistas.rosidomingos032.workers.dev/pack_icon.png (from reativarconquistas.rosidomingos032.workers.dev/converter.js?v=16)
+21:43:04	Error: 	"Not Found" (404) at link reativarconquistas.rosidomingos032.workers.dev/levelname.txt (from reativarconquistas.rosidomingos032.workers.dev/converter.js?v=16)
+21:43:04	Error: 	"Not Found" (404) at link reativarconquistas.rosidomingos032.workers.dev/world_icon.jpeg (from reativarconquistas.rosidomingos032.workers.dev/converter.js?v=16)
+21:43:04	Error: 	"Not Found" (404) at link reativarconquistas.rosidomingos032.workers.dev/__none__.png (from reativarconquistas.rosidomingos032.workers.dev/player.js?v=6)
+21:43:04	Error: 	"Not Found" (404) at link reativarconquistas.rosidomingos032.workers.dev/nome em levelname.txt (from reativarconquistas.rosidomingos032.workers.dev/app.js?v=19)
+
+HTTrack Website Copier/3.50-2 mirror complete in 17 seconds : 54 links scanned, 47 files written (1426291 bytes overall) [921700 bytes received at 54217 bytes/sec], 857307 bytes transferred using HTTP compression in 26 files, ratio 30%, 11.8 requests per connection
+(6 errors, 0 warnings, 0 messages)
