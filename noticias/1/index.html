@@ -3,41 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bem-vindo ao Nick News! — Nick News</title>
+<title>O Nick News entrou no ar | Nick News</title>
+<meta name="description" content="Por que eu criei este blog e o que você vai encontrar aqui.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,700..800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/style.css">
 </head>
 <body>
-<div class="topbar"><div class="wrap"><span data-today></span><span>Edição online</span></div></div>
-<header class="masthead"><div class="wrap">
-  <a class="logo" href="../../">Nick<span>News</span></a>
-  <div class="tagline">Notícias, ideias e novidades — direto da redação do Nick</div>
-</div></header>
-<nav class="menu"><div class="wrap"><a class="chip " href="../../">Início</a>
-<a class="chip active" href="../../noticias/">Notícias</a></div></nav>
-<main><div class="wrap">
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="../../">Nick News</a>
+  <nav class="nav" aria-label="Principal"><a href="../../">Início</a><a href="../../noticias/" aria-current="page">Notícias</a><a href="../../tomo/">TomoConvert</a></nav>
+</header>
+<main>
 <article class="post">
-  <a class="back" href="../">← Voltar para as notícias</a>
-  <span class="tag">Novidades</span>
-  <h1>Bem-vindo ao Nick News!</h1>
-  <p class="lead">O blog está no ar. Aqui você vai encontrar notícias, opiniões e tudo o que estiver rolando.</p>
-  <div class="meta">Notícia #1 · 7 de novembro de 2026</div>
-  <div class="img" style="--c1:#d62828;--c2:#f77f00">📰</div>
-  <div class="body">
-    <p>Seja muito bem-vindo ao Nick News! Este é o primeiro post do blog, e a ideia é simples: trazer notícias, curiosidades e opiniões sobre os assuntos que mais me interessam.</p><h2>O que vem por aí</h2><p>Vou escrever sobre tecnologia, games, rádio, viagens e o que mais aparecer de interessante. Os posts vão sair sempre que tiver novidade boa para contar.</p><blockquote>Toda grande redação começou com uma primeira notícia. Esta é a nossa.</blockquote><p>Fique de olho e volte sempre!</p>
-  </div>
-  <div class="share">
-    <button class="chip" id="copy">🔗 Copiar link</button>
-  </div>
-  <div class="pager"><a class="chip" href="../../noticias/2/">← Anterior</a><span></span></div>
+  <a class="back" href="../">Todas as notícias</a>
+  <div class="num" aria-hidden="true">1</div>
+  <h1>O Nick News entrou no ar</h1>
+  <p class="lead">Por que eu criei este blog e o que você vai encontrar aqui.</p>
+  <div class="facts"><span>Notícia <b>1</b></span><span><b>Novidades</b></span><span>7 de novembro de 2026</span></div>
+  <div class="body"><p>Este é o primeiro post do Nick News. A ideia é simples: um lugar meu para contar o que eu ando jogando, testando e descobrindo.</p><h2>O que vem por aí</h2><p>Games, rádio, tecnologia e as ferramentas que eu mesmo faço para o site. Cada notícia ganha um número, e ele nunca muda, então dá para mandar o link para qualquer pessoa.</p><blockquote>Se tiver novidade boa, vira notícia.</blockquote><p>Volte de vez em quando para ver o que mudou.</p></div>
+  <div class="post-actions"><button class="ghost" id="copy" type="button">Copiar link</button><a class="ghost" href="../2/">Notícia 2</a></div>
 </article>
-</div></main>
-<footer><div class="wrap">
-  <div class="logo">Nick<span style="color:var(--accent)">News</span></div>
-  <p style="margin-top:6px">© <span data-year></span> Nick News. Todos os direitos reservados.</p>
-</div></footer>
+</main>
+<footer><span>© <span data-year>2026</span> Nick News</span><span>Feito pelo Nick</span></footer>
+</div>
 <script src="../../assets/site.js"></script>
 </body>
 </html>
