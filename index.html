@@ -2,57 +2,47 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1030">
 <title>Nick News</title>
-<meta name="description" content="O blog do Nick: games, rádio e tecnologia.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,700..800&display=swap" rel="stylesheet">
+<meta name="description" content="Games, rádio e tecnologia, pelo Nick.">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<div class="wrap">
-<header class="top">
+<div class="wall" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+<header class="bar glass">
   <a class="brand" href="./">Nick News</a>
-  <nav class="nav" aria-label="Principal"><a href="./" aria-current="page">Início</a><a href="noticias/">Notícias</a><a href="tomo/">TomoConvert</a></nav>
+  <nav aria-label="Principal"><a href="./" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Início</span></a><a href="noticias/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M7 9h10M7 13h10M7 17h6"/></svg><span>Notícias</span></a><a href="tomo/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h11l-3-3M20 17H9l3 3"/></svg><span>Tomo</span></a></nav>
 </header>
-<main>
-<section class="masthead">
+<main class="page">
+<section class="hero">
   <h1>Nick News</h1>
-  <p>O blog do Nick: games, rádio, tecnologia e o que mais acontecer por aqui.</p>
+  <p>Games, rádio, tecnologia e o que mais acontecer por aqui.</p>
 </section>
-<section class="tuner" aria-label="Sintonizador de notícias">
-  <div class="dial">
-    <button class="station" style="left:8.00%" aria-pressed="false" data-id="1" data-href="noticias/1/" data-titulo="O Nick News entrou no ar" data-resumo="Por que eu criei este blog e o que você vai encontrar aqui." aria-label="Sintonizar notícia 1: O Nick News entrou no ar">1</button><button class="station" style="left:50.00%" aria-pressed="false" data-id="2" data-href="noticias/2/" data-titulo="Os jogos que não saem do meu Switch" data-resumo="Os jogos que eu mais estou jogando agora e por que eles ficaram." aria-label="Sintonizar notícia 2: Os jogos que não saem do meu Switch">2</button><button class="station" style="left:92.00%" aria-pressed="false" data-id="3" data-href="noticias/3/" data-titulo="Radioamadorismo: falar com o mundo sem internet" data-resumo="Como o rádio amador funciona e por que ele ainda importa." aria-label="Sintonizar notícia 3: Radioamadorismo: falar com o mundo sem internet">3</button>
-    <div class="scale" aria-hidden="true"></div>
-    <div class="needle" aria-hidden="true" style="left:92%"></div>
+<a class="featured glass" href="noticias/3/" aria-label="Notícia mais recente: Radioamadorismo: falar com o mundo sem internet">
+  <span class="id" aria-hidden="true">3</span>
+  <div>
+    <h2>Radioamadorismo: falar com o mundo sem internet</h2>
+    <p>Como o rádio amador funciona e por que ele ainda importa.</p>
+    <div class="meta"><span class="pill">Rádio</span><span class="pill plain">5 de novembro de 2026</span></div>
   </div>
-  <div class="readout" aria-live="polite">
-    <h2 data-out-title>Radioamadorismo: falar com o mundo sem internet</h2>
-    <p data-out-resumo>Como o rádio amador funciona e por que ele ainda importa.</p>
-    <a class="btn go" href="noticias/3/">Ler a notícia 3</a>
-  </div>
-</section>
-<section>
-  <div class="list-head"><h2>Últimas notícias</h2></div>
-  <ol class="list" reversed><li class="row" data-cat="Rádio"><a href="noticias/3/">
+</a>
+<div class="section-head"><h2>Últimas notícias</h2><a href="noticias/">Ver todas</a></div>
+<ol class="list glass"><li data-cat="Rádio"><a class="item" href="noticias/3/">
   <span class="num" aria-label="Notícia 3">3</span>
   <div><h3>Radioamadorismo: falar com o mundo sem internet</h3><p>Como o rádio amador funciona e por que ele ainda importa.</p></div>
-  <span class="when"><b>Rádio</b>5 de novembro de 2026</span>
-</a></li><li class="row" data-cat="Games"><a href="noticias/2/">
+  <span class="side"><span class="pill">Rádio</span><span>5 nov</span></span>
+</a></li><li data-cat="Games"><a class="item" href="noticias/2/">
   <span class="num" aria-label="Notícia 2">2</span>
   <div><h3>Os jogos que não saem do meu Switch</h3><p>Os jogos que eu mais estou jogando agora e por que eles ficaram.</p></div>
-  <span class="when"><b>Games</b>6 de novembro de 2026</span>
-</a></li><li class="row" data-cat="Novidades"><a href="noticias/1/">
+  <span class="side"><span class="pill">Games</span><span>6 nov</span></span>
+</a></li><li data-cat="Novidades"><a class="item" href="noticias/1/">
   <span class="num" aria-label="Notícia 1">1</span>
   <div><h3>O Nick News entrou no ar</h3><p>Por que eu criei este blog e o que você vai encontrar aqui.</p></div>
-  <span class="when"><b>Novidades</b>7 de novembro de 2026</span>
+  <span class="side"><span class="pill">Novidades</span><span>7 nov</span></span>
 </a></li></ol>
-  <a class="all" href="noticias/">Ver todas as notícias</a>
-</section>
+<footer class="foot">© 2026 Nick News</footer>
 </main>
-<footer><span>© <span data-year>2026</span> Nick News</span><span>Feito pelo Nick</span></footer>
-</div>
-<script src="assets/site.js"></script>
+<script src="assets/site.js" defer></script>
 </body>
 </html>
