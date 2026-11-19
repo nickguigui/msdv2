@@ -121,7 +121,7 @@ const ICON = {
 };
 
 // rel = caminho até a raiz ("", "../", "../../" ou "/")
-function page({ rel, title, description, url, current, image, type = 'website', body }) {
+function page({ rel, title, description, url, current, image, type = 'website', body, mast = current !== 'home' }) {
   const full = title === NAME ? NAME : `${title} | ${NAME}`;
   const img = image ? (/^https?:/.test(image) ? image : SITE + '/' + image.replace(/^\/+/, '')) : '';
   const nav = [
@@ -148,12 +148,14 @@ addEventListener('pagereveal',e=>{if(e.viewTransition&&location.pathname.match('
 <link rel="stylesheet" href="${rel}assets/style.css?v=${ver}">
 </head>
 <body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
 <div class="wall" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
 <header class="bar glass">
   <a class="brand" href="${rel || './'}">${NAME}</a>
   <nav aria-label="Principal">${nav}</nav>
 </header>
-<main class="page">
+<main class="page" id="conteudo">
+${mast ? `<a class="mast" href="${rel || './'}">${NAME}</a>` : ''}
 ${body}
 <footer class="foot">© ${new Date().getFullYear()} ${NAME} · <a href="${rel}feed.xml">RSS</a></footer>
 </main>
@@ -165,9 +167,9 @@ ${body}
 
 // vt(): nome de View Transition; o número da lista vira o número gigante da notícia
 const vt = (name, cls) => ` style="view-transition-name:${name};view-transition-class:${cls}"`;
-const listItem = (p, base, { num = true, row = false } = {}) => `<li data-cat="${esc(p.assunto)}"${row ? vt('row' + p.id, 'row') : ''}><a class="item" href="${base}${p.id}/">
+const listItem = (p, base, { num = true, row = false, h = 'h3' } = {}) => `<li data-id="${p.id}" data-cat="${esc(p.assunto)}" data-text="${esc(p.titulo + ' ' + p.resumo + ' ' + p.assunto)}"${row ? vt('row' + p.id, 'row') : ''}><a class="item" href="${base}${p.id}/">
   <span class="num" aria-label="Notícia ${p.id}"${num ? vt('n' + p.id, 'num') : ''}>${p.id}</span>
-  <div><h3>${esc(p.titulo)}</h3><p>${esc(p.resumo)}</p></div>
+  <div><${h}>${esc(p.titulo)}</${h}><p>${esc(p.resumo)}</p></div>
   <span class="side"><span class="pill">${esc(p.assunto)}</span><span>${p.date.short}</span></span>
 </a></li>`;
 
@@ -188,27 +190,32 @@ write('index.html', page({
     <div class="meta"><span class="pill">${esc(top.assunto)}</span><span class="pill plain">${top.date.long}</span></div>
   </div>
 </a>
-<div class="section-head"><h2>Últimas notícias</h2><a href="noticias/">Ver todas</a></div>
-<ol class="list glass">${posts.slice(0, 6).map(p => listItem(p, 'noticias/', { num: top.capa ? true : p !== top })).join('')}</ol>`,
+${posts.length > 1 ? `<div class="section-head"><h2>Mais notícias</h2><a href="noticias/">Ver todas</a></div>
+<ol class="list glass">${posts.slice(1, 7).map(p => listItem(p, 'noticias/')).join('')}</ol>` : ''}`,
 }));
 
 write('noticias/index.html', page({
   rel: '../', title: 'Notícias', description: `Todas as notícias do ${NAME}.`, url: '/noticias/', current: 'news',
   body: `<h1 class="page-title">Notícias</h1>
+<p class="page-lead">O que eu ando jogando, ouvindo no rádio e testando. Cada notícia tem um número que nunca muda.</p>
 <div class="tools">
   <div class="seg glass" role="group" aria-label="Filtrar por assunto">${['Todas', ...cats].map((c, i) =>
     `<button type="button" data-filter="${esc(c)}" aria-pressed="${i === 0}">${esc(c)}</button>`).join('')}</div>
-  <label class="searchbox glass">${ICON.search}<input id="search" type="search" placeholder="Buscar" aria-label="Buscar notícias"></label>
+  <label class="searchbox glass">${ICON.search}<input id="search" type="search" placeholder="Buscar ou número" aria-label="Buscar notícias pelo título ou pelo número" enterkeyhint="go" autocomplete="off" spellcheck="false"></label>
 </div>
-<ol class="list glass">${posts.map(p => listItem(p, '', { row: true })).join('')}
-<li class="empty" id="empty" hidden>Nenhuma notícia com essa palavra. Tente outra ou toque em Todas.</li></ol>`,
+<p class="count" id="count" role="status" aria-live="polite"></p>
+<ol class="list glass" id="list">${posts.map(p => listItem(p, '', { row: true, h: 'h2' })).join('')}</ol>
+<div class="empty glass" id="empty" hidden>
+  <p id="empty-msg"></p>
+  <div class="actions"><a class="btn primary" id="empty-go" hidden></a><button class="btn primary" id="empty-all" type="button" hidden>Buscar em todos os assuntos</button><button class="btn primary" id="clear" type="button">Limpar busca</button></div>
+</div>`,
 }));
 
 for (const p of posts) {
   const prev = byId.get(p.id - 1), next = byId.get(p.id + 1);
   const cover = p.capa ? `<img class="cover" src="../../${esc(p.capa.replace(/^\/+/, ''))}" alt="" loading="lazy">` : '';
   write(`noticias/${p.id}/index.html`, page({
-    rel: '../../', title: p.titulo, description: p.resumo, url: `/noticias/${p.id}/`, current: 'news',
+    rel: '../../', title: p.titulo, description: p.resumo, url: `/noticias/${p.id}/`, current: 'news', mast: false,
     image: p.capa, type: 'article',
     body: `<div class="article">
   <a class="back glass" href="../">${ICON.back}Notícias</a>
@@ -218,7 +225,7 @@ for (const p of posts) {
     <p class="lead">${esc(p.resumo)}</p>
     <div class="meta"><span class="pill">${esc(p.assunto)}</span><span class="pill plain"><time datetime="${p.date.iso}">${p.date.long}</time></span><span class="pill plain">${p.minutos} min de leitura</span></div>
     <div class="body">${p.html}</div>
-    <div class="actions"><button class="btn primary" id="copy" type="button">Copiar link</button>${prev ? `<a class="btn" href="../${prev.id}/">Notícia ${prev.id}</a>` : ''}${next ? `<a class="btn" href="../${next.id}/">Notícia ${next.id}</a>` : ''}</div>
+    <div class="actions"><button class="btn primary" id="copy" type="button">Copiar link</button>${prev ? `<a class="btn" href="../${prev.id}/" title="${esc(prev.titulo)}">Anterior: notícia ${prev.id}</a>` : ''}${next ? `<a class="btn" href="../${next.id}/" title="${esc(next.titulo)}">Próxima: notícia ${next.id}</a>` : ''}</div>
   </article>
 </div>`,
   }));

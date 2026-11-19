@@ -9,10 +9,10 @@ colors:
   amber-flare: "#ff9f1c"
   ultraviolet: "#8b3dff"
   text-white: "#ffffff"
-  text-soft: "rgba(255,255,255,.74)"
-  text-faint: "rgba(255,255,255,.5)"
-  glass-clear: "rgba(255,255,255,.12)"
-  glass-deep: "rgba(22,26,52,.55)"
+  text-soft: "rgba(255,255,255,.84)"
+  text-faint: "rgba(255,255,255,.68)"
+  glass-clear: "rgba(16,20,50,.46)"
+  glass-deep: "rgba(22,26,52,.6)"
   glass-fallback: "rgba(30,36,80,.88)"
   ink-on-white: "#141a3c"
   link-sky: "#9fdcff"
@@ -79,8 +79,8 @@ components:
     rounded: "{rounded.pill}"
     padding: "5px 12px"
   segment-active:
-    backgroundColor: "rgba(255,255,255,.24)"
-    textColor: "{colors.text-white}"
+    backgroundColor: "{colors.text-white}"
+    textColor: "{colors.ink-on-white}"
     rounded: "{rounded.pill}"
     padding: "9px 16px"
   segment-idle:
@@ -123,8 +123,8 @@ Ele rejeita explicitamente três caminhos: a cara de portal de notícias (banner
 
 **Key Characteristics:**
 - Fundo noturno fixo com cinco manchas de cor desfocadas (60px) que nunca rolam.
-- Todo conteúdo vive em vidro: fundo branco a 12%, desfoque de 22px com saturação 180%, bordas de luz internas.
-- Texto sempre branco; hierarquia por opacidade (100% / 74% / 50%), não por cor.
+- Todo conteúdo vive em vidro: base noturna translúcida a 46% com véu sobre o neon, desfoque de 22px com saturação 180%, bordas de luz internas.
+- Texto sempre branco; hierarquia por opacidade (100% / 84% / 68%), não por cor.
 - Formas de pílula para tudo que é tocável; cantos de 18–32px para superfícies.
 - Fonte do sistema (SF Pro / Segoe UI Variable), sem fontes externas.
 - Números das notícias como protagonistas visuais.
@@ -145,17 +145,19 @@ Uma noite azul-marinho profunda iluminada por trás por cinco luzes de neon; na 
 
 ### Neutral
 - **Branco** (#ffffff): todo texto principal, título, botão primário (fundo), anel de foco.
-- **Branco Suave** (rgba(255,255,255,.74)): resumos, metadados, links de navegação em repouso.
-- **Branco Apagado** (rgba(255,255,255,.5)): placeholder, rodapé.
-- **Vidro Claro** (rgba(255,255,255,.12)): fundo padrão de toda superfície `.glass`.
-- **Vidro Fundo** (rgba(22,26,52,.55)): a folha da notícia, mais escura para leitura longa.
+- **Branco Suave** (rgba(255,255,255,.84)): resumos, metadados, links de navegação em repouso.
+- **Branco Apagado** (rgba(255,255,255,.68)): placeholder.
+- **Vidro Claro** (rgba(16,20,50,.46)): fundo padrão de toda superfície `.glass`. É uma base noturna translúcida, não branca: segura texto pequeno sobre o neon.
+- **Vidro Fundo** (rgba(22,26,52,.6)): a folha da notícia, mais escura para leitura longa.
 - **Tinta** (#141a3c): texto sobre o botão branco primário.
 - **Céu** (#9fdcff): links dentro do texto da notícia, o único texto colorido do sistema.
 
 ### Named Rules
 **A Regra da Cor Atrás do Vidro.** As cinco cores neon só existem na `.wall`. Nunca aplique cobalto, magenta, ciano, âmbar ou ultravioleta em texto, borda, botão ou ícone; a cor chega ao conteúdo apenas filtrada pelo vidro.
 
-**A Regra do Branco em Camadas.** Hierarquia de texto é feita com opacidade de branco (100 / 92 / 74 / 50%), nunca com cinza sólido nem com cor.
+**A Regra do Branco em Camadas.** Hierarquia de texto é feita com opacidade de branco (100 / 92 / 84 / 68%), nunca com cinza sólido nem com cor. Texto direto sobre o neon (sem vidro) usa no mínimo 92%.
+
+**A Regra do Véu.** Um véu noturno de 24% fica sobre as manchas da `.wall`, e todo texto precisa passar 4,5:1 (3:1 se grande) contra o pixel mais claro embaixo dele, medido com `.impeccable/review/contrast.js`. Se uma cor reprovar, escureça o vidro antes de apagar o neon.
 
 ## Typography
 
@@ -179,7 +181,7 @@ Uma noite azul-marinho profunda iluminada por trás por cinco luzes de neon; na 
 
 Coluna central de no máximo 1080px (`.page`), com margem lateral fluida clamp(16px, 4vw, 32px). A notícia aberta estreita para 760px e o parágrafo para 65ch. No desktop a barra de navegação flutua no topo, centralizada (14px do topo); o conteúdo começa 76px abaixo para não ficar sob ela.
 
-Abaixo de 720px a barra vira uma barra de abas no rodapé, estilo iPhone (largura até 420px, 12px acima da área segura), o nome "Nick News" some e os ícones aparecem com rótulos de 0.72rem. O destaque passa de duas colunas (1.1fr / 1fr) para uma, e o lado direito de cada item da lista desce para baixo do texto.
+Abaixo de 720px a barra vira uma barra de abas no rodapé, estilo iPhone (largura até 420px, 12px acima da área segura), o nome "Nick News" some e os ícones aparecem com rótulos de 0.72rem. O destaque (número ao lado do texto, `auto 1fr`) passa a uma coluna, com o número em cima. Abaixo de 720px o nome "Nick News" aparece no topo das páginas de lista (nas notícias, o botão "voltar" ocupa esse lugar), e em telas baixas a barra de abas mostra só ícones.
 
 Ritmo: espaços de 8–10px entre controles, 14–24px entre elementos de um bloco, clamp(36px, 6vw, 64px) entre seções. A página reserva 120px no fim para a barra de abas não cobrir o rodapé.
 
@@ -216,7 +218,7 @@ Lisos e confiantes, com cara de controle nativo.
 
 ### Segmented filter
 - **Style:** trilho de vidro em pílula com padding de 5px; botões sem fundo em branco suave.
-- **State:** ativo ganha branco a 24% e brilho de controle (`aria-pressed="true"`). Rola na horizontal sem barra quando não cabe.
+- **State:** ativo vira pílula branca com texto Tinta (`aria-pressed="true"`), igual ao botão primário. Rola na horizontal sem barra quando não cabe.
 
 ### Inputs / Fields
 - **Style:** a busca é uma pílula de vidro de 48px de altura com ícone de lupa a 70%; o input em si é transparente.
@@ -233,7 +235,7 @@ Lisos e confiantes, com cara de controle nativo.
 - **Celular (≤720px):** barra de abas no rodapé com ícone de 24px sobre rótulo de 0.72rem; o nome some. Só duas abas: Início e Notícias.
 
 ### Lista numerada (signature)
-Cada linha é um grid `ladrilho | texto | lado`. O ladrilho é um quadrado de clamp(48px, 9vw, 60px) com o número em 800, fundo branco a 16% e brilho de controle. O lado direito empilha a pílula de assunto e a data curta ("5 nov"). Hover pinta a linha inteira com branco a 10%. Divisores de 1px a 10% entre itens.
+Cada linha é um grid `ladrilho | texto`, com a pílula de assunto e a data curta ("5 nov") numa linha logo abaixo do resumo, em qualquer largura. O ladrilho é um quadrado de clamp(48px, 9vw, 60px) com o número em 800, fundo branco a 16% e brilho de controle, centralizado nas duas linhas (no celular, alinhado ao topo). Hover (só com mouse) pinta a linha inteira com branco a 10%. Divisores de 1px a 10% entre itens. Na home, a lista "Mais notícias" nunca repete a notícia do destaque.
 
 ### Número gigante (signature)
 O número da notícia em 800, -0.06em, line-height 0.8, até 11rem no destaque e 7rem na folha, com um degradê vertical de branco sólido para branco a 30–35%. É decorativo (`aria-hidden`) e é o único uso de degradê em texto do sistema.
@@ -245,7 +247,7 @@ Bloco de vidro de 18px com branco a 12%, texto em 700 a 1.3rem. Serve para a fra
 
 ### Do:
 - **Do** coloque todo conteúdo dentro de uma placa `.glass` sobre a `.wall`; o fundo colorido nunca fica atrás de texto solto, exceto o título display e o subtítulo da home.
-- **Do** use opacidades de branco (100 / 92 / 74 / 50%) para a hierarquia de texto.
+- **Do** use opacidades de branco (100 / 92 / 84 / 68%) para a hierarquia de texto, e meça o contraste contra o neon.
 - **Do** use pílulas (999px) para qualquer coisa tocável e cantos de 18–32px para superfícies.
 - **Do** mostre o número da notícia como elemento gráfico; ele é o link permanente e a identidade de cada post.
 - **Do** mantenha a fonte do sistema e os títulos em 750–800 com espaçamento negativo.

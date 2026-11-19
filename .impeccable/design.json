@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-19T03:33:14.674Z",
+  "generatedAt": "2026-11-19T04:34:44.335Z",
   "title": "Design System: Nick News",
   "extensions": {
     "colorMeta": {
@@ -212,7 +212,7 @@
       "refersTo": "search-field",
       "description": "Busca de notícias em pílula de vidro.",
       "html": "<label class=\"ds-search\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-4-4\"/></svg><input placeholder=\"Buscar\"></label>",
-      "css": ".ds-search{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI Variable\",\"Segoe UI\",Roboto,Arial,sans-serif;display:flex;align-items:center;gap:8px;padding:0 16px;min-height:48px;border-radius:999px;color:#fff;background:rgba(255,255,255,.12);-webkit-backdrop-filter:saturate(180%) blur(22px);backdrop-filter:saturate(180%) blur(22px);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -1px 0 rgba(255,255,255,.08),0 18px 50px rgba(5,8,30,.28);}.ds-search svg{opacity:.7}.ds-search input{flex:1;border:0;background:none;color:#fff;font:inherit;font-size:1rem;outline:none}.ds-search input::placeholder{color:rgba(255,255,255,.5)}.ds-search:focus-within{box-shadow:inset 0 1px 0 rgba(255,255,255,.38),0 0 0 3px rgba(255,255,255,.55)}"
+      "css": ".ds-search{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI Variable\",\"Segoe UI\",Roboto,Arial,sans-serif;display:flex;align-items:center;gap:8px;padding:0 16px;min-height:48px;border-radius:999px;color:#fff;background:rgba(16,20,50,.46);-webkit-backdrop-filter:saturate(180%) blur(22px);backdrop-filter:saturate(180%) blur(22px);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -1px 0 rgba(255,255,255,.08),0 18px 50px rgba(5,8,30,.28);}.ds-search svg{opacity:.7}.ds-search input{flex:1;border:0;background:none;color:#fff;font:inherit;font-size:1rem;outline:none}.ds-search input::placeholder{color:rgba(255,255,255,.5)}.ds-search:focus-within{box-shadow:inset 0 1px 0 rgba(255,255,255,.38),0 0 0 3px rgba(255,255,255,.55)}"
     },
     {
       "name": "Navigation Bar",
@@ -220,7 +220,7 @@
       "refersTo": "card-glass",
       "description": "Pílula flutuante no topo; vira barra de abas no celular.",
       "html": "<nav class=\"ds-nav\"><b>Nick News</b><a href=\"#\" aria-current=\"page\">Início</a><a href=\"#\">Notícias</a></nav>",
-      "css": ".ds-nav{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI Variable\",\"Segoe UI\",Roboto,Arial,sans-serif;display:inline-flex;align-items:center;gap:2px;padding:6px;border-radius:999px;color:#fff;background:rgba(255,255,255,.12);-webkit-backdrop-filter:saturate(180%) blur(22px);backdrop-filter:saturate(180%) blur(22px);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -1px 0 rgba(255,255,255,.08),0 18px 50px rgba(5,8,30,.28);}.ds-nav b{font-weight:800;letter-spacing:-.02em;padding:10px 16px 10px 14px}.ds-nav a{color:rgba(255,255,255,.74);text-decoration:none;font-weight:600;font-size:.95rem;padding:10px 16px;border-radius:999px;transition:background .2s,color .2s}.ds-nav a:hover{color:#fff;background:rgba(255,255,255,.1)}.ds-nav a[aria-current=page]{color:#fff;background:rgba(255,255,255,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.45)}"
+      "css": ".ds-nav{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI Variable\",\"Segoe UI\",Roboto,Arial,sans-serif;display:inline-flex;align-items:center;gap:2px;padding:6px;border-radius:999px;color:#fff;background:rgba(16,20,50,.46);-webkit-backdrop-filter:saturate(180%) blur(22px);backdrop-filter:saturate(180%) blur(22px);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -1px 0 rgba(255,255,255,.08),0 18px 50px rgba(5,8,30,.28);}.ds-nav b{font-weight:800;letter-spacing:-.02em;padding:10px 16px 10px 14px}.ds-nav a{color:rgba(255,255,255,.84);text-decoration:none;font-weight:600;font-size:.95rem;padding:10px 16px;border-radius:999px;transition:background .2s,color .2s}.ds-nav a:hover{color:#fff;background:rgba(255,255,255,.1)}.ds-nav a[aria-current=page]{color:#fff;background:rgba(255,255,255,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.45)}"
     },
     {
       "name": "Segmented Filter",
@@ -228,7 +228,7 @@
       "refersTo": "segment-active",
       "description": "Filtro por assunto.",
       "html": "<div class=\"ds-seg\"><button aria-pressed=\"true\">Todas</button><button aria-pressed=\"false\">Games</button><button aria-pressed=\"false\">Rádio</button></div>",
-      "css": ".ds-seg{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI Variable\",\"Segoe UI\",Roboto,Arial,sans-serif;display:inline-flex;gap:2px;padding:5px;border-radius:999px;background:rgba(255,255,255,.12);-webkit-backdrop-filter:saturate(180%) blur(22px);backdrop-filter:saturate(180%) blur(22px);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -1px 0 rgba(255,255,255,.08),0 18px 50px rgba(5,8,30,.28);}.ds-seg button{border:0;background:none;color:rgba(255,255,255,.74);font:inherit;font-weight:600;font-size:.95rem;padding:9px 16px;border-radius:999px;cursor:pointer}.ds-seg button:hover{color:#fff}.ds-seg button[aria-pressed=true]{color:#fff;background:rgba(255,255,255,.24);box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}"
+      "css": ".ds-seg{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI Variable\",\"Segoe UI\",Roboto,Arial,sans-serif;display:inline-flex;gap:2px;padding:5px;border-radius:999px;background:rgba(16,20,50,.46);-webkit-backdrop-filter:saturate(180%) blur(22px);backdrop-filter:saturate(180%) blur(22px);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -1px 0 rgba(255,255,255,.08),0 18px 50px rgba(5,8,30,.28);}.ds-seg button{border:0;background:none;color:rgba(255,255,255,.84);font:inherit;font-weight:600;font-size:.95rem;padding:9px 16px;border-radius:999px;cursor:pointer}.ds-seg button:hover{color:#fff}.ds-seg button[aria-pressed=true]{color:#141a3c;background:#fff}"
     },
     {
       "name": "Pill",
@@ -244,7 +244,7 @@
       "refersTo": "number-tile",
       "description": "Linha da lista com ladrilho numerado.",
       "html": "<a class=\"ds-item\" href=\"#\"><span class=\"ds-num\">3</span><span><strong>Radioamadorismo: falar com o mundo sem internet</strong><small>Como o rádio amador funciona.</small></span><span class=\"ds-side\">5 nov</span></a>",
-      "css": ".ds-item{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI Variable\",\"Segoe UI\",Roboto,Arial,sans-serif;display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;padding:16px 20px;border-radius:18px;color:#fff;text-decoration:none;transition:background .2s;background:#1c2350}.ds-item:hover{background:#2a3266}.ds-num{width:56px;aspect-ratio:1;display:grid;place-items:center;border-radius:16px;font-weight:800;font-size:1.5rem;background:rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.45)}.ds-item strong{display:block;font-weight:700;font-size:1.2rem;letter-spacing:-.015em}.ds-item small{display:block;color:rgba(255,255,255,.74);font-size:.95rem}.ds-side{color:rgba(255,255,255,.74);font-size:.85rem}"
+      "css": ".ds-item{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI Variable\",\"Segoe UI\",Roboto,Arial,sans-serif;display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;padding:16px 20px;border-radius:18px;color:#fff;text-decoration:none;transition:background .2s;background:#1c2350}.ds-item:hover{background:#2a3266}.ds-num{width:56px;aspect-ratio:1;display:grid;place-items:center;border-radius:16px;font-weight:800;font-size:1.5rem;background:rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.45)}.ds-item strong{display:block;font-weight:700;font-size:1.2rem;letter-spacing:-.015em}.ds-item small{display:block;color:rgba(255,255,255,.84);font-size:.95rem}.ds-side{color:rgba(255,255,255,.84);font-size:.85rem}"
     }
   ],
   "narrative": {
@@ -252,8 +252,8 @@
     "overview": "Nick News é um blog pessoal que se comporta como a tela de um celular moderno: um papel de parede escuro onde cinco manchas de cor viva (cobalto, magenta, ciano, âmbar e ultravioleta) brilham desfocadas, e por cima delas flutuam placas de vidro translúcido que carregam todo o conteúdo. A cor nunca está no texto nem nos botões; ela mora atrás do vidro e chega filtrada. Isso deixa a página viva sem ficar barulhenta.\n\nA densidade é baixa e generosa: títulos enormes e apertados, listas com bastante respiro, uma coluna de leitura de no máximo 760px. Cada notícia tem um número fixo que vira elemento gráfico (o número gigante do destaque, os ladrilhos numerados da lista), herança do conceito de \"canais\" de um sintonizador. Os componentes são lisos e confiantes: formas de pílula, brilho suave que acompanha o dedo, sensação de controle nativo do sistema.\n\nEle rejeita explicitamente três caminhos: a cara de portal de notícias (banners, colunas apertadas, propaganda), o fundo branco corporativo e sem cor, e o visual gamer exagerado (RGB piscando, fontes agressivas, neon em tudo).",
     "keyCharacteristics": [
       "Fundo noturno fixo com cinco manchas de cor desfocadas (60px) que nunca rolam.",
-      "Todo conteúdo vive em vidro: fundo branco a 12%, desfoque de 22px com saturação 180%, bordas de luz internas.",
-      "Texto sempre branco; hierarquia por opacidade (100% / 74% / 50%), não por cor.",
+      "Todo conteúdo vive em vidro: base noturna translúcida a 46% com véu sobre o neon, desfoque de 22px com saturação 180%, bordas de luz internas.",
+      "Texto sempre branco; hierarquia por opacidade (100% / 84% / 68%), não por cor.",
       "Formas de pílula para tudo que é tocável; cantos de 18–32px para superfícies.",
       "Fonte do sistema (SF Pro / Segoe UI Variable), sem fontes externas.",
       "Números das notícias como protagonistas visuais."
@@ -266,7 +266,12 @@
       },
       {
         "name": "A Regra do Branco em Camadas",
-        "body": "Hierarquia de texto é feita com opacidade de branco (100 / 92 / 74 / 50%), nunca com cinza sólido nem com cor.",
+        "body": "Hierarquia de texto é feita com opacidade de branco (100 / 92 / 84 / 68%), nunca com cinza sólido nem com cor. Texto direto sobre o neon (sem vidro) usa no mínimo 92%.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra do Véu",
+        "body": "Um véu noturno de 24% fica sobre as manchas da `.wall`, e todo texto precisa passar 4,5:1 (3:1 se grande) contra o pixel mais claro embaixo dele, medido com `.impeccable/review/contrast.js`. Se uma cor reprovar, escureça o vidro antes de apagar o neon.",
         "section": "colors"
       },
       {
@@ -287,7 +292,7 @@
     ],
     "dos": [
       "**Do** coloque todo conteúdo dentro de uma placa `.glass` sobre a `.wall`; o fundo colorido nunca fica atrás de texto solto, exceto o título display e o subtítulo da home.",
-      "**Do** use opacidades de branco (100 / 92 / 74 / 50%) para a hierarquia de texto.",
+      "**Do** use opacidades de branco (100 / 92 / 84 / 68%) para a hierarquia de texto, e meça o contraste contra o neon.",
       "**Do** use pílulas (999px) para qualquer coisa tocável e cantos de 18–32px para superfícies.",
       "**Do** mostre o número da notícia como elemento gráfico; ele é o link permanente e a identidade de cada post.",
       "**Do** mantenha a fonte do sistema e os títulos em 750–800 com espaçamento negativo.",

@@ -80,6 +80,24 @@
         "value": "consolas",
         "createdAt": "2026-11-19T03:46:18.688Z",
         "reason": "Claude: DESIGN.md Typography names ui-monospace/Consolas as the label/mono font for inline code only"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "noticias/index.html"
+        ],
+        "createdAt": "2026-11-19T04:19:40.788Z",
+        "reason": "Claude: .empty uses padding clamp(24px,5vw,36px) clamp(20px,4vw,32px); rendered 390px screenshot shows >=20px inset, static scan can't resolve clamp()"
+      },
+      {
+        "rule": "gray-on-color",
+        "value": "*",
+        "files": [
+          "noticias/index.html"
+        ],
+        "createdAt": "2026-11-19T04:29:05.205Z",
+        "reason": "Claude: placeholder now white 68% on dark glass; pixel measurement (.impeccable/review/contrast.js) gives 5.4:1 phone / 4.9:1 desktop vs worst background"
       }
     ]
   }
