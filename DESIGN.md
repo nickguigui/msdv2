@@ -233,6 +233,8 @@ Lisos e confiantes, com cara de controle nativo.
 ### Navigation
 - **Desktop:** pílula de vidro flutuante centralizada no topo, nome "Nick News" em 800, links em branco suave 600; hover em branco com fundo a 10%; ativo em branco com fundo a 22% e brilho de controle.
 - **Celular (≤720px):** barra de abas no rodapé com ícone de 24px sobre rótulo de 0.72rem; o nome some. Só duas abas: Início e Notícias.
+- **Abas na mesma página:** Início e Notícias são dois painéis do mesmo documento (gravado em `/` e em `/noticias/`). Trocar de aba não recarrega: a **lente** (preenchimento branco a 22% com brilho de controle, nunca outro vidro) escorre até a aba nova esticando e voltando ao formato, e o conteúdo desliza 36px na direção da aba com desfoque de 8px (0,22s saída, 0,42s entrada). Com "reduzir movimento", só um esmaecer de 0,15s.
+- **Lente dos filtros:** a pílula branca do assunto ativo desliza até o novo assunto; a borda da frente sai antes e a de trás alcança (0,46s), achatando levemente no meio do caminho.
 
 ### Lista numerada (signature)
 Cada linha é um grid `ladrilho | texto`, com a pílula de assunto e a data curta ("5 nov") numa linha logo abaixo do resumo, em qualquer largura. O ladrilho é um quadrado de clamp(48px, 9vw, 60px) com o número em 800, fundo branco a 16% e brilho de controle, centralizado nas duas linhas (no celular, alinhado ao topo). Hover (só com mouse) pinta a linha inteira com branco a 10%. Divisores de 1px a 10% entre itens. Na home, a lista "Mais notícias" nunca repete a notícia do destaque.

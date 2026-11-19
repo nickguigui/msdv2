@@ -98,6 +98,15 @@
         ],
         "createdAt": "2026-11-19T04:29:05.205Z",
         "reason": "Claude: placeholder now white 68% on dark glass; pixel measurement (.impeccable/review/contrast.js) gives 5.4:1 phone / 4.9:1 desktop vs worst background"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "noticias/index.html"
+        ],
+        "createdAt": "2026-11-19T04:44:09.665Z",
+        "reason": "Claude: .hero h1 text-shadow 0 2px 30px rgba(10,14,50,.25) is a navy legibility shadow (offset, not chromatic); appears here because the merged page now includes the Início panel"
       }
     ]
   }

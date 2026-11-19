@@ -1,6 +1,7 @@
 // brilho do vidro segue o dedo ou o mouse
 const glasses=[...document.querySelectorAll('.glass')];
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const vtTypes=window.ViewTransition&&'types' in ViewTransition.prototype;
 if(!reduce){
   // no máximo uma atualização por quadro, mesmo com muitos cartões
   let ev=null;
@@ -15,7 +16,7 @@ if(!reduce){
 }
 
 // filtros e busca ("sintonizar": um número abre aquela notícia; texto tolera falta de acento e erro de digitação)
-const rows=[...document.querySelectorAll('.list li[data-cat]')], search=document.getElementById('search');
+const rows=[...document.querySelectorAll('#list li[data-cat]')], search=document.getElementById('search');
 if(rows.length&&search){
   const $=id=>document.getElementById(id);
   const list=$('list'), empty=$('empty'), emptyMsg=$('empty-msg'), count=$('count'), go=$('empty-go'), all=$('empty-all');
@@ -48,7 +49,7 @@ if(rows.length&&search){
     list.hidden=shown===0;empty.hidden=shown>0;go.hidden=all.hidden=true;
     const em=q.trim();
     if(shown===0){
-      if(num!==null&&num>newest){emptyMsg.textContent='A notícia '+num+' ainda não saiu. A mais recente é a '+newest+'.';go.hidden=false;go.href=newest+'/';go.textContent='Abrir a notícia '+newest;}
+      if(num!==null&&num>newest){emptyMsg.textContent='A notícia '+num+' ainda não saiu. A mais recente é a '+newest+'.';go.hidden=false;go.href='/noticias/'+newest+'/';go.textContent='Abrir a notícia '+newest;}
       else if(elsewhere){emptyMsg.textContent='Nenhuma notícia de '+cat+' com “'+em+'”, mas '+(elsewhere===1?'existe uma':'existem '+elsewhere)+' em outros assuntos.';all.hidden=false;}
       else emptyMsg.textContent=n?'Nenhuma notícia com “'+em+'”. Tente outra palavra ou o número da notícia.':'Nenhuma notícia em '+cat+' ainda.';
     }
@@ -61,24 +62,63 @@ if(rows.length&&search){
     em?u.searchParams.set('q',em):u.searchParams.delete('q');
     history.replaceState(null,'',u);
   };
-  const setCat=c=>{cat=segs.some(b=>b.dataset.filter===c)?c:'Todas';segs.forEach(x=>x.setAttribute('aria-pressed',x.dataset.filter===cat));};
+  // lente dos filtros: desliza até o assunto escolhido, esticando no caminho (borda da frente sai antes, a de trás alcança)
+  const lens=document.querySelector('.seg .lente');let at=null;
+  const place=anim=>{const b=segs.find(x=>x.dataset.filter===cat);if(!lens||!b)return;
+    const to={l:b.offsetLeft,w:b.offsetWidth};
+    if(anim&&at&&!reduce&&(at.l!==to.l||at.w!==to.w)){const l=Math.min(at.l,to.l),w=Math.max(at.l+at.w,to.l+to.w)-l;
+      lens.animate([{left:at.l+'px',width:at.w+'px',transform:'scale(1,1)'},{offset:.42,left:l+'px',width:w+'px',transform:'scale(1,.84)'},{offset:.8,transform:'scale(1,1.05)'},{left:to.l+'px',width:to.w+'px',transform:'scale(1,1)'}],{duration:460,easing:'cubic-bezier(.3,.7,.2,1)'});}
+    lens.style.left=to.l+'px';lens.style.width=to.w+'px';at=to;};
+  const setCat=(c,anim)=>{cat=segs.some(b=>b.dataset.filter===c)?c:'Todas';segs.forEach(x=>x.setAttribute('aria-pressed',x.dataset.filter===cat));place(anim);};
   // ao trocar o filtro, as notícias que ficam deslizam para o lugar novo
-  const vtTypes=window.ViewTransition&&'types' in ViewTransition.prototype;
   const smooth=fn=>vtTypes&&!reduce?document.startViewTransition({update:fn,types:['filtrar']}):fn();
-  segs.forEach(b=>b.onclick=()=>smooth(()=>{setCat(b.dataset.filter);apply();}));
+  segs.forEach(b=>b.onclick=()=>smooth(()=>{setCat(b.dataset.filter,true);apply();}));
   search.oninput=()=>{q=search.value;apply();};
   search.onkeydown=e=>{if(e.key!=='Enter')return;const vis=docs.filter(d=>!d.r.hidden);
-    if(vis.length===1||state().num!==null&&vis.length){e.preventDefault();location.href=vis[0].id+'/';}
+    if(vis.length===1||state().num!==null&&vis.length){e.preventDefault();location.href='/noticias/'+vis[0].id+'/';}
     else if(!vis.length&&!go.hidden){e.preventDefault();location.href=go.getAttribute('href');}};
-  $('clear').onclick=()=>{search.value=q='';setCat('Todas');apply();search.focus();};
-  all.onclick=()=>{setCat('Todas');apply();};
+  $('clear').onclick=()=>{search.value=q='';setCat('Todas',true);apply();search.focus();};
+  all.onclick=()=>{setCat('Todas',true);apply();};
   // volta ao estado do endereço (ex.: ?assunto=Rádio&q=antena)
   const p=new URLSearchParams(location.search);setCat(p.get('assunto')||'Todas');q=p.get('q')||'';search.value=q;apply();
   // filtro que não cabe na tela: esmaece a borda e deixa o assunto escolhido à vista
   const seg=document.querySelector('.seg');
   const edge=()=>{seg.classList.toggle('overflows',seg.scrollWidth>seg.clientWidth+1);seg.classList.toggle('at-end',seg.scrollLeft+seg.clientWidth>=seg.scrollWidth-2);seg.classList.toggle('scrolled',seg.scrollLeft>2);};
-  seg.addEventListener('scroll',edge,{passive:true});addEventListener('resize',edge);edge();
+  seg.addEventListener('scroll',edge,{passive:true});addEventListener('resize',()=>{edge();place(false);});edge();
+  if(lens){seg.classList.add('tem-lente');place(false);}
+  // o painel de notícias pode nascer escondido: mede de novo quando ele aparece
+  document.addEventListener('painel',()=>{edge();place(false);});
   const on=segs.find(b=>b.dataset.filter===cat);if(on&&cat!=='Todas')seg.scrollLeft=on.offsetLeft-seg.clientWidth/2+on.offsetWidth/2;
+}
+
+// Início e Notícias na mesma página: a aba troca sem recarregar.
+// A lente da barra escorre até a aba nova e o conteúdo desliza na direção dela.
+const paineis=[...document.querySelectorAll('.painel')];
+if(paineis.length){
+  const ordem=['home','news'], urlDe={home:'/',news:'/noticias/'};
+  const abas=[...document.querySelectorAll('.bar nav a[data-aba]')];
+  let atual=(paineis.find(p=>!p.hidden)||paineis[0]).dataset.aba;
+  let buscaNews=atual==='news'?location.search:'';
+  const mostra=(aba,push)=>{
+    if(aba===atual||!urlDe[aba])return;
+    const tipo=ordem.indexOf(aba)>ordem.indexOf(atual)?'aba-frente':'aba-tras';
+    const troca=()=>{
+      if(atual==='news')buscaNews=location.search;
+      paineis.forEach(p=>p.hidden=p.dataset.aba!==aba);
+      abas.forEach(a=>a.dataset.aba===aba?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));
+      const lente=document.querySelector('.bar .lente'),alvo=abas.find(a=>a.dataset.aba===aba);if(lente&&alvo)alvo.prepend(lente);
+      const painel=paineis.find(p=>p.dataset.aba===aba);document.title=painel.dataset.titulo;
+      if(push)history.pushState({aba},'',urlDe[aba]+(aba==='news'?buscaNews:''));
+      atual=aba;scrollTo(0,0);painel.focus({preventScroll:true});
+      document.dispatchEvent(new Event('painel'));
+    };
+    vtTypes?document.startViewTransition({update:troca,types:[tipo]}):troca();
+  };
+  paineis.forEach(p=>p.tabIndex=-1);
+  document.addEventListener('click',e=>{const a=e.target.closest('a[data-aba]');
+    if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+    e.preventDefault();mostra(a.dataset.aba,true);});
+  addEventListener('popstate',()=>mostra(location.pathname.startsWith('/noticias')?'news':'home',false));
 }
 
 // copiar link

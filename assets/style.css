@@ -50,7 +50,11 @@ a{color:inherit}
 .bar nav{display:flex;gap:2px}
 .bar nav a{display:flex;align-items:center;gap:6px;text-decoration:none;color:var(--soft);font-weight:600;font-size:.95rem;padding:10px 16px;border-radius:999px;transition:background .2s,color .2s}
 @media (hover:hover){.bar nav a:hover{color:#fff;background:var(--tint-hover)}}
-.bar nav a[aria-current="page"]{color:#fff;background:var(--tint-active);box-shadow:inset 0 1px 0 var(--sheen)}
+.bar nav a{position:relative;isolation:isolate}
+.bar nav a[aria-current="page"]{color:#fff}
+/* lente: preenchimento claro sob a aba ativa (não é outro vidro: vidro sobre vidro não) */
+.lente{position:absolute;z-index:-1;border-radius:999px;pointer-events:none;background:var(--tint-active);box-shadow:inset 0 1px 0 var(--sheen),inset 0 -1px 0 rgba(255,255,255,.08)}
+.bar .lente{inset:0}
 .bar svg{width:20px;height:20px;flex:none}
 
 /* início */
@@ -91,13 +95,17 @@ a{color:inherit}
 
 /* filtros */
 .tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
-.seg{display:flex;gap:2px;padding:5px;border-radius:999px;overflow-x:auto;max-width:100%;scrollbar-width:none}
+.seg{position:relative;isolation:isolate;display:flex;gap:2px;padding:5px;border-radius:999px;overflow-x:auto;max-width:100%;scrollbar-width:none}
 .seg::-webkit-scrollbar{display:none}
 .seg.overflows{--fade-l:#000;--fade-r:transparent;-webkit-mask-image:linear-gradient(90deg,var(--fade-l),#000 40px,#000 calc(100% - 40px),var(--fade-r));mask-image:linear-gradient(90deg,var(--fade-l),#000 40px,#000 calc(100% - 40px),var(--fade-r))}
 .seg.overflows.scrolled{--fade-l:transparent}
 .seg.overflows.at-end{--fade-r:#000}
 .seg button{border:0;background:none;box-shadow:inset 0 1px 0 rgba(255,255,255,0);color:var(--soft);font:inherit;font-weight:600;font-size:.95rem;padding:9px 16px;border-radius:999px;cursor:pointer;white-space:nowrap}
 .seg button[aria-pressed="true"]{color:var(--ink);background:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,1)}
+.seg .lente{display:none;top:5px;bottom:5px;left:0;width:0;background:#fff;box-shadow:0 2px 12px rgba(5,8,30,.28)}
+/* com JS a pílula branca vira uma lente que desliza; sem JS, o botão ativo continua branco */
+.seg.tem-lente .lente{display:block}
+.seg.tem-lente button[aria-pressed="true"]{background:none;transition-delay:.1s}
 .searchbox{flex:1 1 220px;display:flex;align-items:center;gap:8px;padding:0 16px;border-radius:999px;min-height:48px}
 .searchbox svg{width:18px;height:18px;opacity:.7;flex:none}
 .searchbox input{flex:1;min-width:0;border:0;background:none;color:#fff;font:inherit;font-size:1rem;padding:12px 0;outline:none}
@@ -174,6 +182,23 @@ footer.foot{margin-top:56px;text-align:center;color:var(--soft);font-size:.85rem
 .seg{view-transition-name:filtros}
 .sheet{view-transition-name:sheet}
 ::view-transition-group(*){animation-duration:.46s;animation-timing-function:cubic-bezier(.16,1,.3,1)}
+::view-transition-group(aba-lente){animation-duration:.52s;animation-timing-function:cubic-bezier(.32,1.25,.5,1);z-index:3}
+::view-transition-old(aba-lente),::view-transition-new(aba-lente){height:100%}
+::view-transition-image-pair(aba-lente){animation:.52s cubic-bezier(.45,0,.2,1) both lente-liquida}
+@keyframes lente-liquida{40%{transform:scale(1.12,.82)}75%{transform:scale(.97,1.04)}}
+/* troca de aba (Início/Notícias, mesma página): só o conteúdo desliza, na direção da aba escolhida */
+.painel:focus{outline:none}
+html:is(:active-view-transition-type(aba-frente),:active-view-transition-type(aba-tras)) main.page{view-transition-name:conteudo}
+html:is(:active-view-transition-type(aba-frente),:active-view-transition-type(aba-tras)) :is([style*="view-transition-name"]:not(.lente),.seg){view-transition-name:none!important}
+::view-transition-group(conteudo){animation-duration:.42s}
+html:active-view-transition-type(aba-frente)::view-transition-old(conteudo){animation:.22s cubic-bezier(.4,0,1,1) both painel-sai-esq}
+html:active-view-transition-type(aba-frente)::view-transition-new(conteudo){animation:.42s cubic-bezier(.16,1,.3,1) .05s both painel-entra-dir}
+html:active-view-transition-type(aba-tras)::view-transition-old(conteudo){animation:.22s cubic-bezier(.4,0,1,1) both painel-sai-dir}
+html:active-view-transition-type(aba-tras)::view-transition-new(conteudo){animation:.42s cubic-bezier(.16,1,.3,1) .05s both painel-entra-esq}
+@keyframes painel-sai-esq{to{opacity:0;transform:translateX(-36px);filter:blur(8px)}}
+@keyframes painel-sai-dir{to{opacity:0;transform:translateX(36px);filter:blur(8px)}}
+@keyframes painel-entra-dir{from{opacity:0;transform:translateX(36px);filter:blur(8px)}}
+@keyframes painel-entra-esq{from{opacity:0;transform:translateX(-36px);filter:blur(8px)}}
 /* troca de fundo com soma de luz constante: o papel de parede igual nas duas páginas não pisca */
 ::view-transition-old(root),::view-transition-new(root){mix-blend-mode:plus-lighter}
 ::view-transition-old(root){animation:.22s linear both vt-fade-out}
@@ -190,6 +215,9 @@ footer.foot{margin-top:56px;text-align:center;color:var(--soft);font-size:.85rem
 html:active-view-transition-type(filtrar)::view-transition-group(*){animation-duration:.28s}
 /* o painel e o rodapé seguram a altura antiga enquanto as notícias deslizam, e trocam só no fim */
 html:active-view-transition-type(filtrar)::view-transition-old(root){animation:.28s steps(1,end) both vt-fade-out}
+/* nos filtros a lente anima ao vivo: sem fantasma da pílula antiga */
+html:active-view-transition-type(filtrar)::view-transition-old(filtros){display:none}
+html:active-view-transition-type(filtrar)::view-transition-new(filtros){animation:none}
 html:active-view-transition-type(filtrar)::view-transition-new(root){animation:.28s steps(1,end) both vt-fade-in}
 /* no filtro o número é o mesmo antes e depois: ele só desliza, sem trocar de imagem */
 html:active-view-transition-type(filtrar)::view-transition-old(*.num):not(:only-child){display:none}

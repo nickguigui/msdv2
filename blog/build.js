@@ -128,7 +128,7 @@ function page({ rel, title, description, url, current, image, type = 'website', 
     ['', 'Início', ICON.home, 'home'],
     ['noticias/', 'Notícias', ICON.news, 'news'],
   ].map(([href, label, icon, key]) =>
-    `<a href="${rel}${href || (rel ? '' : './')}"${current === key ? ' aria-current="page"' : ''}>${icon}<span>${label}</span></a>`).join('');
+    `<a href="${rel}${href || (rel ? '' : './')}" data-aba="${key}"${current === key ? ' aria-current="page"' : ''}>${current === key ? '<i class="lente" aria-hidden="true" style="view-transition-name:aba-lente"></i>' : ''}${icon}<span>${label}</span></a>`).join('');
   return `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -175,41 +175,51 @@ const listItem = (p, base, { num = true, row = false, h = 'h3' } = {}) => `<li d
 
 // ---------- páginas ----------
 const top = posts[0];
-write('index.html', page({
-  rel: '', title: NAME, description: 'Games, rádio e tecnologia, pelo Nick.', url: '/', current: 'home',
-  image: top.capa,
-  body: `<section class="hero">
-  <h1>${NAME}</h1>
-  <p>${TAGLINE}</p>
-</section>
-<a class="featured glass" href="noticias/${top.id}/" aria-label="Notícia mais recente: ${esc(top.titulo)}">
-  ${top.capa ? `<img class="cover" src="${esc(top.capa.replace(/^\/+/, ''))}" alt="" loading="lazy">` : `<span class="id" aria-hidden="true"${vt('n' + top.id, 'num')}>${top.id}</span>`}
+// Início e Notícias vivem na mesma página: a barra de abas troca entre os dois painéis sem recarregar.
+// O mesmo HTML é gravado em / e em /noticias/, cada um abrindo já na aba certa (os links antigos continuam valendo).
+const HUB = {
+  home: { title: NAME, description: 'Games, rádio e tecnologia, pelo Nick.', url: '/' },
+  news: { title: 'Notícias', description: `Todas as notícias do ${NAME}.`, url: '/noticias/' },
+};
+const featured = `<a class="featured glass" href="/noticias/${top.id}/" aria-label="Notícia mais recente: ${esc(top.titulo)}">
+  ${top.capa ? `<img class="cover" src="/${esc(top.capa.replace(/^\/+/, ''))}" alt="" loading="lazy">` : `<span class="id" aria-hidden="true"${vt('n' + top.id, 'num')}>${top.id}</span>`}
   <div>
     <h2>${esc(top.titulo)}</h2>
     <p>${esc(top.resumo)}</p>
     <div class="meta"><span class="pill">${esc(top.assunto)}</span><span class="pill plain">${top.date.long}</span></div>
   </div>
-</a>
-${posts.length > 1 ? `<div class="section-head"><h2>Mais notícias</h2><a href="noticias/">Ver todas</a></div>
-<ol class="list glass">${posts.slice(1, 7).map(p => listItem(p, 'noticias/')).join('')}</ol>` : ''}`,
-}));
-
-write('noticias/index.html', page({
-  rel: '../', title: 'Notícias', description: `Todas as notícias do ${NAME}.`, url: '/noticias/', current: 'news',
-  body: `<h1 class="page-title">Notícias</h1>
+</a>`;
+const mais = posts.length > 1 ? `<div class="section-head"><h2>Mais notícias</h2><a href="/noticias/" data-aba="news">Ver todas</a></div>
+<ol class="list glass">${posts.slice(1, 7).map(p => listItem(p, '/noticias/')).join('')}</ol>` : '';
+const filtros = ['Todas', ...cats].map((c, i) => `<button type="button" data-filter="${esc(c)}" aria-pressed="${i === 0}">${esc(c)}</button>`).join('');
+const hub = aba => page({
+  rel: '/', current: aba, mast: false, image: aba === 'home' ? top.capa : '', ...HUB[aba],
+  body: `<section class="painel" id="painel-home" data-aba="home" data-titulo="${esc(NAME)}" aria-label="Início"${aba === 'home' ? '' : ' hidden'}>
+<section class="hero">
+  <h1>${NAME}</h1>
+  <p>${TAGLINE}</p>
+</section>
+${featured}
+${mais}
+</section>
+<section class="painel" id="painel-news" data-aba="news" data-titulo="Notícias | ${esc(NAME)}" aria-label="Notícias"${aba === 'news' ? '' : ' hidden'}>
+<a class="mast" href="/" data-aba="home">${NAME}</a>
+<h1 class="page-title">Notícias</h1>
 <p class="page-lead">O que eu ando jogando, ouvindo no rádio e testando. Cada notícia tem um número que nunca muda.</p>
 <div class="tools">
-  <div class="seg glass" role="group" aria-label="Filtrar por assunto">${['Todas', ...cats].map((c, i) =>
-    `<button type="button" data-filter="${esc(c)}" aria-pressed="${i === 0}">${esc(c)}</button>`).join('')}</div>
+  <div class="seg glass" role="group" aria-label="Filtrar por assunto"><i class="lente" aria-hidden="true"></i>${filtros}</div>
   <label class="searchbox glass">${ICON.search}<input id="search" type="search" placeholder="Buscar ou número" aria-label="Buscar notícias pelo título ou pelo número" enterkeyhint="go" autocomplete="off" spellcheck="false"></label>
 </div>
 <p class="count" id="count" role="status" aria-live="polite"></p>
-<ol class="list glass" id="list">${posts.map(p => listItem(p, '', { row: true, h: 'h2' })).join('')}</ol>
+<ol class="list glass" id="list">${posts.map(p => listItem(p, '/noticias/', { row: true, h: 'h2' })).join('')}</ol>
 <div class="empty glass" id="empty" hidden>
   <p id="empty-msg"></p>
   <div class="actions"><a class="btn primary" id="empty-go" hidden></a><button class="btn primary" id="empty-all" type="button" hidden>Buscar em todos os assuntos</button><button class="btn primary" id="clear" type="button">Limpar busca</button></div>
-</div>`,
-}));
+</div>
+</section>`,
+});
+write('index.html', hub('home'));
+write('noticias/index.html', hub('news'));
 
 for (const p of posts) {
   const prev = byId.get(p.id - 1), next = byId.get(p.id + 1);
