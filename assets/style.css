@@ -57,7 +57,7 @@ a{color:inherit}
 
 .featured{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(18px,3vw,36px);align-items:end;
   padding:clamp(22px,4vw,44px);border-radius:var(--r-xl);text-decoration:none}
-.featured .id{font-size:clamp(5rem,16vw,11rem);font-weight:800;letter-spacing:-.06em;line-height:.8;
+.featured .id{width:fit-content;font-size:clamp(5rem,16vw,11rem);font-weight:800;letter-spacing:-.06em;line-height:.8;
   background:linear-gradient(180deg,#fff 30%,rgba(255,255,255,.35));-webkit-background-clip:text;background-clip:text;color:transparent}
 .featured h2{font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.08;letter-spacing:-.03em;font-weight:750}
 .featured p{color:var(--soft);margin-top:10px;font-size:1.05rem}
@@ -88,7 +88,7 @@ a{color:inherit}
 .tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
 .seg{display:flex;gap:2px;padding:5px;border-radius:999px;overflow-x:auto;max-width:100%;scrollbar-width:none}
 .seg::-webkit-scrollbar{display:none}
-.seg button{border:0;background:none;color:var(--soft);font:inherit;font-weight:600;font-size:.95rem;padding:9px 16px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.seg button{border:0;background:none;box-shadow:inset 0 1px 0 rgba(255,255,255,0);color:var(--soft);font:inherit;font-weight:600;font-size:.95rem;padding:9px 16px;border-radius:999px;cursor:pointer;white-space:nowrap}
 .seg button[aria-pressed="true"]{color:#fff;background:rgba(255,255,255,.24);box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
 .searchbox{flex:1 1 220px;display:flex;align-items:center;gap:8px;padding:0 16px;border-radius:999px;min-height:48px}
 .searchbox svg{width:18px;height:18px;opacity:.7;flex:none}
@@ -103,7 +103,7 @@ a{color:inherit}
 .back{display:inline-flex;align-items:center;gap:6px;padding:10px 16px 10px 12px;border-radius:999px;text-decoration:none;font-weight:600;font-size:.95rem;margin-bottom:clamp(18px,4vw,28px)}
 .back svg{width:18px;height:18px}
 .sheet{padding:clamp(24px,5vw,52px);border-radius:var(--r-xl);background:var(--glass-strong)}
-.sheet .id{font-size:clamp(4rem,14vw,7rem);font-weight:800;letter-spacing:-.06em;line-height:.8;
+.sheet .id{width:fit-content;font-size:clamp(4rem,14vw,7rem);font-weight:800;letter-spacing:-.06em;line-height:.8;
   background:linear-gradient(180deg,#fff 30%,rgba(255,255,255,.3));-webkit-background-clip:text;background-clip:text;color:transparent}
 .sheet h1{font-size:clamp(2rem,6vw,3.2rem);line-height:1.05;letter-spacing:-.035em;font-weight:800;margin:16px 0 12px}
 .sheet .lead{font-size:clamp(1.1rem,2.6vw,1.3rem);color:var(--soft)}
@@ -145,4 +145,54 @@ footer.foot{margin-top:56px;text-align:center;color:var(--faint);font-size:.85re
   .item .side{grid-column:2;flex-direction:row;align-items:center;text-align:left;justify-content:flex-start}
 }
 @media (min-width:721px){ .bar svg{display:none} }
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* movimento: o número da notícia é a identidade dela, então ele viaja entre as páginas.
+   Na lista ele é um ladrilho; ao abrir, cresce e vira o número gigante; ao voltar, encolhe. */
+@view-transition{navigation:auto}
+.bar{view-transition-name:bar}
+.seg{view-transition-name:filtros}
+.sheet{view-transition-name:sheet}
+::view-transition-group(*){animation-duration:.46s;animation-timing-function:cubic-bezier(.16,1,.3,1)}
+/* troca de fundo com soma de luz constante: o papel de parede igual nas duas páginas não pisca */
+::view-transition-old(root),::view-transition-new(root){mix-blend-mode:plus-lighter}
+::view-transition-old(root){animation:.22s linear both vt-fade-out}
+::view-transition-new(root){animation:.22s linear both vt-fade-in}
+/* o número viaja por cima do vidro, sem esticar: o ladrilho some rápido e o número grande assume */
+::view-transition-group(*.num){z-index:2}
+::view-transition-old(*.num),::view-transition-new(*.num){height:100%;object-fit:contain}
+::view-transition-old(*.num){animation:.12s ease-in both vt-fade-out}
+::view-transition-new(*.num){animation:.2s cubic-bezier(.16,1,.3,1) both vt-fade-in}
+/* o que sai de cena sai rápido; o que entra chega logo depois */
+::view-transition-old(*.row):only-child,::view-transition-old(*.num):only-child{animation:.15s ease-in both vt-fade-out}
+::view-transition-new(*.row):only-child{animation:.25s cubic-bezier(.16,1,.3,1) .08s both vt-fade-in}
+/* filtro: só as notícias se mexem, e mais rápido; o resto da página fica parado */
+html:active-view-transition-type(filtrar)::view-transition-group(*){animation-duration:.28s}
+/* o painel e o rodapé seguram a altura antiga enquanto as notícias deslizam, e trocam só no fim */
+html:active-view-transition-type(filtrar)::view-transition-old(root){animation:.28s steps(1,end) both vt-fade-out}
+html:active-view-transition-type(filtrar)::view-transition-new(root){animation:.28s steps(1,end) both vt-fade-in}
+/* no filtro o número é o mesmo antes e depois: ele só desliza, sem trocar de imagem */
+html:active-view-transition-type(filtrar)::view-transition-old(*.num):not(:only-child){display:none}
+html:active-view-transition-type(filtrar)::view-transition-new(*.num){animation:none}
+html:active-view-transition-type(filtrar)::view-transition-old(*.row):only-child,html:active-view-transition-type(filtrar)::view-transition-old(*.num):only-child{animation-duration:.1s}
+/* a folha de vidro "condensa": o desfoque do vidro vai de 0 a 22px enquanto ela sobe */
+
+html:active-view-transition-type(abrir)::view-transition-group(sheet){animation:.5s cubic-bezier(.16,1,.3,1) both vt-condense}
+::view-transition-old(sheet):only-child{animation:.18s ease-in both vt-fade-out}
+@keyframes vt-fade-out{to{opacity:0}}
+@keyframes vt-fade-in{from{opacity:0}}
+@keyframes vt-condense{from{opacity:0;translate:0 18px;-webkit-backdrop-filter:saturate(100%) blur(0);backdrop-filter:saturate(100%) blur(0)}}
+
+/* toque: o controle afunda um pouco ao ser pressionado */
+.btn,.seg button,.back,.item .num{transition:background .2s,color .2s,box-shadow .2s,transform .12s cubic-bezier(.16,1,.3,1)}
+.btn:active,.seg button:active,.back:active{transform:scale(.96)}
+.item:active .num{transform:scale(.92)}
+
+@media (prefers-reduced-motion:reduce){
+  /* sem deslocamento nem zoom: só troca de opacidade, rápida */
+  ::view-transition-group(*){animation:none}
+  /* sem viagem do número: a página só troca, num esmaecer curto */
+  .item .num,.sheet .id,.featured .id,.list li,.sheet{view-transition-name:none!important}
+  ::view-transition-old(*){animation:.15s linear both vt-fade-out!important}
+  ::view-transition-new(*){animation:.15s linear both vt-fade-in!important}
+  html:active-view-transition-type(abrir)::view-transition-group(sheet){animation:.15s linear both vt-fade-in}
+  .btn:active,.seg button:active,.back:active,.item:active .num{transform:none}
+}

@@ -20,7 +20,10 @@ if(rows.length&&search){
   let cat='Todas',q='';
   const apply=()=>{let n=0;rows.forEach(r=>{const ok=(cat==='Todas'||r.dataset.cat===cat)&&(!q||r.textContent.toLowerCase().includes(q));r.hidden=!ok;if(ok)n++;});
     document.getElementById('empty').hidden=n>0;};
-  document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{cat=b.dataset.filter;document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));apply();});
+  // ao trocar o filtro, as notícias que ficam deslizam para o lugar novo
+  const vtTypes=window.ViewTransition&&'types' in ViewTransition.prototype;
+  const smooth=fn=>vtTypes&&!reduce?document.startViewTransition({update:fn,types:['filtrar']}):fn();
+  document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{cat=b.dataset.filter;smooth(()=>{document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));apply();});});
   search.oninput=()=>{q=search.value.trim().toLowerCase();apply();};
 }
 

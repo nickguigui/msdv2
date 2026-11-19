@@ -15,7 +15,9 @@
 <meta name="twitter:card" content="summary">
 <meta property="og:locale" content="pt_BR">
 <link rel="alternate" type="application/rss+xml" title="Nick News" href="feed.xml">
-<link rel="stylesheet" href="assets/style.css?v=aafe9000">
+<script>/* precisa rodar antes da primeira pintura: ao abrir uma notícia, a folha de vidro "condensa" */
+addEventListener('pagereveal',e=>{if(e.viewTransition&&location.pathname.match('/noticias/[0-9]'))e.viewTransition.types.add('abrir')});</script>
+<link rel="stylesheet" href="assets/style.css?v=b64e5919">
 </head>
 <body>
 <div class="wall" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
@@ -29,7 +31,7 @@
   <p>Games, rádio, tecnologia e o que mais acontecer por aqui.</p>
 </section>
 <a class="featured glass" href="noticias/3/" aria-label="Notícia mais recente: Radioamadorismo: falar com o mundo sem internet">
-  <span class="id" aria-hidden="true">3</span>
+  <span class="id" aria-hidden="true" style="view-transition-name:n3;view-transition-class:num">3</span>
   <div>
     <h2>Radioamadorismo: falar com o mundo sem internet</h2>
     <p>Como o rádio amador funciona e por que ele ainda importa.</p>
@@ -42,16 +44,16 @@
   <div><h3>Radioamadorismo: falar com o mundo sem internet</h3><p>Como o rádio amador funciona e por que ele ainda importa.</p></div>
   <span class="side"><span class="pill">Rádio</span><span>5 nov</span></span>
 </a></li><li data-cat="Games"><a class="item" href="noticias/2/">
-  <span class="num" aria-label="Notícia 2">2</span>
+  <span class="num" aria-label="Notícia 2" style="view-transition-name:n2;view-transition-class:num">2</span>
   <div><h3>Os jogos que não saem do meu Switch</h3><p>Os jogos que eu mais estou jogando agora e por que eles ficaram.</p></div>
   <span class="side"><span class="pill">Games</span><span>6 nov</span></span>
 </a></li><li data-cat="Novidades"><a class="item" href="noticias/1/">
-  <span class="num" aria-label="Notícia 1">1</span>
+  <span class="num" aria-label="Notícia 1" style="view-transition-name:n1;view-transition-class:num">1</span>
   <div><h3>O Nick News entrou no ar</h3><p>Por que eu criei este blog e o que você vai encontrar aqui.</p></div>
   <span class="side"><span class="pill">Novidades</span><span>7 nov</span></span>
 </a></li></ol>
 <footer class="foot">© 2026 Nick News · <a href="feed.xml">RSS</a></footer>
 </main>
-<script src="assets/site.js?v=aafe9000" defer></script>
+<script src="assets/site.js?v=b64e5919" defer></script>
 </body>
 </html>

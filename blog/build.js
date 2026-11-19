@@ -143,6 +143,8 @@ ${url ? `<link rel="canonical" href="${SITE}${url}">\n` : ''}<meta property="og:
 <meta property="og:description" content="${esc(description)}">
 ${url ? `<meta property="og:url" content="${SITE}${url}">\n` : ''}${img ? `<meta property="og:image" content="${img}">\n<meta name="twitter:card" content="summary_large_image">\n` : '<meta name="twitter:card" content="summary">\n'}<meta property="og:locale" content="pt_BR">
 <link rel="alternate" type="application/rss+xml" title="${NAME}" href="${rel}feed.xml">
+<script>/* precisa rodar antes da primeira pintura: ao abrir uma notícia, a folha de vidro "condensa" */
+addEventListener('pagereveal',e=>{if(e.viewTransition&&location.pathname.match('/noticias/[0-9]'))e.viewTransition.types.add('abrir')});</script>
 <link rel="stylesheet" href="${rel}assets/style.css?v=${ver}">
 </head>
 <body>
@@ -161,8 +163,10 @@ ${body}
 `;
 }
 
-const listItem = (p, base) => `<li data-cat="${esc(p.assunto)}"><a class="item" href="${base}${p.id}/">
-  <span class="num" aria-label="Notícia ${p.id}">${p.id}</span>
+// vt(): nome de View Transition; o número da lista vira o número gigante da notícia
+const vt = (name, cls) => ` style="view-transition-name:${name};view-transition-class:${cls}"`;
+const listItem = (p, base, { num = true, row = false } = {}) => `<li data-cat="${esc(p.assunto)}"${row ? vt('row' + p.id, 'row') : ''}><a class="item" href="${base}${p.id}/">
+  <span class="num" aria-label="Notícia ${p.id}"${num ? vt('n' + p.id, 'num') : ''}>${p.id}</span>
   <div><h3>${esc(p.titulo)}</h3><p>${esc(p.resumo)}</p></div>
   <span class="side"><span class="pill">${esc(p.assunto)}</span><span>${p.date.short}</span></span>
 </a></li>`;
@@ -177,7 +181,7 @@ write('index.html', page({
   <p>${TAGLINE}</p>
 </section>
 <a class="featured glass" href="noticias/${top.id}/" aria-label="Notícia mais recente: ${esc(top.titulo)}">
-  ${top.capa ? `<img class="cover" src="${esc(top.capa.replace(/^\/+/, ''))}" alt="" loading="lazy">` : `<span class="id" aria-hidden="true">${top.id}</span>`}
+  ${top.capa ? `<img class="cover" src="${esc(top.capa.replace(/^\/+/, ''))}" alt="" loading="lazy">` : `<span class="id" aria-hidden="true"${vt('n' + top.id, 'num')}>${top.id}</span>`}
   <div>
     <h2>${esc(top.titulo)}</h2>
     <p>${esc(top.resumo)}</p>
@@ -185,7 +189,7 @@ write('index.html', page({
   </div>
 </a>
 <div class="section-head"><h2>Últimas notícias</h2><a href="noticias/">Ver todas</a></div>
-<ol class="list glass">${posts.slice(0, 6).map(p => listItem(p, 'noticias/')).join('')}</ol>`,
+<ol class="list glass">${posts.slice(0, 6).map(p => listItem(p, 'noticias/', { num: top.capa ? true : p !== top })).join('')}</ol>`,
 }));
 
 write('noticias/index.html', page({
@@ -196,7 +200,7 @@ write('noticias/index.html', page({
     `<button type="button" data-filter="${esc(c)}" aria-pressed="${i === 0}">${esc(c)}</button>`).join('')}</div>
   <label class="searchbox glass">${ICON.search}<input id="search" type="search" placeholder="Buscar" aria-label="Buscar notícias"></label>
 </div>
-<ol class="list glass">${posts.map(p => listItem(p, '')).join('')}
+<ol class="list glass">${posts.map(p => listItem(p, '', { row: true })).join('')}
 <li class="empty" id="empty" hidden>Nenhuma notícia com essa palavra. Tente outra ou toque em Todas.</li></ol>`,
 }));
 
@@ -209,7 +213,7 @@ for (const p of posts) {
     body: `<div class="article">
   <a class="back glass" href="../">${ICON.back}Notícias</a>
   <article class="sheet glass">
-    ${cover}<div class="id" aria-hidden="true">${p.id}</div>
+    ${cover}<div class="id" aria-hidden="true"${vt('n' + p.id, 'num')}>${p.id}</div>
     <h1>${esc(p.titulo)}</h1>
     <p class="lead">${esc(p.resumo)}</p>
     <div class="meta"><span class="pill">${esc(p.assunto)}</span><span class="pill plain"><time datetime="${p.date.iso}">${p.date.long}</time></span><span class="pill plain">${p.minutos} min de leitura</span></div>

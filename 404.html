@@ -13,7 +13,9 @@
 <meta name="twitter:card" content="summary">
 <meta property="og:locale" content="pt_BR">
 <link rel="alternate" type="application/rss+xml" title="Nick News" href="/feed.xml">
-<link rel="stylesheet" href="/assets/style.css?v=aafe9000">
+<script>/* precisa rodar antes da primeira pintura: ao abrir uma notícia, a folha de vidro "condensa" */
+addEventListener('pagereveal',e=>{if(e.viewTransition&&location.pathname.match('/noticias/[0-9]'))e.viewTransition.types.add('abrir')});</script>
+<link rel="stylesheet" href="/assets/style.css?v=b64e5919">
 </head>
 <body>
 <div class="wall" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
@@ -28,6 +30,6 @@
 </section>
 <footer class="foot">© 2026 Nick News · <a href="/feed.xml">RSS</a></footer>
 </main>
-<script src="/assets/site.js?v=aafe9000" defer></script>
+<script src="/assets/site.js?v=b64e5919" defer></script>
 </body>
 </html>

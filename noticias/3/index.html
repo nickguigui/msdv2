@@ -15,7 +15,9 @@
 <meta name="twitter:card" content="summary">
 <meta property="og:locale" content="pt_BR">
 <link rel="alternate" type="application/rss+xml" title="Nick News" href="../../feed.xml">
-<link rel="stylesheet" href="../../assets/style.css?v=aafe9000">
+<script>/* precisa rodar antes da primeira pintura: ao abrir uma notícia, a folha de vidro "condensa" */
+addEventListener('pagereveal',e=>{if(e.viewTransition&&location.pathname.match('/noticias/[0-9]'))e.viewTransition.types.add('abrir')});</script>
+<link rel="stylesheet" href="../../assets/style.css?v=b64e5919">
 </head>
 <body>
 <div class="wall" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
@@ -27,7 +29,7 @@
 <div class="article">
   <a class="back glass" href="../"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Notícias</a>
   <article class="sheet glass">
-    <div class="id" aria-hidden="true">3</div>
+    <div class="id" aria-hidden="true" style="view-transition-name:n3;view-transition-class:num">3</div>
     <h1>Radioamadorismo: falar com o mundo sem internet</h1>
     <p class="lead">Como o rádio amador funciona e por que ele ainda importa.</p>
     <div class="meta"><span class="pill">Rádio</span><span class="pill plain"><time datetime="2026-11-05">5 de novembro de 2026</time></span><span class="pill plain">1 min de leitura</span></div>
@@ -37,6 +39,6 @@
 </div>
 <footer class="foot">© 2026 Nick News · <a href="../../feed.xml">RSS</a></footer>
 </main>
-<script src="../../assets/site.js?v=aafe9000" defer></script>
+<script src="../../assets/site.js?v=b64e5919" defer></script>
 </body>
 </html>
