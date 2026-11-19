@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>Nick News</title>
+<link>https://nickguigui.qzz.io/</link>
+<description>Games, rádio, tecnologia e o que mais acontecer por aqui.</description>
+<language>pt-BR</language>
+<atom:link href="https://nickguigui.qzz.io/feed.xml" rel="self" type="application/rss+xml"/>
+<item>
+<title>Radioamadorismo: falar com o mundo sem internet</title>
+<link>https://nickguigui.qzz.io/noticias/3/</link>
+<guid>https://nickguigui.qzz.io/noticias/3/</guid>
+<pubDate>Thu, 05 Nov 2026 12:00:00 GMT</pubDate>
+<category>Rádio</category>
+<description>Como o rádio amador funciona e por que ele ainda importa.</description>
+</item>
+<item>
+<title>Os jogos que não saem do meu Switch</title>
+<link>https://nickguigui.qzz.io/noticias/2/</link>
+<guid>https://nickguigui.qzz.io/noticias/2/</guid>
+<pubDate>Fri, 06 Nov 2026 12:00:00 GMT</pubDate>
+<category>Games</category>
+<description>Os jogos que eu mais estou jogando agora e por que eles ficaram.</description>
+</item>
+<item>
+<title>O Nick News entrou no ar</title>
+<link>https://nickguigui.qzz.io/noticias/1/</link>
+<guid>https://nickguigui.qzz.io/noticias/1/</guid>
+<pubDate>Sat, 07 Nov 2026 12:00:00 GMT</pubDate>
+<category>Novidades</category>
+<description>Por que eu criei este blog e o que você vai encontrar aqui.</description>
+</item>
+</channel>
+</rss>

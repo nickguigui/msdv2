@@ -118,6 +118,18 @@ a{color:inherit}
 .btn:hover{background:rgba(255,255,255,.26)}
 .btn.primary{background:#fff;color:#141a3c;box-shadow:0 6px 20px rgba(5,8,30,.25)}
 
+.body h3{font-size:1.2rem;margin:1.4em 0 .4em;line-height:1.25}
+.body ul,.body ol{margin:0 0 1.1em 1.3em;max-width:65ch}
+.body li{margin-bottom:.35em}
+.body a{color:#9fdcff;text-underline-offset:3px}
+.body code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;background:rgba(255,255,255,.14);padding:.1em .4em;border-radius:6px}
+.body img{max-width:100%;height:auto;border-radius:var(--r-md);display:block}
+.body figure{margin:1.5em 0}
+.body figcaption{color:var(--soft);font-size:.9rem;margin-top:8px;text-align:center}
+.body iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:var(--r-md);margin:1.5em 0}
+.cover{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--r-lg);display:block}
+.sheet .cover{margin-bottom:24px}
+footer.foot a{color:var(--soft)}
 footer.foot{margin-top:56px;text-align:center;color:var(--faint);font-size:.85rem}
 
 /* celular: barra de abas no rodapé, como no iPhone */

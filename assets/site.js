@@ -2,9 +2,15 @@
 const glasses=[...document.querySelectorAll('.glass')];
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(!reduce){
-  addEventListener('pointermove',ev=>{
-    for(const g of glasses){const r=g.getBoundingClientRect();
-      g.style.setProperty('--mx',(ev.clientX-r.left)+'px');g.style.setProperty('--my',(ev.clientY-r.top)+'px');}
+  // no máximo uma atualização por quadro, mesmo com muitos cartões
+  let ev=null;
+  addEventListener('pointermove',e=>{
+    if(!ev)requestAnimationFrame(()=>{
+      for(const g of glasses){const r=g.getBoundingClientRect();
+        g.style.setProperty('--mx',(ev.clientX-r.left)+'px');g.style.setProperty('--my',(ev.clientY-r.top)+'px');}
+      ev=null;
+    });
+    ev=e;
   },{passive:true});
 }
 
