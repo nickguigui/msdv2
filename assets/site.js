@@ -50,10 +50,12 @@ if(rows.length&&search){
     const em=q.trim();
     if(shown===0){
       if(num!==null&&num>newest){emptyMsg.textContent='A notícia '+num+' ainda não saiu. A mais recente é a '+newest+'.';go.hidden=false;go.href='/noticias/'+newest+'/';go.textContent='Abrir a notícia '+newest;}
+      else if(num!==null){emptyMsg.textContent='Não existe notícia '+num+'. Os números vão de 1 a '+newest+'.';go.hidden=false;go.href='/noticias/'+newest+'/';go.textContent='Abrir a notícia '+newest;}
       else if(elsewhere){emptyMsg.textContent='Nenhuma notícia de '+cat+' com “'+em+'”, mas '+(elsewhere===1?'existe uma':'existem '+elsewhere)+' em outros assuntos.';all.hidden=false;}
-      else emptyMsg.textContent=n?'Nenhuma notícia com “'+em+'”. Tente outra palavra ou o número da notícia.':'Nenhuma notícia em '+cat+' ainda.';
+      else emptyMsg.textContent=n?'Nenhuma notícia'+(cat!=='Todas'?' de '+cat:'')+' com “'+em+'”. Tente outra palavra ou o número da notícia.':'Nenhuma notícia em '+cat+' ainda.';
     }
-    $('clear').classList.toggle('primary',go.hidden&&all.hidden); // só um botão branco por vez
+    $('clear').classList.toggle('primary',go.hidden&&all.hidden);
+    $('clear').textContent=cat!=='Todas'&&n?'Limpar busca e filtro':cat!=='Todas'?'Mostrar todas':'Limpar busca'; // só um botão branco por vez
     count.textContent=shown===0?'':num!==null?'Notícia '+num+' sintonizada · Enter abre':
       plural(shown,'notícia','notícias')+(cat!=='Todas'?' em '+cat:'')+(n?' com “'+em+'”':'');
     // guarda no endereço para dar para mandar o link e voltar no mesmo lugar
@@ -78,7 +80,7 @@ if(rows.length&&search){
     if(vis.length===1||state().num!==null&&vis.length){e.preventDefault();location.href='/noticias/'+vis[0].id+'/';}
     else if(!vis.length&&!go.hidden){e.preventDefault();location.href=go.getAttribute('href');}};
   $('clear').onclick=()=>{search.value=q='';setCat('Todas',true);apply();search.focus();};
-  all.onclick=()=>{setCat('Todas',true);apply();};
+  all.onclick=()=>{setCat('Todas',true);apply();const f=docs.find(d=>!d.r.hidden);if(f)f.r.querySelector('a').focus();};
   // volta ao estado do endereço (ex.: ?assunto=Rádio&q=antena)
   const p=new URLSearchParams(location.search);setCat(p.get('assunto')||'Todas');q=p.get('q')||'';search.value=q;apply();
   // filtro que não cabe na tela: esmaece a borda e deixa o assunto escolhido à vista

@@ -90,16 +90,26 @@ const posts = fs.readdirSync(POSTS_DIR)
     const file = path.join('blog', 'posts', f);
     const { meta, body } = parseFile(path.join(POSTS_DIR, f));
     for (const k of ['titulo', 'resumo', 'assunto', 'data']) if (!meta[k]) fail(file, `falta "${k}:" no cabeçalho`);
+    if (/troque este texto/i.test(body)) {
+      const id = parseInt(f, 10);
+      if (!fs.existsSync(path.join(ROOT, 'noticias', String(id)))) {
+        console.warn(`⛔ ${file}: ainda tem "Troque este texto…". Notícia NÃO publicada até você escrever o texto de verdade.`);
+        return null;
+      }
+      console.warn(`⚠ ${file}: já está no ar, mas ainda tem "Troque este texto…". Escreva o texto de verdade.`);
+    }
     const words = body.replace(/<[^>]+>|[#>*`\-\[\]()!]/g, ' ').split(/\s+/).filter(Boolean).length;
     return {
       id: parseInt(f, 10),
       titulo: meta.titulo, resumo: meta.resumo, assunto: meta.assunto,
+      tags: meta.tags || '', // palavras extras que a busca encontra (ex.: tags: nintendo, zelda)
       capa: meta.capa || '',
       date: parseDate(meta.data, file),
       html: markdown(body),
       minutos: Math.max(1, Math.round(words / 200)),
     };
   })
+  .filter(Boolean)
   .sort((a, b) => b.id - a.id); // número maior = mais recente
 
 if (!posts.length) fail('blog/posts', 'nenhum post encontrado');
@@ -151,7 +161,7 @@ addEventListener('pagereveal',e=>{if(e.viewTransition&&location.pathname.match('
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 <div class="wall" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
 <header class="bar glass">
-  <a class="brand" href="${rel || './'}">${NAME}</a>
+  <a class="brand" href="${rel || './'}" data-aba="home">${NAME}</a>
   <nav aria-label="Principal">${nav}</nav>
 </header>
 <main class="page" id="conteudo">
@@ -167,7 +177,7 @@ ${body}
 
 // vt(): nome de View Transition; o número da lista vira o número gigante da notícia
 const vt = (name, cls) => ` style="view-transition-name:${name};view-transition-class:${cls}"`;
-const listItem = (p, base, { num = true, row = false, h = 'h3' } = {}) => `<li data-id="${p.id}" data-cat="${esc(p.assunto)}" data-text="${esc(p.titulo + ' ' + p.resumo + ' ' + p.assunto)}"${row ? vt('row' + p.id, 'row') : ''}><a class="item" href="${base}${p.id}/">
+const listItem = (p, base, { num = true, row = false, h = 'h3' } = {}) => `<li data-id="${p.id}" data-cat="${esc(p.assunto)}" data-text="${esc(p.titulo + ' ' + p.resumo + ' ' + p.assunto + ' ' + p.tags.replace(/,/g, ' '))}"${row ? vt('row' + p.id, 'row') : ''}><a class="item" href="${base}${p.id}/">
   <span class="num" aria-label="Notícia ${p.id}"${num ? vt('n' + p.id, 'num') : ''}>${p.id}</span>
   <div><${h}>${esc(p.titulo)}</${h}><p>${esc(p.resumo)}</p></div>
   <span class="side"><span class="pill">${esc(p.assunto)}</span><span>${p.date.short}</span></span>
@@ -228,7 +238,7 @@ for (const p of posts) {
     rel: '../../', title: p.titulo, description: p.resumo, url: `/noticias/${p.id}/`, current: 'news', mast: false,
     image: p.capa, type: 'article',
     body: `<div class="article">
-  <a class="back glass" href="../">${ICON.back}Notícias</a>
+  <div class="article-top"><a class="back glass" href="../">${ICON.back}Notícias</a><a class="mast" href="/">${NAME}</a></div>
   <article class="sheet glass">
     ${cover}<div class="id" aria-hidden="true"${vt('n' + p.id, 'num')}>${p.id}</div>
     <h1>${esc(p.titulo)}</h1>

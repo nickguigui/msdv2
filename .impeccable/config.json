@@ -107,6 +107,12 @@
         ],
         "createdAt": "2026-11-19T04:44:09.665Z",
         "reason": "Claude: .hero h1 text-shadow 0 2px 30px rgba(10,14,50,.25) is a navy legibility shadow (offset, not chromatic); appears here because the merged page now includes the Início panel"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(.32,1.25,.5,1)",
+        "createdAt": "2026-11-19T04:53:16.953Z",
+        "reason": "user confirmed: liquid-glass lens overshoot on tab switch is intended; reduced-motion removes it"
       }
     ]
   }
