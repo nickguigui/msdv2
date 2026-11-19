@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-19T03:33:14.674Z",
+  "title": "Design System: Nick News",
+  "extensions": {
+    "colorMeta": {
+      "night-canvas": {
+        "role": "primary",
+        "displayName": "Noite Profunda",
+        "tonalRamp": [
+          "oklch(15% 0.027 272)",
+          "oklch(26% 0.041 272)",
+          "oklch(37% 0.056 272)",
+          "oklch(48% 0.071 272)",
+          "oklch(59% 0.075 272)",
+          "oklch(70% 0.060 272)",
+          "oklch(82% 0.044 272)",
+          "oklch(95% 0.027 272)"
+        ]
+      },
+      "cobalt-glow": {
+        "role": "secondary",
+        "displayName": "Cobalto",
+        "tonalRamp": [
+          "oklch(15% 0.080 268)",
+          "oklch(26% 0.124 268)",
+          "oklch(37% 0.168 268)",
+          "oklch(48% 0.212 268)",
+          "oklch(59% 0.224 268)",
+          "oklch(70% 0.180 268)",
+          "oklch(82% 0.132 268)",
+          "oklch(95% 0.080 268)"
+        ]
+      },
+      "hot-magenta": {
+        "role": "secondary",
+        "displayName": "Magenta Quente",
+        "tonalRamp": [
+          "oklch(15% 0.077 2)",
+          "oklch(26% 0.119 2)",
+          "oklch(37% 0.161 2)",
+          "oklch(48% 0.203 2)",
+          "oklch(59% 0.215 2)",
+          "oklch(70% 0.173 2)",
+          "oklch(82% 0.127 2)",
+          "oklch(95% 0.077 2)"
+        ]
+      },
+      "signal-cyan": {
+        "role": "secondary",
+        "displayName": "Ciano Sinal",
+        "tonalRamp": [
+          "oklch(15% 0.053 232)",
+          "oklch(26% 0.083 232)",
+          "oklch(37% 0.112 232)",
+          "oklch(48% 0.141 232)",
+          "oklch(59% 0.149 232)",
+          "oklch(70% 0.120 232)",
+          "oklch(82% 0.088 232)",
+          "oklch(95% 0.053 232)"
+        ]
+      },
+      "amber-flare": {
+        "role": "secondary",
+        "displayName": "Âmbar",
+        "tonalRamp": [
+          "oklch(15% 0.060 62)",
+          "oklch(26% 0.093 62)",
+          "oklch(37% 0.126 62)",
+          "oklch(48% 0.159 62)",
+          "oklch(59% 0.168 62)",
+          "oklch(70% 0.135 62)",
+          "oklch(82% 0.099 62)",
+          "oklch(95% 0.060 62)"
+        ]
+      },
+      "ultraviolet": {
+        "role": "secondary",
+        "displayName": "Ultravioleta",
+        "tonalRamp": [
+          "oklch(15% 0.083 296)",
+          "oklch(26% 0.129 296)",
+          "oklch(37% 0.175 296)",
+          "oklch(48% 0.221 296)",
+          "oklch(59% 0.233 296)",
+          "oklch(70% 0.188 296)",
+          "oklch(82% 0.138 296)",
+          "oklch(95% 0.083 296)"
+        ]
+      },
+      "text-white": {
+        "role": "neutral",
+        "displayName": "Branco",
+        "tonalRamp": [
+          "oklch(15% 0.000 270)",
+          "oklch(26% 0.000 270)",
+          "oklch(37% 0.000 270)",
+          "oklch(48% 0.000 270)",
+          "oklch(59% 0.000 270)",
+          "oklch(70% 0.000 270)",
+          "oklch(82% 0.000 270)",
+          "oklch(95% 0.000 270)"
+        ]
+      },
+      "ink-on-white": {
+        "role": "neutral",
+        "displayName": "Tinta",
+        "tonalRamp": [
+          "oklch(15% 0.020 272)",
+          "oklch(26% 0.031 272)",
+          "oklch(37% 0.042 272)",
+          "oklch(48% 0.053 272)",
+          "oklch(59% 0.056 272)",
+          "oklch(70% 0.045 272)",
+          "oklch(82% 0.033 272)",
+          "oklch(95% 0.020 272)"
+        ]
+      },
+      "link-sky": {
+        "role": "neutral",
+        "displayName": "Céu",
+        "tonalRamp": [
+          "oklch(15% 0.030 225)",
+          "oklch(26% 0.046 225)",
+          "oklch(37% 0.063 225)",
+          "oklch(48% 0.080 225)",
+          "oklch(59% 0.084 225)",
+          "oklch(70% 0.068 225)",
+          "oklch(82% 0.050 225)",
+          "oklch(95% 0.030 225)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Nome do site na home e títulos de página; números gigantes."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Título da notícia aberta e do destaque."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Itens da lista e cabeçalhos de seção."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texto da notícia, até 65ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Pílulas, navegação, botões, filtros."
+      }
+    },
+    "shadows": [
+      {
+        "name": "glass-rim",
+        "value": "inset 0 1px 0 rgba(255,255,255,.38), inset 0 -1px 0 rgba(255,255,255,.08), inset 1px 0 0 rgba(255,255,255,.12), inset -1px 0 0 rgba(255,255,255,.06), 0 18px 50px rgba(5,8,30,.28)",
+        "purpose": "Toda superfície de vidro."
+      },
+      {
+        "name": "control-sheen",
+        "value": "inset 0 1px 0 rgba(255,255,255,.45)",
+        "purpose": "Pílulas, segmento e aba ativos, ladrilho numerado."
+      },
+      {
+        "name": "primary-lift",
+        "value": "0 6px 20px rgba(5,8,30,.25)",
+        "purpose": "Só o botão branco primário."
+      }
+    ],
+    "motion": [
+      {
+        "name": "state-fade",
+        "value": "background .2s, color .2s",
+        "purpose": "Hover de navegação e itens da lista."
+      },
+      {
+        "name": "pointer-sheen",
+        "value": "radial-gradient(260px circle at var(--mx) var(--my), rgba(255,255,255,.28), transparent 60%)",
+        "purpose": "Reflexo que segue o ponteiro, 1x por quadro, desligado em reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile",
+        "value": "720px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ação principal da tela (Copiar link).",
+      "html": "<button class=\"ds-btn-primary\">Copiar link</button>",
+      "css": ".ds-btn-primary{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI Variable\",\"Segoe UI\",Roboto,Arial,sans-serif;display:inline-flex;align-items:center;min-height:46px;padding:0 20px;border:0;border-radius:999px;font-weight:650;font-size:.95rem;background:#fff;color:#141a3c;box-shadow:0 6px 20px rgba(5,8,30,.25);cursor:pointer;transition:transform .2s}.ds-btn-primary:hover{transform:translateY(-1px)}.ds-btn-primary:focus-visible{outline:3px solid #fff;outline-offset:3px}"
+    },
+    {
+      "name": "Glass Button",
+      "kind": "button",
+      "refersTo": "button-glass",
+      "description": "Ações secundárias (Notícia anterior/próxima).",
+      "html": "<a class=\"ds-btn-glass\" href=\"#\">Notícia 2</a>",
+      "css": ".ds-btn-glass{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI Variable\",\"Segoe UI\",Roboto,Arial,sans-serif;display:inline-flex;align-items:center;min-height:46px;padding:0 20px;border-radius:999px;font-weight:650;font-size:.95rem;color:#fff;text-decoration:none;background:rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),inset 0 -1px 0 rgba(255,255,255,.1);transition:background .2s}.ds-btn-glass:hover{background:rgba(255,255,255,.26)}.ds-btn-glass:focus-visible{outline:3px solid #fff;outline-offset:3px}"
+    },
+    {
+      "name": "Search Field",
+      "kind": "input",
+      "refersTo": "search-field",
+      "description": "Busca de notícias em pílula de vidro.",
+      "html": "<label class=\"ds-search\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-4-4\"/></svg><input placeholder=\"Buscar\"></label>",
+      "css": ".ds-search{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI Variable\",\"Segoe UI\",Roboto,Arial,sans-serif;display:flex;align-items:center;gap:8px;padding:0 16px;min-height:48px;border-radius:999px;color:#fff;background:rgba(255,255,255,.12);-webkit-backdrop-filter:saturate(180%) blur(22px);backdrop-filter:saturate(180%) blur(22px);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -1px 0 rgba(255,255,255,.08),0 18px 50px rgba(5,8,30,.28);}.ds-search svg{opacity:.7}.ds-search input{flex:1;border:0;background:none;color:#fff;font:inherit;font-size:1rem;outline:none}.ds-search input::placeholder{color:rgba(255,255,255,.5)}.ds-search:focus-within{box-shadow:inset 0 1px 0 rgba(255,255,255,.38),0 0 0 3px rgba(255,255,255,.55)}"
+    },
+    {
+      "name": "Navigation Bar",
+      "kind": "nav",
+      "refersTo": "card-glass",
+      "description": "Pílula flutuante no topo; vira barra de abas no celular.",
+      "html": "<nav class=\"ds-nav\"><b>Nick News</b><a href=\"#\" aria-current=\"page\">Início</a><a href=\"#\">Notícias</a></nav>",
+      "css": ".ds-nav{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI Variable\",\"Segoe UI\",Roboto,Arial,sans-serif;display:inline-flex;align-items:center;gap:2px;padding:6px;border-radius:999px;color:#fff;background:rgba(255,255,255,.12);-webkit-backdrop-filter:saturate(180%) blur(22px);backdrop-filter:saturate(180%) blur(22px);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -1px 0 rgba(255,255,255,.08),0 18px 50px rgba(5,8,30,.28);}.ds-nav b{font-weight:800;letter-spacing:-.02em;padding:10px 16px 10px 14px}.ds-nav a{color:rgba(255,255,255,.74);text-decoration:none;font-weight:600;font-size:.95rem;padding:10px 16px;border-radius:999px;transition:background .2s,color .2s}.ds-nav a:hover{color:#fff;background:rgba(255,255,255,.1)}.ds-nav a[aria-current=page]{color:#fff;background:rgba(255,255,255,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.45)}"
+    },
+    {
+      "name": "Segmented Filter",
+      "kind": "chip",
+      "refersTo": "segment-active",
+      "description": "Filtro por assunto.",
+      "html": "<div class=\"ds-seg\"><button aria-pressed=\"true\">Todas</button><button aria-pressed=\"false\">Games</button><button aria-pressed=\"false\">Rádio</button></div>",
+      "css": ".ds-seg{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI Variable\",\"Segoe UI\",Roboto,Arial,sans-serif;display:inline-flex;gap:2px;padding:5px;border-radius:999px;background:rgba(255,255,255,.12);-webkit-backdrop-filter:saturate(180%) blur(22px);backdrop-filter:saturate(180%) blur(22px);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -1px 0 rgba(255,255,255,.08),0 18px 50px rgba(5,8,30,.28);}.ds-seg button{border:0;background:none;color:rgba(255,255,255,.74);font:inherit;font-weight:600;font-size:.95rem;padding:9px 16px;border-radius:999px;cursor:pointer}.ds-seg button:hover{color:#fff}.ds-seg button[aria-pressed=true]{color:#fff;background:rgba(255,255,255,.24);box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}"
+    },
+    {
+      "name": "Pill",
+      "kind": "chip",
+      "refersTo": "pill",
+      "description": "Etiqueta de assunto.",
+      "html": "<span class=\"ds-pill\">Games</span>",
+      "css": ".ds-pill{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI Variable\",\"Segoe UI\",Roboto,Arial,sans-serif;display:inline-flex;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.3);font-weight:600;font-size:.85rem;color:#fff}"
+    },
+    {
+      "name": "Numbered List Item",
+      "kind": "custom",
+      "refersTo": "number-tile",
+      "description": "Linha da lista com ladrilho numerado.",
+      "html": "<a class=\"ds-item\" href=\"#\"><span class=\"ds-num\">3</span><span><strong>Radioamadorismo: falar com o mundo sem internet</strong><small>Como o rádio amador funciona.</small></span><span class=\"ds-side\">5 nov</span></a>",
+      "css": ".ds-item{font-family:-apple-system,BlinkMacSystemFont,\"Segoe UI Variable\",\"Segoe UI\",Roboto,Arial,sans-serif;display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;padding:16px 20px;border-radius:18px;color:#fff;text-decoration:none;transition:background .2s;background:#1c2350}.ds-item:hover{background:#2a3266}.ds-num{width:56px;aspect-ratio:1;display:grid;place-items:center;border-radius:16px;font-weight:800;font-size:1.5rem;background:rgba(255,255,255,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.45)}.ds-item strong{display:block;font-weight:700;font-size:1.2rem;letter-spacing:-.015em}.ds-item small{display:block;color:rgba(255,255,255,.74);font-size:.95rem}.ds-side{color:rgba(255,255,255,.74);font-size:.85rem}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Vidro sobre neon",
+    "overview": "Nick News é um blog pessoal que se comporta como a tela de um celular moderno: um papel de parede escuro onde cinco manchas de cor viva (cobalto, magenta, ciano, âmbar e ultravioleta) brilham desfocadas, e por cima delas flutuam placas de vidro translúcido que carregam todo o conteúdo. A cor nunca está no texto nem nos botões; ela mora atrás do vidro e chega filtrada. Isso deixa a página viva sem ficar barulhenta.\n\nA densidade é baixa e generosa: títulos enormes e apertados, listas com bastante respiro, uma coluna de leitura de no máximo 760px. Cada notícia tem um número fixo que vira elemento gráfico (o número gigante do destaque, os ladrilhos numerados da lista), herança do conceito de \"canais\" de um sintonizador. Os componentes são lisos e confiantes: formas de pílula, brilho suave que acompanha o dedo, sensação de controle nativo do sistema.\n\nEle rejeita explicitamente três caminhos: a cara de portal de notícias (banners, colunas apertadas, propaganda), o fundo branco corporativo e sem cor, e o visual gamer exagerado (RGB piscando, fontes agressivas, neon em tudo).",
+    "keyCharacteristics": [
+      "Fundo noturno fixo com cinco manchas de cor desfocadas (60px) que nunca rolam.",
+      "Todo conteúdo vive em vidro: fundo branco a 12%, desfoque de 22px com saturação 180%, bordas de luz internas.",
+      "Texto sempre branco; hierarquia por opacidade (100% / 74% / 50%), não por cor.",
+      "Formas de pílula para tudo que é tocável; cantos de 18–32px para superfícies.",
+      "Fonte do sistema (SF Pro / Segoe UI Variable), sem fontes externas.",
+      "Números das notícias como protagonistas visuais."
+    ],
+    "rules": [
+      {
+        "name": "A Regra da Cor Atrás do Vidro",
+        "body": "As cinco cores neon só existem na `.wall`. Nunca aplique cobalto, magenta, ciano, âmbar ou ultravioleta em texto, borda, botão ou ícone; a cor chega ao conteúdo apenas filtrada pelo vidro.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra do Branco em Camadas",
+        "body": "Hierarquia de texto é feita com opacidade de branco (100 / 92 / 74 / 50%), nunca com cinza sólido nem com cor.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra do Peso Extremo",
+        "body": "Títulos ficam em 750–800 com espaçamento negativo; texto corrido em 400. Não use pesos intermediários (500–600) em títulos.",
+        "section": "typography"
+      },
+      {
+        "name": "A Regra da Luz de Cima",
+        "body": "A luz sempre vem de cima: a borda superior interna é a mais clara. Nunca inverta nem adicione brilho colorido em volta de elementos.",
+        "section": "elevation"
+      },
+      {
+        "name": "A Regra do Fallback Sólido",
+        "body": "Onde o navegador não tem `backdrop-filter`, o vidro vira um azul sólido rgba(30,36,80,.88). O texto nunca pode ficar sobre o fundo colorido sem uma placa.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** coloque todo conteúdo dentro de uma placa `.glass` sobre a `.wall`; o fundo colorido nunca fica atrás de texto solto, exceto o título display e o subtítulo da home.",
+      "**Do** use opacidades de branco (100 / 92 / 74 / 50%) para a hierarquia de texto.",
+      "**Do** use pílulas (999px) para qualquer coisa tocável e cantos de 18–32px para superfícies.",
+      "**Do** mostre o número da notícia como elemento gráfico; ele é o link permanente e a identidade de cada post.",
+      "**Do** mantenha a fonte do sistema e os títulos em 750–800 com espaçamento negativo.",
+      "**Do** respeite `prefers-reduced-motion`: sem transições e sem reflexo seguindo o ponteiro."
+    ],
+    "donts": [
+      "**Don't** faça parecer portal de notícias: nada de banners, colunas laterais apertadas, blocos de propaganda ou grades densas de manchetes.",
+      "**Don't** use fundo branco ou claro como superfície principal; o sistema é noturno.",
+      "**Don't** caia no visual gamer: nada de RGB animado, cores neon em texto ou borda, brilho colorido em volta de elementos, fontes agressivas.",
+      "**Don't** aplique as cores da `.wall` (#2f4bff, #ff3d8b, #00c2ff, #ff9f1c, #8b3dff) em componentes.",
+      "**Don't** use degradê em texto fora do número gigante decorativo.",
+      "**Don't** adicione fontes externas; o site carrega só a fonte do sistema."
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "assets/style.css"
+        ],
+        "createdAt": "2026-11-19T03:16:12.047Z",
+        "reason": "Claude: decorative aria-hidden post-number in the existing liquid-glass design (.featured .id/.sheet .id), predates session"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          "tomo/save.html"
+        ],
+        "createdAt": "2026-11-19T03:33:52.992Z",
+        "reason": "Claude: separate tool with its own visual identity; DESIGN.md documents only the Nick News blog"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          "tomo/pdf.html"
+        ],
+        "createdAt": "2026-11-19T03:33:53.143Z",
+        "reason": "Claude: separate tool with its own visual identity; DESIGN.md documents only the Nick News blog"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          "tomo/index.html"
+        ],
+        "createdAt": "2026-11-19T03:33:53.301Z",
+        "reason": "Claude: separate tool with its own visual identity; DESIGN.md documents only the Nick News blog"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          "tomo/convert.html"
+        ],
+        "createdAt": "2026-11-19T03:33:53.459Z",
+        "reason": "Claude: separate tool with its own visual identity; DESIGN.md documents only the Nick News blog"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          "tradutor/index.html"
+        ],
+        "createdAt": "2026-11-19T03:33:53.607Z",
+        "reason": "Claude: separate tool with its own visual identity; DESIGN.md documents only the Nick News blog"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          "recon/styleb6f5.css"
+        ],
+        "createdAt": "2026-11-19T03:33:53.773Z",
+        "reason": "Claude: separate tool with its own visual identity; DESIGN.md documents only the Nick News blog"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          "recon/style.css"
+        ],
+        "createdAt": "2026-11-19T03:33:53.933Z",
+        "reason": "Claude: separate tool with its own visual identity; DESIGN.md documents only the Nick News blog"
+      }
+    ]
+  }
+}
